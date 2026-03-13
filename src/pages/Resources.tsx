@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { BookOpen, Map, Award, Github, ExternalLink, PlayCircle, FileText, ArrowRight } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function Resources() {
   const roadmapSteps = [
@@ -18,7 +19,7 @@ export default function Resources() {
   ];
 
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Header */}
       <section className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -72,14 +73,26 @@ export default function Resources() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Tutorials */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex items-center mb-8">
                 <BookOpen className="w-8 h-8 text-cloud-blue mr-4" />
                 <h2 className="text-3xl font-heading font-bold">Tutorials & Guides</h2>
               </div>
               <div className="space-y-4">
                 {tutorials.map((tut, idx) => (
-                  <div key={idx} className="glass-panel p-4 pixel-border flex items-center justify-between group hover:bg-cloud-secondary/50 transition-colors cursor-pointer">
+                  <motion.div 
+                    key={idx} 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: idx * 0.1 }}
+                    className="glass-panel p-4 pixel-border flex items-center justify-between group hover:bg-cloud-secondary/50 transition-colors cursor-pointer"
+                  >
                     <div className="flex items-center">
                       <tut.icon className="w-5 h-5 text-text-secondary mr-4 group-hover:text-cloud-blue transition-colors" />
                       <div>
@@ -88,15 +101,20 @@ export default function Resources() {
                       </div>
                     </div>
                     <ExternalLink className="w-4 h-4 text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Certification & GitHub */}
             <div className="space-y-12">
               {/* Certification */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <div className="flex items-center mb-8">
                   <Award className="w-8 h-8 text-arcade-purple mr-4" />
                   <h2 className="text-3xl font-heading font-bold">Certification Guide</h2>
@@ -110,10 +128,15 @@ export default function Resources() {
                     View Study Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
 
               {/* GitHub */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
                 <div className="flex items-center mb-8">
                   <Github className="w-8 h-8 text-text-primary mr-4" />
                   <h2 className="text-3xl font-heading font-bold">GitHub Resources</h2>
@@ -127,11 +150,11 @@ export default function Resources() {
                     github.com/awscloudclub-gcoek
                   </a>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 }

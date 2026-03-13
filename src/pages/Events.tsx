@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function Events() {
   const upcomingEvents = [
@@ -43,7 +44,7 @@ export default function Events() {
   ];
 
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Header */}
       <section className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -112,29 +113,57 @@ export default function Events() {
       {/* Past Events & Gallery */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Past Events</h2>
             <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {pastEvents.map((event, idx) => (
-              <div key={idx} className="glass-panel p-6 pixel-border flex flex-col">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-panel p-6 pixel-border flex flex-col"
+              >
                 <div className="flex items-center text-text-secondary mb-2 font-mono text-sm">
                   <Calendar className="w-4 h-4 mr-2" />
                   {event.date}
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
                 <p className="text-text-secondary">{event.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Gallery Grid */}
-          <h3 className="text-2xl font-heading font-bold mb-8 text-center">Event Gallery</h3>
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl font-heading font-bold mb-8 text-center"
+          >
+            Event Gallery
+          </motion.h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div key={item} className="aspect-square bg-cloud-secondary rounded-lg overflow-hidden border border-border-color group relative">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, idx) => (
+              <motion.div 
+                key={item} 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="aspect-square bg-cloud-secondary rounded-lg overflow-hidden border border-border-color group relative"
+              >
                 <img 
                   src={`https://picsum.photos/seed/aws-event-${item}/400/400`} 
                   alt="Event photo" 
@@ -144,11 +173,11 @@ export default function Events() {
                 <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-mono text-xs text-aws-orange">GCOEK Tech Event</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 }

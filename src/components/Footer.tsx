@@ -17,16 +17,16 @@ export function Footer() {
               A student-led community at Government College of Engineering Kolhapur focused on exploring cloud technologies, building real-world projects, and mastering AWS.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-text-secondary hover:text-aws-orange transition-colors">
+              <a href="#" className="text-text-secondary hover:text-aws-orange transition-all duration-300 hover:-translate-y-1">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors">
+              <a href="#" className="text-text-secondary hover:text-[#0A66C2] transition-all duration-300 hover:-translate-y-1">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-text-secondary hover:text-arcade-purple transition-colors">
+              <a href="#" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300 hover:-translate-y-1">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="mailto:contact@awsclubgcek.edu" className="text-text-secondary hover:text-text-primary transition-colors">
+              <a href="mailto:contact@awsclubgcek.edu" className="text-text-secondary hover:text-text-primary transition-all duration-300 hover:-translate-y-1">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -36,19 +36,19 @@ export function Footer() {
             <h3 className="font-heading font-semibold text-lg mb-4 text-text-primary">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-text-secondary hover:text-aws-orange transition-colors">Home</Link>
+                <Link to="/" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Home</Link>
               </li>
               <li>
-                <Link to="/events" className="text-text-secondary hover:text-aws-orange transition-colors">Events</Link>
+                <Link to="/events" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Events</Link>
               </li>
               <li>
-                <Link to="/projects" className="text-text-secondary hover:text-aws-orange transition-colors">Projects</Link>
+                <Link to="/projects" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Projects</Link>
               </li>
               <li>
-                <Link to="/resources" className="text-text-secondary hover:text-aws-orange transition-colors">Resources</Link>
+                <Link to="/resources" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Resources</Link>
               </li>
               <li>
-                <Link to="/join" className="text-text-secondary hover:text-aws-orange transition-colors">Join</Link>
+                <Link to="/join" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Join</Link>
               </li>
             </ul>
           </div>

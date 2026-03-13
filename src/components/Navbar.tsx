@@ -54,13 +54,17 @@ export function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={cn(
-                    'text-sm font-medium transition-colors hover:text-aws-orange',
+                    'text-sm font-medium transition-all duration-300 hover:text-aws-orange relative group',
                     location.pathname === link.path
                       ? 'text-aws-orange'
                       : 'text-text-secondary'
                   )}
                 >
                   {link.name}
+                  <span className={cn(
+                    "absolute -bottom-1 left-0 w-0 h-0.5 bg-aws-orange transition-all duration-300 group-hover:w-full",
+                    location.pathname === link.path ? "w-full" : ""
+                  )}></span>
                 </Link>
               ))}
             </div>

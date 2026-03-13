@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Linkedin, Github, Users, Star, Shield, Code, Calendar, Camera, Megaphone, DollarSign } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function Team() {
   const departments = [
@@ -81,7 +82,7 @@ export default function Team() {
   ];
 
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Header */}
       <section className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -116,6 +117,10 @@ export default function Team() {
                 {dept.members.map((member, idx) => (
                   <motion.div 
                     key={idx}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.1 }}
                     whileHover={{ y: -5 }}
                     className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                   >
@@ -130,10 +135,10 @@ export default function Team() {
                     <h3 className="text-lg font-heading font-bold mb-1">{member.name}</h3>
                     <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                     <div className="flex space-x-3 mt-auto">
-                      <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors">
+                      <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                         <Linkedin className="w-4 h-4" />
                       </a>
-                      <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+                      <a href="#" className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                         <Github className="w-4 h-4" />
                       </a>
                     </div>
@@ -147,15 +152,21 @@ export default function Team() {
 
       {/* Join the Team CTA */}
       <section className="py-16 bg-cloud-secondary/30 border-t border-border-color text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <Users className="w-16 h-16 text-aws-orange mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl font-heading font-bold mb-4">Want to join the core team?</h2>
           <p className="text-lg text-text-secondary mb-8">
             We are always looking for passionate students to help lead the club and organize events.
           </p>
           <button className="pixel-button-secondary px-8 py-3">Apply for Leadership</button>
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </PageTransition>
   );
 }

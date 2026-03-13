@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { PageTransition } from '../components/PageTransition';
 
 const StatCounter = ({ end, label }: { end: number; label: string }) => {
   const [count, setCount] = useState(0);
@@ -38,7 +39,7 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Animated Background Elements */}
@@ -111,10 +112,16 @@ export default function Home() {
       {/* What We Do Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">What We Do</h2>
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -125,6 +132,10 @@ export default function Home() {
             ].map((feature, idx) => (
               <motion.div 
                 key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -5 }}
                 className="glass-panel p-6 pixel-border hover:pixel-border-hover group"
               >
@@ -142,7 +153,13 @@ export default function Home() {
       {/* Upcoming Events */}
       <section className="py-24 bg-cloud-secondary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-between items-end mb-12"
+          >
             <div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Upcoming Events</h2>
               <div className="w-24 h-1 bg-cloud-blue mx-auto md:mx-0 rounded-full"></div>
@@ -150,7 +167,7 @@ export default function Home() {
             <Link to="/events" className="hidden md:flex items-center text-cloud-blue hover:text-aws-orange transition-colors font-mono text-sm">
               View All Events <ChevronRight className="w-4 h-4 ml-1" />
             </Link>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -158,7 +175,14 @@ export default function Home() {
               { title: 'EC2 Deployment Lab', date: 'Oct 22, 2026', desc: 'Launch and configure your first cloud server.' },
               { title: 'Serverless Bootcamp', date: 'Nov 05, 2026', desc: 'Build scalable applications using AWS Lambda and API Gateway.' }
             ].map((event, idx) => (
-              <div key={idx} className="glass-panel p-6 pixel-border flex flex-col h-full">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-panel p-6 pixel-border flex flex-col h-full"
+              >
                 <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
                   <Calendar className="w-4 h-4 mr-2" />
                   {event.date}
@@ -166,7 +190,7 @@ export default function Home() {
                 <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
                 <p className="text-text-secondary mb-6 flex-grow">{event.desc}</p>
                 <button className="pixel-button-secondary py-2 w-full text-sm">Register Now</button>
-              </div>
+              </motion.div>
             ))}
           </div>
           
@@ -179,10 +203,16 @@ export default function Home() {
       {/* Featured Projects */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Featured Projects</h2>
             <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -190,7 +220,14 @@ export default function Home() {
               { title: 'IoT Health Dashboard', desc: 'Real-time health monitoring using AWS IoT Core and React.', tech: ['IoT Core', 'Amplify', 'React'] },
               { title: 'Cloud File Storage', desc: 'Secure file sharing platform built on S3 and Cognito.', tech: ['S3', 'Cognito', 'API Gateway'] }
             ].map((project, idx) => (
-              <div key={idx} className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group"
+              >
                 <div className="flex justify-between items-start mb-4">
                   <div className="p-2 bg-cloud-secondary rounded">
                     <Database className="w-6 h-6 text-arcade-purple" />
@@ -208,7 +245,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
@@ -223,10 +260,16 @@ export default function Home() {
       {/* Team Preview */}
       <section className="py-24 bg-cloud-secondary/20 border-t border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Meet The Team</h2>
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -235,16 +278,29 @@ export default function Home() {
               { name: 'Vidula', role: 'General Secretary' },
               { name: 'Gopal', role: 'Joint Secretary' }
             ].map((member, idx) => (
-              <div key={idx} className="glass-panel p-6 flex flex-col items-center text-center pixel-border">
-                <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center">
-                  <Users className="w-10 h-10 text-text-secondary" />
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
+              >
+                <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                  <img 
+                    src={`https://picsum.photos/seed/${member.name.replace(' ', '')}/150/150`} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
                 <h3 className="text-lg font-heading font-bold">{member.name}</h3>
                 <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
-                <a href="#" className="text-text-secondary hover:text-aws-orange transition-colors">
+                <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                   <Linkedin className="w-5 h-5" />
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
           
@@ -259,7 +315,13 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aws-orange/10 z-0"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+        >
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Start Your Cloud Journey Today</h2>
           <p className="text-xl text-text-secondary mb-10">
             Join the AWS Cloud Club and learn cloud computing through workshops, projects, and community learning.
@@ -267,8 +329,8 @@ export default function Home() {
           <Link to="/join" className="pixel-button px-10 py-5 text-lg inline-block">
             Join the Club
           </Link>
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </PageTransition>
   );
 }

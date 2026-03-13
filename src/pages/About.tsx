@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 import { Target, Eye, Cloud, Zap, Shield, Globe } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function About() {
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Header */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
@@ -30,6 +31,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
               className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300"
             >
@@ -43,6 +48,10 @@ export default function About() {
             </motion.div>
 
             <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -5 }}
               className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300"
             >
@@ -61,10 +70,16 @@ export default function About() {
       {/* Why Cloud Computing Matters */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Why Cloud Computing Matters</h2>
             <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -72,17 +87,24 @@ export default function About() {
               { icon: Shield, title: 'Security & Reliability', desc: 'Enterprise-grade security, automated backups, and high availability across multiple regions.' },
               { icon: Globe, title: 'Industry Demand', desc: 'Cloud computing is the backbone of modern tech, making cloud skills highly sought after by employers.' }
             ].map((item, idx) => (
-              <div key={idx} className="glass-panel p-6 pixel-border flex flex-col items-center text-center">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-panel p-6 pixel-border flex flex-col items-center text-center"
+              >
                 <div className="w-14 h-14 rounded-full bg-cloud-secondary flex items-center justify-center mb-4 border border-border-color">
                   <item.icon className="w-6 h-6 text-arcade-purple" />
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-3">{item.title}</h3>
                 <p className="text-text-secondary">{item.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 }

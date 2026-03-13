@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Github, Database, Server, Code, Zap, Globe } from 'lucide-react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function Projects() {
   const projects = [
@@ -48,7 +49,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="w-full">
+    <PageTransition className="w-full">
       {/* Header */}
       <section className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -73,6 +74,10 @@ export default function Projects() {
             {projects.map((project, idx) => (
               <motion.div 
                 key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -5 }}
                 className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group flex flex-col h-full"
               >
@@ -116,14 +121,20 @@ export default function Projects() {
 
       {/* CTA */}
       <section className="py-24 text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <h2 className="text-3xl font-heading font-bold mb-6">Have a project idea?</h2>
           <p className="text-lg text-text-secondary mb-8">
             Join the club and collaborate with other students to bring your cloud project ideas to life. We provide the resources and mentorship you need.
           </p>
           <button className="pixel-button px-8 py-4">Start Building With Us</button>
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </PageTransition>
   );
 }
