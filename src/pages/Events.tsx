@@ -1,0 +1,154 @@
+import { motion } from 'motion/react';
+import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+
+export default function Events() {
+  const upcomingEvents = [
+    {
+      title: 'Cloud 101 Workshop',
+      date: 'Oct 15, 2026',
+      time: '10:00 AM - 1:00 PM',
+      location: 'Main Auditorium, GCOEK',
+      desc: 'Introduction to AWS core services (EC2, S3, RDS). Learn how to navigate the AWS console and launch your first resources.',
+      type: 'Workshop'
+    },
+    {
+      title: 'EC2 Deployment Lab',
+      date: 'Oct 22, 2026',
+      time: '2:00 PM - 5:00 PM',
+      location: 'Computer Lab 3',
+      desc: 'Hands-on lab to launch, configure, and secure your first cloud server. We will deploy a simple web application.',
+      type: 'Hands-on Lab'
+    },
+    {
+      title: 'Serverless Bootcamp',
+      date: 'Nov 05, 2026',
+      time: '10:00 AM - 4:00 PM',
+      location: 'Seminar Hall',
+      desc: 'Build scalable applications using AWS Lambda, API Gateway, and DynamoDB without managing servers.',
+      type: 'Bootcamp'
+    }
+  ];
+
+  const pastEvents = [
+    {
+      title: 'AWS Cloud Practitioner Study Group',
+      date: 'Sep 2026',
+      desc: 'A 4-week study group preparing students for the foundational AWS certification.'
+    },
+    {
+      title: 'Cloud Architecture Design Challenge',
+      date: 'Aug 2026',
+      desc: 'Students designed scalable architectures for real-world scenarios.'
+    }
+  ];
+
+  return (
+    <div className="w-full">
+      {/* Header */}
+      <section className="pt-24 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">Club Events</h1>
+            <div className="w-24 h-1 bg-cloud-blue mx-auto rounded-full mb-8"></div>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Join us for workshops, hands-on labs, and bootcamps to level up your cloud skills.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-16 bg-cloud-secondary/20 border-y border-border-color">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-heading font-bold mb-12 flex items-center">
+            <span className="w-4 h-4 rounded-full bg-aws-orange animate-pulse mr-4"></span>
+            Upcoming Events
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {upcomingEvents.map((event, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -5 }}
+                className="glass-panel p-6 pixel-border flex flex-col h-full group"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <span className="px-3 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded border border-border-color">
+                    {event.type}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-heading font-bold mb-4 group-hover:text-aws-orange transition-colors">{event.title}</h3>
+                
+                <div className="space-y-2 mb-6 text-sm text-text-secondary font-mono">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-3 text-arcade-purple" />
+                    {event.date}
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-3 text-arcade-purple" />
+                    {event.time}
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-3 text-arcade-purple" />
+                    {event.location}
+                  </div>
+                </div>
+                
+                <p className="text-text-secondary mb-8 flex-grow">{event.desc}</p>
+                
+                <button className="pixel-button py-3 w-full flex items-center justify-center">
+                  Register Now <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events & Gallery */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Past Events</h2>
+            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {pastEvents.map((event, idx) => (
+              <div key={idx} className="glass-panel p-6 pixel-border flex flex-col">
+                <div className="flex items-center text-text-secondary mb-2 font-mono text-sm">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  {event.date}
+                </div>
+                <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
+                <p className="text-text-secondary">{event.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Gallery Grid */}
+          <h3 className="text-2xl font-heading font-bold mb-8 text-center">Event Gallery</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              <div key={item} className="aspect-square bg-cloud-secondary rounded-lg overflow-hidden border border-border-color group relative">
+                <img 
+                  src={`https://picsum.photos/seed/aws-event-${item}/400/400`} 
+                  alt="Event photo" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="font-mono text-xs text-aws-orange">GCOEK Tech Event</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
