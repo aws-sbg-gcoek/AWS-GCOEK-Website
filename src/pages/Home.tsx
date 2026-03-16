@@ -292,7 +292,7 @@ export default function Home() {
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
                       <>
-                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar/" : "#"} className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                           <Linkedin className="w-5 h-5" />
                         </a>
                         <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awscc.gcoe@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
@@ -335,10 +335,10 @@ export default function Home() {
                   <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
                   <div className="flex space-x-3">
                     <a href={
-                      member.name === 'Vidula' ? "https://www.linkedin.com/in/vidula-p-" :
-                      member.name === 'Gopal' ? "https://www.linkedin.com/in/gopal-lakwal-" :
-                      member.name === 'Shekhar' ? "https://www.linkedin.com/in/shekhar-varekar-" :
-                      member.name === 'Anas Pathan' ? "https://www.linkedin.com/in/anas-pathan-91a6b3368?utm_source=share_via&utm_content=profile&utm_medium=member_android" :
+                      member.name === 'Vidula' ? "https://www.linkedin.com/in/vidula-p-372734294" :
+                      member.name === 'Gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
+                      member.name === 'Shekhar' ? "https://www.linkedin.com/in/shekhar-varekar-530b97384" :
+                      member.name === 'Anas Pathan' ? "https://www.linkedin.com/in/anas-pathan-91a6b3368" :
                       "#"
                     } className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
