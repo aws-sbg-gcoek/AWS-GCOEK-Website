@@ -292,7 +292,7 @@ export default function Home() {
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
                       <>
-                        <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar/" : "#"} className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                           <Linkedin className="w-5 h-5" />
                         </a>
                         <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awscc.gcoe@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
@@ -334,7 +334,13 @@ export default function Home() {
                   <h3 className="text-lg font-heading font-bold">{member.name}</h3>
                   <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
                   <div className="flex space-x-3">
-                    <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                    <a href={
+                      member.name === 'Vidula' ? "https://www.linkedin.com/in/vidula-p-" :
+                      member.name === 'Gopal' ? "https://www.linkedin.com/in/gopal-lakwal-" :
+                      member.name === 'Shekhar' ? "https://www.linkedin.com/in/shekhar-varekar-" :
+                      member.name === 'Anas Pathan' ? "https://www.linkedin.com/in/anas-pathan-91a6b3368?utm_source=share_via&utm_content=profile&utm_medium=member_android" :
+                      "#"
+                    } className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={
