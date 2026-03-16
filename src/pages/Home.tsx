@@ -305,14 +305,12 @@ export default function Home() {
               ))}
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto w-full">
               {[
                 { name: 'Atharv Patil', role: 'Vice President' },
-                { name: 'Vidula', role: 'General Secretary' },
-                { name: 'Gopal', role: 'Joint Secretary' },
-                { name: 'Shekhar', role: 'Social Media & Content Lead', image: 'https://i.ibb.co/HpV9qJwH/shekhar.jpg' },
-                { name: 'Chaitanya', role: 'Logistics Lead', image: 'https://i.ibb.co/KjLPBGnt/chaitanya.png' },
-                { name: 'Anas Pathan', role: 'Project Associate', image: 'https://i.ibb.co/V0GgpdmG/anas.jpg' }
+                { name: 'Vidula Powar', role: 'General Secretary', image: 'https://i.ibb.co/Mxwp7YWV/Document-from-Vidula-Vidula-Powar.png' },
+                { name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
+                { name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png' }
               ].map((member, idx) => (
                 <motion.div 
                   key={idx + 2} 
@@ -335,21 +333,18 @@ export default function Home() {
                   <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
                   <div className="flex space-x-3">
                     <a href={
-                      member.name === 'Vidula' ? "https://www.linkedin.com/in/vidula-p-372734294" :
-                      member.name === 'Gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
-                      member.name === 'Shekhar' ? "https://www.linkedin.com/in/shekhar-varekar-530b97384" :
-                      member.name === 'Anas Pathan' ? "https://www.linkedin.com/in/anas-pathan-91a6b3368" :
+                      member.name === 'Vidula Powar' ? "https://www.linkedin.com/in/vidula-p-372734294" :
+                      member.name === 'Gopal Lakwal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
+                      member.name === 'Shubham Sonwane' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
                       "#"
                     } className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={
                       member.name === 'Atharv Patil' ? "mailto:atharvpatil1808@gmail.com" :
-                      member.name === 'Vidula' ? "mailto:powarvidula11@gmail.com" :
-                      member.name === 'Gopal' ? "mailto:gopallakwal526@gmail.com" :
-                      member.name === 'Shekhar' ? "mailto:varekarshekhar@gmail.com" :
-                      member.name === 'Chaitanya' ? "mailto:chhaitanyaaz@gmail.com" :
-                      member.name === 'Anas Pathan' ? "mailto:pathananas2007@gmail.com" :
+                      member.name === 'Vidula Powar' ? "mailto:powarvidula11@gmail.com" :
+                      member.name === 'Gopal Lakwal' ? "mailto:gopallakwal526@gmail.com" :
+                      member.name === 'Shubham Sonwane' ? "mailto:sonwaneshubham38@gmail.com" :
                       "mailto:awscc.gcoe@gmail.com"
                     } className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                       <Mail className="w-5 h-5" />
