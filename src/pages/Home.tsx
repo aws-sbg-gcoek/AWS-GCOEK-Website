@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin } from 'lucide-react';
+import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 
@@ -264,37 +264,94 @@ export default function Home() {
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { name: 'Shardul Kolekar', role: 'Captain (President)' },
-              { name: 'Atharv Patil', role: 'Vice President' },
-              { name: 'Vidula', role: 'General Secretary' },
-              { name: 'Gopal', role: 'Joint Secretary' }
-            ].map((member, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
-              >
-                <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
-                  <img 
-                    src={`https://picsum.photos/seed/${member.name.replace(' ', '')}/150/150`} 
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
-                <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </motion.div>
-            ))}
+          <div className="flex flex-col gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
+              {[
+                { name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator' },
+                { name: 'Shardul Kolekar', role: 'Captain (President)', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' }
+              ].map((member, idx) => (
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
+                >
+                  <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                    <img 
+                      src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <h3 className="text-lg font-heading font-bold">{member.name}</h3>
+                  <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  <div className="flex space-x-3">
+                    {member.name !== 'Dr. Varsha Gaikwad' && (
+                      <>
+                        <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awscc.gcoe@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
+                          <Mail className="w-5 h-5" />
+                        </a>
+                      </>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
+              {[
+                { name: 'Atharv Patil', role: 'Vice President' },
+                { name: 'Vidula', role: 'General Secretary' },
+                { name: 'Gopal', role: 'Joint Secretary' },
+                { name: 'Shekhar', role: 'Social Media & Content Lead', image: 'https://i.ibb.co/HpV9qJwH/shekhar.jpg' },
+                { name: 'Chaitanya', role: 'Logistics Lead', image: 'https://i.ibb.co/KjLPBGnt/chaitanya.png' },
+                { name: 'Anas Pathan', role: 'Project Associate', image: 'https://i.ibb.co/V0GgpdmG/anas.jpg' }
+              ].map((member, idx) => (
+                <motion.div 
+                  key={idx + 2} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (idx + 2) * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
+                >
+                  <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                    <img 
+                      src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <h3 className="text-lg font-heading font-bold">{member.name}</h3>
+                  <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  <div className="flex space-x-3">
+                    <a href="#" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a href={
+                      member.name === 'Atharv Patil' ? "mailto:atharvpatil1808@gmail.com" :
+                      member.name === 'Vidula' ? "mailto:powarvidula11@gmail.com" :
+                      member.name === 'Gopal' ? "mailto:gopallakwal526@gmail.com" :
+                      member.name === 'Shekhar' ? "mailto:varekarshekhar@gmail.com" :
+                      member.name === 'Chaitanya' ? "mailto:chhaitanyaaz@gmail.com" :
+                      member.name === 'Anas Pathan' ? "mailto:pathananas2007@gmail.com" :
+                      "mailto:awscc.gcoe@gmail.com"
+                    } className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
           
           <div className="mt-12 text-center">

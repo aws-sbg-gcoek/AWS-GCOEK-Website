@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Linkedin, Github, Users } from 'lucide-react';
+import { Linkedin, Mail, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { departments } from '../data/team';
@@ -37,40 +37,125 @@ export default function Team() {
                 <div className={`w-16 h-1 ${dept.bgColor} mx-auto rounded-full`}></div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
-                {dept.members.map((member, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
-                  >
-                    <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
-                      <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
-                        <img 
-                          src={`https://picsum.photos/seed/${member.name.replace(' ', '')}/150/150`} 
-                          alt={member.name}
-                          className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
-                        />
+              {dept.title === "Leadership Dept" ? (
+                <div className="flex flex-col gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
+                    {dept.members.slice(0, 2).map((member, idx) => (
+                      <motion.div 
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: idx * 0.1 }}
+                        whileHover={{ y: -5 }}
+                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                      >
+                        <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
+                          <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
+                            <img 
+                              src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                          </div>
+                          <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
+                        </Link>
+                        <div className="flex space-x-3 mt-auto pb-6 px-6">
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
+                              <Linkedin className="w-4 h-4" />
+                            </a>
+                          )}
+                          {member.email && (
+                            <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
+                              <Mail className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                    {dept.members.slice(2).map((member, idx) => (
+                      <motion.div 
+                        key={idx + 2}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: (idx + 2) * 0.1 }}
+                        whileHover={{ y: -5 }}
+                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                      >
+                        <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
+                          <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
+                            <img 
+                              src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                          </div>
+                          <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
+                        </Link>
+                        <div className="flex space-x-3 mt-auto pb-6 px-6">
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
+                              <Linkedin className="w-4 h-4" />
+                            </a>
+                          )}
+                          {member.email && (
+                            <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
+                              <Mail className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                  {dept.members.map((member, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      whileHover={{ y: -5 }}
+                      className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                    >
+                      <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
+                        <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
+                          <img 
+                            src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                        <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
+                      </Link>
+                      <div className="flex space-x-3 mt-auto pb-6 px-6">
+                        {member.linkedin && (
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                        )}
+                        {member.email && (
+                          <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
+                            <Mail className="w-4 h-4" />
+                          </a>
+                        )}
                       </div>
-                      <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
-                      <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
-                    </Link>
-                    <div className="flex space-x-3 mt-auto pb-6 px-6">
-                      <a href={member.linkedin || "#"} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                      <a href={member.github || "#"} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
-                        <Github className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

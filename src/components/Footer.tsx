@@ -22,16 +22,16 @@ export function Footer() {
               A student-led community at Government College of Engineering Kolhapur focused on exploring cloud technologies, building real-world projects, and mastering AWS.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-text-secondary hover:text-aws-orange transition-all duration-300 hover:-translate-y-1">
+              <a href="https://github.com/AWSCloudClubGCOE" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-aws-orange transition-all duration-300 hover:-translate-y-1">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="#" className="text-text-secondary hover:text-[#0A66C2] transition-all duration-300 hover:-translate-y-1">
+              <a href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#0A66C2] transition-all duration-300 hover:-translate-y-1">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300 hover:-translate-y-1">
+              <a href="https://www.instagram.com/awscc.gcoe.kolhapur?igsh=MWJ2dHNpeGxsZGw4Yg==" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300 hover:-translate-y-1">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="mailto:contact@awsclubgcek.edu" className="text-text-secondary hover:text-text-primary transition-all duration-300 hover:-translate-y-1">
+              <a href="mailto:awscc.gcoe@gmail.com" className="text-text-secondary hover:text-text-primary transition-all duration-300 hover:-translate-y-1">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -65,8 +65,8 @@ export function Footer() {
               <li>Vidyanagar, Kolhapur</li>
               <li>Maharashtra 416004</li>
               <li className="pt-2">
-                <a href="mailto:contact@awsclubgcek.edu" className="hover:text-aws-orange transition-colors">
-                  contact@awsclubgcek.edu
+                <a href="mailto:awscc.gcoe@gmail.com" className="hover:text-aws-orange transition-colors">
+                  awscc.gcoe@gmail.com
                 </a>
               </li>
             </ul>

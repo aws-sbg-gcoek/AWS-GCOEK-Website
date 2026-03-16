@@ -16,15 +16,16 @@ export default function Events() {
 
   const pastEvents = [
     {
-      title: 'AWS Cloud Practitioner Study Group',
-      date: 'Sep 2026',
-      desc: 'A 4-week study group preparing students for the foundational AWS certification.'
+      title: 'AWS Cloud Club GCOEK: Intro Meetup',
+      date: 'Jan 19, 2026 • 3:00 PM',
+      desc: 'Our first in-person introductory meetup at the Seminar Hall (Old Building) to launch a student community focused on AWS Cloud, DevOps, and hands-on tech learning for all branches. Open to all curious students—no prior AWS experience required.',
+      highlights: [
+        'Introduction to the club’s vision and goals',
+        'Core team selection through interactive group activities',
+        'Opportunity to learn, lead, and build your resume through leadership roles'
+      ]
     },
-    {
-      title: 'Cloud Architecture Design Challenge',
-      date: 'Aug 2026',
-      desc: 'Students designed scalable architectures for real-world scenarios.'
-    }
+    
   ];
 
   return (
@@ -123,7 +124,14 @@ export default function Events() {
                   {event.date}
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
-                <p className="text-text-secondary">{event.desc}</p>
+                <p className="text-text-secondary mb-4">{event.desc}</p>
+                {event.highlights && (
+                  <ul className="list-disc list-inside text-sm text-text-secondary space-y-1 mt-auto">
+                    {event.highlights.map((highlight, i) => (
+                      <li key={i}>{highlight}</li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
             ))}
           </div>

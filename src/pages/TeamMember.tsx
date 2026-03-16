@@ -46,7 +46,7 @@ export default function TeamMember() {
               >
                 <div className={`w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-cloud-secondary border-2 border-border-color overflow-hidden flex items-center justify-center shadow-lg`}>
                   <img 
-                    src={`https://picsum.photos/seed/${member.name.replace(' ', '')}/400/400`} 
+                    src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(' ', '')}/400/400`} 
                     alt={member.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -88,18 +88,16 @@ export default function TeamMember() {
                 </div>
 
                 <div className="flex space-x-4 justify-center md:justify-start pt-4 border-t border-border-color/50">
-                  <a href={member.linkedin || "#"} target="_blank" rel="noopener noreferrer" className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-cloud-blue hover:border-cloud-blue transition-all group">
-                    <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </a>
-                  <a href={member.github || "#"} target="_blank" rel="noopener noreferrer" className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-text-primary hover:border-text-primary transition-all group">
-                    <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </a>
-                  <a href="#" className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-aws-orange hover:border-aws-orange transition-all group">
-                    <Globe className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </a>
-                  <a href="#" className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-green-400 hover:border-green-400 transition-all group">
-                    <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </a>
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-cloud-blue hover:border-cloud-blue transition-all group">
+                      <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    </a>
+                  )}
+                  {member.email && (
+                    <a href={member.email} className="p-3 bg-cloud-secondary border border-border-color rounded-lg text-text-secondary hover:text-green-400 hover:border-green-400 transition-all group">
+                      <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             </div>
