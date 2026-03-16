@@ -66,28 +66,19 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-cloud-secondary/80 px-4 py-2 rounded-full border border-border-color mb-8">
-              <span className="w-2 h-2 rounded-full bg-aws-orange animate-pulse"></span>
-              <span className="text-sm font-mono text-text-secondary">System Online • GCOEK Node</span>
-            </div>
-            
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400 drop-shadow-sm">AWS Cloud Club</span>
               <br />
-              <span className="inline-block mt-4 px-6 py-2 bg-cloud-navy/60 backdrop-blur-sm border border-border-color/50 rounded-2xl text-3xl md:text-5xl text-text-primary tracking-widest shadow-lg">GCE Kolhapur</span>
+              <span className="block mt-4 text-3xl md:text-5xl text-text-primary tracking-widest">GCOE Kolhapur</span>
             </h1>
             
-            <div className="inline-block px-6 py-3 bg-cloud-navy/40 backdrop-blur-md border border-cloud-blue/20 rounded-xl mb-6 shadow-[0_0_15px_rgba(56,189,248,0.15)]">
-              <p className="text-xl md:text-2xl font-medium text-cloud-blue neon-text-blue">
-                Learn Cloud. Build Projects. Launch Your Tech Career.
-              </p>
-            </div>
+            <p className="text-xl md:text-2xl font-medium text-cloud-blue mb-6">
+              Learn Cloud. Build Projects. Launch Your Tech Career.
+            </p>
             
-            <div className="max-w-3xl mx-auto px-6 py-4 bg-cloud-secondary/40 backdrop-blur-sm border border-border-color/50 rounded-xl mb-10">
-              <p className="text-lg text-text-primary/90 leading-relaxed">
-                A student community exploring cloud computing, building real-world projects, and mastering AWS technologies.
-              </p>
-            </div>
+            <p className="text-lg text-text-primary/90 leading-relaxed max-w-3xl mx-auto mb-10">
+              A student community exploring cloud computing, building real-world projects, and mastering AWS technologies.
+            </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Link to="/join" className="pixel-button px-8 py-4 w-full sm:w-auto text-center">
