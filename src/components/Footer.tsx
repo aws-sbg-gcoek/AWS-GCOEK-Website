@@ -75,7 +75,7 @@ export function Footer() {
           <div className="mt-4 md:mt-0 flex items-center space-x-2 text-sm text-text-secondary">
             <span>Built with</span>
             <span className="text-red-500">♥</span>
-            <span>by the Tech Team</span>
+            <span>by Shardul & Anas</span>
           </div>
         </div>
       </div>
