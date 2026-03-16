@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Cloud, Github, Linkedin, Instagram, Mail } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -7,10 +7,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 group mb-4">
-              <Cloud className="h-8 w-8 text-aws-orange" />
+            <Link to="/" className="flex items-center space-x-3 group mb-4">
+              <img 
+                src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+                alt="AWS Cloud Club GCOEK Logo" 
+                className="h-16 sm:h-20 object-contain" 
+                referrerPolicy="no-referrer" 
+              />
               <span className="font-heading font-bold text-xl tracking-tight">
-                AWS Cloud Club <span className="text-aws-orange">– GCEK</span>
+                AWS Cloud Club <span className="text-aws-orange">– GCOEK</span>
               </span>
             </Link>
             <p className="text-text-secondary max-w-md mb-6">

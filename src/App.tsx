@@ -12,6 +12,7 @@ import About from './pages/About';
 import Events from './pages/Events';
 import Projects from './pages/Projects';
 import Team from './pages/Team';
+import TeamMember from './pages/TeamMember';
 import Resources from './pages/Resources';
 import Join from './pages/Join';
 
@@ -20,15 +21,18 @@ function AnimatedRoutes() {
   
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/join" element={<Join />} />
-      </Routes>
+      <div key={location.pathname}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/team/:id" element={<TeamMember />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/join" element={<Join />} />
+        </Routes>
+      </div>
     </AnimatePresence>
   );
 }

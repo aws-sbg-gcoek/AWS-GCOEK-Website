@@ -96,10 +96,10 @@ export default function Home() {
       <section className="py-16 bg-cloud-secondary/30 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <StatCounter end={120} label="Members Joined" />
-            <StatCounter end={8} label="Events Conducted" />
-            <StatCounter end={20} label="Projects Built" />
-            <StatCounter end={5} label="Workshops Hosted" />
+            <StatCounter end={400} label="Members Joined" />
+            <StatCounter end={2} label="Events Conducted" />
+            <StatCounter end={1} label="Projects Built" />
+            <StatCounter end={1} label="Workshops Hosted" />
           </div>
         </div>
       </section>
@@ -167,8 +167,6 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: 'Cloud 101 Workshop', date: 'Oct 15, 2026', desc: 'Introduction to AWS core services (EC2, S3, RDS).' },
-              { title: 'EC2 Deployment Lab', date: 'Oct 22, 2026', desc: 'Launch and configure your first cloud server.' },
-              { title: 'Serverless Bootcamp', date: 'Nov 05, 2026', desc: 'Build scalable applications using AWS Lambda and API Gateway.' }
             ].map((event, idx) => (
               <motion.div 
                 key={idx} 

@@ -12,22 +12,6 @@ export default function Events() {
       desc: 'Introduction to AWS core services (EC2, S3, RDS). Learn how to navigate the AWS console and launch your first resources.',
       type: 'Workshop'
     },
-    {
-      title: 'EC2 Deployment Lab',
-      date: 'Oct 22, 2026',
-      time: '2:00 PM - 5:00 PM',
-      location: 'Computer Lab 3',
-      desc: 'Hands-on lab to launch, configure, and secure your first cloud server. We will deploy a simple web application.',
-      type: 'Hands-on Lab'
-    },
-    {
-      title: 'Serverless Bootcamp',
-      date: 'Nov 05, 2026',
-      time: '10:00 AM - 4:00 PM',
-      location: 'Seminar Hall',
-      desc: 'Build scalable applications using AWS Lambda, API Gateway, and DynamoDB without managing servers.',
-      type: 'Bootcamp'
-    }
   ];
 
   const pastEvents = [

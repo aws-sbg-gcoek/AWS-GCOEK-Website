@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Cloud, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -39,8 +39,13 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <Cloud className="h-8 w-8 text-aws-orange group-hover:text-cloud-blue transition-colors" />
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img 
+              src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+              alt="AWS Cloud Club GCOEK Logo" 
+              className="h-16 sm:h-20 object-contain" 
+              referrerPolicy="no-referrer" 
+            />
             <span className="font-heading font-bold text-xl tracking-tight">
               AWS Cloud Club <span className="text-aws-orange hidden sm:inline">– GCOEK</span>
             </span>
