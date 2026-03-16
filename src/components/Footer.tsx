@@ -44,6 +44,9 @@ export function Footer() {
                 <Link to="/" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Home</Link>
               </li>
               <li>
+                <Link to="/about" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">About</Link>
+              </li>
+              <li>
                 <Link to="/events" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Events</Link>
               </li>
               <li>
@@ -51,6 +54,9 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/resources" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Resources</Link>
+              </li>
+              <li>
+                <Link to="/team" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Team</Link>
               </li>
               <li>
                 <Link to="/join" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Join</Link>

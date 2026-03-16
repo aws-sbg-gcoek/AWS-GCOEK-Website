@@ -175,7 +175,7 @@ export default function Team() {
           <p className="text-lg text-text-secondary mb-8">
             We are always looking for passionate students to help lead the club and organize events.
           </p>
-          <Link to="/join" className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</Link>
+          <a href="https://forms.gle/zF7ETWoREn9nkP6dA" target="_blank" rel="noopener noreferrer" className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</a>
         </motion.div>
       </section>
     </PageTransition>

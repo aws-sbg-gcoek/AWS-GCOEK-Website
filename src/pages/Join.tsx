@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, MessageSquare, Linkedin, Instagram, ArrowRight, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, MessageSquare, Linkedin, Instagram, ArrowRight, Send, CheckCircle2, AlertCircle, Users } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 
 export default function Join() {
@@ -251,14 +251,14 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  href="https://discord.com/invite/awscloudclub" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#5865F2]/20 flex items-center justify-center mr-6 group-hover:bg-[#5865F2]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(88,101,242,0.4)]">
-                    <MessageSquare className="w-6 h-6 text-[#5865F2]" />
+                  <div className="w-12 h-12 rounded-full bg-[#ED1C40]/20 flex items-center justify-center mr-6 group-hover:bg-[#ED1C40]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(237,28,64,0.4)]">
+                    <Users className="w-6 h-6 text-[#ED1C40]" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-heading font-bold group-hover:text-[#5865F2] transition-colors">Discord Server</h3>
-                    <p className="text-sm text-text-secondary">Join the conversation and ask questions.</p>
+                    <h3 className="text-xl font-heading font-bold group-hover:text-[#ED1C40] transition-colors">Meetup Group</h3>
+                    <p className="text-sm text-text-secondary">Join our events and meet the community.</p>
                   </div>
                 </motion.a>
                 
@@ -267,13 +267,13 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  href="https://chat.whatsapp.com/awscloudclub" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  href="https://chat.whatsapp.com/KFima5xdcxW2dQsZN0C5SP" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#25D366]/20 flex items-center justify-center mr-6 group-hover:bg-[#25D366]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(37,211,102,0.4)]">
                     <MessageSquare className="w-6 h-6 text-[#25D366]" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-heading font-bold group-hover:text-[#25D366] transition-colors">WhatsApp Group</h3>
+                    <h3 className="text-xl font-heading font-bold group-hover:text-[#25D366] transition-colors">WhatsApp Community</h3>
                     <p className="text-sm text-text-secondary">Get instant updates and announcements.</p>
                   </div>
                 </motion.a>
