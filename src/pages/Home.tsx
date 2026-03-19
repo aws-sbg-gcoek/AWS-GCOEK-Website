@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail } from 'lucide-react';
+import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
+import { eventsData } from '../data/events';
 
 const StatCounter = ({ end, label }: { end: number; label: string }) => {
   const [count, setCount] = useState(0);
@@ -51,6 +52,9 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const featuredEvent = eventsData.find(e => e.isFeatured) || eventsData[0];
+  const upcomingEvents = eventsData.filter(e => e.status === 'upcoming').slice(0, 3);
+
   return (
     <PageTransition className="w-full">
       {/* Hero Section */}
@@ -135,6 +139,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Spotlight Section */}
+      <section className="py-24 relative overflow-hidden bg-cloud-secondary/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2 w-full relative"
+            >
+              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-aws-orange/30 shadow-[0_0_30px_rgba(255,153,0,0.15)] relative group">
+                <div className="absolute inset-0 bg-aws-orange/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                <img 
+                  src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"} 
+                  alt={featuredEvent.title} 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                {/* Decorative elements */}
+                <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded text-xs font-mono text-aws-orange border border-aws-orange/50 z-20">
+                  FEATURED {featuredEvent.type.toUpperCase()}
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:w-1/2 w-full"
+            >
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                {featuredEvent.title}
+              </h2>
+              <div className="w-20 h-1 bg-aws-orange mb-6 rounded-full"></div>
+              
+              <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+                {featuredEvent.desc}
+              </p>
+              
+              <ul className="space-y-4 mb-8">
+                {[
+                  `Date: ${featuredEvent.date}`,
+                  `Time: ${featuredEvent.time}`,
+                  `Location: ${featuredEvent.location}`
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <div className="mt-1 mr-3 p-1 bg-aws-orange/20 rounded-full shrink-0">
+                      <ChevronRight className="w-4 h-4 text-aws-orange" />
+                    </div>
+                    <span className="text-text-primary/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                {featuredEvent.link && (
+                  <a href={featuredEvent.link} target="_blank" rel="noopener noreferrer" className="pixel-button px-8 py-3 text-center">
+                    Register Now
+                  </a>
+                )}
+                <Link to={`/events/${featuredEvent.id}`} className="pixel-button-secondary px-8 py-3 text-center">
+                  View Details
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* What We Do Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -196,29 +272,33 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: 'Cloud 101 Workshop', date: '28 Mar 2026', desc: 'Introduction to AWS core services (EC2, S3, RDS).' },
-            ].map((event, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="glass-panel p-6 pixel-border flex flex-col h-full"
-              >
-                <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {event.date}
-                </div>
-                <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
-                <p className="text-text-secondary mb-6 flex-grow">{event.desc}</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedvS9aXI3kVrDr2Hh5pK0-KLu3LYAO6MhUDsoyEuEvRq8v2g/viewform" target="_blank" rel="noopener noreferrer" className="pixel-button-secondary py-2 w-full text-sm text-center">
-                  <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Register Now</motion.span>
-                </a>
-              </motion.div>
-            ))}
+            {upcomingEvents.length > 0 ? (
+              upcomingEvents.map((event, idx) => (
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="glass-panel p-6 pixel-border flex flex-col h-full"
+                >
+                  <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {event.date}
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
+                  <p className="text-text-secondary mb-6 flex-grow line-clamp-3">{event.desc}</p>
+                  <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2 w-full text-sm text-center">
+                    <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>View Details</motion.span>
+                  </Link>
+                </motion.div>
+              ))
+            ) : (
+              <div className="col-span-1 md:col-span-3 text-center py-12 glass-panel pixel-border">
+                <p className="text-text-secondary text-lg">No upcoming events scheduled at the moment. Check back soon!</p>
+              </div>
+            )}
           </div>
           
           <div className="mt-8 text-center md:hidden">

@@ -1,45 +1,18 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, ArrowRight, Search, Filter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
+import { eventsData } from '../data/events';
 
 export default function Events() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
 
-  const allEvents = [
-    {
-      id: 1,
-      title: 'Cloud 101 Workshop',
-      date: '28 Mar 2026',
-      time: '10:00 AM - 1:00 PM',
-      location: 'Main Auditorium, GCOEK',
-      desc: 'Introduction to AWS core services (EC2, S3, RDS). Learn how to navigate the AWS console and launch your first resources.',
-      type: 'Workshop',
-      status: 'upcoming',
-      link: 'https://docs.google.com/forms/d/e/1FAIpQLSedvS9aXI3kVrDr2Hh5pK0-KLu3LYAO6MhUDsoyEuEvRq8v2g/viewform'
-    },
-    {
-      id: 2,
-      title: 'AWS Cloud Club GCOEK: Intro Meetup',
-      date: '19 Jan 2026',
-      time: '3:00 PM',
-      location: 'Seminar Hall (Old Building)',
-      desc: 'Our first in-person introductory meetup at the Seminar Hall (Old Building) to launch a student community focused on AWS Cloud, DevOps, and hands-on tech learning for all branches. Open to all curious students—no prior AWS experience required.',
-      type: 'Meetup',
-      status: 'past',
-      highlights: [
-        'Introduction to the club’s vision and goals',
-        'Core team selection through interactive group activities',
-        'Opportunity to learn, lead, and build your resume through leadership roles'
-      ]
-    },
-  ];
+  const categories = ['all', ...Array.from(new Set(eventsData.map(e => e.type)))];
 
-  const categories = ['all', ...Array.from(new Set(allEvents.map(e => e.type)))];
-
-  const filteredEvents = allEvents.filter(event => {
+  const filteredEvents = eventsData.filter(event => {
     const matchesStatus = statusFilter === 'all' || event.status === statusFilter;
     const matchesCategory = categoryFilter === 'all' || event.type === categoryFilter;
     const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -176,11 +149,9 @@ export default function Events() {
                   
                   <p className="text-text-secondary mb-8 flex-grow">{event.desc}</p>
                   
-                  {event.link && (
-                    <a href={event.link} target="_blank" rel="noopener noreferrer" className="pixel-button py-3 w-full flex items-center justify-center">
-                      Register Now <ArrowRight className="w-4 h-4 ml-2" />
-                    </a>
-                  )}
+                  <Link to={`/events/${event.id}`} className="pixel-button py-3 w-full flex items-center justify-center">
+                    View Details <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>
@@ -255,12 +226,18 @@ export default function Events() {
 
                     <p className="text-text-secondary mb-4">{event.desc}</p>
                     {event.highlights && (
-                      <ul className="list-disc list-inside text-sm text-text-secondary space-y-1 mt-auto">
+                      <ul className="list-disc list-inside text-sm text-text-secondary space-y-1 mb-6">
                         {event.highlights.map((highlight, i) => (
                           <li key={i}>{highlight}</li>
                         ))}
                       </ul>
                     )}
+                    
+                    <div className="mt-auto pt-4 border-t border-border-color">
+                      <Link to={`/events/${event.id}`} className="text-arcade-purple font-mono text-sm hover:text-white transition-colors flex items-center">
+                        View Details <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>
