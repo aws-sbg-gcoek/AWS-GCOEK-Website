@@ -6,7 +6,7 @@ export default function Events() {
   const upcomingEvents = [
     {
       title: 'Cloud 101 Workshop',
-      date: 'Oct 15, 2026',
+      date: '28 Mar 2026',
       time: '10:00 AM - 1:00 PM',
       location: 'Main Auditorium, GCOEK',
       desc: 'Introduction to AWS core services (EC2, S3, RDS). Learn how to navigate the AWS console and launch your first resources.',
@@ -86,9 +86,9 @@ export default function Events() {
                 
                 <p className="text-text-secondary mb-8 flex-grow">{event.desc}</p>
                 
-                <button className="pixel-button py-3 w-full flex items-center justify-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedvS9aXI3kVrDr2Hh5pK0-KLu3LYAO6MhUDsoyEuEvRq8v2g/viewform" target="_blank" rel="noopener noreferrer" className="pixel-button py-3 w-full flex items-center justify-center">
                   Register Now <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -147,23 +147,32 @@ export default function Events() {
             Event Gallery
           </motion.h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, idx) => (
+            {[
+              'https://i.ibb.co/wh3WN4c8/highres-532347430.avif',
+              'https://i.ibb.co/mC48zSdN/highres-532347431.avif',
+              'https://i.ibb.co/sd6ZXFt4/highres-532347403-1.avif',
+              'https://i.ibb.co/h1RwtVP4/highres-532347403.avif',
+              'https://i.ibb.co/n8kj4dLH/highres-532347401.avif',
+              'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif',
+              'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
+              'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg'
+            ].map((src, idx) => (
               <motion.div 
-                key={item} 
+                key={idx} 
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="aspect-square bg-cloud-secondary rounded-lg overflow-hidden border border-border-color group relative"
+                className="aspect-square bg-cloud-secondary rounded-2xl overflow-hidden border border-border-color group relative hover:shadow-2xl hover:border-aws-orange/50 transition-all duration-300"
               >
                 <img 
-                  src={`https://picsum.photos/seed/aws-event-${item}/400/400`} 
+                  src={src} 
                   alt="Event photo" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="font-mono text-xs text-aws-orange">GCOEK Tech Event</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="font-mono text-xs text-aws-orange font-bold tracking-wider">AWS Community</span>
                 </div>
               </motion.div>
             ))}

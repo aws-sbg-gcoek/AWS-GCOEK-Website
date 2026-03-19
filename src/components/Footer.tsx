@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Users } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function Footer() {
   return (
@@ -22,18 +23,21 @@ export function Footer() {
               A student-led community at Government College of Engineering Kolhapur focused on exploring cloud technologies, building real-world projects, and mastering AWS.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/AWSCloudClubGCOE" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-aws-orange transition-all duration-300 hover:-translate-y-1">
+              <motion.a whileHover={{ scale: 1.2, rotate: 5 }} href="https://github.com/AWSCloudClubGCOE" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-aws-orange transition-all duration-300">
                 <Github className="h-5 w-5" />
-              </a>
-              <a href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#0A66C2] transition-all duration-300 hover:-translate-y-1">
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.2, rotate: 5 }} href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#ED1C40] transition-all duration-300">
+                <Users className="h-5 w-5" />
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.2, rotate: -5 }} href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#0A66C2] transition-all duration-300">
                 <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="https://www.instagram.com/awscc.gcoe.kolhapur?igsh=MWJ2dHNpeGxsZGw4Yg==" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300 hover:-translate-y-1">
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.2, rotate: 5 }} href="https://www.instagram.com/awscc.gcoe.kolhapur?igsh=MWJ2dHNpeGxsZGw4Yg==" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300">
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a href="mailto:awscc.gcoe@gmail.com" className="text-text-secondary hover:text-text-primary transition-all duration-300 hover:-translate-y-1">
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.2, rotate: -5 }} href="mailto:awscc.gcoe@gmail.com" className="text-text-secondary hover:text-text-primary transition-all duration-300">
                 <Mail className="h-5 w-5" />
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -60,6 +64,9 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/join" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Join</Link>
+              </li>
+              <li>
+                <a href="https://forms.gle/FHRKXqKDebaHRoaH8" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-aws-orange transition-all duration-300 inline-block hover:translate-x-1">Submit feedback</a>
               </li>
             </ul>
           </div>

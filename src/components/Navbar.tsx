@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { motion } from 'motion/react';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -40,12 +41,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-3 group">
-            <img 
-              src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
-              alt="AWS Cloud Club GCOEK Logo" 
-              className="h-16 sm:h-20 object-contain" 
-              referrerPolicy="no-referrer" 
-            />
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <img 
+                src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+                alt="AWS Cloud Club GCOEK Logo" 
+                className="h-16 sm:h-20 object-contain" 
+                referrerPolicy="no-referrer" 
+              />
+            </motion.div>
             <span className="font-heading font-bold text-xl tracking-tight">
               AWS Cloud Club <span className="text-aws-orange hidden sm:inline">– GCOEK</span>
             </span>
@@ -65,7 +68,7 @@ export function Navbar() {
                       : 'text-text-secondary'
                   )}
                 >
-                  {link.name}
+                  <motion.span whileHover={{ scale: 1.1 }}>{link.name}</motion.span>
                   <span className={cn(
                     "absolute -bottom-1 left-0 w-0 h-0.5 bg-aws-orange transition-all duration-300 group-hover:w-full",
                     location.pathname === link.path ? "w-full" : ""

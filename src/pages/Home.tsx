@@ -81,11 +81,11 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link to="/join" className="pixel-button px-8 py-4 w-full sm:w-auto text-center">
-                Start Your Cloud Journey
-              </Link>
+              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-8 py-4 w-full sm:w-auto text-center">
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Join the Club</motion.span>
+              </a>
               <Link to="/events" className="pixel-button-secondary px-8 py-4 w-full sm:w-auto text-center">
-                Explore Events
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Explore Events</motion.span>
               </Link>
             </div>
           </motion.div>
@@ -131,7 +131,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="glass-panel p-6 pixel-border hover:pixel-border-hover group"
               >
                 <div className="w-12 h-12 bg-cloud-secondary rounded-lg flex items-center justify-center mb-4 group-hover:bg-aws-orange/20 transition-colors">
@@ -166,7 +166,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'Cloud 101 Workshop', date: 'Oct 15, 2026', desc: 'Introduction to AWS core services (EC2, S3, RDS).' },
+              { title: 'Cloud 101 Workshop', date: '28 Mar 2026', desc: 'Introduction to AWS core services (EC2, S3, RDS).' },
             ].map((event, idx) => (
               <motion.div 
                 key={idx} 
@@ -174,6 +174,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="glass-panel p-6 pixel-border flex flex-col h-full"
               >
                 <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
@@ -182,7 +183,9 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-3">{event.title}</h3>
                 <p className="text-text-secondary mb-6 flex-grow">{event.desc}</p>
-                <button className="pixel-button-secondary py-2 w-full text-sm">Register Now</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedvS9aXI3kVrDr2Hh5pK0-KLu3LYAO6MhUDsoyEuEvRq8v2g/viewform" target="_blank" rel="noopener noreferrer" className="pixel-button-secondary py-2 w-full text-sm text-center">
+                  <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Register Now</motion.span>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -219,6 +222,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -267,8 +271,8 @@ export default function Home() {
           <div className="flex flex-col gap-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
               {[
-                { name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator' },
-                { name: 'Shardul Kolekar', role: 'Captain (President)', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' }
+                { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator' },
+                { id: 'shardul-kolekar', name: 'Shardul Kolekar', role: 'Captain (President)', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' }
               ].map((member, idx) => (
                 <motion.div 
                   key={idx} 
@@ -276,19 +280,21 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
-                  <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
-                    <img 
-                      src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                  <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                      <img 
+                        src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold">{member.name}</h3>
+                    <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  </Link>
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
                       <>
@@ -307,10 +313,10 @@ export default function Home() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto w-full">
               {[
-                { name: 'Atharv Patil', role: 'Vice President' },
-                { name: 'Vidula Powar', role: 'General Secretary', image: 'https://i.ibb.co/Mxwp7YWV/Document-from-Vidula-Vidula-Powar.png' },
-                { name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
-                { name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png' }
+                { id: 'atharv-patil', name: 'Atharv Patil', role: 'Vice President', image: 'https://i.ibb.co/99Zxx9f2/atharva-patil.jpg' },
+                { id: 'vidula', name: 'Vidula Powar', role: 'General Secretary', image: 'https://i.ibb.co/5W0h4c8y/Whats-App-Image-2026-03-17-at-9-01-47-AM.jpg' },
+                { id: 'gopal', name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
+                { id: 'shubham', name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png' }
               ].map((member, idx) => (
                 <motion.div 
                   key={idx + 2} 
@@ -318,33 +324,35 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: (idx + 2) * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
-                  <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
-                    <img 
-                      src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                  <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                      <img 
+                        src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold">{member.name}</h3>
+                    <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                  </Link>
                   <div className="flex space-x-3">
                     <a href={
-                      member.name === 'Vidula Powar' ? "https://www.linkedin.com/in/vidula-p-372734294" :
-                      member.name === 'Gopal Lakwal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
-                      member.name === 'Shubham Sonwane' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
+                      member.id === 'vidula' ? "https://www.linkedin.com/in/vidula-p-372734294" :
+                      member.id === 'gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
+                      member.id === 'shubham' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
                       "#"
                     } className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={
-                      member.name === 'Atharv Patil' ? "mailto:atharvpatil1808@gmail.com" :
-                      member.name === 'Vidula Powar' ? "mailto:powarvidula11@gmail.com" :
-                      member.name === 'Gopal Lakwal' ? "mailto:gopallakwal526@gmail.com" :
-                      member.name === 'Shubham Sonwane' ? "mailto:sonwaneshubham38@gmail.com" :
+                      member.id === 'atharv-patil' ? "mailto:atharvpatil1808@gmail.com" :
+                      member.id === 'vidula' ? "mailto:powarvidula11@gmail.com" :
+                      member.id === 'gopal' ? "mailto:gopallakwal526@gmail.com" :
+                      member.id === 'shubham' ? "mailto:sonwaneshubham38@gmail.com" :
                       "mailto:awscc.gcoe@gmail.com"
                     } className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                       <Mail className="w-5 h-5" />
@@ -377,9 +385,9 @@ export default function Home() {
           <p className="text-xl text-text-secondary mb-10">
             Join the AWS Cloud Club and learn cloud computing through workshops, projects, and community learning.
           </p>
-          <Link to="/join" className="pixel-button px-10 py-5 text-lg inline-block">
+          <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-5 text-lg inline-block">
             Join the Club
-          </Link>
+          </a>
         </motion.div>
       </section>
     </PageTransition>

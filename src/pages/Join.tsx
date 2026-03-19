@@ -283,7 +283,7 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  href="https://linkedin.com/company/aws-cloud-club-gcoek" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#0A66C2]/20 flex items-center justify-center mr-6 group-hover:bg-[#0A66C2]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(10,102,194,0.4)]">
                     <Linkedin className="w-6 h-6 text-[#0A66C2]" />
@@ -299,7 +299,7 @@ export default function Join() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  href="https://instagram.com/awscloudclub_gcoek" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  href="https://www.instagram.com/awscc.gcoe.kolhapur?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#E1306C]/20 flex items-center justify-center mr-6 group-hover:bg-[#E1306C]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(225,48,108,0.4)]">
                     <Instagram className="w-6 h-6 text-[#E1306C]" />
