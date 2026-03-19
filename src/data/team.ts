@@ -9,7 +9,36 @@ export const departments = [
     hoverBorderColor: "group-hover:border-aws-orange",
     members: [
       { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', bio: 'Guiding the AWS Cloud Club and supporting student initiatives at GCOEK.', skills: ['Mentorship', 'Leadership', 'Cloud Computing'] },
-      { id: 'shardul-kolekar', name: 'Shardul Kolekar', role: 'Captain (President)', bio: 'Leading the AWS Cloud Club with a vision to build a strong cloud computing community at GCOEK.', skills: ['AWS', 'Leadership', 'Cloud Architecture'], email: 'mailto:kolekarshardul23@gmail.com', linkedin: 'https://www.linkedin.com/in/shardulkolekar', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' },
+      { 
+        id: 'shardul-kolekar', 
+        name: 'Shardul Kolekar', 
+        role: 'Captain (President)', 
+        bio: 'Leading the AWS Cloud Club with a vision to build a strong cloud computing community at GCOEK. Passionate about serverless architectures and cloud-native development.', 
+        skills: ['AWS', 'Leadership', 'Cloud Architecture', 'Serverless', 'React', 'Node.js'], 
+        email: 'mailto:kolekarshardul23@gmail.com', 
+        linkedin: 'https://www.linkedin.com/in/shardulkolekar', 
+        github: 'https://github.com/shardulkolekar',
+        twitter: 'https://twitter.com/shardulkolekar',
+        image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg',
+        certifications: [
+          { name: 'AWS Certified Solutions Architect – Associate', issuer: 'Amazon Web Services' },
+          { name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services' }
+        ],
+        projects: [
+          {
+            name: 'Cloud Club Portal',
+            desc: 'Developed the official website and member portal for the AWS Cloud Club using React, Tailwind CSS, and AWS Amplify.',
+            tags: ['React', 'AWS Amplify', 'Tailwind CSS'],
+            link: '#'
+          },
+          {
+            name: 'Serverless Image Processor',
+            desc: 'Built an event-driven architecture using S3, Lambda, and EventBridge to automatically resize and optimize uploaded images.',
+            tags: ['AWS Lambda', 'S3', 'EventBridge', 'Node.js'],
+            link: '#'
+          }
+        ]
+      },
       { id: 'atharv-patil', name: 'Atharv Patil', role: 'Vice President', bio: 'Assisting in the strategic direction and operations of the club.', skills: ['Cloud Computing', 'Management', 'AWS'], email: 'mailto:atharvpatil1808@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/99Zxx9f2/atharva-patil.jpg' },
       { id: 'vidula', name: 'Vidula Powar', role: 'General Secretary', bio: 'Managing club operations and ensuring smooth execution of all activities.', skills: ['Operations', 'Communication', 'Event Management'], email: 'mailto:powarvidula11@gmail.com', linkedin: 'https://www.linkedin.com/in/vidula-p-372734294', image: 'https://i.ibb.co/5W0h4c8y/Whats-App-Image-2026-03-17-at-9-01-47-AM.jpg' },
       { id: 'gopal', name: 'Gopal Lakwal', role: 'Joint Secretary', bio: 'Supporting the General Secretary in daily club operations.', skills: ['Management', 'Coordination'], email: 'mailto:gopallakwal526@gmail.com', linkedin: 'https://www.linkedin.com/in/gopal-lakwal-461467383', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
