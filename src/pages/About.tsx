@@ -8,8 +8,20 @@ export default function About() {
       {/* Header */}
       <section className="pt-24 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
-          <Cloud className="w-64 h-64 absolute -top-10 -right-10 text-aws-orange" />
-          <Cloud className="w-48 h-48 absolute top-40 -left-20 text-cloud-blue" />
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }} 
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-10 -right-10"
+          >
+            <Cloud className="w-64 h-64 text-aws-orange" />
+          </motion.div>
+          <motion.div 
+            animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }} 
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-40 -left-20"
+          >
+            <Cloud className="w-48 h-48 text-cloud-blue" />
+          </motion.div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -93,7 +105,8 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="glass-panel p-6 pixel-border flex flex-col items-center text-center"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 flex flex-col items-center text-center"
               >
                 <div className="w-14 h-14 rounded-full bg-cloud-secondary flex items-center justify-center mb-4 border border-border-color">
                   <item.icon className="w-6 h-6 text-arcade-purple" />

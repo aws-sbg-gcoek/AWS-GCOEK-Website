@@ -37,6 +37,19 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
   );
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
+};
+
 export default function Home() {
   return (
     <PageTransition className="w-full">
@@ -44,50 +57,68 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 opacity-20 animate-pulse">
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }} 
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 opacity-20"
+          >
             <Cloud className="w-32 h-32 text-cloud-blue" />
-          </div>
-          <div className="absolute bottom-40 right-20 opacity-20 animate-bounce" style={{ animationDuration: '4s' }}>
+          </motion.div>
+          <motion.div 
+            animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }} 
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-40 right-20 opacity-20"
+          >
             <Cloud className="w-24 h-24 text-arcade-purple" />
-          </div>
-          <div className="absolute top-40 right-1/4 opacity-10">
+          </motion.div>
+          <motion.div 
+            animate={{ y: [0, -15, 0], rotate: [0, -10, 10, 0] }} 
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-40 right-1/4 opacity-10"
+          >
             <Server className="w-48 h-48 text-aws-orange" />
-          </div>
+          </motion.div>
           {/* Network lines */}
           <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-            <line x1="10%" y1="20%" x2="90%" y2="80%" stroke="#FF9900" strokeWidth="1" strokeDasharray="4 4" />
-            <line x1="90%" y1="20%" x2="10%" y2="80%" stroke="#38BDF8" strokeWidth="1" strokeDasharray="4 4" />
+            <motion.line 
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, ease: "easeInOut" }}
+              x1="10%" y1="20%" x2="90%" y2="80%" stroke="#FF9900" strokeWidth="1" strokeDasharray="4 4" 
+            />
+            <motion.line 
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+              x1="90%" y1="20%" x2="10%" y2="80%" stroke="#38BDF8" strokeWidth="1" strokeDasharray="4 4" 
+            />
           </svg>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 tracking-tight">
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-heading font-bold mb-6 tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400 drop-shadow-sm">AWS Cloud Club</span>
               <br />
               <span className="block mt-4 text-3xl md:text-5xl text-text-primary tracking-widest">GCOE Kolhapur</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl md:text-2xl font-medium text-cloud-blue mb-6">
+            <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium text-cloud-blue mb-6">
               Learn Cloud. Build Projects. Launch Your Tech Career.
-            </p>
+            </motion.p>
             
-            <p className="text-lg text-text-primary/90 leading-relaxed max-w-3xl mx-auto mb-10">
+            <motion.p variants={itemVariants} className="text-lg text-text-primary/90 leading-relaxed max-w-3xl mx-auto mb-10">
               A student community exploring cloud computing, building real-world projects, and mastering AWS technologies.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-8 py-4 w-full sm:w-auto text-center">
-                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Join the Club</motion.span>
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">Join the Club</motion.span>
               </a>
               <Link to="/events" className="pixel-button-secondary px-8 py-4 w-full sm:w-auto text-center">
-                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Explore Events</motion.span>
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">Explore Events</motion.span>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -290,6 +321,7 @@ export default function Home() {
                         alt={member.name}
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>
@@ -334,6 +366,7 @@ export default function Home() {
                         alt={member.name}
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>

@@ -50,6 +50,7 @@ export default function TeamMember() {
                     alt={member.name}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
               </motion.div>

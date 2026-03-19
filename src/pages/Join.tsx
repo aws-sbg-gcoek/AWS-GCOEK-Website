@@ -245,13 +245,26 @@ export default function Join() {
                 Can't wait to get started? Join our community channels to stay updated on the latest events, resources, and discussions.
               </p>
               
-              <div className="space-y-4">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+                className="space-y-4"
+              >
                 <motion.a 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  variants={{
+                    hidden: { opacity: 0, x: 20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                  }}
+                  whileHover={{ scale: 1.02, x: -5 }}
+                  href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(237,28,64,0.15)] hover:border-[#ED1C40]/50"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#ED1C40]/20 flex items-center justify-center mr-6 group-hover:bg-[#ED1C40]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(237,28,64,0.4)]">
                     <Users className="w-6 h-6 text-[#ED1C40]" />
@@ -263,11 +276,12 @@ export default function Join() {
                 </motion.a>
                 
                 <motion.a 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  href="https://chat.whatsapp.com/KFima5xdcxW2dQsZN0C5SP" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  variants={{
+                    hidden: { opacity: 0, x: 20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                  }}
+                  whileHover={{ scale: 1.02, x: -5 }}
+                  href="https://chat.whatsapp.com/KFima5xdcxW2dQsZN0C5SP" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.15)] hover:border-[#25D366]/50"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#25D366]/20 flex items-center justify-center mr-6 group-hover:bg-[#25D366]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(37,211,102,0.4)]">
                     <MessageSquare className="w-6 h-6 text-[#25D366]" />
@@ -279,11 +293,12 @@ export default function Join() {
                 </motion.a>
                 
                 <motion.a 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  variants={{
+                    hidden: { opacity: 0, x: 20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                  }}
+                  whileHover={{ scale: 1.02, x: -5 }}
+                  href="https://www.linkedin.com/company/aws-cloud-club-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(10,102,194,0.15)] hover:border-[#0A66C2]/50"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#0A66C2]/20 flex items-center justify-center mr-6 group-hover:bg-[#0A66C2]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(10,102,194,0.4)]">
                     <Linkedin className="w-6 h-6 text-[#0A66C2]" />
@@ -295,11 +310,12 @@ export default function Join() {
                 </motion.a>
                 
                 <motion.a 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  href="https://www.instagram.com/awscc.gcoe.kolhapur?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-colors"
+                  variants={{
+                    hidden: { opacity: 0, x: 20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                  }}
+                  whileHover={{ scale: 1.02, x: -5 }}
+                  href="https://www.instagram.com/awscc.gcoe.kolhapur?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="glass-panel p-6 pixel-border flex items-center group hover:bg-cloud-secondary/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(225,48,108,0.15)] hover:border-[#E1306C]/50"
                 >
                   <div className="w-12 h-12 rounded-full bg-[#E1306C]/20 flex items-center justify-center mr-6 group-hover:bg-[#E1306C]/30 transition-colors group-hover:shadow-[0_0_15px_rgba(225,48,108,0.4)]">
                     <Instagram className="w-6 h-6 text-[#E1306C]" />
@@ -309,7 +325,7 @@ export default function Join() {
                     <p className="text-sm text-text-secondary">Check out event photos and behind-the-scenes.</p>
                   </div>
                 </motion.a>
-              </div>
+              </motion.div>
             </motion.div>
             
           </div>

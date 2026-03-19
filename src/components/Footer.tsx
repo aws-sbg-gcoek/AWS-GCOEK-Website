@@ -14,6 +14,7 @@ export function Footer() {
                 alt="AWS Cloud Club GCOEK Logo" 
                 className="h-16 sm:h-20 object-contain" 
                 referrerPolicy="no-referrer" 
+                loading="lazy"
               />
               <span className="font-heading font-bold text-xl tracking-tight">
                 AWS Cloud Club <span className="text-aws-orange">– GCOEK</span>

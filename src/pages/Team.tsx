@@ -47,8 +47,8 @@ export default function Team() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: idx * 0.1 }}
-                        whileHover={{ y: -5 }}
-                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
                       >
                         <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
                           <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
@@ -57,6 +57,7 @@ export default function Team() {
                               alt={member.name}
                               className="w-full h-full object-cover"
                               referrerPolicy="no-referrer"
+                              loading="lazy"
                             />
                           </div>
                           <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
@@ -85,8 +86,8 @@ export default function Team() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: (idx + 2) * 0.1 }}
-                        whileHover={{ y: -5 }}
-                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
                       >
                         <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
                           <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
@@ -95,6 +96,7 @@ export default function Team() {
                               alt={member.name}
                               className="w-full h-full object-cover"
                               referrerPolicy="no-referrer"
+                              loading="lazy"
                             />
                           </div>
                           <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
@@ -125,8 +127,8 @@ export default function Team() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: idx * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                      className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
                     >
                       <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
                         <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
@@ -135,6 +137,7 @@ export default function Team() {
                             alt={member.name}
                             className="w-full h-full object-cover"
                             referrerPolicy="no-referrer"
+                            loading="lazy"
                           />
                         </div>
                         <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>

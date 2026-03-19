@@ -45,26 +45,38 @@ export default function Resources() {
             <h2 className="text-3xl font-heading font-bold">Cloud Beginner Roadmap</h2>
           </div>
 
-          <div className="relative border-l-2 border-border-color ml-4 md:ml-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.15
+                }
+              }
+            }}
+            className="relative border-l-2 border-border-color ml-4 md:ml-8"
+          >
             {roadmapSteps.map((step, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="mb-10 ml-8 relative"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                }}
+                className="mb-10 ml-8 relative group"
               >
-                <div className="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-cloud-navy border-2 border-aws-orange flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-aws-orange"></div>
+                <div className="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-cloud-navy border-2 border-aws-orange flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                  <div className="w-2 h-2 rounded-full bg-aws-orange group-hover:animate-ping"></div>
                 </div>
-                <div className="glass-panel p-6 pixel-border hover:border-aws-orange/50 transition-colors">
-                  <h3 className="text-xl font-heading font-bold mb-2 text-cloud-blue">Step {idx + 1}: {step.title}</h3>
+                <div className="glass-panel p-6 pixel-border group-hover:border-aws-orange/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,153,0,0.15)] group-hover:-translate-y-1">
+                  <h3 className="text-xl font-heading font-bold mb-2 text-cloud-blue group-hover:text-aws-orange transition-colors">Step {idx + 1}: {step.title}</h3>
                   <p className="text-text-secondary">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -83,15 +95,28 @@ export default function Resources() {
                 <BookOpen className="w-8 h-8 text-cloud-blue mr-4" />
                 <h2 className="text-3xl font-heading font-bold">Tutorials & Guides</h2>
               </div>
-              <div className="space-y-4">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+                className="space-y-4"
+              >
                 {tutorials.map((tut, idx) => (
                   <motion.div 
                     key={idx} 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: idx * 0.1 }}
-                    className="glass-panel p-4 pixel-border flex items-center justify-between group hover:bg-cloud-secondary/50 transition-colors cursor-pointer"
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
+                    }}
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    className="glass-panel p-4 pixel-border flex items-center justify-between group hover:bg-cloud-secondary/50 transition-all duration-300 cursor-pointer hover:shadow-[0_0_15px_rgba(0,161,241,0.15)] hover:border-cloud-blue/50"
                   >
                     <div className="flex items-center">
                       <tut.icon className="w-5 h-5 text-text-secondary mr-4 group-hover:text-cloud-blue transition-colors" />
@@ -103,7 +128,7 @@ export default function Resources() {
                     <ExternalLink className="w-4 h-4 text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Certification & GitHub */}
