@@ -150,8 +150,8 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="lg:w-1/2 w-full relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-aws-orange/30 shadow-[0_0_30px_rgba(255,153,0,0.15)] relative group">
-                <div className="absolute inset-0 bg-aws-orange/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden border-2 border-aws-orange/30 shadow-[0_0_30px_rgba(255,153,0,0.15)] relative group">
+                
                 <img 
                   src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"} 
                   alt={featuredEvent.title} 
