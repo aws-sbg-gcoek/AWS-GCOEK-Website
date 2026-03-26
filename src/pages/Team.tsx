@@ -8,16 +8,16 @@ export default function Team() {
   return (
     <PageTransition className="w-full">
       {/* Header */}
-      <section className="pt-24 pb-16">
+      <section className="pt-24 pb-16 bg-grid-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">Our Team</h1>
+            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gradient-orange">Our Team</h1>
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto font-mono">
               Meet the dedicated students leading the AWS Cloud Club at GCOEK.
             </p>
           </motion.div>
@@ -32,7 +32,7 @@ export default function Team() {
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center mb-4">
                   <dept.icon className={`w-8 h-8 ${dept.color} mr-3`} />
-                  <h2 className="text-3xl font-heading font-bold">{dept.title}</h2>
+                  <h2 className="text-3xl font-heading font-bold text-text-primary">{dept.title}</h2>
                 </div>
                 <div className={`w-16 h-1 ${dept.bgColor} mx-auto rounded-full`}></div>
               </div>
@@ -60,7 +60,7 @@ export default function Team() {
                               loading="lazy"
                             />
                           </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
                           <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                         </Link>
                         <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -99,7 +99,7 @@ export default function Team() {
                               loading="lazy"
                             />
                           </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
                           <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                         </Link>
                         <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -140,7 +140,7 @@ export default function Team() {
                             loading="lazy"
                           />
                         </div>
-                        <h3 className="text-lg font-heading font-bold mb-1 group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                        <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
                         <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                       </Link>
                       <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -174,8 +174,8 @@ export default function Team() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <Users className="w-16 h-16 text-aws-orange mx-auto mb-6 opacity-80" />
-          <h2 className="text-3xl font-heading font-bold mb-4">Want to join the core team?</h2>
-          <p className="text-lg text-text-secondary mb-8">
+          <h2 className="text-3xl font-heading font-bold mb-4 text-text-primary">Want to join the core team?</h2>
+          <p className="text-lg text-text-secondary mb-8 font-mono">
             We are always looking for passionate students to help lead the club and organize events.
           </p>
           <a href="https://forms.gle/zF7ETWoREn9nkP6dA" target="_blank" rel="noopener noreferrer" className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</a>

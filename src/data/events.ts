@@ -22,22 +22,26 @@ export interface AppEvent {
 
 export const eventsData: AppEvent[] = [
   {
-    id: 'cloud-101-workshop',
-    title: 'Cloud 101 Workshop',
-    date: '28 Mar 2026',
-    time: '10:00 AM - 1:00 PM',
-    location: 'Main Auditorium, GCOEK',
-    desc: 'Introduction to AWS core services (EC2, S3, RDS). Learn how to navigate the AWS console and launch your first resources in this hands-on session.',
-    type: 'Workshop',
+    id: 'expert-lecture-cloud-aws',
+    title: 'Expert Lecture on Cloud Computing & AWS',
+    date: '27 Mar 2026',
+    time: '11:00 AM',
+    location: 'Seminar Hall, GCOE Kolhapur',
+    desc: 'The Amazon Web Services (AWS) Cloud Club, Government College of Engineering Kolhapur (GCOEK) is pleased to present an expert session on Cloud Computing and Amazon Web Services (AWS). This session provides students with practical insights into cloud technologies and real-world industry applications.',
+    type: 'Expert Lecture',
     status: 'upcoming',
     isFeatured: true,
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop',
-    link: 'https://docs.google.com/forms/d/e/1FAIpQLSedvS9aXI3kVrDr2Hh5pK0-KLu3LYAO6MhUDsoyEuEvRq8v2g/viewform',
+    image: 'https://i.ibb.co/tM6WTD8D/Green-White-Minimalis-Webinar-Digital-Marketing-Expert-Instagram-Post-3.png',
+    link: 'https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/events/313939623/',
+    highlights: [
+      'Introduction to Cloud Computing fundamentals',
+      'Overview of Amazon Web Services (AWS)',
+      'Insights into real-world cloud applications',
+      'Career opportunities in Cloud & DevOps',
+      'Guidance from an experienced industry professional'
+    ],
     schedule: [
-      { time: '10:00 AM', title: 'Introduction to AWS Cloud Club', desc: 'Welcome address and overview of the club\'s vision and upcoming activities.' },
-      { time: '10:30 AM', title: 'AWS Core Services Overview', desc: 'Deep dive into foundational services: EC2 (Compute), S3 (Storage), and RDS (Database).' },
-      { time: '11:30 AM', title: 'Hands-on: Launching EC2', desc: 'Guided lab session where you will launch and connect to your first virtual server in the cloud.' },
-      { time: '12:30 PM', title: 'Q&A and Networking', desc: 'Ask questions, meet fellow cloud enthusiasts, and discuss future project ideas.' }
+      { time: '11:00 AM', title: 'Speaker: Aditya Bhosale', desc: 'Senior Software Developer – AWS & DevOps. With over 10 years of industry experience, the speaker will share valuable knowledge, real-world use cases, and career guidance in cloud computing.' }
     ]
   },
   {

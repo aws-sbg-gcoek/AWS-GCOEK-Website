@@ -71,7 +71,7 @@ export default function TeamMember() {
                       {member.department}
                     </span>
                   </div>
-                  <h1 className="text-3xl md:text-5xl font-heading font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">{member.name}</h1>
+                  <h1 className="text-3xl md:text-5xl font-heading font-bold mb-2 text-gradient-orange">{member.name}</h1>
                   <p className={`text-lg md:text-xl font-mono ${member.deptColor}`}>{member.role}</p>
                 </motion.div>
               </div>
@@ -128,9 +128,9 @@ export default function TeamMember() {
                   <h3 className="text-lg font-bold mb-4 text-text-primary">Connect</h3>
                   
                   {member.linkedin && (
-                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-cloud-secondary/50 border border-border-color rounded-xl text-text-secondary hover:text-white hover:bg-[#0A66C2]/20 hover:border-[#0A66C2] transition-all group">
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-cloud-secondary/50 border border-border-color rounded-xl text-text-secondary hover:text-text-primary hover:bg-[#0A66C2]/20 hover:border-[#0A66C2] transition-all group">
                       <div className="p-2 bg-cloud-navy rounded-lg mr-4 group-hover:bg-[#0A66C2] transition-colors">
-                        <Linkedin className="w-5 h-5 group-hover:text-white" />
+                        <Linkedin className="w-5 h-5 group-hover:text-text-primary" />
                       </div>
                       <div>
                         <div className="font-bold text-sm text-text-primary">LinkedIn</div>
@@ -140,9 +140,9 @@ export default function TeamMember() {
                   )}
                   
                   {member.email && (
-                    <a href={member.email} className="flex items-center p-4 bg-cloud-secondary/50 border border-border-color rounded-xl text-text-secondary hover:text-white hover:bg-green-500/20 hover:border-green-500 transition-all group">
+                    <a href={member.email} className="flex items-center p-4 bg-cloud-secondary/50 border border-border-color rounded-xl text-text-secondary hover:text-text-primary hover:bg-green-500/20 hover:border-green-500 transition-all group">
                       <div className="p-2 bg-cloud-navy rounded-lg mr-4 group-hover:bg-green-500 transition-colors">
-                        <Mail className="w-5 h-5 group-hover:text-white" />
+                        <Mail className="w-5 h-5 group-hover:text-text-primary" />
                       </div>
                       <div>
                         <div className="font-bold text-sm text-text-primary">Email</div>

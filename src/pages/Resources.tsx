@@ -21,16 +21,16 @@ export default function Resources() {
   return (
     <PageTransition className="w-full">
       {/* Header */}
-      <section className="pt-24 pb-16">
+      <section className="pt-32 pb-24 bg-grid-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">Learning Resources</h1>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">Learning Resources</h1>
+            <div className="w-24 h-1.5 bg-aws-orange mx-auto rounded-full mb-10"></div>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-mono">
               Curated materials, roadmaps, and guides to help you master AWS and cloud computing.
             </p>
           </motion.div>
@@ -38,11 +38,11 @@ export default function Resources() {
       </section>
 
       {/* Cloud Beginner Roadmap */}
-      <section className="py-16 bg-cloud-secondary/20 border-y border-border-color">
+      <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center mb-12">
-            <Map className="w-8 h-8 text-aws-orange mr-4" />
-            <h2 className="text-3xl font-heading font-bold">Cloud Beginner Roadmap</h2>
+          <div className="flex items-center mb-16">
+            <Map className="w-10 h-10 text-aws-orange mr-6" />
+            <h2 className="text-4xl font-heading font-bold text-text-primary">Cloud Beginner Roadmap</h2>
           </div>
 
           <motion.div 
@@ -56,7 +56,7 @@ export default function Resources() {
                 }
               }
             }}
-            className="relative border-l-2 border-border-color ml-4 md:ml-8"
+            className="relative border-l border-border-color ml-5 md:ml-8"
           >
             {roadmapSteps.map((step, idx) => (
               <motion.div 
@@ -65,14 +65,12 @@ export default function Resources() {
                   hidden: { opacity: 0, x: -20 },
                   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
                 }}
-                className="mb-10 ml-8 relative group"
+                className="mb-12 ml-10 relative group"
               >
-                <div className="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-cloud-navy border-2 border-aws-orange flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
-                  <div className="w-2 h-2 rounded-full bg-aws-orange group-hover:animate-ping"></div>
-                </div>
-                <div className="glass-panel p-6 pixel-border group-hover:border-aws-orange/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,153,0,0.15)] group-hover:-translate-y-1">
-                  <h3 className="text-xl font-heading font-bold mb-2 text-cloud-blue group-hover:text-aws-orange transition-colors">Step {idx + 1}: {step.title}</h3>
-                  <p className="text-text-secondary">{step.desc}</p>
+                <div className="absolute -left-[45px] top-1 w-5 h-5 rounded-full bg-aws-orange shadow-[0_0_15px_rgba(255,153,0,0.5)]"></div>
+                <div className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
+                  <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-aws-orange transition-colors">Step {idx + 1}: {step.title}</h3>
+                  <p className="text-text-secondary text-lg leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -91,9 +89,9 @@ export default function Resources() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-center mb-8">
-                <BookOpen className="w-8 h-8 text-cloud-blue mr-4" />
-                <h2 className="text-3xl font-heading font-bold">Tutorials & Guides</h2>
+              <div className="flex items-center mb-12">
+                <BookOpen className="w-10 h-10 text-text-primary mr-6" />
+                <h2 className="text-4xl font-heading font-bold text-text-primary">Tutorials & Guides</h2>
               </div>
               <motion.div 
                 initial="hidden"
@@ -106,7 +104,7 @@ export default function Resources() {
                     }
                   }
                 }}
-                className="space-y-4"
+                className="space-y-6"
               >
                 {tutorials.map((tut, idx) => (
                   <motion.div 
@@ -115,17 +113,17 @@ export default function Resources() {
                       hidden: { opacity: 0, x: -20 },
                       visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
                     }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="glass-panel p-4 pixel-border flex items-center justify-between group hover:bg-cloud-secondary/50 transition-all duration-300 cursor-pointer hover:shadow-[0_0_15px_rgba(0,161,241,0.15)] hover:border-cloud-blue/50"
+                    whileHover={{ scale: 1.01, x: 5 }}
+                    className="glass-panel p-6 pixel-border hover:pixel-border-hover flex items-center justify-between group transition-all duration-300 cursor-pointer"
                   >
                     <div className="flex items-center">
-                      <tut.icon className="w-5 h-5 text-text-secondary mr-4 group-hover:text-cloud-blue transition-colors" />
+                      <tut.icon className="w-7 h-7 text-text-primary mr-6 group-hover:text-aws-orange transition-colors" />
                       <div>
-                        <h4 className="font-heading font-semibold group-hover:text-aws-orange transition-colors">{tut.title}</h4>
-                        <span className="text-xs font-mono text-text-secondary">{tut.type}</span>
+                        <h4 className="font-heading font-semibold text-text-primary text-lg group-hover:text-aws-orange transition-colors">{tut.title}</h4>
+                        <span className="text-sm font-mono text-text-secondary">{tut.type}</span>
                       </div>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink className="w-5 h-5 text-text-secondary group-hover:text-aws-orange transition-colors" />
                   </motion.div>
                 ))}
               </motion.div>
@@ -140,17 +138,17 @@ export default function Resources() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <div className="flex items-center mb-8">
-                  <Award className="w-8 h-8 text-arcade-purple mr-4" />
-                  <h2 className="text-3xl font-heading font-bold">Certification Guide</h2>
+                <div className="flex items-center mb-12">
+                  <Award className="w-10 h-10 text-text-primary mr-6" />
+                  <h2 className="text-4xl font-heading font-bold text-text-primary">Certification Guide</h2>
                 </div>
-                <div className="glass-panel p-6 pixel-border">
-                  <h3 className="text-xl font-heading font-bold mb-3">AWS Certified Cloud Practitioner</h3>
-                  <p className="text-text-secondary mb-4">
+                <div className="glass-panel p-10 pixel-border">
+                  <h3 className="text-2xl font-heading font-bold mb-5 text-text-primary">AWS Certified Cloud Practitioner</h3>
+                  <p className="text-text-secondary text-lg mb-8 leading-relaxed">
                     The perfect starting point for anyone looking to understand the fundamentals of the AWS Cloud. We provide study materials, practice exams, and peer support.
                   </p>
-                  <button className="pixel-button-secondary py-2 px-4 text-sm flex items-center">
-                    View Study Guide <ArrowRight className="w-4 h-4 ml-2" />
+                  <button className="pixel-button-secondary px-8 py-4 flex items-center">
+                    View Study Guide <ArrowRight className="w-5 h-5 ml-3" />
                   </button>
                 </div>
               </motion.div>
@@ -162,16 +160,16 @@ export default function Resources() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <div className="flex items-center mb-8">
-                  <Github className="w-8 h-8 text-text-primary mr-4" />
-                  <h2 className="text-3xl font-heading font-bold">GitHub Resources</h2>
+                <div className="flex items-center mb-12">
+                  <Github className="w-10 h-10 text-text-primary mr-6" />
+                  <h2 className="text-4xl font-heading font-bold text-text-primary">GitHub Resources</h2>
                 </div>
-                <div className="glass-panel p-6 pixel-border bg-cloud-secondary/30">
-                  <p className="text-text-secondary mb-6">
+                <div className="glass-panel p-10 pixel-border">
+                  <p className="text-text-secondary text-lg mb-8 leading-relaxed">
                     Access our open-source repositories containing lab instructions, sample code, and project templates.
                   </p>
-                  <a href="#" className="flex items-center text-cloud-blue hover:text-aws-orange transition-colors font-mono">
-                    <Github className="w-5 h-5 mr-2" />
+                  <a href="#" className="flex items-center text-text-primary hover:text-aws-orange transition-colors font-mono text-lg">
+                    <Github className="w-6 h-6 mr-3" />
                     github.com/awscloudclub-gcoek
                   </a>
                 </div>

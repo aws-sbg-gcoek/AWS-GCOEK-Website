@@ -29,58 +29,55 @@ export function Navbar() {
     { name: 'Projects', path: '/projects' },
     { name: 'Resources', path: '/resources' },
     { name: 'Team', path: '/team' },
+    { name: 'Sponsors', path: '/sponsors' },
   ];
 
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-500 ease-in-out',
-        scrolled ? 'glass-panel py-3 shadow-lg shadow-black/20' : 'bg-transparent py-5'
+        'fixed top-0 w-full z-50 transition-all duration-300 ease-in-out',
+        scrolled ? 'bg-cloud-navy/80 backdrop-blur-lg border-b border-white/5 py-3' : 'bg-transparent py-5'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div whileHover={{ scale: 1.05, rotate: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
               <img 
                 src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
                 alt="AWS Cloud Club GCOEK Logo" 
-                className="h-16 sm:h-20 object-contain" 
+                className="h-12 sm:h-14 object-contain" 
                 referrerPolicy="no-referrer" 
               />
             </motion.div>
-            <span className="font-heading font-bold text-xl tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
+            <span className="font-heading font-bold text-lg tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
               AWS Cloud Club <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex space-x-6">
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex space-x-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   className={cn(
-                    'text-sm font-medium transition-all duration-300 hover:text-aws-orange relative group',
+                    'px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg',
                     location.pathname === link.path
-                      ? 'text-aws-orange'
-                      : 'text-text-secondary'
+                      ? 'text-aws-orange bg-aws-orange/10'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
                   )}
                 >
-                  <motion.span whileHover={{ scale: 1.05 }} className="inline-block">{link.name}</motion.span>
-                  <span className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 bg-aws-orange transition-all duration-300",
-                    location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
-                  )}></span>
+                  {link.name}
                 </Link>
               ))}
             </div>
             <Link
               to="/join"
-              className="pixel-button px-6 py-2 text-sm"
+              className="pixel-button px-5 py-2 text-sm"
             >
-              Join the Club
+              Join
             </Link>
           </div>
 

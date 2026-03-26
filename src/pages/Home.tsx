@@ -58,69 +58,52 @@ export default function Home() {
   return (
     <PageTransition className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-grid-pattern">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
           <motion.div 
             animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }} 
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 opacity-20"
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 opacity-30"
           >
-            <Cloud className="w-32 h-32 text-cloud-blue" />
+            <Cloud className="w-64 h-64 text-cloud-blue blur-3xl" />
           </motion.div>
           <motion.div 
             animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }} 
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-40 right-20 opacity-20"
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-40 right-20 opacity-30"
           >
-            <Cloud className="w-24 h-24 text-arcade-purple" />
+            <Cloud className="w-48 h-48 text-arcade-purple blur-3xl" />
           </motion.div>
-          <motion.div 
-            animate={{ y: [0, -15, 0], rotate: [0, -10, 10, 0] }} 
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute top-40 right-1/4 opacity-10"
-          >
-            <Server className="w-48 h-48 text-aws-orange" />
-          </motion.div>
-          {/* Network lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-            <motion.line 
-              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, ease: "easeInOut" }}
-              x1="10%" y1="20%" x2="90%" y2="80%" stroke="#FF9900" strokeWidth="1" strokeDasharray="4 4" 
-            />
-            <motion.line 
-              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
-              x1="90%" y1="20%" x2="10%" y2="80%" stroke="#38BDF8" strokeWidth="1" strokeDasharray="4 4" 
-            />
-          </svg>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-heading font-bold mb-6 tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400 drop-shadow-sm">AWS Cloud Club</span>
+            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-cloud-secondary/50 border border-border-color rounded-full px-4 py-1.5 mb-8">
+              <span className="w-2 h-2 rounded-full bg-aws-orange animate-pulse"></span>
+              <span className="text-sm font-mono text-text-secondary">Now accepting new members</span>
+            </motion.div>
+            
+            <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-heading font-bold mb-8 tracking-tighter">
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Cloud Club</span>
               <br />
-              <span className="block mt-4 text-3xl md:text-5xl text-text-primary tracking-widest">GCOE Kolhapur</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400">GCOE Kolhapur</span>
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium text-cloud-blue mb-6">
-              Learn Cloud. Build Projects. Launch Your Tech Career.
+            <motion.p variants={itemVariants} className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
+              Empowering students to <span className="text-cloud-blue font-semibold">learn</span>, <span className="text-arcade-purple font-semibold">build</span>, and <span className="text-aws-orange font-semibold">launch</span> their cloud careers.
             </motion.p>
             
-            <motion.p variants={itemVariants} className="text-lg text-text-primary/90 leading-relaxed max-w-3xl mx-auto mb-10">
-              A student community exploring cloud computing, building real-world projects, and mastering AWS technologies.
-            </motion.p>
-            
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-8 py-4 w-full sm:w-auto text-center">
-                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">Join the Club</motion.span>
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg w-full sm:w-auto text-center">
+                Join the Club
               </a>
-              <Link to="/events" className="pixel-button-secondary px-8 py-4 w-full sm:w-auto text-center">
-                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">Explore Events</motion.span>
+              <Link to="/events" className="pixel-button-secondary px-10 py-4 text-lg w-full sm:w-auto text-center">
+                Explore Events
               </Link>
             </motion.div>
           </motion.div>
@@ -140,9 +123,9 @@ export default function Home() {
       </section>
 
       {/* Featured Spotlight Section */}
-      <section className="py-24 relative overflow-hidden bg-cloud-secondary/10">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -150,17 +133,18 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="lg:w-1/2 w-full relative"
             >
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden border-2 border-aws-orange/30 shadow-[0_0_30px_rgba(255,153,0,0.15)] relative group">
-                
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-color shadow-2xl relative group">
                 <img 
                   src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"} 
                   alt={featuredEvent.title} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                {/* Decorative elements */}
-                <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded text-xs font-mono text-aws-orange border border-aws-orange/50 z-20">
-                  FEATURED {featuredEvent.type.toUpperCase()}
+                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-6 left-6 z-20">
+                  <span className="bg-aws-orange/90 text-cloud-navy px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider">
+                    FEATURED {featuredEvent.type.toUpperCase()}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -172,37 +156,37 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:w-1/2 w-full"
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 leading-tight">
                 {featuredEvent.title}
               </h2>
-              <div className="w-20 h-1 bg-aws-orange mb-6 rounded-full"></div>
+              <div className="w-24 h-1 bg-aws-orange mb-8 rounded-full"></div>
               
-              <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+              <p className="text-xl text-text-secondary mb-10 leading-relaxed">
                 {featuredEvent.desc}
               </p>
               
-              <ul className="space-y-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                 {[
-                  `Date: ${featuredEvent.date}`,
-                  `Time: ${featuredEvent.time}`,
-                  `Location: ${featuredEvent.location}`
+                  { icon: Calendar, text: featuredEvent.date },
+                  { icon: Clock, text: featuredEvent.time },
+                  { icon: MapPin, text: featuredEvent.location }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start">
-                    <div className="mt-1 mr-3 p-1 bg-aws-orange/20 rounded-full shrink-0">
-                      <ChevronRight className="w-4 h-4 text-aws-orange" />
+                  <div key={i} className="flex items-center space-x-3 text-text-primary/80 font-mono text-sm">
+                    <div className="p-2 bg-cloud-secondary rounded-lg border border-border-color">
+                      <item.icon className="w-5 h-5 text-aws-orange" />
                     </div>
-                    <span className="text-text-primary/90">{item}</span>
-                  </li>
+                    <span>{item.text}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 {featuredEvent.link && (
-                  <a href={featuredEvent.link} target="_blank" rel="noopener noreferrer" className="pixel-button px-8 py-3 text-center">
+                  <a href={featuredEvent.link} target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg text-center">
                     Register Now
                   </a>
                 )}
-                <Link to={`/events/${featuredEvent.id}`} className="pixel-button-secondary px-8 py-3 text-center">
+                <Link to={`/events/${featuredEvent.id}`} className="pixel-button-secondary px-10 py-4 text-lg text-center">
                   View Details
                 </Link>
               </div>
@@ -221,16 +205,16 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">What We Do</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">What We Do</h2>
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { icon: Cloud, title: 'Cloud Workshops', desc: 'Hands-on AWS learning sessions and deep dives.' },
-              { icon: Server, title: 'Hands-on Labs', desc: 'Deploy real applications on AWS infrastructure.' },
-              { icon: Code, title: 'Student Projects', desc: 'Build real-world cloud solutions collaboratively.' },
-              { icon: Terminal, title: 'Certification Guidance', desc: 'Prepare for AWS certifications with peer support.' }
+              { icon: Cloud, title: 'Cloud Workshops', desc: 'Hands-on AWS learning sessions and deep dives.', span: 'lg:col-span-2' },
+              { icon: Server, title: 'Hands-on Labs', desc: 'Deploy real applications on AWS infrastructure.', span: 'lg:col-span-1' },
+              { icon: Code, title: 'Student Projects', desc: 'Build real-world cloud solutions collaboratively.', span: 'lg:col-span-1' },
+              { icon: Terminal, title: 'Certification Guidance', desc: 'Prepare for AWS certifications with peer support.', span: 'lg:col-span-2' }
             ].map((feature, idx) => (
               <motion.div 
                 key={idx}
@@ -238,14 +222,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="glass-panel p-6 pixel-border hover:pixel-border-hover group"
+                whileHover={{ y: -10, scale: 1.01 }}
+                className={`glass-panel p-8 pixel-border hover:pixel-border-hover group ${feature.span}`}
               >
-                <div className="w-12 h-12 bg-cloud-secondary rounded-lg flex items-center justify-center mb-4 group-hover:bg-aws-orange/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-aws-orange" />
+                <div className="w-14 h-14 bg-cloud-secondary rounded-2xl flex items-center justify-center mb-6 border border-border-color group-hover:border-aws-orange/50 transition-colors">
+                  <feature.icon className="w-7 h-7 text-aws-orange" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold mb-2">{feature.title}</h3>
-                <p className="text-text-secondary text-sm">{feature.desc}</p>
+                <h3 className="text-2xl font-heading font-semibold mb-3">{feature.title}</h3>
+                <p className="text-text-secondary text-lg leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -281,9 +265,9 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="glass-panel p-6 pixel-border flex flex-col h-full"
+                  className="glass-panel p-6 pixel-border hover:pixel-border-hover flex flex-col h-full"
                 >
-                  <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
+                  <div className="flex items-center text-aws-orange mb-4 font-mono text-sm">
                     <Calendar className="w-4 h-4 mr-2" />
                     {event.date}
                   </div>
@@ -337,8 +321,8 @@ export default function Home() {
                 className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-2 bg-cloud-secondary rounded">
-                    <Database className="w-6 h-6 text-arcade-purple" />
+                  <div className="p-2 bg-cloud-secondary rounded border border-border-color">
+                    <Database className="w-6 h-6 text-aws-orange" />
                   </div>
                   <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
                     <Github className="w-5 h-5" />
@@ -348,7 +332,7 @@ export default function Home() {
                 <p className="text-text-secondary text-sm mb-6">{project.desc}</p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map(t => (
-                    <span key={t} className="px-2 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded border border-border-color">
+                    <span key={t} className="px-2 py-1 bg-cloud-secondary text-xs font-mono text-text-secondary rounded border border-border-color">
                       {t}
                     </span>
                   ))}
@@ -382,7 +366,7 @@ export default function Home() {
           <div className="flex flex-col gap-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
               {[
-                { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator' },
+                { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', image: 'https://i.ibb.co/xqY0bSS3/Varsha-maam.jpg' },
                 { id: 'shardul-kolekar', name: 'Shardul Kolekar', role: 'Captain (President)', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' }
               ].map((member, idx) => (
                 <motion.div 
@@ -395,7 +379,7 @@ export default function Home() {
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
                       <img 
                         src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
                         alt={member.name}
@@ -405,12 +389,12 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                    <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                    <p className="text-aws-orange font-mono text-xs mt-1 mb-4">{member.role}</p>
                   </Link>
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
                       <>
-                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
                           <Linkedin className="w-5 h-5" />
                         </a>
                         <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awscc.gcoe@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
@@ -423,9 +407,8 @@ export default function Home() {
               ))}
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
               {[
-                { id: 'atharv-patil', name: 'Atharv Patil', role: 'Vice President', image: 'https://i.ibb.co/99Zxx9f2/atharva-patil.jpg' },
                 { id: 'vidula', name: 'Vidula Powar', role: 'General Secretary', image: 'https://i.ibb.co/5W0h4c8y/Whats-App-Image-2026-03-17-at-9-01-47-AM.jpg' },
                 { id: 'gopal', name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
                 { id: 'shubham', name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png' }
@@ -440,7 +423,7 @@ export default function Home() {
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border-2 border-aws-orange mb-4 overflow-hidden flex items-center justify-center group-hover:border-cloud-blue transition-colors">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
                       <img 
                         src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
                         alt={member.name}
@@ -450,7 +433,7 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                    <p className="text-cloud-blue font-mono text-xs mt-1 mb-4">{member.role}</p>
+                    <p className="text-aws-orange font-mono text-xs mt-1 mb-4">{member.role}</p>
                   </Link>
                   <div className="flex space-x-3">
                     <a href={
@@ -458,11 +441,10 @@ export default function Home() {
                       member.id === 'gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
                       member.id === 'shubham' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
                       "#"
-                    } className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform">
+                    } className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={
-                      member.id === 'atharv-patil' ? "mailto:atharvpatil1808@gmail.com" :
                       member.id === 'vidula' ? "mailto:powarvidula11@gmail.com" :
                       member.id === 'gopal' ? "mailto:gopallakwal526@gmail.com" :
                       member.id === 'shubham' ? "mailto:sonwaneshubham38@gmail.com" :

@@ -51,16 +51,21 @@ export default function Projects() {
   return (
     <PageTransition className="w-full">
       {/* Header */}
-      <section className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aws-orange/10 rounded-full blur-[120px]" />
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6">Student Projects</h1>
-            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">
+              Student Projects
+            </h1>
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
               Explore the real-world cloud solutions built by members of the AWS Cloud Club.
             </p>
           </motion.div>
@@ -68,7 +73,7 @@ export default function Projects() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 bg-cloud-secondary/20 border-y border-border-color">
+      <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
@@ -90,16 +95,15 @@ export default function Projects() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="glass-panel p-6 pixel-border hover:pixel-border-hover transition-all duration-300 group flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,161,241,0.15)]"
+                className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 group flex flex-col h-full"
               >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="p-3 bg-cloud-secondary rounded-lg border border-border-color group-hover:border-aws-orange/50 transition-colors">
-                    <project.icon className="w-8 h-8 text-arcade-purple group-hover:text-aws-orange transition-colors" />
+                <div className="flex justify-between items-start mb-8">
+                  <div className="p-4 bg-cloud-secondary rounded-2xl border border-border-color group-hover:border-aws-orange/50 transition-colors">
+                    <project.icon className="w-8 h-8 text-text-primary group-hover:text-aws-orange transition-colors" />
                   </div>
                   <a 
                     href={project.github} 
-                    className="text-text-secondary hover:text-text-primary transition-colors p-2 bg-cloud-secondary/50 rounded-full"
+                    className="text-text-secondary hover:text-text-primary transition-colors p-3 bg-cloud-secondary rounded-full border border-border-color"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -107,19 +111,19 @@ export default function Projects() {
                   </a>
                 </div>
                 
-                <h3 className="text-2xl font-heading font-bold mb-3 group-hover:text-cloud-blue transition-colors">
+                <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-cloud-blue transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-text-secondary mb-8 flex-grow">
+                <p className="text-text-secondary mb-8 flex-grow leading-relaxed">
                   {project.desc}
                 </p>
                 
                 <div className="mt-auto">
-                  <h4 className="text-xs font-mono text-text-secondary uppercase tracking-wider mb-3">Tech Stack</h4>
+                  <h4 className="text-xs font-mono text-text-secondary uppercase tracking-widest mb-4">Tech Stack</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map(t => (
-                      <span key={t} className="px-2 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded border border-border-color">
+                      <span key={t} className="px-3 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded-full border border-border-color">
                         {t}
                       </span>
                     ))}
@@ -140,11 +144,11 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <h2 className="text-3xl font-heading font-bold mb-6">Have a project idea?</h2>
-          <p className="text-lg text-text-secondary mb-8">
+          <h2 className="text-4xl font-heading font-bold mb-8 text-text-primary">Have a project idea?</h2>
+          <p className="text-lg text-text-secondary mb-10 leading-relaxed font-mono">
             Join the club and collaborate with other students to bring your cloud project ideas to life. We provide the resources and mentorship you need.
           </p>
-          <button className="pixel-button px-8 py-4">Start Building With Us</button>
+          <button className="pixel-button px-8 py-4 text-lg">Start Building With Us</button>
         </motion.div>
       </section>
     </PageTransition>
