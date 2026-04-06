@@ -29,8 +29,7 @@ export const eventsData: AppEvent[] = [
     location: 'Seminar Hall, GCOE Kolhapur',
     desc: 'The Amazon Web Services (AWS) Cloud Club, Government College of Engineering Kolhapur (GCOEK) is pleased to present an expert session on Cloud Computing and Amazon Web Services (AWS). This session provides students with practical insights into cloud technologies and real-world industry applications.',
     type: 'Expert Lecture',
-    status: 'upcoming',
-    isFeatured: true,
+    status: 'past',
     image: 'https://i.ibb.co/tM6WTD8D/Green-White-Minimalis-Webinar-Digital-Marketing-Expert-Instagram-Post-3.png',
     link: 'https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/events/313939623/',
     highlights: [

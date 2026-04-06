@@ -122,8 +122,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Spotlight Section */}
-      <section className="py-24 relative overflow-hidden">
+      {/* Featured Spotlight Section - temporarily hidden */}
+      {false && (<section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <motion.div 
@@ -193,7 +193,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section>)}
 
       {/* What We Do Section */}
       <section className="py-24 relative">
