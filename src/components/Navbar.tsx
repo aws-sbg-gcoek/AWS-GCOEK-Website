@@ -15,12 +15,12 @@ export function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -33,101 +33,111 @@ export function Navbar() {
   ];
 
   return (
-    <nav className={cn(
-      'fixed top-0 w-full z-50 transition-all duration-500',
-      scrolled
-        ? 'bg-cloud-navy/80 backdrop-blur-2xl border-b border-border-color py-3 shadow-[0_1px_0_rgba(255,255,255,0.03)]'
-        : 'bg-transparent py-5'
-    )}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav
+      className={cn(
+        'fixed top-0 w-full z-50 transition-all duration-300 ease-in-out',
+        scrolled ? 'bg-cloud-navy/80 backdrop-blur-lg border-b border-white/5 py-3' : 'bg-transparent py-5'
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <motion.img
-              whileHover={{ scale: 1.04 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-              src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png"
-              alt="AWS Cloud Club GCOEK"
-              className="h-10 object-contain"
-              referrerPolicy="no-referrer"
-            />
-            <div className="hidden sm:flex flex-col leading-none">
-              <span className="font-heading font-bold text-sm text-text-primary group-hover:text-aws-orange transition-colors duration-300 tracking-tight">
-                AWS Cloud Club
-              </span>
-              <span className="font-mono text-[9px] text-aws-orange/70 tracking-[0.18em] uppercase mt-0.5">
-                GCOE Kolhapur
-              </span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+              <img 
+                src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+                alt="AWS Cloud Club GCOEK Logo" 
+                className="h-12 sm:h-14 object-contain" 
+                referrerPolicy="no-referrer" 
+              />
+            </motion.div>
+            <span className="font-heading font-bold text-lg tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
+              AWS Cloud Club <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
+            </span>
           </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-0.5">
-            {navLinks.map((link) => {
-              const active = location.pathname === link.path;
-              return (
-                <Link key={link.name} to={link.path}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex space-x-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
                   className={cn(
-                    'relative px-3.5 py-2 text-[13px] font-medium rounded-lg transition-colors duration-200',
-                    active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
+                    'px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg',
+                    location.pathname === link.path
+                      ? 'text-aws-orange bg-aws-orange/10'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
                   )}
                 >
-                  {active && (
-                    <motion.span layoutId="nav-active"
-                      className="absolute inset-0 bg-white/[0.06] rounded-lg border border-white/[0.08]"
-                      transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.name}</span>
+                  {link.name}
                 </Link>
-              );
-            })}
-            <Link to="/join" className="pixel-button px-5 py-2 text-[11px] ml-4">
+              ))}
+            </div>
+            <Link
+              to="/join"
+              className="pixel-button px-5 py-2 text-sm"
+            >
               Join
             </Link>
           </div>
 
-          {/* Mobile toggle */}
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu"
-            className="md:hidden p-2 rounded-lg text-text-secondary hover:text-text-primary transition-colors">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div key={isOpen ? 'x' : 'm'}
-                initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.12 }}>
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </motion.div>
-            </AnimatePresence>
-          </button>
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-text-secondary hover:text-aws-orange focus:outline-none transition-transform duration-300 hover:scale-110"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="md:hidden absolute w-full bg-cloud-navy/98 backdrop-blur-2xl border-b border-border-color"
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden glass-panel border-t border-border-color absolute w-full overflow-hidden"
           >
-            <div className="px-5 py-4 space-y-0.5">
+            <div className="px-4 pt-4 pb-6 space-y-2 sm:px-6">
               {navLinks.map((link, idx) => (
-                <motion.div key={link.name}
-                  initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.03 }}>
-                  <Link to={link.path}
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                >
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
                     className={cn(
-                      'flex items-center px-4 py-2.5 rounded-xl text-sm transition-colors duration-150',
+                      'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200',
                       location.pathname === link.path
-                        ? 'text-text-primary bg-white/[0.06] border border-white/[0.08]'
-                        : 'text-text-secondary hover:text-text-primary hover:bg-white/[0.04]'
-                    )}>
+                        ? 'text-aws-orange bg-cloud-secondary/50 shadow-sm'
+                        : 'text-text-secondary hover:text-aws-orange hover:bg-cloud-secondary/30 hover:translate-x-1'
+                    )}
+                  >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="pt-3 pb-1">
-                <Link to="/join" className="pixel-button w-full text-center block py-3">Join the Club</Link>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="pt-4"
+              >
+                <Link
+                  to="/join"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-3 text-center pixel-button w-full"
+                >
+                  Join the Club
+                </Link>
               </motion.div>
             </div>
           </motion.div>

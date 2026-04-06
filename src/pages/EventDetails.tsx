@@ -10,93 +10,80 @@ export default function EventDetails() {
   if (!event) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-        <p className="text-5xl mb-6">🔍</p>
-        <h1 className="text-3xl font-heading font-bold mb-3">Event Not Found</h1>
-        <p className="text-text-secondary text-sm mb-8">The event you're looking for doesn't exist or has been removed.</p>
-        <Link to="/events" className="pixel-button px-8 py-3">Back to Events</Link>
+        <h1 className="text-4xl font-heading font-bold text-text-primary mb-4">Event Not Found</h1>
+        <p className="text-text-secondary mb-8">The event you are looking for does not exist or has been removed.</p>
+        <Link to="/events" className="pixel-button">Back to Events</Link>
       </div>
     );
   }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
     >
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs font-mono text-text-secondary mb-10">
-        <Link to="/events" className="hover:text-aws-orange transition-colors flex items-center gap-1.5">
-          <ArrowLeft className="w-3.5 h-3.5" /> Events
-        </Link>
-        <ChevronRight className="w-3 h-3 opacity-40" />
-        <span className="text-text-primary truncate max-w-[200px]">{event.title}</span>
-      </div>
+      <Link to="/events" className="inline-flex items-center text-text-primary hover:text-aws-orange transition-colors mb-12 font-mono text-sm uppercase tracking-widest">
+        <ArrowLeft className="w-4 h-4 mr-3" /> Back to Events
+      </Link>
 
       <div className="glass-panel pixel-border rounded-3xl overflow-hidden">
-
-        {/* Hero image */}
-        <div className="relative h-72 sm:h-96">
-          {event.image ? (
-            <img src={event.image} alt={event.title} className="absolute inset-0 w-full h-full object-cover opacity-50" loading="lazy" referrerPolicy="no-referrer" />
-          ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-cloud-secondary to-cloud-navy" />
+        {/* Header Image Area */}
+        <div className="relative h-96">
+          {event.image && (
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-40"
+              style={{ backgroundImage: `url('${event.image}')` }}
+            ></div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-cloud-navy/50 to-transparent" />
-
-          <div className="absolute bottom-8 left-8 right-8 z-10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 bg-aws-orange text-cloud-navy text-xs font-mono font-bold rounded-full uppercase tracking-wider">
-                {event.type}
-              </span>
-              <span className={event.status === 'upcoming' ? 'badge-upcoming' : 'badge-past'}>
-                {event.status}
-              </span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-text-primary leading-tight">
+          <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-cloud-navy/60 to-transparent"></div>
+          
+          <div className="absolute bottom-10 left-10 right-10 z-10">
+            <span className="px-4 py-1.5 bg-aws-orange text-cloud-navy text-xs font-bold rounded-full uppercase tracking-widest mb-6 inline-block">
+              {event.type}
+            </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-text-primary leading-tight">
               {event.title}
             </h1>
           </div>
         </div>
 
-        <div className="p-7 sm:p-10">
-
-          {/* Quick info */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-            {[
-              { icon: Calendar, label: 'Date',     value: event.date },
-              { icon: Clock,    label: 'Time',     value: event.time },
-              { icon: MapPin,   label: 'Location', value: event.location },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4 p-5 bg-cloud-secondary/50 rounded-2xl border border-border-color">
-                <div className="p-2 bg-aws-orange/10 rounded-lg border border-aws-orange/20">
-                  <item.icon className="w-5 h-5 text-aws-orange" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-0.5">{item.label}</p>
-                  <p className="text-sm font-semibold text-text-primary">{item.value}</p>
-                </div>
-              </div>
-            ))}
+        <div className="p-8 sm:p-12">
+          {/* Quick Info Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+            <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
+              <Calendar className="w-7 h-7 mb-4 text-aws-orange" />
+              <span className="text-sm font-bold text-text-primary">{event.date}</span>
+            </div>
+            <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
+              <Clock className="w-7 h-7 mb-4 text-aws-orange" />
+              <span className="text-sm font-bold text-text-primary">{event.time}</span>
+            </div>
+            <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
+              <MapPin className="w-7 h-7 mb-4 text-aws-orange" />
+              <span className="text-sm font-bold text-text-primary">{event.location}</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-
-            {/* Main content */}
-            <div className="lg:col-span-2 space-y-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Main Content */}
+            <div className="lg:col-span-2 space-y-12">
               <section>
-                <h2 className="text-2xl font-heading font-bold mb-4">About the Event</h2>
-                <p className="text-text-secondary leading-relaxed">{event.desc}</p>
+                <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">About the Event</h2>
+                <p className="text-text-secondary leading-relaxed text-lg">
+                  {event.desc}
+                </p>
               </section>
 
               {event.highlights && event.highlights.length > 0 && (
                 <section>
-                  <h2 className="text-2xl font-heading font-bold mb-5">Highlights</h2>
-                  <ul className="space-y-3">
-                    {event.highlights.map((h, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-text-secondary text-sm">
-                        <CheckCircle2 className="w-5 h-5 text-aws-orange shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">Highlights</h2>
+                  <ul className="space-y-4">
+                    {event.highlights.map((highlight, idx) => (
+                      <li key={idx} className="flex items-start text-text-secondary text-lg">
+                        <CheckCircle2 className="w-6 h-6 mr-4 text-aws-orange shrink-0 mt-0.5" />
+                        <span>{highlight}</span>
                       </li>
                     ))}
                   </ul>
@@ -105,26 +92,30 @@ export default function EventDetails() {
 
               {event.schedule && event.schedule.length > 0 && (
                 <section>
-                  <div className="flex items-center gap-3 mb-8">
-                    <Terminal className="w-5 h-5 text-aws-orange" />
-                    <h2 className="text-2xl font-heading font-bold">Event Schedule</h2>
-                  </div>
-                  <div className="relative border-l-2 border-border-color ml-3 space-y-8 pb-2">
+                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-10 flex items-center">
+                    <Terminal className="w-7 h-7 mr-4 text-aws-orange" />
+                    Event Schedule
+                  </h2>
+                  
+                  <div className="relative border-l border-border-color ml-3 space-y-12 pb-4">
                     {event.schedule.map((item, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                        className="relative pl-8"
+                      <motion.div 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        key={i} 
+                        className="relative pl-10"
                       >
-                        <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-aws-orange shadow-[0_0_10px_rgba(255,153,0,0.5)]" />
-                        <div className="flex flex-wrap items-center gap-3 mb-2">
-                          <span className="text-aws-orange font-mono font-bold text-xs bg-aws-orange/10 px-3 py-1 rounded-full border border-aws-orange/20">
+                        <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-aws-orange shadow-[0_0_10px_rgba(255,153,0,0.5)]"></span>
+                        
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
+                          <span className="text-aws-orange font-mono font-bold text-sm bg-aws-orange/10 px-4 py-1.5 rounded-full w-fit border border-aws-orange/20">
                             {item.time}
                           </span>
-                          <h3 className="text-base font-heading font-bold">{item.title}</h3>
+                          <h3 className="text-text-primary font-bold text-xl">{item.title}</h3>
                         </div>
-                        <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
+                        <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
                       </motion.div>
                     ))}
                   </div>
@@ -132,47 +123,42 @@ export default function EventDetails() {
               )}
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar / CTA */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 glass-panel pixel-border p-7 rounded-2xl">
-                <h3 className="text-xl font-heading font-bold mb-2">Registration</h3>
-                <div className="w-8 h-0.5 bg-aws-orange rounded-full mb-5" />
-
+              <div className="sticky top-28 glass-panel pixel-border p-8 rounded-3xl">
+                <h3 className="text-2xl font-heading font-bold text-text-primary mb-6">Registration</h3>
                 {event.status === 'upcoming' ? (
                   <>
-                    <p className="text-text-secondary text-sm mb-6 leading-relaxed">
-                      Secure your spot. Limited seats available.
+                    <p className="text-text-secondary text-base mb-8 leading-relaxed">
+                      Secure your spot for this event. Limited seats available!
                     </p>
                     {event.link ? (
-                      <a href={event.link} target="_blank" rel="noopener noreferrer"
-                        className="pixel-button w-full flex items-center justify-center gap-2 py-3.5 text-center">
-                        Register Now <ChevronRight className="w-4 h-4" />
+                      <a 
+                        href={event.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="pixel-button w-full flex items-center justify-center py-4 text-center"
+                      >
+                        Register Now <ChevronRight className="w-5 h-5 ml-2" />
                       </a>
                     ) : (
-                      <button disabled className="w-full py-3.5 bg-cloud-secondary/50 text-text-secondary text-sm font-mono rounded-xl cursor-not-allowed border border-border-color">
-                        Opening Soon
+                      <button disabled className="w-full py-4 bg-cloud-secondary/50 text-text-secondary font-semibold rounded-lg cursor-not-allowed border border-border-color">
+                        Registration Opening Soon
                       </button>
                     )}
                   </>
                 ) : (
                   <>
-                    <p className="text-text-secondary text-sm mb-6 leading-relaxed">
-                      This event has concluded. Thanks to everyone who participated!
+                    <p className="text-text-secondary text-base mb-8 leading-relaxed">
+                      This event has already concluded. Thank you to everyone who participated!
                     </p>
-                    <div className="w-full py-3.5 bg-cloud-secondary/30 text-text-secondary text-sm font-mono rounded-xl border border-border-color text-center">
+                    <button disabled className="w-full py-4 bg-cloud-secondary/50 text-text-secondary font-semibold rounded-lg cursor-not-allowed border border-border-color">
                       Event Ended
-                    </div>
+                    </button>
                   </>
                 )}
-
-                <div className="mt-6 pt-6 border-t border-border-color">
-                  <Link to="/events" className="flex items-center gap-2 text-xs font-mono text-text-secondary hover:text-aws-orange transition-colors uppercase tracking-wider">
-                    <ArrowLeft className="w-3.5 h-3.5" /> All Events
-                  </Link>
-                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
