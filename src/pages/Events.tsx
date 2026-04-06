@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
-import { Calendar, MapPin, Clock, ArrowRight, Search, Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Calendar, MapPin, Clock, ArrowRight, Search, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
@@ -11,286 +11,250 @@ export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
 
   const categories = ['all', ...Array.from(new Set(eventsData.map(e => e.type)))];
+  const hasActiveFilters = statusFilter !== 'all' || categoryFilter !== 'all' || searchQuery !== '';
 
   const filteredEvents = eventsData.filter(event => {
     const matchesStatus = statusFilter === 'all' || event.status === statusFilter;
     const matchesCategory = categoryFilter === 'all' || event.type === categoryFilter;
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          event.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          event.type.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      event.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      event.type.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesStatus && matchesCategory && matchesSearch;
   });
 
   const upcomingEvents = filteredEvents.filter(e => e.status === 'upcoming');
   const pastEvents = filteredEvents.filter(e => e.status === 'past');
 
+  const clearFilters = () => { setStatusFilter('all'); setCategoryFilter('all'); setSearchQuery(''); };
+
+  const statusOptions = [
+    { value: 'all', label: 'All' },
+    { value: 'upcoming', label: 'Upcoming' },
+    { value: 'past', label: 'Past' },
+  ];
+
   return (
     <PageTransition className="w-full">
+
       {/* Header */}
-      <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aws-orange/10 rounded-full blur-[120px]" />
+      <section className="pt-32 pb-20 relative overflow-hidden bg-grid-pattern">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/8 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aws-orange/8 rounded-full blur-[120px]" />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">
-              Club Events
-            </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
-              Join us for workshops, hands-on labs, and bootcamps to level up your cloud skills.
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }}>
+            <p className="text-xs font-mono text-aws-orange uppercase tracking-widest mb-4">Community</p>
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-gradient-orange">Club Events</h1>
+            <p className="text-base text-text-secondary max-w-xl mx-auto leading-relaxed font-mono">
+              Workshops, hands-on labs, and bootcamps to level up your cloud skills.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="pb-12">
+      <section className="pb-10 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel pixel-border p-6 flex flex-col md:flex-row gap-6 items-center justify-between"
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}
+            className="glass-panel border border-border-color rounded-2xl p-4 flex flex-col sm:flex-row gap-3 items-center shadow-xl"
           >
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-secondary w-5 h-5" />
-              <input 
-                type="text" 
-                placeholder="Search events..." 
+            {/* Search */}
+            <div className="relative flex-1 w-full">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-secondary w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Search events..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-cloud-secondary/50 border border-border-color rounded-full py-3 pl-12 pr-4 text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-aws-orange transition-all duration-300"
+                onChange={e => setSearchQuery(e.target.value)}
+                className="w-full bg-cloud-secondary/60 border border-border-color rounded-xl py-2.5 pl-10 pr-4 text-sm text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:border-aws-orange/60 transition-colors"
               />
             </div>
-            
-            <div className="flex flex-wrap gap-4 w-full md:w-auto">
-              <div className="flex items-center space-x-2">
-                <Filter className="text-text-secondary w-4 h-4" />
-                <select 
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-aws-orange transition-all duration-300"
+
+            {/* Status pills */}
+            <div className="flex gap-1.5 shrink-0">
+              {statusOptions.map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => setStatusFilter(opt.value)}
+                  className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 ${
+                    statusFilter === opt.value
+                      ? 'bg-aws-orange text-cloud-navy shadow-[0_0_12px_rgba(255,153,0,0.3)]'
+                      : 'bg-cloud-secondary/50 text-text-secondary hover:text-text-primary border border-border-color'
+                  }`}
                 >
-                  <option value="all">All Status</option>
-                  <option value="upcoming">Upcoming</option>
-                  <option value="past">Past</option>
-                </select>
-              </div>
-              
-              <select 
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-aws-orange transition-all duration-300"
-              >
-                {categories.map(cat => (
-                  <option key={cat} value={cat}>
-                    {cat === 'all' ? 'All Categories' : cat}
-                  </option>
-                ))}
-              </select>
+                  {opt.label}
+                </button>
+              ))}
             </div>
+
+            {/* Category */}
+            <select
+              value={categoryFilter}
+              onChange={e => setCategoryFilter(e.target.value)}
+              className="bg-cloud-secondary/60 border border-border-color rounded-xl py-2.5 px-4 text-xs font-mono text-text-primary focus:outline-none focus:border-aws-orange/60 transition-colors shrink-0"
+            >
+              {categories.map(cat => (
+                <option key={cat} value={cat}>{cat === 'all' ? 'All Types' : cat}</option>
+              ))}
+            </select>
+
+            {/* Clear */}
+            <AnimatePresence>
+              {hasActiveFilters && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={clearFilters}
+                  className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-mono text-text-secondary hover:text-aws-orange border border-border-color hover:border-aws-orange/40 transition-all shrink-0"
+                >
+                  <X className="w-3.5 h-3.5" /> Clear
+                </motion.button>
+              )}
+            </AnimatePresence>
           </motion.div>
+
+          {/* Result count */}
+          <p className="text-xs font-mono text-text-secondary mt-2 px-1">
+            {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''} found
+          </p>
         </div>
       </section>
 
       {/* Upcoming Events */}
       {upcomingEvents.length > 0 && (
-        <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
+        <section className="py-16 bg-cloud-secondary/15 border-y border-border-color">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-heading font-bold mb-16 flex items-center text-text-primary">
-              <span className="w-4 h-4 rounded-full bg-aws-orange animate-pulse mr-4"></span>
-              Upcoming Events
-            </h2>
+            <div className="flex items-center gap-3 mb-12">
+              <span className="w-2.5 h-2.5 rounded-full bg-aws-orange animate-pulse" />
+              <h2 className="text-3xl font-heading font-bold">Upcoming Events</h2>
+              <span className="badge-upcoming ml-2">{upcomingEvents.length}</span>
+            </div>
 
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-            >
-              {upcomingEvents.map((event) => (
-                <motion.div 
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((event, idx) => (
+                <motion.div
                   key={event.id}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                  }}
-                  className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 flex flex-col h-full group"
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.45, delay: idx * 0.08 }}
+                  whileHover={{ y: -6 }}
+                  className="glass-panel pixel-border flex flex-col h-full group overflow-hidden"
                 >
-                  <div className="flex justify-between items-start mb-8">
-                    <span className="px-4 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded-full border border-border-color">
-                      {event.type}
-                    </span>
+                  {event.image && (
+                    <div className="h-44 overflow-hidden relative">
+                      <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-90" loading="lazy" referrerPolicy="no-referrer" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-cloud-navy/30 to-transparent" />
+                      <span className="absolute bottom-3 left-4 badge-upcoming">{event.type}</span>
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    {!event.image && <span className="badge-upcoming mb-4 self-start">{event.type}</span>}
+                    <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-aws-orange transition-colors leading-snug">{event.title}</h3>
+                    <div className="space-y-2 mb-4 text-xs font-mono text-text-secondary">
+                      <div className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5 text-aws-orange" />{event.date}</div>
+                      <div className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-aws-orange" />{event.time}</div>
+                      <div className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-aws-orange" />{event.location}</div>
+                    </div>
+                    <p className="text-text-secondary text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">{event.desc}</p>
+                    <Link to={`/events/${event.id}`} className="pixel-button-secondary w-full py-2.5 text-xs text-center flex items-center justify-center gap-2 mt-auto">
+                      View Details <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6 text-text-primary group-hover:text-aws-orange transition-colors">{event.title}</h3>
-                  
-                  <div className="space-y-4 mb-8 text-sm text-text-secondary font-mono">
-                    <div className="flex items-center">
-                      <Calendar className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.time}
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.location}
-                    </div>
-                  </div>
-                  
-                  <p className="text-text-secondary mb-8 flex-grow leading-relaxed">{event.desc}</p>
-                  
-                  <Link to={`/events/${event.id}`} className="pixel-button-secondary w-full py-4 text-center flex items-center justify-center">
-                    View Details <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Past Events & Gallery */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {pastEvents.length > 0 && (
-            <>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-20"
-              >
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">Past Events</h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-aws-orange to-cloud-blue mx-auto rounded-full"></div>
-              </motion.div>
+      {/* Past Events */}
+      {pastEvents.length > 0 && (
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-12">
+              <h2 className="text-3xl font-heading font-bold">Past Events</h2>
+              <span className="badge-past">{pastEvents.length}</span>
+            </div>
 
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24"
-              >
-                {pastEvents.map((event) => (
-                  <motion.div 
-                    key={event.id} 
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                    }}
-                    className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 flex flex-col group"
-                  >
-                    <div className="flex justify-between items-start mb-6">
-                      <span className="px-4 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded-full border border-border-color">
-                        {event.type}
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+              {pastEvents.map((event, idx) => (
+                <motion.div
+                  key={event.id}
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.45, delay: idx * 0.08 }}
+                  whileHover={{ y: -4 }}
+                  className="glass-panel pixel-border flex flex-col group overflow-hidden"
+                >
+                  {event.image && (
+                    <div className="h-40 overflow-hidden relative">
+                      <img src={event.image} alt={event.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500 grayscale group-hover:grayscale-0" loading="lazy" referrerPolicy="no-referrer" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-cloud-navy/40 to-transparent" />
+                      <span className="absolute bottom-3 left-4 badge-past">{event.type}</span>
                     </div>
-                    <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-aws-orange transition-colors">{event.title}</h3>
-                    
-                    <div className="space-y-3 mb-6 text-sm text-text-secondary font-mono">
-                      <div className="flex items-center">
-                        <Calendar className="w-5 h-5 mr-4 text-text-primary" />
-                        {event.date}
-                      </div>
-                      {event.time && (
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 mr-4 text-text-primary" />
-                          {event.time}
-                        </div>
-                      )}
-                      {event.location && (
-                        <div className="flex items-center">
-                          <MapPin className="w-5 h-5 mr-4 text-text-primary" />
-                          {event.location}
-                        </div>
-                      )}
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    {!event.image && <span className="badge-past mb-4 self-start">{event.type}</span>}
+                    <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-aws-orange transition-colors">{event.title}</h3>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4 text-xs font-mono text-text-secondary">
+                      <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{event.date}</span>
+                      {event.location && <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{event.location}</span>}
                     </div>
-
-                    <p className="text-text-secondary mb-6 leading-relaxed">{event.desc}</p>
-                    {event.highlights && (
-                      <ul className="list-disc list-inside text-sm text-text-secondary space-y-2 mb-8">
-                        {event.highlights.map((highlight, i) => (
-                          <li key={i}>{highlight}</li>
-                        ))}
-                      </ul>
-                    )}
-                    
-                    <div className="mt-auto pt-6 border-t border-border-color">
-                      <Link to={`/events/${event.id}`} className="text-text-primary font-mono text-sm hover:text-aws-orange transition-colors flex items-center">
-                        View Details <ArrowRight className="w-4 h-4 ml-2" />
+                    <p className="text-text-secondary text-sm mb-5 leading-relaxed line-clamp-3">{event.desc}</p>
+                    <div className="mt-auto pt-4 border-t border-border-color">
+                      <Link to={`/events/${event.id}`} className="text-text-secondary hover:text-aws-orange transition-colors font-mono text-xs flex items-center gap-1.5 uppercase tracking-wider">
+                        View Details <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </>
-          )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-          {/* Gallery Grid */}
-          <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-heading font-bold mb-12 text-center text-text-primary"
-          >
-            Event Gallery
-          </motion.h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              'https://i.ibb.co/wh3WN4c8/highres-532347430.avif',
-              'https://i.ibb.co/mC48zSdN/highres-532347431.avif',
-              'https://i.ibb.co/sd6ZXFt4/highres-532347403-1.avif',
-              'https://i.ibb.co/h1RwtVP4/highres-532347403.avif',
-              'https://i.ibb.co/n8kj4dLH/highres-532347401.avif',
-              'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif',
-              'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
-              'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg'
-            ].map((src, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="aspect-square glass-panel rounded-3xl overflow-hidden pixel-border hover:pixel-border-hover group relative transition-all duration-500"
-              >
-                <img 
-                  src={src} 
-                  alt="Event photo" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <span className="font-mono text-xs text-aws-orange font-bold tracking-widest uppercase">AWS Community</span>
-                </div>
-              </motion.div>
-            ))}
+            {/* Gallery */}
+            <div className="mb-4">
+              <p className="text-xs font-mono text-text-secondary uppercase tracking-widest mb-3">Moments</p>
+              <h3 className="text-2xl font-heading font-bold mb-10">Event Gallery</h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                'https://i.ibb.co/wh3WN4c8/highres-532347430.avif',
+                'https://i.ibb.co/mC48zSdN/highres-532347431.avif',
+                'https://i.ibb.co/sd6ZXFt4/highres-532347403-1.avif',
+                'https://i.ibb.co/h1RwtVP4/highres-532347403.avif',
+                'https://i.ibb.co/n8kj4dLH/highres-532347401.avif',
+                'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif',
+                'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
+                'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg',
+              ].map((src, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.04 }}
+                  className="aspect-square rounded-2xl overflow-hidden relative group border border-border-color hover:border-aws-orange/30 transition-colors"
+                >
+                  <img src={src} alt="Event photo" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-75 group-hover:opacity-100" referrerPolicy="no-referrer" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4">
+                    <span className="font-mono text-[10px] text-aws-orange font-bold tracking-widest uppercase">AWS Community</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Empty state */}
+      {filteredEvents.length === 0 && (
+        <section className="py-24">
+          <div className="max-w-md mx-auto text-center px-4">
+            <p className="text-5xl mb-6">🔍</p>
+            <h3 className="text-xl font-heading font-bold mb-3">No events found</h3>
+            <p className="text-text-secondary text-sm mb-8">Try adjusting your filters or search query.</p>
+            <button onClick={clearFilters} className="pixel-button-secondary px-6 py-2.5 text-xs">Clear Filters</button>
+          </div>
+        </section>
+      )}
+
     </PageTransition>
   );
 }

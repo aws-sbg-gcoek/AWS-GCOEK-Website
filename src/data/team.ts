@@ -69,7 +69,7 @@ export const departments = [
       { id: 'chaitanya', name: 'Chaitanya', role: 'Logistics Lead', bio: 'Ensuring all events run smoothly with proper logistical support.', skills: ['Logistics', 'Management', 'Problem Solving'], email: 'mailto:chhaitanyaaz@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/KjLPBGnt/chaitanya.png' },
       { id: 'arya', name: 'Arya Patil', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:aryap010406@gmail.com', linkedin: 'https://www.linkedin.com/in/arya-patil-4b85b73a5', image: 'https://i.ibb.co/vCRQfL3T/IMG-20260316-WA0026-Arya-Patil-1.jpg' },
       { id: 'palak', name: 'Kaya Vedi', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:kayavedi7@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/DPczYCS5/Professional-headshot-with-warm-smile-Kaya-Vedi.png' },
-      { id: 'renuka', name: 'Renuka', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:renukabansode592@gmail.com', linkedin: 'https://www.linkedin.com/in/renuka-bansode-', image: 'https://i.ibb.co/MkRr4m0Q/renuka.jpg' },
+
       { id: 'suhani', name: 'Suhani Varma', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:suhanivarma33@gmail.com', linkedin: 'https://www.linkedin.com/in/suhani-varma-09810a214', image: 'https://i.ibb.co/7t7JXFhg/IMG-20260316-WA0011-Suhani-Varma.jpg' }
     ]
   },
@@ -92,7 +92,8 @@ export const departments = [
     bgColor: "bg-green-400",
     hoverBorderColor: "group-hover:border-green-400",
     members: [
-      { id: 'siddhi', name: 'Siddhi', role: 'PR Lead', bio: 'Managing public relations and outreach to grow our community.', skills: ['Public Relations', 'Networking', 'Communication'], email: 'mailto:siddhiagedkar22@gmail.com', linkedin: 'https://www.linkedin.com/in/siddhi-agedkar-35b042385', image: 'https://i.ibb.co/4RnZt8mK/IMG-20260316-WA0049-Shruti-Paul-41.jpg' }
+      { id: 'siddhi', name: 'Siddhi', role: 'PR Lead', bio: 'Managing public relations and outreach to grow our community.', skills: ['Public Relations', 'Networking', 'Communication'], email: 'mailto:siddhiagedkar22@gmail.com', linkedin: 'https://www.linkedin.com/in/siddhi-agedkar-35b042385', image: 'https://i.ibb.co/4RnZt8mK/IMG-20260316-WA0049-Shruti-Paul-41.jpg' },
+      { id: 'renuka', name: 'Renuka', role: 'PR Lead', bio: 'Managing public relations and outreach to grow our community.', skills: ['Public Relations', 'Networking', 'Communication'], email: 'mailto:renukabansode592@gmail.com', linkedin: 'https://www.linkedin.com/in/renuka-bansode-', image: 'https://i.ibb.co/MkRr4m0Q/renuka.jpg' }
     ]
   },
   {
