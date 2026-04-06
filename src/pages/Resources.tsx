@@ -4,73 +4,70 @@ import { PageTransition } from '../components/PageTransition';
 
 export default function Resources() {
   const roadmapSteps = [
-    { title: 'Cloud Fundamentals', desc: 'Understand what cloud computing is, deployment models, and service models (IaaS, PaaS, SaaS).' },
-    { title: 'AWS Core Services', desc: 'Learn EC2 (Compute), S3 (Storage), RDS (Database), and VPC (Networking).' },
-    { title: 'Security & Identity', desc: 'Master IAM (Identity and Access Management) and basic cloud security principles.' },
-    { title: 'Serverless & Architecture', desc: 'Explore Lambda, API Gateway, DynamoDB, and well-architected framework.' },
-    { title: 'Hands-on Projects', desc: 'Build and deploy real applications to solidify your knowledge.' }
+    { title: 'Cloud Fundamentals',      desc: 'Understand what cloud computing is, deployment models, and service models (IaaS, PaaS, SaaS).' },
+    { title: 'AWS Core Services',       desc: 'Learn EC2 (Compute), S3 (Storage), RDS (Database), and VPC (Networking).' },
+    { title: 'Security & Identity',     desc: 'Master IAM (Identity and Access Management) and basic cloud security principles.' },
+    { title: 'Serverless & Architecture', desc: 'Explore Lambda, API Gateway, DynamoDB, and the well-architected framework.' },
+    { title: 'Hands-on Projects',       desc: 'Build and deploy real applications to solidify your knowledge.' },
   ];
 
   const tutorials = [
-    { title: 'Deploying a React App on S3 & CloudFront', type: 'Video', icon: PlayCircle },
-    { title: 'Building a Serverless API with Lambda', type: 'Article', icon: FileText },
-    { title: 'Setting up a VPC from Scratch', type: 'Guide', icon: BookOpen },
-    { title: 'Introduction to DynamoDB', type: 'Video', icon: PlayCircle }
+    { title: 'Deploying a React App on S3 & CloudFront', type: 'Video',   icon: PlayCircle },
+    { title: 'Building a Serverless API with Lambda',    type: 'Article', icon: FileText },
+    { title: 'Setting up a VPC from Scratch',            type: 'Guide',   icon: BookOpen },
+    { title: 'Introduction to DynamoDB',                 type: 'Video',   icon: PlayCircle },
   ];
 
   return (
     <PageTransition className="w-full">
+
       {/* Header */}
-      <section className="pt-32 pb-24 bg-grid-pattern">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">Learning Resources</h1>
-            <div className="w-24 h-1.5 bg-aws-orange mx-auto rounded-full mb-10"></div>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-mono">
+      <section className="pt-32 pb-20 bg-grid-pattern relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-1/3 w-96 h-96 bg-cloud-blue/8 rounded-full blur-[120px]" />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-xs font-mono text-aws-orange uppercase tracking-widest mb-4">Learn</p>
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-gradient-orange">Learning Resources</h1>
+            <p className="text-base text-text-secondary max-w-xl mx-auto leading-relaxed">
               Curated materials, roadmaps, and guides to help you master AWS and cloud computing.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Cloud Beginner Roadmap */}
-      <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center mb-16">
-            <Map className="w-10 h-10 text-aws-orange mr-6" />
-            <h2 className="text-4xl font-heading font-bold text-text-primary">Cloud Beginner Roadmap</h2>
+      {/* Roadmap */}
+      <section className="py-24 bg-cloud-secondary/15 border-y border-border-color">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-14">
+            <div className="p-2.5 bg-cloud-secondary rounded-xl border border-border-color">
+              <Map className="w-6 h-6 text-aws-orange" />
+            </div>
+            <div>
+              <p className="text-xs font-mono text-aws-orange uppercase tracking-widest mb-0.5">Start here</p>
+              <h2 className="text-3xl font-heading font-bold">Cloud Beginner Roadmap</h2>
+            </div>
           </div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.15
-                }
-              }
-            }}
-            className="relative border-l border-border-color ml-5 md:ml-8"
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+            className="relative border-l-2 border-border-color ml-4"
           >
             {roadmapSteps.map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-                }}
-                className="mb-12 ml-10 relative group"
+                variants={{ hidden: { opacity: 0, x: -16 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45 } } }}
+                className="mb-10 ml-8 relative group last:mb-0"
               >
-                <div className="absolute -left-[45px] top-1 w-5 h-5 rounded-full bg-aws-orange shadow-[0_0_15px_rgba(255,153,0,0.5)]"></div>
-                <div className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
-                  <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-aws-orange transition-colors">Step {idx + 1}: {step.title}</h3>
-                  <p className="text-text-secondary text-lg leading-relaxed">{step.desc}</p>
+                {/* dot */}
+                <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-cloud-navy border-2 border-aws-orange flex items-center justify-center shadow-[0_0_12px_rgba(255,153,0,0.4)]">
+                  <span className="text-[9px] font-mono font-bold text-aws-orange">{idx + 1}</span>
+                </div>
+                <div className="glass-panel p-6 pixel-border group-hover:border-aws-orange/30 transition-colors">
+                  <h3 className="text-lg font-heading font-bold mb-2 group-hover:text-aws-orange transition-colors">{step.title}</h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -78,99 +75,82 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* Tutorials & Guides */}
+      {/* Tutorials + Certs + GitHub */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
             {/* Tutorials */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="flex items-center mb-12">
-                <BookOpen className="w-10 h-10 text-text-primary mr-6" />
-                <h2 className="text-4xl font-heading font-bold text-text-primary">Tutorials & Guides</h2>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-2.5 bg-cloud-secondary rounded-xl border border-border-color">
+                  <BookOpen className="w-5 h-5 text-text-primary" />
+                </div>
+                <h2 className="text-2xl font-heading font-bold">Tutorials & Guides</h2>
               </div>
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
-                className="space-y-6"
-              >
+              <div className="space-y-3">
                 {tutorials.map((tut, idx) => (
-                  <motion.div 
-                    key={idx} 
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
-                    }}
-                    whileHover={{ scale: 1.01, x: 5 }}
-                    className="glass-panel p-6 pixel-border hover:pixel-border-hover flex items-center justify-between group transition-all duration-300 cursor-pointer"
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.35, delay: idx * 0.07 }}
+                    whileHover={{ x: 4 }}
+                    className="glass-panel p-4 pixel-border flex items-center justify-between group cursor-pointer"
                   >
-                    <div className="flex items-center">
-                      <tut.icon className="w-7 h-7 text-text-primary mr-6 group-hover:text-aws-orange transition-colors" />
+                    <div className="flex items-center gap-4">
+                      <div className="p-2 bg-cloud-secondary rounded-lg border border-border-color group-hover:border-aws-orange/40 transition-colors">
+                        <tut.icon className="w-4 h-4 text-text-secondary group-hover:text-aws-orange transition-colors" />
+                      </div>
                       <div>
-                        <h4 className="font-heading font-semibold text-text-primary text-lg group-hover:text-aws-orange transition-colors">{tut.title}</h4>
-                        <span className="text-sm font-mono text-text-secondary">{tut.type}</span>
+                        <p className="text-sm font-heading font-semibold group-hover:text-aws-orange transition-colors">{tut.title}</p>
+                        <p className="text-xs font-mono text-text-secondary">{tut.type}</p>
                       </div>
                     </div>
-                    <ExternalLink className="w-5 h-5 text-text-secondary group-hover:text-aws-orange transition-colors" />
+                    <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-aws-orange transition-colors shrink-0" />
                   </motion.div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
 
-            {/* Certification & GitHub */}
-            <div className="space-y-12">
-              {/* Certification */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="flex items-center mb-12">
-                  <Award className="w-10 h-10 text-text-primary mr-6" />
-                  <h2 className="text-4xl font-heading font-bold text-text-primary">Certification Guide</h2>
+            {/* Cert + GitHub */}
+            <div className="space-y-8">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2.5 bg-cloud-secondary rounded-xl border border-border-color">
+                    <Award className="w-5 h-5 text-text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold">Certification Guide</h2>
                 </div>
-                <div className="glass-panel p-10 pixel-border">
-                  <h3 className="text-2xl font-heading font-bold mb-5 text-text-primary">AWS Certified Cloud Practitioner</h3>
-                  <p className="text-text-secondary text-lg mb-8 leading-relaxed">
+                <div className="glass-panel p-7 pixel-border">
+                  <div className="flex items-start gap-4 mb-4">
+                    <span className="px-2.5 py-1 bg-aws-orange/10 text-aws-orange border border-aws-orange/20 rounded-lg text-xs font-mono font-bold">CLF-C02</span>
+                    <h3 className="text-lg font-heading font-bold leading-snug">AWS Certified Cloud Practitioner</h3>
+                  </div>
+                  <p className="text-text-secondary text-sm mb-6 leading-relaxed">
                     The perfect starting point for anyone looking to understand the fundamentals of the AWS Cloud. We provide study materials, practice exams, and peer support.
                   </p>
-                  <button className="pixel-button-secondary px-8 py-4 flex items-center">
-                    View Study Guide <ArrowRight className="w-5 h-5 ml-3" />
+                  <button className="pixel-button-secondary px-6 py-2.5 text-xs flex items-center gap-2">
+                    View Study Guide <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </motion.div>
 
-              {/* GitHub */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <div className="flex items-center mb-12">
-                  <Github className="w-10 h-10 text-text-primary mr-6" />
-                  <h2 className="text-4xl font-heading font-bold text-text-primary">GitHub Resources</h2>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2.5 bg-cloud-secondary rounded-xl border border-border-color">
+                    <Github className="w-5 h-5 text-text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold">GitHub Resources</h2>
                 </div>
-                <div className="glass-panel p-10 pixel-border">
-                  <p className="text-text-secondary text-lg mb-8 leading-relaxed">
+                <div className="glass-panel p-7 pixel-border">
+                  <p className="text-text-secondary text-sm mb-6 leading-relaxed">
                     Access our open-source repositories containing lab instructions, sample code, and project templates.
                   </p>
-                  <a href="#" className="flex items-center text-text-primary hover:text-aws-orange transition-colors font-mono text-lg">
-                    <Github className="w-6 h-6 mr-3" />
-                    github.com/awscloudclub-gcoek
+                  <a href="https://github.com/AWSCloudClubGCOE" target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-text-primary hover:text-aws-orange transition-colors font-mono text-sm group">
+                    <Github className="w-5 h-5" />
+                    github.com/AWSCloudClubGCOE
+                    <ExternalLink className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </div>
               </motion.div>
@@ -178,6 +158,7 @@ export default function Resources() {
           </div>
         </div>
       </section>
+
     </PageTransition>
   );
 }
