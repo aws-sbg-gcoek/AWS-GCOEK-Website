@@ -82,7 +82,18 @@ export const departments = [
     members: [
       { id: 'shekhar', name: 'Shekhar', role: 'Social Media & Content Lead', bio: 'Creating engaging content and managing our social media presence.', skills: ['Content Creation', 'Social Media', 'Writing'], email: 'mailto:varekarshekhar@gmail.com', linkedin: 'https://www.linkedin.com/in/shekhar-varekar-530b97384', image: 'https://i.ibb.co/HpV9qJwH/shekhar.jpg' },
       { id: 'dhrupata', name: 'Dhrupata Wankhede', role: 'Design & Branding Lead', bio: 'Designing visually appealing graphics and maintaining our brand identity.', skills: ['Graphic Design', 'Figma', 'Branding'], email: 'mailto:dhrupatawankhede@gmail.com', linkedin: 'https://www.linkedin.com/in/dhrupata-wankhede-b68b323a3', image: 'https://i.ibb.co/9mS6qrPr/IMG-20260316-WA0033-Dhrupata-Wankhede.jpg' },
-      { id: 'vedika', name: 'Vedika Desai', role: 'Social Media Associate', bio: 'Assisting in social media management and content distribution.', skills: ['Social Media', 'Communication'], email: 'mailto:vedikad21@gmail.com', linkedin: 'https://www.linkedin.com/in/vedika-desai-8095b732a', image: 'https://i.ibb.co/qY73yh3F/Scanned-20260316-2043-Vedika-Desai.jpg' }
+      { id: 'vedika', name: 'Vedika Desai', role: 'Social Media Associate', bio: 'Assisting in social media management and content distribution.', skills: ['Social Media', 'Communication'], email: 'mailto:vedikad21@gmail.com', linkedin: 'https://www.linkedin.com/in/vedika-desai-8095b732a', image: 'https://i.ibb.co/qY73yh3F/Scanned-20260316-2043-Vedika-Desai.jpg' },
+      {
+  id: 'aniket-mohite',
+  name: 'Aniket Mohite',
+  role: 'Design Associate',
+  bio: 'Contributing to design and visual content for the club.',
+  skills: ['Design', 'Creativity', 'Branding'],
+  email: 'mailto:mohiteaniket248@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/aniket-mohite-7082b3289',
+  image: 'https://res.cloudinary.com/dchrceqbb/image/upload/w_500,h_500,c_fill/v1775827782/IMG-20260410-WA0020_yphcxy.jpg'
+}
+      
     ]
   },
   {
