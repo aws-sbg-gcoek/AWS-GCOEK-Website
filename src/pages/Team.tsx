@@ -55,7 +55,7 @@ export default function Team() {
                             <img 
                               src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
                               alt={member.name}
-                             className="w-full h-full object-contain bg-white"
+                             className="w-full h-full object-contain"
                               referrerPolicy="no-referrer"
                               loading="lazy"
                             />
@@ -94,7 +94,7 @@ export default function Team() {
                             <img 
                               src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
                               alt={member.name}
-                              className="w-full h-full object-contain bg-white"
+                              className="w-full h-full object-contain"
                               referrerPolicy="no-referrer"
                               loading="lazy"
                             />
@@ -135,7 +135,7 @@ export default function Team() {
                           <img 
                             src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
                             alt={member.name}
-                            className="w-full h-full object-contain bg-white"
+                            className="w-full h-full object-contain "
                             referrerPolicy="no-referrer"
                             loading="lazy"
                           />
