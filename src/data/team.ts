@@ -86,7 +86,7 @@ export const departments = [
       { 
   id: 'aniket-mohite',
   name: 'Aniket Mohite',
-  role: 'Design Associate',
+  role: 'Design and graphics lead',
   bio: 'Contributing to design and visual content for the club.',
   skills: ['Design', 'Creativity', 'Branding'],
   email: 'mailto:mohiteaniket248@gmail.com',
