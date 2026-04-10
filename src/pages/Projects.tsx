@@ -1,8 +1,11 @@
+import { Mail } from "lucide-react";
+import { useState } from "react";
 import { motion } from 'motion/react';
 import { Github, Database, Server, Code, Zap, Globe } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 
 export default function Projects() {
+  const [showContact, setShowContact] = useState(false);
   const projects = [
     {
       title: 'Serverless Web Application',
@@ -136,7 +139,7 @@ export default function Projects() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 text-center">
+      <section id="contact-section" className="py-24 text-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -148,9 +151,93 @@ export default function Projects() {
           <p className="text-lg text-text-secondary mb-10 leading-relaxed font-mono">
             Join the club and collaborate with other students to bring your cloud project ideas to life. We provide the resources and mentorship you need.
           </p>
-          <button className="pixel-button px-8 py-4 text-lg">Start Building With Us</button>
+          <button 
+  onClick={() => {
+    window.scrollTo({ top: 650, behavior: "smooth" });
+    setShowContact(true);
+  }}
+  className="pixel-button px-8 py-4 text-lg"
+>
+  Start Building With Us
+</button>{showContact && (
+  <div 
+    onClick={() => setShowContact(false)}
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+  >
+    
+    <div 
+  onClick={(e) => e.stopPropagation()}
+  className="relative glass-panel p-6 rounded-2xl w-80 text-center space-y-6 border border-white/10 backdrop-blur-xl shadow-2xl"
+>
+
+  {/* Glow border */}
+  <div className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none" />
+
+  <h2 className="text-xl font-semibold text-white tracking-wide">
+    Contact With Us
+  </h2>
+
+  {/* WhatsApp */}
+  <a 
+    href="https://wa.me/918421807460?text=Hi%20I%20want%20to%20build%20a%20project"
+    target="_blank"
+    className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-500/30 hover:scale-[1.02]"
+  >
+    <img 
+      src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+      className="w-5 h-5"
+    />
+    <span className="font-medium">WhatsApp</span>
+  </a>
+
+  {/* Gmail */}
+  <a 
+  href="mailto:awscc.gcoe@gmail.com?subject=Project%20Idea"
+  className="flex items-center justify-center gap-3 py-3 rounded-xl transition-all duration-300 shadow-lg hover:scale-[1.02] relative overflow-hidden"
+>
+  {/* Gradient background */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#EA4335] via-[#FBBC05] to-[#34A853] opacity-90" />
+
+  {/* Content */}
+  <div className="relative flex items-center gap-3 text-white">
+    <img 
+      src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
+      className="w-5 h-5"
+    />
+    <span className="font-medium">Gmail</span>
+  </div>
+</a>
+
+  {/* Divider */}
+  <div className="h-px bg-white/10" />
+
+  {/* Close */}
+  <button 
+    onClick={() => setShowContact(false)}
+    className="text-sm text-gray-400 hover:text-white transition"
+  >
+    Close
+  </button>
+
+</div>
+
+  </div>
+)}
         </motion.div>
       </section>
     </PageTransition>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
