@@ -1,68 +1,8 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Mail, MessageSquare, Linkedin, Instagram, ArrowRight, Send, CheckCircle2, AlertCircle, Users } from 'lucide-react';
+import { motion } from 'motion/react';
+import { MessageSquare, Linkedin, Instagram, Send, Users } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 
 export default function Join() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    department: '',
-    year: '',
-    interest: ''
-  });
-  
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!formData.email.trim() || !/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Valid email is required';
-    if (!formData.department) newErrors.department = 'Please select a department';
-    if (!formData.year) newErrors.year = 'Please select your year of study';
-    if (formData.interest.trim().length < 10) newErrors.interest = 'Please provide a bit more detail (min 10 characters)';
-    return newErrors;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      setStatus('error');
-      return;
-    }
-    
-    setErrors({});
-    setStatus('submitting');
-    
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ fullName: '', email: '', department: '', year: '', interest: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
-    // Clear error when user starts typing
-    if (errors[id]) {
-      setErrors(prev => {
-        const newErrors = { ...prev };
-        delete newErrors[id];
-        return newErrors;
-      });
-    }
-  };
-
-  const inputBaseClass = "w-full bg-cloud-secondary/50 border border-border-color rounded-xl px-5 py-4 text-text-primary focus:outline-none transition-all duration-300 hover:border-aws-orange/50 focus:border-aws-orange focus:ring-2 focus:ring-aws-orange/20";
-  const getErrorClass = (field: string) => errors[field] ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/20" : "border-border-color";
 
   return (
     <PageTransition className="w-full">
@@ -93,140 +33,27 @@ export default function Join() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="glass-panel p-10 pixel-border relative overflow-hidden"
+              className="glass-panel pixel-border relative overflow-hidden flex flex-col"
             >
-              <h2 className="text-3xl font-heading font-bold mb-10 flex items-center text-text-primary">
-                <Send className="w-8 h-8 text-aws-orange mr-4" />
-                Membership Application
-              </h2>
-
-              <AnimatePresence>
-                {status === 'success' && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="mb-8 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-start"
+              <div className="p-8 border-b border-border-color flex items-center gap-4">
+                <Send className="w-7 h-7 text-aws-orange" />
+                <h2 className="text-2xl font-heading font-bold text-text-primary">Membership Application</h2>
+              </div>
+              <div className="w-full overflow-hidden" style={{ height: '800px' }}>
+                <div style={{ width: 'calc(100% + 20px)', height: '100%', overflowY: 'scroll', paddingRight: '20px' }}>
+                  <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSddwOHTiDieyXOiyQhxKXd-BgFoHbBRiPkDL6X8kntx4nGtUw/viewform?embedded=true"
+                    width="100%"
+                    height="800"
+                    frameBorder="0"
+                    marginHeight={0}
+                    marginWidth={0}
+                    style={{ minHeight: '800px', display: 'block' }}
                   >
-                    <CheckCircle2 className="w-6 h-6 text-emerald-500 mr-4 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-emerald-500 font-bold font-heading text-lg">Application Received!</h4>
-                      <p className="text-emerald-400/80 mt-1">Thank you for applying. We'll be in touch soon.</p>
-                    </div>
-                  </motion.div>
-                )}
-
-                {status === 'error' && Object.keys(errors).length > 0 && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="mb-8 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-start"
-                  >
-                    <AlertCircle className="w-6 h-6 text-red-500 mr-4 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-red-500 font-bold font-heading text-lg">Please fix the errors below</h4>
-                      <p className="text-red-400/80 mt-1">Some fields require your attention before submitting.</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              
-              <form className="space-y-8" onSubmit={handleSubmit} noValidate>
-                <div>
-                  <label htmlFor="fullName" className="block text-sm font-mono text-text-secondary mb-3 uppercase tracking-wider">Full Name</label>
-                  <input 
-                    type="text" 
-                    id="fullName" 
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className={`${inputBaseClass} ${getErrorClass('fullName')}`}
-                    placeholder="John Doe"
-                  />
-                  {errors.fullName && <p className="text-red-500 text-xs mt-2 font-mono">{errors.fullName}</p>}
+                    Loading…
+                  </iframe>
                 </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-mono text-text-secondary mb-3 uppercase tracking-wider">College Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`${inputBaseClass} ${getErrorClass('email')}`}
-                    placeholder="john@gcek.edu"
-                  />
-                  {errors.email && <p className="text-red-500 text-xs mt-2 font-mono">{errors.email}</p>}
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label htmlFor="department" className="block text-sm font-mono text-text-secondary mb-3 uppercase tracking-wider">Department</label>
-                    <select 
-                      id="department" 
-                      value={formData.department}
-                      onChange={handleChange}
-                      className={`${inputBaseClass} ${getErrorClass('department')} appearance-none`}
-                    >
-                      <option value="" disabled>Select Dept</option>
-                      <option value="cse">Computer Science</option>
-                      <option value="it">Information Tech</option>
-                      <option value="entc">Electronics & Telecom</option>
-                      <option value="mech">Mechanical</option>
-                      <option value="civil">Civil</option>
-                      <option value="other">Other</option>
-                    </select>
-                    {errors.department && <p className="text-red-500 text-xs mt-2 font-mono">{errors.department}</p>}
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="year" className="block text-sm font-mono text-text-secondary mb-3 uppercase tracking-wider">Year of Study</label>
-                    <select 
-                      id="year" 
-                      value={formData.year}
-                      onChange={handleChange}
-                      className={`${inputBaseClass} ${getErrorClass('year')} appearance-none`}
-                    >
-                      <option value="" disabled>Select Year</option>
-                      <option value="1">First Year</option>
-                      <option value="2">Second Year</option>
-                      <option value="3">Third Year</option>
-                      <option value="4">Final Year</option>
-                    </select>
-                    {errors.year && <p className="text-red-500 text-xs mt-2 font-mono">{errors.year}</p>}
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="interest" className="block text-sm font-mono text-text-secondary mb-3 uppercase tracking-wider">Interest in Cloud Technologies</label>
-                  <textarea 
-                    id="interest" 
-                    rows={4}
-                    value={formData.interest}
-                    onChange={handleChange}
-                    className={`${inputBaseClass} ${getErrorClass('interest')} resize-none`}
-                    placeholder="Why do you want to join the AWS Cloud Club?"
-                  ></textarea>
-                  {errors.interest && <p className="text-red-500 text-xs mt-2 font-mono">{errors.interest}</p>}
-                </div>
-                
-                <button 
-                  type="submit" 
-                  disabled={status === 'submitting'}
-                  className="pixel-button w-full py-5 text-lg flex items-center justify-center"
-                >
-                  {status === 'submitting' ? (
-                    <span className="flex items-center">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                      Submitting...
-                    </span>
-                  ) : (
-                    <span className="flex items-center">
-                      Submit Application <ArrowRight className="w-5 h-5 ml-3" />
-                    </span>
-                  )}
-                </button>
-              </form>
+              </div>
             </motion.div>
 
             {/* Community Links Section */}

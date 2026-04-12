@@ -1,10 +1,12 @@
-import { motion } from 'motion/react';
-import { Linkedin, Mail, Users } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Linkedin, Mail, Users, X, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { departments } from '../data/team';
 
 export default function Team() {
+  const [showContact, setShowContact] = useState(false);
   return (
     <PageTransition className="w-full">
       {/* Header */}
@@ -178,9 +180,103 @@ export default function Team() {
           <p className="text-lg text-text-secondary mb-8 font-mono">
             We are always looking for passionate students to help lead the club and organize events.
           </p>
-          <a href="https://forms.gle/zF7ETWoREn9nkP6dA" target="_blank" rel="noopener noreferrer" className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</a>
+          <button onClick={() => setShowContact(true)} className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</button>
         </motion.div>
       </section>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowContact(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative glass-panel pixel-border w-full max-w-md p-8 rounded-2xl"
+            >
+              <button
+                onClick={() => setShowContact(false)}
+                className="absolute top-4 right-4 p-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-cloud-secondary transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="mb-8 text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
+                  <Users className="w-6 h-6 text-aws-orange" />
+                </div>
+                <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Apply for Leadership</h3>
+                <p className="text-sm text-text-secondary font-mono">
+                  Reach out to us or fill the form to join the core team.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {/* Google Form */}
+                <a
+                  href="https://forms.gle/zF7ETWoREn9nkP6dA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-aws-orange/50 hover:bg-aws-orange/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-aws-orange/10 border border-aws-orange/20 group-hover:bg-aws-orange/20 transition-colors shrink-0">
+                    <Users className="w-5 h-5 text-aws-orange" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">Application Form</p>
+                    <p className="text-xs text-text-secondary font-mono">Fill out the official form</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-aws-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/918446712322?text=${encodeURIComponent("Hi! I'm interested in applying for a leadership role in the AWS Cloud Club. Could you guide me through the process?")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors shrink-0">
+                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">WhatsApp</p>
+                    <p className="text-xs text-text-secondary font-mono">Send us a message directly</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+
+                {/* Email */}
+                <a
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Leadership Application – AWS Cloud Club")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in applying for a leadership role in the club.\n\nName: \nYear/Branch: \nRole Interested In: \nWhy I want to join: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">
+                    <Mail className="w-5 h-5 text-cloud-blue" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">Email</p>
+                    <p className="text-xs text-text-secondary font-mono">awscc.gcoe@gmail.com</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+              </div>
+
+              <p className="text-center text-xs text-text-secondary font-mono mt-6">
+                We typically respond within 24–48 hours.
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   );
 }

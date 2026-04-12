@@ -91,7 +91,7 @@ export const departments = [
   skills: ['Design', 'Creativity', 'Branding'],
   email: 'mailto:mohiteaniket248@gmail.com',
   linkedin: 'https://www.linkedin.com/in/aniket-mohite-7082b3289',
-  image: 'https://res.cloudinary.com/dchrceqbb/image/upload/w_500,h_500,c_fill/v1775827782/IMG-20260410-WA0020_yphcxy.jpg'
+  image: 'https://i.ibb.co/TBNp3tJm/Whats-App-Image-2026-04-12-at-6-27-55-PM.jpg'
 }
       
       

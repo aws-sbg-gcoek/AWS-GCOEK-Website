@@ -1,7 +1,6 @@
-import { Mail } from "lucide-react";
 import { useState } from "react";
-import { motion } from 'motion/react';
-import { Github, Database, Server, Code, Zap, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Github, Database, Server, Code, Zap, Globe, X, MessageCircle, Mail } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
 
 export default function Projects() {
@@ -139,92 +138,114 @@ export default function Projects() {
       </section>
 
       {/* CTA */}
-      <section id="contact-section" className="py-24 text-center">
-        <motion.div 
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-aws-orange/5 rounded-full blur-[120px]" />
+        </div>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
         >
-          <h2 className="text-4xl font-heading font-bold mb-8 text-text-primary">Have a project idea?</h2>
+          <span className="inline-block font-mono text-xs text-aws-orange uppercase tracking-widest mb-4 px-3 py-1 border border-aws-orange/30 rounded-full bg-aws-orange/5">
+            Submit Your Work
+          </span>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">
+            Have a project to showcase?
+          </h2>
           <p className="text-lg text-text-secondary mb-10 leading-relaxed font-mono">
-            Join the club and collaborate with other students to bring your cloud project ideas to life. We provide the resources and mentorship you need.
+            Built something cool on the cloud? Reach out and we'll feature your project on this page for the whole community to see.
           </p>
-          <button 
-  onClick={() => {
-    window.scrollTo({ top: 650, behavior: "smooth" });
-    setShowContact(true);
-  }}
-  className="pixel-button px-8 py-4 text-lg"
->
-  Start Building With Us
-</button>{showContact && (
-  <div 
-    onClick={() => setShowContact(false)}
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-  >
-    
-    <div 
-  onClick={(e) => e.stopPropagation()}
-  className="relative glass-panel p-6 rounded-2xl w-80 text-center space-y-6 border border-white/10 backdrop-blur-xl shadow-2xl"
->
-
-  {/* Glow border */}
-  <div className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none" />
-
-  <h2 className="text-xl font-semibold text-white tracking-wide">
-    Contact With Us
-  </h2>
-
-  {/* WhatsApp */}
-  <a 
-    href="https://wa.me/918421807460?text=Hi%20I%20want%20to%20build%20a%20project"
-    target="_blank"
-    className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-500/30 hover:scale-[1.02]"
-  >
-    <img 
-      src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-      className="w-5 h-5"
-    />
-    <span className="font-medium">WhatsApp</span>
-  </a>
-
-  {/* Gmail */}
-  <a 
-  href="mailto:awscc.gcoe@gmail.com?subject=Project%20Idea"
-  className="flex items-center justify-center gap-3 py-3 rounded-xl transition-all duration-300 shadow-lg hover:scale-[1.02] relative overflow-hidden"
->
-  {/* Gradient background */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#EA4335] via-[#FBBC05] to-[#34A853] opacity-90" />
-
-  {/* Content */}
-  <div className="relative flex items-center gap-3 text-white">
-    <img 
-      src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
-      className="w-5 h-5"
-    />
-    <span className="font-medium">Gmail</span>
-  </div>
-</a>
-
-  {/* Divider */}
-  <div className="h-px bg-white/10" />
-
-  {/* Close */}
-  <button 
-    onClick={() => setShowContact(false)}
-    className="text-sm text-gray-400 hover:text-white transition"
-  >
-    Close
-  </button>
-
-</div>
-
-  </div>
-)}
+          <button
+            onClick={() => setShowContact(true)}
+            className="pixel-button px-8 py-4 text-base"
+          >
+            Contact With Us
+          </button>
         </motion.div>
       </section>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowContact(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative glass-panel pixel-border w-full max-w-md p-8 rounded-2xl"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setShowContact(false)}
+                className="absolute top-4 right-4 p-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-cloud-secondary transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Header */}
+              <div className="mb-8 text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
+                  <Mail className="w-6 h-6 text-aws-orange" />
+                </div>
+                <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Get in Touch</h3>
+                <p className="text-sm text-text-secondary font-mono">
+                  We'll review your project and get back to you soon.
+                </p>
+              </div>
+
+              {/* Buttons */}
+              <div className="space-y-3">
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/918421807460?text=${encodeURIComponent("Hi! I'm interested in showcasing my project on the AWS Cloud Club website. I'd love to have it featured in the Student Projects section. Could you guide me on the submission process?")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors shrink-0">
+                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">WhatsApp</p>
+                    <p className="text-xs text-text-secondary font-mono">Send us a message directly</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+
+                {/* Email */}
+                <a
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Project Submission – AWS Cloud Club Website")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in submitting my project to be displayed on your website.\n\nProject Name: \nProject Description: \nTech Stack: \nGitHub Link: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">
+                    <Mail className="w-5 h-5 text-cloud-blue" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">Email</p>
+                    <p className="text-xs text-text-secondary font-mono">awscc.gcoe@gmail.com</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+              </div>
+
+              <p className="text-center text-xs text-text-secondary font-mono mt-6">
+                We typically respond within 24–48 hours.
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   );
 }

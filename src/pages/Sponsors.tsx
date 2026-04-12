@@ -1,6 +1,7 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
-import { Quote, ExternalLink, Award, Star, Shield, Megaphone, Users, Heart, Zap } from 'lucide-react';
+import { Quote, ExternalLink, Award, Star, Shield, Megaphone, Users, Heart, Zap, X, MessageCircle, Mail } from 'lucide-react';
 
 interface Sponsor {
   name: string;
@@ -33,20 +34,7 @@ const benefits = [
   }
 ];
 
-const testimonials = [
-  {
-    quote: "Partnering with AWS Cloud Club GCOE Kolhapur has been a fantastic experience. The students are incredibly driven and the community they've built is impressive.",
-    author: "Sarah Chen",
-    position: "University Relations Manager",
-    company: "TechCorp"
-  },
-  {
-    quote: "The talent coming out of this club is top-notch. We've seen great engagement from the workshops we've co-hosted.",
-    author: "James Wilson",
-    position: "CTO",
-    company: "CloudSys"
-  }
-];
+const testimonials: { quote: string; author: string; position: string; company: string }[] = [];
 
 const SponsorCard = ({ sponsor, idx }: { sponsor: Sponsor; idx: number; key?: string }) => {
   const tierStyles = {
@@ -121,36 +109,8 @@ const SponsorCard = ({ sponsor, idx }: { sponsor: Sponsor; idx: number; key?: st
 };
 
 export default function Sponsors() {
-  const sponsors: Sponsor[] = [
-    {
-      name: "TechCorp",
-      tier: "Platinum",
-      logo: "https://picsum.photos/seed/techcorp/400/200",
-      description: "Leading the way in cloud infrastructure and supporting student communities globally through mentorship and resources.",
-      link: "#"
-    },
-    {
-      name: "CloudSys",
-      tier: "Gold",
-      logo: "https://picsum.photos/seed/cloudsys/400/200",
-      description: "Innovative solutions for modern web applications and continuous deployment in high-scale environments.",
-      link: "#"
-    },
-    {
-      name: "DataFlow",
-      tier: "Silver",
-      logo: "https://picsum.photos/seed/dataflow/400/200",
-      description: "Empowering developers with real-time data analytics and machine learning tools.",
-      link: "#"
-    },
-    {
-      name: "DevTools Inc",
-      tier: "Silver",
-      logo: "https://picsum.photos/seed/devtools/400/200",
-      description: "Building the next generation of developer productivity tools for cloud-native teams.",
-      link: "#"
-    }
-  ];
+  const [showContact, setShowContact] = useState(false);
+  const sponsors: Sponsor[] = [];
 
   const platinumSponsors = sponsors.filter(s => s.tier === 'Platinum');
   const goldSponsors = sponsors.filter(s => s.tier === 'Gold');
@@ -216,101 +176,117 @@ export default function Sponsors() {
       </section>
 
       {/* Tiers Sections */}
-      <section className="py-24 space-y-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Platinum Section */}
-          {platinumSponsors.length > 0 && (
-            <div className="mb-24">
-              <div className="flex items-center gap-4 mb-12">
-                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-aws-orange/30"></div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-aws-orange flex items-center gap-3">
-                  <Award className="w-8 h-8" /> Platinum Tier
-                </h2>
-                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-aws-orange/30"></div>
+      {sponsors.length > 0 && (
+        <section className="py-24 space-y-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {platinumSponsors.length > 0 && (
+              <div className="mb-24">
+                <div className="flex items-center gap-4 mb-12">
+                  <div className="h-px flex-grow bg-gradient-to-r from-transparent to-aws-orange/30"></div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-aws-orange flex items-center gap-3">
+                    <Award className="w-8 h-8" /> Platinum Tier
+                  </h2>
+                  <div className="h-px flex-grow bg-gradient-to-l from-transparent to-aws-orange/30"></div>
+                </div>
+                <div className="grid grid-cols-1 gap-8">
+                  {platinumSponsors.map((sponsor, idx) => (
+                    <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-1 gap-8">
-                {platinumSponsors.map((sponsor, idx) => (
-                  <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
-                ))}
+            )}
+            {goldSponsors.length > 0 && (
+              <div className="mb-24">
+                <div className="flex items-center gap-4 mb-12">
+                  <div className="h-px flex-grow bg-gradient-to-r from-transparent to-yellow-500/30"></div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-yellow-500 flex items-center gap-3">
+                    <Star className="w-8 h-8" /> Gold Tier
+                  </h2>
+                  <div className="h-px flex-grow bg-gradient-to-l from-transparent to-yellow-500/30"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {goldSponsors.map((sponsor, idx) => (
+                    <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+            {silverSponsors.length > 0 && (
+              <div className="mb-24">
+                <div className="flex items-center gap-4 mb-12">
+                  <div className="h-px flex-grow bg-gradient-to-r from-transparent to-slate-400/30"></div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-400 flex items-center gap-3">
+                    <Shield className="w-8 h-8" /> Silver Tier
+                  </h2>
+                  <div className="h-px flex-grow bg-gradient-to-l from-transparent to-slate-400/30"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {silverSponsors.map((sponsor, idx) => (
+                    <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
-          {/* Gold Section */}
-          {goldSponsors.length > 0 && (
-            <div className="mb-24">
-              <div className="flex items-center gap-4 mb-12">
-                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-yellow-500/30"></div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-yellow-500 flex items-center gap-3">
-                  <Star className="w-8 h-8" /> Gold Tier
-                </h2>
-                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-yellow-500/30"></div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {goldSponsors.map((sponsor, idx) => (
-                  <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
-                ))}
-              </div>
+      {sponsors.length === 0 && (
+        <section className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto px-4 text-center"
+          >
+            <div className="glass-panel pixel-border p-16 rounded-3xl">
+              <Award className="w-16 h-16 text-aws-orange/30 mx-auto mb-6" />
+              <h3 className="text-2xl font-heading font-bold text-text-primary mb-3">No sponsors yet</h3>
+              <p className="text-text-secondary font-mono text-sm">
+                Be the first to partner with us and support the next generation of cloud engineers.
+              </p>
             </div>
-          )}
-
-          {/* Silver Section */}
-          {silverSponsors.length > 0 && (
-            <div className="mb-24">
-              <div className="flex items-center gap-4 mb-12">
-                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-slate-400/30"></div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-400 flex items-center gap-3">
-                  <Shield className="w-8 h-8" /> Silver Tier
-                </h2>
-                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-slate-400/30"></div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {silverSponsors.map((sponsor, idx) => (
-                  <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
+          </motion.div>
+        </section>
+      )}
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-cloud-secondary/20 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Partner Testimonials</h2>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((t, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="glass-panel p-8 rounded-3xl border border-white/5 relative"
-              >
-                <Quote className="absolute top-6 right-8 w-12 h-12 text-aws-orange/10" />
-                <p className="text-lg md:text-xl text-text-primary italic mb-8 relative z-10 leading-relaxed">
-                  "{t.quote}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-aws-orange/20 flex items-center justify-center text-aws-orange font-bold">
-                    {t.author[0]}
+      {testimonials.length > 0 && (
+        <section className="py-24 bg-cloud-secondary/20 border-y border-white/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Partner Testimonials</h2>
+              <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {testimonials.map((t, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="glass-panel p-8 rounded-3xl border border-white/5 relative"
+                >
+                  <Quote className="absolute top-6 right-8 w-12 h-12 text-aws-orange/10" />
+                  <p className="text-lg md:text-xl text-text-primary italic mb-8 relative z-10 leading-relaxed">
+                    "{t.quote}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-aws-orange/20 flex items-center justify-center text-aws-orange font-bold">
+                      {t.author[0]}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">{t.author}</h4>
+                      <p className="text-sm text-text-secondary">{t.position}, {t.company}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-white">{t.author}</h4>
-                    <p className="text-sm text-text-secondary">{t.position}, {t.company}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-32">
@@ -332,9 +308,9 @@ export default function Sponsors() {
               Join our mission to empower students and shape the future of cloud computing. Let's build something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
-              <a href="mailto:awscc.gcoe@gmail.com" className="pixel-button px-12 py-4 text-lg w-full sm:w-auto">
+              <button onClick={() => setShowContact(true)} className="pixel-button px-12 py-4 text-lg w-full sm:w-auto">
                 Become a Sponsor
-              </a>
+              </button>
               <a href="/resources/sponsorship-deck.pdf" className="pixel-button-secondary px-12 py-4 text-lg w-full sm:w-auto">
                 Download Deck
               </a>
@@ -342,6 +318,83 @@ export default function Sponsors() {
           </motion.div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowContact(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative glass-panel pixel-border w-full max-w-md p-8 rounded-2xl"
+            >
+              <button
+                onClick={() => setShowContact(false)}
+                className="absolute top-4 right-4 p-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-cloud-secondary transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="mb-8 text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
+                  <Star className="w-6 h-6 text-aws-orange" />
+                </div>
+                <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Become a Sponsor</h3>
+                <p className="text-sm text-text-secondary font-mono">
+                  Reach out and let's build something great together.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/918797275757?text=${encodeURIComponent("Hi! I'm interested in sponsoring the AWS Cloud Club at GCOE Kolhapur. Could you share more details about the sponsorship tiers and benefits?")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors shrink-0">
+                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">WhatsApp</p>
+                    <p className="text-xs text-text-secondary font-mono">Send us a message directly</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+
+                {/* Email */}
+                <a
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Sponsorship Inquiry – AWS Cloud Club GCOE")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in sponsoring your club and would like to learn more about the available sponsorship tiers and benefits.\n\nOrganization Name: \nContact Person: \nDesignation: \nSponsorship Tier Interested In: \n\nLooking forward to connecting!\n\nBest regards,\n[Your Name]")}`}
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">
+                    <Mail className="w-5 h-5 text-cloud-blue" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-text-primary">Email</p>
+                    <p className="text-xs text-text-secondary font-mono">awscc.gcoe@gmail.com</p>
+                  </div>
+                  <span className="ml-auto text-xs font-mono text-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+              </div>
+
+              <p className="text-center text-xs text-text-secondary font-mono mt-6">
+                We typically respond within 24–48 hours.
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   );
 }
