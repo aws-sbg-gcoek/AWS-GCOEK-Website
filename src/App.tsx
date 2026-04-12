@@ -59,7 +59,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen flex flex-col bg-bg text-text-primary font-sans relative">
         <ParticleBackground />
-        <CursorGlow />
+        {!window.matchMedia('(hover: none)').matches && <CursorGlow />}
         <Navbar />
         <main className="flex-grow pt-24">
           <AnimatedRoutes />
