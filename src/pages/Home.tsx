@@ -102,9 +102,12 @@ export default function Home() {
               <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg w-full sm:w-auto text-center">
                 Join the Club
               </a>
-              <Link to="/events" className="pixel-button-secondary px-10 py-4 text-lg w-full sm:w-auto text-center">
+              <button
+                onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
+                className="pixel-button-secondary px-10 py-4 text-lg w-full sm:w-auto text-center"
+              >
                 Explore Events
-              </Link>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -114,16 +117,16 @@ export default function Home() {
       <section className="py-16 bg-cloud-secondary/30 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <StatCounter end={550} label="Members Joined" />
-            <StatCounter end={2} label="Events Conducted" />
+            <StatCounter end={600} label="Members Joined" />
+            <StatCounter end={3} label="Events Conducted" />
             <StatCounter end={1} label="Projects Built" />
             <StatCounter end={1} label="Workshops Hosted" />
           </div>
         </div>
       </section>
 
-      {/* Featured Spotlight Section - temporarily hidden */}
-      {false && (<section className="py-24 relative overflow-hidden">
+      {/* Featured Spotlight Section */}
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <motion.div 
@@ -193,7 +196,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>)}
+      </section>
 
       {/* What We Do Section */}
       <section className="py-24 relative">
@@ -237,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-24 bg-cloud-secondary/20">
+      <section id="upcoming-events" className="py-24 bg-cloud-secondary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -480,9 +483,9 @@ export default function Home() {
           <p className="text-xl text-text-secondary mb-10">
             Join the AWS Cloud Club and learn cloud computing through workshops, projects, and community learning.
           </p>
-          <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-5 text-lg inline-block">
+          <Link to="/join" onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)} className="pixel-button px-10 py-5 text-lg inline-block">
             Join the Club
-          </a>
+          </Link>
         </motion.div>
       </section>
     </PageTransition>

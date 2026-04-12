@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Calendar, Clock, MapPin, ArrowLeft, Terminal, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, MapPin, ArrowLeft, Terminal, ChevronRight, CheckCircle2, Video, MessageCircle } from 'lucide-react';
 import { eventsData } from '../data/events';
 
 export default function EventDetails() {
@@ -137,14 +137,44 @@ export default function EventDetails() {
                         href={event.link} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="pixel-button w-full flex items-center justify-center py-4 text-center"
+                        className="pixel-button w-full flex items-center justify-center py-4 text-center mb-3"
                       >
                         Register Now <ChevronRight className="w-5 h-5 ml-2" />
                       </a>
                     ) : (
-                      <button disabled className="w-full py-4 bg-cloud-secondary/50 text-text-secondary font-semibold rounded-lg cursor-not-allowed border border-border-color">
+                      <button disabled className="w-full py-4 bg-cloud-secondary/50 text-text-secondary font-semibold rounded-lg cursor-not-allowed border border-border-color mb-3">
                         Registration Opening Soon
                       </button>
+                    )}
+                    {event.meetLink && (
+                      <a
+                        href={event.meetLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group mb-3"
+                      >
+                        <Video className="w-5 h-5 text-cloud-blue shrink-0" />
+                        <div className="text-left">
+                          <p className="text-sm font-semibold text-text-primary">Join Online</p>
+                          <p className="text-xs text-text-secondary font-mono">Google Meet</p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-cloud-blue ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    )}
+                    {event.whatsappLink && (
+                      <a
+                        href={event.whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
+                      >
+                        <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0" />
+                        <div className="text-left">
+                          <p className="text-sm font-semibold text-text-primary">WhatsApp Group</p>
+                          <p className="text-xs text-text-secondary font-mono">Join for updates</p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-[#25D366] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
                     )}
                   </>
                 ) : (

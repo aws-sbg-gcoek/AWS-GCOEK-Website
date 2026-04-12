@@ -14,6 +14,8 @@ export interface AppEvent {
   type: string;
   status: 'upcoming' | 'past';
   link?: string;
+  meetLink?: string;
+  whatsappLink?: string;
   image?: string;
   isFeatured?: boolean;
   highlights?: string[];
@@ -21,6 +23,34 @@ export interface AppEvent {
 }
 
 export const eventsData: AppEvent[] = [
+  {
+    id: 'seminar-genai-deep-learning',
+    title: 'Seminar on Generative AI & Deep Learning',
+    date: '13 Apr 2026',
+    time: '2:00 PM – 4:00 PM',
+    location: 'Seminar Hall (Old Building), GCOE Kolhapur',
+    desc: 'A hands-on seminar exploring the cutting edge of Generative AI and Deep Learning. From GANs and VAEs to Transformers and LSTM networks, this session covers both theory and practical applications. Free to attend — certificates will be provided to all participants. Students are required to carry their laptops.',
+    type: 'Seminar',
+    status: 'upcoming',
+    isFeatured: true,
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=2070&auto=format&fit=crop',
+    meetLink: 'https://meet.google.com/awa-ebnr-ogx',
+    whatsappLink: 'https://chat.whatsapp.com/CUE3LjVIT0I1Yh4xPsUUJo',
+    highlights: [
+      'Free entry — open to all students',
+      'Certificates provided to all participants',
+      'Hands-on session — bring your laptop',
+      'Generative Deep Learning: Neural Style Transfer, VAE, GAN',
+      'Deep Learning Models: MLP, LSTM, GRU, Transformer Networks',
+      'Supervised Tasks: Image Denoising, Semantic Segmentation, Object Detection'
+    ],
+    schedule: [
+      { time: '2:00 PM', title: 'Introduction to Generative AI', desc: 'Overview of Generative Deep Learning, Neural Style Transfer, Variational Autoencoders (VAE), and Generative Adversarial Networks (GAN).' },
+      { time: '2:45 PM', title: 'Deep Learning Models', desc: 'Deep dive into Multilayer Perceptron (MLP), Long Short-Term Memory (LSTM), Gated Recurrent Unit (GRU), and Transformer Networks.' },
+      { time: '3:30 PM', title: 'Hands-on: Supervised Tasks', desc: 'Practical session covering Image Denoising, Semantic Segmentation, and Object Detection using deep learning models.' },
+      { time: '3:50 PM', title: 'Q&A & Certificate Distribution', desc: 'Open floor for questions followed by certificate distribution for all participants.' }
+    ]
+  },
   {
     id: 'expert-lecture-cloud-aws',
     title: 'Expert Lecture on Cloud Computing & AWS',
