@@ -36,6 +36,7 @@ export const eventsData: AppEvent[] = [
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=2070&auto=format&fit=crop',
     meetLink: 'https://meet.google.com/awa-ebnr-ogx',
     whatsappLink: 'https://chat.whatsapp.com/CUE3LjVIT0I1Yh4xPsUUJo',
+    link: 'https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/events/314246662/',
     highlights: [
       'Free entry — open to all students',
       'Certificates provided to all participants',
