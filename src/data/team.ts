@@ -144,7 +144,7 @@ export const departments = [
       },
 
       { id: 'apeksha', name: 'Apeksha Khodave', role: 'Treasurer', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/tw7N7xCJ/Apeksha-Khodave.jpg' },
-      { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com' }
+      { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/JRBSNVZL/Whats-App-Image-2026-04-12-at-11-02-42-PM.jpg' }
     ]
   }
 ];
