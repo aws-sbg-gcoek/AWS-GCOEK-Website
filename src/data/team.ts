@@ -94,8 +94,20 @@ export const departments = [
     hoverBorderColor: "group-hover:border-pink-500",
     members: [
       { id: 'shekhar', name: 'Shekhar', role: 'Social Media & Content Lead', bio: 'Creating engaging content and managing our social media presence.', skills: ['Content Creation', 'Social Media', 'Writing'], email: 'mailto:varekarshekhar@gmail.com', linkedin: 'https://www.linkedin.com/in/shekhar-varekar-530b97384', image: 'https://i.ibb.co/HpV9qJwH/shekhar.jpg' },
+      {
+        id: 'amruta',
+        name: 'Amruta Kole',
+        role: 'Social Media Associate',
+        bio: 'Assisting in content creation and social media management to enhance our online presence.',
+        skills: ['Content Creation', 'Social Media', 'Graphic Design'], 
+        email: 'mailto:koleamruta836@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/amruta-kole-907958388',
+        image: 'https://i.ibb.co/C5g4Mm7x/Whats-App-Image-2026-04-18-at-8-14-43-AM.jpg'
+      },
+
       { id: 'dhrupata', name: 'Dhrupata Wankhede', role: 'Design & Branding Lead', bio: 'Designing visually appealing graphics and maintaining our brand identity.', skills: ['Graphic Design', 'Figma', 'Branding'], email: 'mailto:dhrupatawankhede@gmail.com', linkedin: 'https://www.linkedin.com/in/dhrupata-wankhede-b68b323a3', image: 'https://i.ibb.co/9mS6qrPr/IMG-20260316-WA0033-Dhrupata-Wankhede.jpg' },
       { id: 'vedika', name: 'Vedika Desai', role: 'Social Media Associate', bio: 'Assisting in social media management and content distribution.', skills: ['Social Media', 'Communication'], email: 'mailto:vedikad21@gmail.com', linkedin: 'https://www.linkedin.com/in/vedika-desai-8095b732a', image: 'https://i.ibb.co/qY73yh3F/Scanned-20260316-2043-Vedika-Desai.jpg' },
+
       { 
   id: 'aniket-mohite',
   name: 'Aniket Mohite',
@@ -133,17 +145,18 @@ export const departments = [
       { id: 'tushant', name: 'Tushant Tagade', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/zWbTwkBX/tushant-Tagade.jpg' },
             
       {
-        id:"Amruta",
-        name:'Ankita Ramesh Pujari ',
+        id:"Ankita",
+        name:'Ankita  Pujari ',
         role :' Marketing Associate ',
         bio :'Assisting in marketing campaigns and promotional activities.',
         skills :['Marketing', 'Analytics', 'Content Creation'],
         email :'mailto:ankitapujari711@gmail.com ',
         linkedin :' https://www.linkedin.com/in/ankita-pujari-821230398',
-        image:'https://i.ibb.co/C5g4Mm7x/Whats-App-Image-2026-04-18-at-8-14-43-AM.jpg'
-      },
+        // image:'https://i.ibb.co/C5g4Mm7x/Whats-App-Image-2026-04-18-at-8-14-43-AM.jpg'
+        image:'https://i.ibb.co/VcnZRZKS/Whats-App-Image-2026-04-18-at-9-02-28-PM.jpg'
+        },
 
-      { id: 'apeksha', name: 'Apeksha Khodave', role: 'Treasurer', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/tw7N7xCJ/Apeksha-Khodave.jpg' },
+      { id: 'apeksha', name: 'Apeksha Khodave', role: 'Treasurer', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:apekshakhodave1106@gmail.com', linkedin: 'https://www.linkedin.com/in/apeksha-khodave-9644b32b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', image: 'https://i.ibb.co/tw7N7xCJ/Apeksha-Khodave.jpg' },
       { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/JRBSNVZL/Whats-App-Image-2026-04-12-at-11-02-42-PM.jpg' }
     ]
   }
