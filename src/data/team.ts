@@ -51,12 +51,25 @@ export const departments = [
     bgColor: "bg-cloud-blue",
     hoverBorderColor: "group-hover:border-cloud-blue",
     members: [
-      { id: 'atharv-patil', name: 'Atharv Patil', role: 'Technical Associate', bio: 'Assisting in the strategic direction and operations of the club.', skills: ['Cloud Computing', 'Management', 'AWS'], email: 'mailto:atharvpatil1808@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/99Zxx9f2/atharva-patil.jpg' },
+      { id: 'atharv-patil', name: 'Atharv Patil', role: 'Technical Associate', bio: 'Assisting in the strategic direction and operations of the club.', skills: ['Cloud Computing', 'Management', 'AWS'], email: 'mailto:atharvpatil1808@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/wZYNhv1R/Whats-App-Image-2026-04-18-at-1-54-07-PM.jpg' },
+      {id:'Yash',
+      name: 'Yash Nawal',
+      role :'Technical Associate',
+      bio :'Passionate about cloud computing and eager to contribute to the club\'s technical initiatives.',
+      skills :['AWS', 'Python', 'Cloud Native'],
+      email :'mailto:yashsanjaynawal810@gmail.com',
+      linkedin :'https://www.linkedin.com/in/yash-nawal-51b5a228b/',
+      image :'https://i.ibb.co/gFrBmXJv/Whats-App-Image-2026-04-18-at-8-14-43-AM-2.jpg' 
+
+      },
+
       { id: 'diksha', name: 'Diksha Remulkar', role: 'Technical Associate', bio: 'Passionate about cloud technologies and helping others learn.', skills: ['AWS', 'Python', 'Cloud Native'], email: 'mailto:diksharemulkar@gmail.com', linkedin: 'https://www.linkedin.com/in/diksha-remulkar-4b76a8338', image: 'https://i.ibb.co/DfZngMw0/1773671193720-Diksha-Remulkar.png' },
       { id: 'srushti', name: 'Srushti Shinde', role: 'Technical Associate', bio: 'Exploring the depths of AWS services and building robust solutions.', skills: ['AWS', 'JavaScript', 'Serverless'], email: 'mailto:srushti4326@gmail.com', linkedin: 'https://www.linkedin.com/in/srushti-shinde-692326338', image: 'https://i.ibb.co/whnVPdBh/IMG-20260316-142303-Srushti-Shinde.png' },
       { id: 'aditi', name: 'Aditi', role: 'Project Associate', bio: 'Leading technical projects and guiding members in hands-on learning.', skills: ['Project Management', 'AWS', 'React'], email: 'mailto:jadhavaditi8176@gmail.com', linkedin: 'https://www.linkedin.com/in/aditi-jadhav-622843388', image: 'https://i.ibb.co/DBRgNyb/aditi.jpg' },
       { id: 'anas', name: 'Anas Pathan', role: 'Project Associate', bio: 'Building scalable applications and mentoring peers in cloud development.', skills: ['AWS', 'Node.js', 'Docker'], email: 'mailto:pathananas2007@gmail.com', linkedin: 'https://www.linkedin.com/in/anas-pathan-91a6b3368', image: 'https://i.ibb.co/V0GgpdmG/anas.jpg' }
+      
     ]
+
   },
   {
     title: "Events & Operations Dept",
@@ -93,6 +106,7 @@ export const departments = [
   linkedin: 'https://www.linkedin.com/in/aniket-mohite-7082b3289',
   image: 'https://i.ibb.co/TBNp3tJm/Whats-App-Image-2026-04-12-at-6-27-55-PM.jpg'
 }
+
       
       
     ]
@@ -117,6 +131,18 @@ export const departments = [
     members: [
       { id: 'atharva', name: 'Atharva Shriwas', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:atharvashriwas8811@gmail.com', linkedin: 'https://www.linkedin.com/in/atharva-shriwas-11b167357', image: 'https://i.ibb.co/4ZvK9Bpt/Atharva-Shriwas.png' },
       { id: 'tushant', name: 'Tushant Tagade', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/zWbTwkBX/tushant-Tagade.jpg' },
+            
+      {
+        id:"Amruta",
+        name:'Ankita Ramesh Pujari ',
+        role :' Marketing Associate ',
+        bio :'Assisting in marketing campaigns and promotional activities.',
+        skills :['Marketing', 'Analytics', 'Content Creation'],
+        email :'mailto:ankitapujari711@gmail.com ',
+        linkedin :' https://www.linkedin.com/in/ankita-pujari-821230398',
+        image:'https://i.ibb.co/C5g4Mm7x/Whats-App-Image-2026-04-18-at-8-14-43-AM.jpg'
+      },
+
       { id: 'apeksha', name: 'Apeksha Khodave', role: 'Treasurer', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/tw7N7xCJ/Apeksha-Khodave.jpg' },
       { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com' }
     ]
