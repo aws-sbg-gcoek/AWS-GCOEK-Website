@@ -12,7 +12,7 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
     let start = 0;
     const duration = 2000;
     const increment = end / (duration / 16);
-    
+
     const timer = setInterval(() => {
       start += increment;
       if (start >= end) {
@@ -61,15 +61,15 @@ export default function Home() {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-grid-pattern">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 z-0">
-          <motion.div 
-            animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }} 
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-20 left-10 opacity-30"
           >
             <Cloud className="w-64 h-64 text-cloud-blue blur-3xl" />
           </motion.div>
-          <motion.div 
-            animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }} 
+          <motion.div
+            animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute bottom-40 right-20 opacity-30"
           >
@@ -87,17 +87,17 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-aws-orange animate-pulse"></span>
               <span className="text-sm font-mono text-text-secondary">Now accepting new members</span>
             </motion.div>
-            
+
             <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-heading font-bold mb-8 tracking-tighter">
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Cloud Club</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400">GCOE Kolhapur</span>
             </motion.h1>
-            
+
             <motion.p variants={itemVariants} className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
               Empowering students to <span className="text-cloud-blue font-semibold">learn</span>, <span className="text-arcade-purple font-semibold">build</span>, and <span className="text-aws-orange font-semibold">launch</span> their cloud careers.
             </motion.p>
-            
+
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg w-full sm:w-auto text-center">
                 Join the Club
@@ -117,9 +117,9 @@ export default function Home() {
       <section className="py-16 bg-cloud-secondary/30 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <StatCounter end={600} label="Members Joined" />
+            <StatCounter end={700} label="Members Joined" />
             <StatCounter end={3} label="Events Conducted" />
-            <StatCounter end={1} label="Projects Built" />
+            <StatCounter end={2} label="Projects Built" />
             <StatCounter end={1} label="Workshops Hosted" />
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
       {featuredEvent?.isFeatured && <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -137,9 +137,9 @@ export default function Home() {
               className="lg:w-1/2 w-full relative"
             >
               <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-color shadow-2xl relative group">
-                <img 
-                  src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"} 
-                  alt={featuredEvent.title} 
+                <img
+                  src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"}
+                  alt={featuredEvent.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -152,7 +152,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -163,11 +163,11 @@ export default function Home() {
                 {featuredEvent.title}
               </h2>
               <div className="w-24 h-1 bg-aws-orange mb-8 rounded-full"></div>
-              
+
               <p className="text-xl text-text-secondary mb-10 leading-relaxed">
                 {featuredEvent.desc}
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                 {[
                   { icon: Calendar, text: featuredEvent.date },
@@ -182,7 +182,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 {featuredEvent.link && (
                   <a href={featuredEvent.link} target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg text-center">
@@ -201,7 +201,7 @@ export default function Home() {
       {/* What We Do Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -219,7 +219,7 @@ export default function Home() {
               { icon: Code, title: 'Student Projects', desc: 'Build real-world cloud solutions collaboratively.', span: 'lg:col-span-1' },
               { icon: Terminal, title: 'Certification Guidance', desc: 'Prepare for AWS certifications with peer support.', span: 'lg:col-span-2' }
             ].map((feature, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -242,7 +242,7 @@ export default function Home() {
       {/* Upcoming Events */}
       <section id="upcoming-events" className="py-24 bg-cloud-secondary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -261,8 +261,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {upcomingEvents.length > 0 ? (
               upcomingEvents.map((event, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -287,7 +287,7 @@ export default function Home() {
               </div>
             )}
           </div>
-          
+
           <div className="mt-8 text-center md:hidden">
             <Link to="/events" className="text-cloud-blue font-mono text-sm">View All Events →</Link>
           </div>
@@ -297,7 +297,7 @@ export default function Home() {
       {/* Featured Projects */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -314,8 +314,8 @@ export default function Home() {
               { title: 'IoT Health Dashboard', desc: 'Real-time health monitoring using AWS IoT Core and React.', tech: ['IoT Core', 'Amplify', 'React'] },
               { title: 'Cloud File Storage', desc: 'Secure file sharing platform built on S3 and Cognito.', tech: ['S3', 'Cognito', 'API Gateway'] }
             ].map((project, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -343,7 +343,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center">
             <Link to="/projects" className="pixel-button-secondary px-6 py-3">
               View All Projects
@@ -355,7 +355,7 @@ export default function Home() {
       {/* Team Preview */}
       <section className="py-24 bg-cloud-secondary/20 border-t border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -372,8 +372,8 @@ export default function Home() {
                 { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', image: 'https://i.ibb.co/xqY0bSS3/Varsha-maam.jpg' },
                 { id: 'shardul-kolekar', name: 'Shardul Kolekar', role: 'Captain (President)', image: 'https://i.ibb.co/vCkgggZW/Whats-App-Image-2026-03-15-at-4-00-18-PM.jpg' }
               ].map((member, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -383,8 +383,8 @@ export default function Home() {
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
                     <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
-                      <img 
-                        src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                      <img
+                        src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
                         alt={member.name}
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
@@ -409,15 +409,15 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
               {[
                 { id: 'vidula', name: 'Vidula Powar', role: 'General Secretary', image: 'https://i.ibb.co/5W0h4c8y/Whats-App-Image-2026-03-17-at-9-01-47-AM.jpg' },
                 { id: 'gopal', name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png' },
                 { id: 'shubham', name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png' }
               ].map((member, idx) => (
-                <motion.div 
-                  key={idx + 2} 
+                <motion.div
+                  key={idx + 2}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -427,8 +427,8 @@ export default function Home() {
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
                     <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
-                      <img 
-                        src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                      <img
+                        src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
                         alt={member.name}
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
@@ -441,17 +441,17 @@ export default function Home() {
                   <div className="flex space-x-3">
                     <a href={
                       member.id === 'vidula' ? "https://www.linkedin.com/in/vidula-p-372734294" :
-                      member.id === 'gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
-                      member.id === 'shubham' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
-                      "#"
+                        member.id === 'gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
+                          member.id === 'shubham' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
+                            "#"
                     } className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={
                       member.id === 'vidula' ? "mailto:powarvidula11@gmail.com" :
-                      member.id === 'gopal' ? "mailto:gopallakwal526@gmail.com" :
-                      member.id === 'shubham' ? "mailto:sonwaneshubham38@gmail.com" :
-                      "mailto:awscc.gcoe@gmail.com"
+                        member.id === 'gopal' ? "mailto:gopallakwal526@gmail.com" :
+                          member.id === 'shubham' ? "mailto:sonwaneshubham38@gmail.com" :
+                            "mailto:awscc.gcoe@gmail.com"
                     } className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                       <Mail className="w-5 h-5" />
                     </a>
@@ -460,7 +460,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          
+
           <div className="mt-12 text-center">
             <Link to="/team" className="pixel-button-secondary px-6 py-3">
               View Full Team
@@ -472,7 +472,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aws-orange/10 z-0"></div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

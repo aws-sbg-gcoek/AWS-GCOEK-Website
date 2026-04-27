@@ -24,6 +24,35 @@ export interface AppEvent {
 
 export const eventsData: AppEvent[] = [
   {
+    id: 'portfolio-website-workshop',
+    title: 'Portfolio Website Development Workshop',
+    date: 'Coming Soon',
+    time: '~90 Minutes',
+    location: 'GCOE Kolhapur',
+    desc: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using core web development skills — HTML, CSS, and JavaScript — while also leveraging AI tools to speed up development. By the end of the session, you\'ll have your own live portfolio website ready to share.',
+    type: 'Workshop',
+    status: 'upcoming',
+    isFeatured: true,
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop',
+    highlights: [
+      'Free entry — open to all students',
+      'Hands-on session — bring your laptop',
+      'Build a complete portfolio website from scratch',
+      'Learn HTML, CSS & JavaScript fundamentals',
+      'AI tools for faster development',
+      'GitHub setup & live deployment included',
+      'No prior coding experience required'
+    ],
+    schedule: [
+      { time: 'Part 1', title: 'Web Development Basics', desc: 'Introduction to HTML, CSS, and JavaScript — the building blocks of every website. Speaker: Vidula.' },
+      { time: 'Part 2', title: 'UI/UX Design Importance', desc: 'UI/UX principles for clean, modern, and user-friendly design. Speaker: Aniket.' },
+      { time: 'Part 3', title: 'Portfolio Structure Planning', desc: 'How to structure a professional portfolio — Hero, About, Skills, Projects, and Contact sections. Speaker: Shubham.' },
+      { time: 'Part 4', title: 'Hands-on Build (Web Dev + AI)', desc: 'Live build session combining web development skills with AI tools to build your portfolio faster and smarter. Speakers: Shardul & Yash.' },
+      { time: 'Part 5', title: 'GitHub Setup & Push', desc: 'Setting up Git and GitHub, version control basics, and pushing your project to a repository. Speaker: Atharv.' },
+      { time: 'Part 6', title: 'Deployment — Make it Live', desc: 'Deploy your portfolio website live so it\'s accessible to the world with a real URL. Speaker: Anas.' }
+    ]
+  },
+  {
     id: 'seminar-genai-deep-learning',
     title: 'Seminar on Generative AI & Deep Learning',
     date: '13 Apr 2026',
@@ -31,8 +60,8 @@ export const eventsData: AppEvent[] = [
     location: 'Seminar Hall (Old Building), GCOE Kolhapur',
     desc: 'A hands-on seminar exploring the cutting edge of Generative AI and Deep Learning. From GANs and VAEs to Transformers and LSTM networks, this session covers both theory and practical applications. Free to attend — certificates will be provided to all participants. Students are required to carry their laptops.',
     type: 'Seminar',
-    status: 'upcoming',
-    isFeatured: true,
+    status: 'past',
+    isFeatured: false,
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=2070&auto=format&fit=crop',
     meetLink: 'https://meet.google.com/awa-ebnr-ogx',
     whatsappLink: 'https://chat.whatsapp.com/CUE3LjVIT0I1Yh4xPsUUJo',
