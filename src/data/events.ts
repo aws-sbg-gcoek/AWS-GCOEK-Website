@@ -26,22 +26,24 @@ export const eventsData: AppEvent[] = [
   {
     id: 'portfolio-website-workshop',
     title: 'Portfolio Website Development Workshop',
-    date: 'Coming Soon',
-    time: '~90 Minutes',
-    location: 'GCOE Kolhapur',
+    date: '30 April 2026',
+    time: '10:00 AM – 2:00 PM',
+    location: 'E Computer Lab (GCOEK New Campus)',
     desc: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using core web development skills — HTML, CSS, and JavaScript — while also leveraging AI tools to speed up development. By the end of the session, you\'ll have your own live portfolio website ready to share.',
     type: 'Workshop',
     status: 'upcoming',
     isFeatured: true,
+    link: 'https://forms.gle/VNaYij16gsK8fbjy7',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop',
     highlights: [
-      'Free entry — open to all students',
-      'Hands-on session — bring your laptop',
+      'Hands-on session — bring your laptop if possible ',
       'Build a complete portfolio website from scratch',
       'Learn HTML, CSS & JavaScript fundamentals',
       'AI tools for faster development',
       'GitHub setup & live deployment included',
-      'No prior coding experience required'
+      'No prior coding experience required',
+      'Refreshments will be provided',
+      'Certificates of participation will be provided'
     ],
     schedule: [
       { time: 'Part 1', title: 'Web Development Basics', desc: 'Introduction to HTML, CSS, and JavaScript — the building blocks of every website. Speaker: Vidula.' },
@@ -72,7 +74,8 @@ export const eventsData: AppEvent[] = [
       'Hands-on session — bring your laptop',
       'Generative Deep Learning: Neural Style Transfer, VAE, GAN',
       'Deep Learning Models: MLP, LSTM, GRU, Transformer Networks',
-      'Supervised Tasks: Image Denoising, Semantic Segmentation, Object Detection'
+      'Supervised Tasks: Image Denoising, Semantic Segmentation, Object Detection',
+      
     ],
     schedule: [
       { time: '2:00 PM', title: 'Introduction to Generative AI', desc: 'Overview of Generative Deep Learning, Neural Style Transfer, Variational Autoencoders (VAE), and Generative Adversarial Networks (GAN).' },

@@ -139,7 +139,7 @@ export default function EventDetails() {
                         rel="noopener noreferrer" 
                         className="pixel-button w-full flex items-center justify-center py-4 text-center mb-3"
                       >
-                        Register Now <ChevronRight className="w-5 h-5 ml-2" />
+                        Apply Now <ChevronRight className="w-5 h-5 ml-2" />
                       </a>
                     ) : (
                       <button disabled className="w-full py-4 bg-cloud-secondary/50 text-text-secondary font-semibold rounded-lg cursor-not-allowed border border-border-color mb-3">
