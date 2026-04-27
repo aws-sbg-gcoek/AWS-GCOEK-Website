@@ -119,7 +119,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <StatCounter end={700} label="Members Joined" />
             <StatCounter end={3} label="Events Conducted" />
-            <StatCounter end={2} label="Projects Built" />
+            <StatCounter end={3} label="Projects Built" />
             <StatCounter end={1} label="Workshops Hosted" />
           </div>
         </div>
