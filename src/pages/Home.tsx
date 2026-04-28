@@ -129,35 +129,13 @@ export default function Home() {
       {featuredEvent?.isFeatured && <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:w-1/2 w-full relative"
-            >
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-color shadow-2xl relative group">
-                <img
-                  src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"}
-                  alt={featuredEvent.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-6 left-6 z-20">
-                  <span className="bg-aws-orange/90 text-cloud-navy px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider">
-                    FEATURED {featuredEvent.type.toUpperCase()}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
+            {/* Text content first in DOM → appears first on mobile */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:w-1/2 w-full"
+              className="lg:w-1/2 w-full lg:order-2"
             >
               <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 leading-tight">
                 {featuredEvent.title}
@@ -192,6 +170,30 @@ export default function Home() {
                 <Link to={`/events/${featuredEvent.id}`} className="pixel-button-secondary px-10 py-4 text-lg text-center">
                   View Details
                 </Link>
+              </div>
+            </motion.div>
+
+            {/* Image second in DOM → appears below text on mobile, left on desktop */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2 w-full relative lg:order-1"
+            >
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border-color shadow-2xl relative group">
+                <img
+                  src={featuredEvent.image || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"}
+                  alt={featuredEvent.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-6 left-6 z-20">
+                  <span className="bg-aws-orange/90 text-cloud-navy px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider">
+                    FEATURED {featuredEvent.type.toUpperCase()}
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
