@@ -67,64 +67,8 @@ export default function EventDetails() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-12">
-              <section>
-                <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">About the Event</h2>
-                <p className="text-text-secondary leading-relaxed text-lg">
-                  {event.desc}
-                </p>
-              </section>
-
-              {event.highlights && event.highlights.length > 0 && (
-                <section>
-                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">Highlights</h2>
-                  <ul className="space-y-4">
-                    {event.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start text-text-secondary text-lg">
-                        <CheckCircle2 className="w-6 h-6 mr-4 text-aws-orange shrink-0 mt-0.5" />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
-
-              {event.schedule && event.schedule.length > 0 && (
-                <section>
-                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-10 flex items-center">
-                    <Terminal className="w-7 h-7 mr-4 text-aws-orange" />
-                    Event Schedule
-                  </h2>
-                  
-                  <div className="relative border-l border-border-color ml-3 space-y-12 pb-4">
-                    {event.schedule.map((item, i) => (
-                      <motion.div 
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        key={i} 
-                        className="relative pl-10"
-                      >
-                        <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-aws-orange shadow-[0_0_10px_rgba(255,153,0,0.5)]"></span>
-                        
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
-                          <span className="text-aws-orange font-mono font-bold text-sm bg-aws-orange/10 px-4 py-1.5 rounded-full w-fit border border-aws-orange/20">
-                            {item.time}
-                          </span>
-                          <h3 className="text-text-primary font-bold text-xl">{item.title}</h3>
-                        </div>
-                        <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </section>
-              )}
-            </div>
-
-            {/* Sidebar / CTA */}
-            <div className="lg:col-span-1">
+            {/* Sidebar / CTA — first in DOM so Register button is at top on mobile */}
+            <div className="lg:col-span-1 lg:order-2">
               <div className="sticky top-28 glass-panel pixel-border p-8 rounded-3xl">
                 <h3 className="text-2xl font-heading font-bold text-text-primary mb-6">Registration</h3>
                 {event.status === 'upcoming' ? (
@@ -188,6 +132,62 @@ export default function EventDetails() {
                   </>
                 )}
               </div>
+            </div>
+
+            {/* Main Content — second in DOM, shown first on desktop via lg:order-1 */}
+            <div className="lg:col-span-2 space-y-12 lg:order-1">
+              <section>
+                <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">About the Event</h2>
+                <p className="text-text-secondary leading-relaxed text-lg">
+                  {event.desc}
+                </p>
+              </section>
+
+              {event.highlights && event.highlights.length > 0 && (
+                <section>
+                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-6">Highlights</h2>
+                  <ul className="space-y-4">
+                    {event.highlights.map((highlight, idx) => (
+                      <li key={idx} className="flex items-start text-text-secondary text-lg">
+                        <CheckCircle2 className="w-6 h-6 mr-4 text-aws-orange shrink-0 mt-0.5" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {event.schedule && event.schedule.length > 0 && (
+                <section>
+                  <h2 className="text-3xl font-heading font-bold text-text-primary mb-10 flex items-center">
+                    <Terminal className="w-7 h-7 mr-4 text-aws-orange" />
+                    Event Schedule
+                  </h2>
+                  
+                  <div className="relative border-l border-border-color ml-3 space-y-12 pb-4">
+                    {event.schedule.map((item, i) => (
+                      <motion.div 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        key={i} 
+                        className="relative pl-10"
+                      >
+                        <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-aws-orange shadow-[0_0_10px_rgba(255,153,0,0.5)]"></span>
+                        
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
+                          <span className="text-aws-orange font-mono font-bold text-sm bg-aws-orange/10 px-4 py-1.5 rounded-full w-fit border border-aws-orange/20">
+                            {item.time}
+                          </span>
+                          <h3 className="text-text-primary font-bold text-xl">{item.title}</h3>
+                        </div>
+                        <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </section>
+              )}
             </div>
           </div>
         </div>
