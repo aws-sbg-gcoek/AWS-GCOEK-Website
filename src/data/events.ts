@@ -26,7 +26,7 @@ export const eventsData: AppEvent[] = [
   {
     id: 'portfolio-website-workshop',
     title: 'Portfolio Website Development Workshop',
-    date: '30 April 2026',
+    date: '02 May 2026',
     time: '10:00 AM – 2:00 PM',
     location: 'E Computer Lab (GCOEK New Campus)',
     desc: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using core web development skills — HTML, CSS, and JavaScript — while also leveraging AI tools to speed up development. By the end of the session, you\'ll have your own live portfolio website ready to share.',
@@ -75,7 +75,7 @@ export const eventsData: AppEvent[] = [
       'Generative Deep Learning: Neural Style Transfer, VAE, GAN',
       'Deep Learning Models: MLP, LSTM, GRU, Transformer Networks',
       'Supervised Tasks: Image Denoising, Semantic Segmentation, Object Detection',
-      
+
     ],
     schedule: [
       { time: '2:00 PM', title: 'Introduction to Generative AI', desc: 'Overview of Generative Deep Learning, Neural Style Transfer, Variational Autoencoders (VAE), and Generative Adversarial Networks (GAN).' },
