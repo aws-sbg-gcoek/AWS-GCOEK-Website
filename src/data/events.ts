@@ -25,7 +25,7 @@ export interface AppEvent {
 export const eventsData: AppEvent[] = [
   {
     id: 'portfolio-website-workshop',
-    title: 'Portfolio Website Development Workshop',
+    title: 'AI-Powered Portfolio Website Development Workshop',
     date: '02 May 2026',
     time: '10:00 AM – 2:00 PM',
     location: 'E Computer Lab (GCOEK New Campus)',
