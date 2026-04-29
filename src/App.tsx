@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
-import CursorGlow from './components/CursorGlow';
 import Home from './pages/Home';
 import About from './pages/About';
 import Events from './pages/Events';
@@ -59,7 +58,6 @@ export default function App() {
     <Router>
       <div className="min-h-screen flex flex-col bg-bg text-text-primary font-sans relative">
         <ParticleBackground />
-        {!window.matchMedia('(hover: none)').matches && <CursorGlow />}
         <Navbar />
         <main className="flex-grow pt-24">
           <AnimatedRoutes />
