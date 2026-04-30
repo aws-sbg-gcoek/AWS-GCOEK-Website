@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
+import { Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
@@ -27,11 +27,11 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
   }, [end]);
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 glass-panel pixel-border hover:pixel-border-hover transition-all duration-300">
-      <span className="text-4xl md:text-5xl font-mono font-bold text-arcade-purple mb-2">
+    <div className="flex flex-col items-center justify-center p-6 glass-panel pixel-border hover:pixel-border-hover animated-border transition-all duration-300 group">
+      <span className="stat-number text-4xl md:text-5xl mb-2">
         {count}+
       </span>
-      <span className="text-sm md:text-base font-heading font-medium text-text-secondary uppercase tracking-wider">
+      <span className="text-xs md:text-sm font-mono font-medium text-text-secondary uppercase tracking-widest">
         {label}
       </span>
     </div>
@@ -57,58 +57,66 @@ export default function Home() {
 
   return (
     <PageTransition className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-grid-pattern">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 z-0">
-          <motion.div
-            animate={{ y: [0, -20, 0], rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 opacity-30"
-          >
-            <Cloud className="w-64 h-64 text-cloud-blue blur-3xl" />
-          </motion.div>
-          <motion.div
-            animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-40 right-20 opacity-30"
-          >
-            <Cloud className="w-48 h-48 text-arcade-purple blur-3xl" />
-          </motion.div>
-        </div>
+      {/* ── HERO ── */}
+      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-grid-pattern">
+
+        {/* Ambient glow orbs */}
+        <div className="glow-orb glow-orb-purple w-[600px] h-[600px] top-[-150px] left-[-150px] opacity-40" />
+        <div className="glow-orb glow-orb-pink   w-[400px] h-[400px] bottom-[-100px] right-[-80px]  opacity-30" />
+        <div className="glow-orb glow-orb-cyan   w-[300px] h-[300px] top-1/2 right-[10%] opacity-20" />
+
+        {/* PPT-inspired floating pixel blocks */}
+        <motion.div animate={{ y: [0,-14,0], rotate:[0,4,0] }} transition={{ duration:7, repeat:Infinity, ease:'easeInOut' }}
+          className="pixel-block-deco w-12 h-12 bg-arcade-purple/70 top-[12%] right-[8%]" style={{animationDelay:'0s'}} />
+        <motion.div animate={{ y: [0,10,0],  rotate:[0,-3,0] }} transition={{ duration:9, repeat:Infinity, ease:'easeInOut' }}
+          className="pixel-block-deco w-8 h-8  bg-builder-pink/60  top-[20%] right-[14%]" style={{animationDelay:'1s'}} />
+        <motion.div animate={{ y: [0,-8,0],  rotate:[0,2,0] }} transition={{ duration:11, repeat:Infinity, ease:'easeInOut' }}
+          className="pixel-block-deco w-6 h-6  bg-builder-cyan/50  top-[35%] right-[6%]" style={{animationDelay:'2s'}} />
+        <motion.div animate={{ y: [0,12,0],  rotate:[0,-2,0] }} transition={{ duration:8, repeat:Infinity, ease:'easeInOut' }}
+          className="pixel-block-deco w-10 h-10 bg-builder-green/50 bottom-[20%] right-[10%]" style={{animationDelay:'0.5s'}} />
+        <motion.div animate={{ y: [0,-10,0], rotate:[0,3,0] }} transition={{ duration:10, repeat:Infinity, ease:'easeInOut' }}
+          className="pixel-block-deco w-7 h-7  bg-arcade-purple/40 top-[15%] left-[6%]" style={{animationDelay:'1.5s'}} />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-cloud-secondary/50 border border-border-color rounded-full px-4 py-1.5 mb-8">
-              <span className="w-2 h-2 rounded-full bg-arcade-purple animate-pulse"></span>
-              <span className="text-sm font-mono text-text-secondary">Now accepting new members</span>
+          <motion.div variants={containerVariants} initial="hidden" animate="visible">
+
+            {/* Badge */}
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 badge-purple mb-10">
+              <span className="pulse-dot"></span>
+              Now accepting new members
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-heading font-bold mb-8 tracking-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Student Builder Group</span>
+            {/* Heading */}
+            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl font-heading font-black mb-6 tracking-tighter leading-none">
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-400">AWS Student</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcade-purple to-builder-pink">GCOE Kolhapur</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-400">Builder Group</span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcade-purple via-builder-pink to-builder-cyan">GCOE Kolhapur</span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
-              Empowering students to <span className="text-builder-cyan font-semibold">learn</span>, <span className="text-arcade-purple font-semibold">build</span>, and <span className="text-builder-green font-semibold">launch</span> their cloud careers.
+            {/* Gradient rule */}
+            <motion.div variants={itemVariants} className="gradient-divider max-w-xs mx-auto mb-8" />
+
+            <motion.p variants={itemVariants} className="text-lg md:text-xl text-text-secondary mb-12 max-w-xl mx-auto leading-relaxed">
+              Empowering students to{' '}
+              <span className="text-builder-cyan font-semibold">learn</span>,{' '}
+              <span className="text-arcade-purple font-semibold">build</span>, and{' '}
+              <span className="text-builder-green font-semibold">launch</span>{' '}
+              their cloud careers.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer" className="pixel-button px-10 py-4 text-lg w-full sm:w-auto text-center">
-                Join the Club
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer"
+                className="pixel-button px-10 py-4 text-sm w-full sm:w-auto">
+                Join the Group
               </a>
-              <button
-                onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
-                className="pixel-button-secondary px-10 py-4 text-lg w-full sm:w-auto text-center"
-              >
+              <button onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
+                className="pixel-button-secondary px-10 py-4 text-sm w-full sm:w-auto">
                 Explore Events
               </button>
             </motion.div>
+
           </motion.div>
         </div>
       </section>
@@ -164,7 +172,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 leading-tight">
                 {featuredEvent.title}
               </h2>
-              <div className="w-24 h-1 bg-aws-orange mb-8 rounded-full"></div>
+              <div className="w-20 h-0.5 bg-gradient-to-r from-arcade-purple to-builder-pink mb-8 rounded-full"></div>
 
               <p className="text-xl text-text-secondary mb-10 leading-relaxed">
                 {featuredEvent.desc}
@@ -230,8 +238,8 @@ export default function Home() {
                 whileHover={{ y: -10, scale: 1.01 }}
                 className={`glass-panel p-8 pixel-border hover:pixel-border-hover group ${feature.span}`}
               >
-                <div className="w-14 h-14 bg-cloud-secondary rounded-2xl flex items-center justify-center mb-6 border border-border-color group-hover:border-aws-orange/50 transition-colors">
-                  <feature.icon className="w-7 h-7 text-aws-orange" />
+                <div className="icon-box w-14 h-14 mb-6 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-7 h-7 text-arcade-purple" />
                 </div>
                 <h3 className="text-2xl font-heading font-semibold mb-3">{feature.title}</h3>
                 <p className="text-text-secondary text-lg leading-relaxed">{feature.desc}</p>
@@ -327,19 +335,17 @@ export default function Home() {
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className="p-2 bg-cloud-secondary rounded border border-border-color">
-                    <Database className="w-6 h-6 text-aws-orange" />
+                    <Database className="w-6 h-6 text-arcade-purple" />
                   </div>
                   <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
-                <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-aws-orange transition-colors">{project.title}</h3>
+                <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-arcade-purple transition-colors">{project.title}</h3>
                 <p className="text-text-secondary text-sm mb-6">{project.desc}</p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map(t => (
-                    <span key={t} className="px-2 py-1 bg-cloud-secondary text-xs font-mono text-text-secondary rounded border border-border-color">
-                      {t}
-                    </span>
+                    <span key={t} className="tech-tag">{t}</span>
                   ))}
                 </div>
               </motion.div>
@@ -399,7 +405,7 @@ export default function Home() {
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
                       <>
-                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
+                        <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-arcade-purple transition-colors hover:scale-110 transform">
                           <Linkedin className="w-5 h-5" />
                         </a>
                         <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awssbggcoek@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
