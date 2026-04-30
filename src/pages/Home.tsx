@@ -28,7 +28,7 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center p-6 glass-panel pixel-border hover:pixel-border-hover transition-all duration-300">
-      <span className="text-4xl md:text-5xl font-mono font-bold text-aws-orange mb-2">
+      <span className="text-4xl md:text-5xl font-mono font-bold text-arcade-purple mb-2">
         {count}+
       </span>
       <span className="text-sm md:text-base font-heading font-medium text-text-secondary uppercase tracking-wider">
@@ -84,18 +84,18 @@ export default function Home() {
             animate="visible"
           >
             <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-cloud-secondary/50 border border-border-color rounded-full px-4 py-1.5 mb-8">
-              <span className="w-2 h-2 rounded-full bg-aws-orange animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-arcade-purple animate-pulse"></span>
               <span className="text-sm font-mono text-text-secondary">Now accepting new members</span>
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-heading font-bold mb-8 tracking-tighter">
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Student Builder Group</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400">GCOE Kolhapur</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcade-purple to-builder-pink">GCOE Kolhapur</span>
             </motion.h1>
 
             <motion.p variants={itemVariants} className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
-              Empowering students to <span className="text-cloud-blue font-semibold">learn</span>, <span className="text-arcade-purple font-semibold">build</span>, and <span className="text-aws-orange font-semibold">launch</span> their cloud careers.
+              Empowering students to <span className="text-builder-cyan font-semibold">learn</span>, <span className="text-arcade-purple font-semibold">build</span>, and <span className="text-builder-green font-semibold">launch</span> their cloud careers.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -473,7 +473,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aws-orange/10 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-arcade-purple/10 z-0"></div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}

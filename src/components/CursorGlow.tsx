@@ -69,10 +69,10 @@ export default function CursorGlow() {
       velocity.current = Math.min(Math.sqrt(dx * dx + dy * dy), 30) / 30;
       prev.current = { x: dot.current.x, y: dot.current.y };
 
-      // interpolate orange → blue based on speed
-      const r = Math.round(255 * (1 - velocity.current) + 56 * velocity.current);
-      const g = Math.round(153 * (1 - velocity.current) + 189 * velocity.current);
-      const b = Math.round(0 * (1 - velocity.current) + 248 * velocity.current);
+      // interpolate purple → cyan based on speed
+      const r = Math.round(168 * (1 - velocity.current) + 56 * velocity.current);
+      const g = Math.round(85 * (1 - velocity.current) + 189 * velocity.current);
+      const b = Math.round(247 * (1 - velocity.current) + 248 * velocity.current);
       const color = `rgb(${r},${g},${b})`;
 
       if (dotRef.current) {
@@ -133,8 +133,8 @@ export default function CursorGlow() {
         width: '8px',
         height: '8px',
         borderRadius: '50%',
-        background: 'rgb(255,153,0)',
-        boxShadow: '0 0 8px 2px rgb(255,153,0)',
+        background: 'rgb(168,85,247)',
+        boxShadow: '0 0 8px 2px rgb(168,85,247)',
       }} />
 
       {/* Lagging ring */}
@@ -143,8 +143,8 @@ export default function CursorGlow() {
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        border: '1.5px solid rgb(255,153,0)',
-        boxShadow: '0 0 12px 1px rgba(255,153,0,0.25)',
+        border: '1.5px solid rgb(168,85,247)',
+        boxShadow: '0 0 12px 1px rgba(168,85,247,0.3)',
         transition: 'opacity 0.4s ease, transform 0.3s ease',
       }} />
 
@@ -155,7 +155,7 @@ export default function CursorGlow() {
         height: '500px',
         borderRadius: '50%',
         mixBlendMode: 'screen',
-        background: 'radial-gradient(circle, rgba(255,153,0,0.13) 0%, rgba(255,153,0,0.05) 45%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(168,85,247,0.12) 0%, rgba(168,85,247,0.04) 45%, transparent 70%)',
       }} />
     </>
   );
