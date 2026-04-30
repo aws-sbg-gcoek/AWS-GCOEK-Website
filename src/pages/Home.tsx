@@ -4,6 +4,8 @@ import { Cloud, Server, Code, Users, Terminal, Database, ChevronRight, Github, L
 import { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
+import { HeroTerminal } from '../components/HeroTerminal';
+import { TechTicker } from '../components/TechTicker';
 
 /* ─── Pixel block cluster decoration ─── */
 const BLOCK_COLORS = ['#FF9900','#A855F7','#38BDF8','#EC4899','#22C55E','#FF9900','#38BDF8','#A855F7','#22C55E','#EC4899'];
@@ -76,69 +78,79 @@ export default function Home() {
     <PageTransition className="w-full">
 
       {/* ═══ HERO ═══════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[92vh] flex items-center bg-grid-pattern overflow-hidden" style={{ background: '#0B1220' }}>
-        {/* Grid overlay */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-100 pointer-events-none" />
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden" style={{ background: '#0B1220' }}>
+        {/* Animated scrolling grid */}
+        <div className="absolute inset-0 bg-grid-animated opacity-100 pointer-events-none" />
 
-        {/* Right-side floating block clusters */}
-        <div className="absolute right-8 top-24 opacity-60 float-slow hidden lg:block">
-          <BlockCluster opacity={0.9} size={12} gap={6} />
+        {/* Corner block clusters */}
+        <div className="absolute top-16 left-0 opacity-30 pointer-events-none hidden xl:block">
+          <BlockCluster opacity={0.8} size={10} gap={5} />
         </div>
-        <div className="absolute right-52 bottom-20 opacity-40 float-medium hidden lg:block">
-          <BlockCluster opacity={0.7} size={8} gap={4} />
+        <div className="absolute bottom-12 right-4 opacity-25 float-slow pointer-events-none hidden lg:block">
+          <BlockCluster opacity={0.6} size={8} gap={4} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
-            {/* Status pill */}
-            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
-              <span className="terminal-tag">● live</span>
-              <span className="font-mono text-xs text-text-secondary tracking-widest uppercase">Now accepting new members</span>
+            {/* ── Left: Text content ── */}
+            <motion.div variants={stagger} initial="hidden" animate="visible" className="flex-1 min-w-0">
+
+              {/* Status badge */}
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+                <span className="terminal-tag glow-pulse-blue" style={{ color: '#22C55E', borderColor: '#22C55E55' }}>● LIVE</span>
+                <span className="font-mono text-xs text-text-secondary tracking-widest uppercase">Now accepting new members</span>
+              </motion.div>
+
+              {/* Heading */}
+              <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-black mb-4 leading-[1.05] tracking-tight">
+                <span className="text-white">AWS Student</span><br />
+                <span className="text-white">Builder Group</span><br />
+                <span style={{ color: '#FF9900' }} className="glow-pulse-orange inline-block">GCOE Kolhapur</span>
+              </motion.h1>
+
+              {/* Accent line */}
+              <motion.div variants={fadeUp} className="section-line my-6" />
+
+              {/* Sub */}
+              <motion.p variants={fadeUp} className="text-base text-text-secondary mb-10 max-w-lg leading-relaxed">
+                Empowering students to{' '}
+                <span style={{ color: '#38BDF8' }} className="font-semibold">learn</span>,{' '}
+                <span style={{ color: '#A855F7' }} className="font-semibold">build</span>, and{' '}
+                <span style={{ color: '#FF9900' }} className="font-semibold">launch</span>{' '}
+                their cloud careers through hands-on AWS experiences.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+                <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer"
+                   className="pixel-button px-8 py-3.5 text-sm">
+                  Join the Group
+                </a>
+                <button onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="pixel-button-secondary px-8 py-3.5 text-sm">
+                  Explore Events
+                </button>
+              </motion.div>
             </motion.div>
 
-            {/* Heading */}
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-black mb-4 leading-none tracking-tight">
-              <span className="text-white">AWS Student</span><br />
-              <span className="text-white">Builder Group</span><br />
-              <span style={{ color: '#FF9900' }}>GCOE Kolhapur</span>
-            </motion.h1>
-
-            {/* Accent line */}
-            <motion.div variants={fadeUp} className="section-line my-6" />
-
-            {/* Subheading */}
-            <motion.p variants={fadeUp} className="text-lg text-text-secondary mb-10 max-w-xl leading-relaxed">
-              Empowering students to{' '}
-              <span style={{ color: '#38BDF8' }} className="font-semibold">learn</span>,{' '}
-              <span style={{ color: '#A855F7' }} className="font-semibold">build</span>, and{' '}
-              <span style={{ color: '#FF9900' }} className="font-semibold">launch</span>{' '}
-              their cloud careers through hands-on AWS experiences.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pixel-button px-8 py-3.5 text-sm"
-              >
-                Join the Group
-              </a>
-              <button
-                onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
-                className="pixel-button-secondary px-8 py-3.5 text-sm"
-              >
-                Explore Events
-              </button>
-            </motion.div>
-          </motion.div>
+            {/* ── Right: Terminal window ── */}
+            <div className="flex-shrink-0 hidden lg:flex flex-col items-end gap-6">
+              <HeroTerminal />
+              {/* Mini block cluster decoration under terminal */}
+              <div className="self-end opacity-50 float-medium">
+                <BlockCluster opacity={1} size={9} gap={4} />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* ═══ TECH TICKER ════════════════════════════════════════════════ */}
+      <TechTicker />
+
       {/* ═══ STATS ══════════════════════════════════════════════════════ */}
-      <section className="py-14 border-y" style={{ background: '#080E1A', borderColor: '#1E2A3A' }}>
+      <section className="py-14" style={{ background: '#080E1A', borderBottom: '1px solid #1E2A3A' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <StatCounter end={700} label="Members Joined"    accent="#FF9900" />
@@ -238,7 +250,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.07 }}
                 whileHover={{ y: -4 }}
-                className={`dev-card p-6 ${f.border} group`}
+                className={`dev-card card-shine p-6 ${f.border} group`}
               >
                 <div className="icon-box mb-5" style={{ borderColor: f.accent + '44' }}>
                   <f.icon className="w-5 h-5" style={{ color: f.accent }} />
@@ -277,7 +289,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
                   whileHover={{ y: -4 }}
-                  className="dev-card bl-blue p-6 flex flex-col h-full"
+                  className="dev-card card-shine bl-blue p-6 flex flex-col h-full"
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <Calendar className="w-3.5 h-3.5 text-cloud-blue" />
@@ -327,7 +339,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="dev-card p-6 group"
+                className="dev-card card-shine p-6 group"
                 style={{ borderLeftColor: project.accent, borderLeftWidth: 3 }}
               >
                 <div className="flex justify-between items-start mb-5">

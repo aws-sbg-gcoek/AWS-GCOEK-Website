@@ -266,3 +266,140 @@ h1, h2, h3, h4, h5, h6 {
 .text-gradient-orange { color: #FF9900; }
 .text-gradient-blue   { color: #38BDF8; }
 .glow-card            { position: relative; }
+
+/* ═══ CURSOR BLINK ══════════════════════════════════════════ */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #FF9900;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s step-end infinite;
+}
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #22C55E;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+/* ═══ MARQUEE TICKER ════════════════════════════════════════ */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ═══ SCANLINE OVERLAY ══════════════════════════════════════ */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══ GLOW PULSE ════════════════════════════════════════════ */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,153,0,0.3); }
+  50%       { box-shadow: 0 0 24px rgba(255,153,0,0.7), 0 0 40px rgba(255,153,0,0.2); }
+}
+.glow-pulse-orange { animation: glow-pulse 3s ease-in-out infinite; }
+
+@keyframes glow-pulse-blue {
+  0%, 100% { box-shadow: 0 0 8px rgba(56,189,248,0.3); }
+  50%       { box-shadow: 0 0 24px rgba(56,189,248,0.7), 0 0 40px rgba(56,189,248,0.2); }
+}
+.glow-pulse-blue { animation: glow-pulse-blue 3s ease-in-out infinite; }
+
+/* ═══ CARD REVEAL LINE ══════════════════════════════════════ */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.card-shine:hover::before { left: 150%; }
+
+/* ═══ PROGRESS BAR ACCENT ═══════════════════════════════════ */
+@keyframes progress-fill {
+  from { width: 0; }
+  to   { width: var(--fill-width, 80%); }
+}
+.skill-bar-fill {
+  height: 3px;
+  background: #FF9900;
+  border-radius: 0;
+  animation: progress-fill 1.5s ease forwards;
+}
+
+/* ═══ ANIMATED BORDER ══════════════════════════════════════ */
+@keyframes border-glow {
+  0%   { border-color: #1E2A3A; }
+  50%  { border-color: rgba(255,153,0,0.6); }
+  100% { border-color: #1E2A3A; }
+}
+.border-animate { animation: border-glow 4s ease-in-out infinite; }
+
+/* ═══ NUMBER COUNT UP ═══════════════════════════════════════ */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ═══ HERO GRID SCROLL ══════════════════════════════════════ */
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 48px 48px; }
+}
+.bg-grid-animated {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-drift 8s linear infinite;
+}
+
+/* ═══ TAG HOVER ════════════════════════════════════════════ */
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  background: #111827;
+  border: 1px solid #1E2A3A;
+  color: #9CA3AF;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.tech-tag:hover { color: #FF9900; border-color: #FF9900; }
+
