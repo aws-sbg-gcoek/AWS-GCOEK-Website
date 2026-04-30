@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
+import { Cloud, Server, Code, Users, Terminal, Cpu, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
@@ -219,7 +219,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">What We Do</h2>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
+            <div className="gradient-divider max-w-[6rem] mx-auto mt-2" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
