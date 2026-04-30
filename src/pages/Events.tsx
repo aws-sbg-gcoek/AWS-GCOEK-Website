@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
 
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+
 export default function Events() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,7 +17,7 @@ export default function Events() {
   const filteredEvents = eventsData.filter(event => {
     const matchesStatus = statusFilter === 'all' || event.status === statusFilter;
     const matchesCategory = categoryFilter === 'all' || event.type === categoryFilter;
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           event.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           event.type.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesStatus && matchesCategory && matchesSearch;
@@ -26,237 +28,164 @@ export default function Events() {
 
   return (
     <PageTransition className="w-full">
-      {/* Header */}
-      <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
-        </div>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">
-              Club Events
+      {/* ── HEADER ── */}
+      <section className="pt-32 pb-20 bg-grid-animated" style={{ background: '#0B1220' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+            <div className="section-label">Community Events</div>
+            <h1 className="text-5xl md:text-7xl font-heading font-black text-white mb-4 leading-tight">
+              Club<br /><span style={{ color: '#FF9900' }}>Events</span>
             </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
+            <div className="section-line" />
+            <p className="text-text-secondary max-w-2xl mt-6 leading-relaxed">
               Join us for workshops, hands-on labs, and bootcamps to level up your cloud skills.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="pb-12">
+      {/* ── FILTERS ── */}
+      <section className="py-8 border-y" style={{ background: '#080E1A', borderColor: '#1E2A3A' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel pixel-border p-6 flex flex-col md:flex-row gap-6 items-center justify-between"
-          >
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            
+            {/* Search */}
             <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-secondary w-5 h-5" />
-              <input 
-                type="text" 
-                placeholder="Search events..." 
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
+              <input
+                type="text"
+                placeholder="Search events..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-cloud-secondary/50 border border-border-color rounded-full py-3 pl-12 pr-4 text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-arcade-purple transition-all duration-300"
+                className="w-full bg-cloud-secondary border border-border-color rounded-sm py-2 pl-9 pr-4 text-sm text-white focus:outline-none focus:border-aws-orange transition-colors"
               />
             </div>
-            
+
+            {/* Dropdowns */}
             <div className="flex flex-wrap gap-4 w-full md:w-auto">
-              <div className="flex items-center space-x-2">
-                <Filter className="text-text-secondary w-4 h-4" />
-                <select 
+              <div className="flex items-center gap-2">
+                <Filter className="w-4 h-4 text-text-secondary" />
+                <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-arcade-purple transition-all duration-300"
+                  className="bg-cloud-secondary border border-border-color rounded-sm py-2 px-3 text-sm text-white focus:outline-none focus:border-aws-orange transition-colors font-mono uppercase tracking-wider"
                 >
                   <option value="all">All Status</option>
                   <option value="upcoming">Upcoming</option>
                   <option value="past">Past</option>
                 </select>
               </div>
-              
-              <select 
+
+              <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-arcade-purple transition-all duration-300"
+                className="bg-cloud-secondary border border-border-color rounded-sm py-2 px-3 text-sm text-white focus:outline-none focus:border-aws-orange transition-colors font-mono uppercase tracking-wider"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>
-                    {cat === 'all' ? 'All Categories' : cat}
+                    {cat === 'all' ? 'ALL CATEGORIES' : cat.toUpperCase()}
                   </option>
                 ))}
               </select>
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* ── UPCOMING EVENTS ── */}
       {upcomingEvents.length > 0 && (
-        <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
+        <section className="py-20" style={{ background: '#111827' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-heading font-bold mb-16 flex items-center text-text-primary">
-              <span className="w-4 h-4 rounded-full bg-arcade-purple animate-pulse mr-4"></span>
-              Upcoming Events
-            </h2>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+              <div className="section-label">Live</div>
+              <h2 className="text-3xl font-heading font-bold text-white flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-aws-orange animate-pulse" /> Upcoming Events
+              </h2>
+              <div className="section-line section-line-blue mt-4" />
+            </motion.div>
 
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-            >
-              {upcomingEvents.map((event) => (
-                <motion.div 
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((event, idx) => (
+                <motion.div
                   key={event.id}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                  }}
-                  className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 flex flex-col h-full group"
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="dev-card card-shine bl-blue p-6 flex flex-col h-full group"
                 >
-                  <div className="flex justify-between items-start mb-8">
-                    <span className="px-4 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded-full border border-border-color">
-                      {event.type}
-                    </span>
+                  <div className="mb-4">
+                    <span className="tech-tag border-cloud-blue text-cloud-blue">{event.type}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6 text-text-primary group-hover:text-arcade-purple transition-colors">{event.title}</h3>
+                  <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
                   
-                  <div className="space-y-4 mb-8 text-sm text-text-secondary font-mono">
-                    <div className="flex items-center">
-                      <Calendar className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.time}
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="w-5 h-5 mr-4 text-text-primary" />
-                      {event.location}
-                    </div>
+                  <div className="space-y-3 mb-6 font-mono text-xs text-text-secondary">
+                    <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-cloud-blue" /> {event.date}</div>
+                    <div className="flex items-center gap-3"><Clock className="w-4 h-4 text-cloud-blue" /> {event.time}</div>
+                    <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-cloud-blue" /> {event.location}</div>
                   </div>
                   
-                  <p className="text-text-secondary mb-8 flex-grow leading-relaxed">{event.desc}</p>
+                  <p className="text-text-secondary text-sm mb-6 flex-grow leading-relaxed line-clamp-3">{event.desc}</p>
                   
-                  <Link to={`/events/${event.id}`} className="pixel-button-secondary w-full py-4 text-center flex items-center justify-center">
-                    View Details <ArrowRight className="w-4 h-4 ml-2" />
+                  <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2.5 w-full text-center text-xs flex items-center justify-center gap-2">
+                    View Details <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Past Events & Gallery */}
-      <section className="py-24">
+      {/* ── PAST EVENTS ── */}
+      <section className="py-20 bg-grid-dense" style={{ background: '#0B1220', borderTop: '1px solid #1E2A3A' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {pastEvents.length > 0 && (
-            <>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-20"
-              >
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">Past Events</h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-arcade-purple to-cloud-blue mx-auto rounded-full"></div>
+            <div className="mb-24">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+                <div className="section-label">Archive</div>
+                <h2 className="text-3xl font-heading font-bold text-white">Past Events</h2>
+                <div className="section-line mt-4" />
               </motion.div>
 
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24"
-              >
-                {pastEvents.map((event) => (
-                  <motion.div 
-                    key={event.id} 
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                    }}
-                    className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 flex flex-col group"
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {pastEvents.map((event, idx) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                    whileHover={{ x: 4 }}
+                    className="dev-card card-shine p-6 flex flex-col group"
+                    style={{ borderLeftColor: '#A855F7', borderLeftWidth: 3 }}
                   >
-                    <div className="flex justify-between items-start mb-6">
-                      <span className="px-4 py-1 bg-cloud-secondary text-xs font-mono text-cloud-blue rounded-full border border-border-color">
-                        {event.type}
-                      </span>
+                    <div className="mb-4">
+                      <span className="tech-tag border-arcade-purple text-arcade-purple">{event.type}</span>
                     </div>
-                    <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-arcade-purple transition-colors">{event.title}</h3>
+                    <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
                     
-                    <div className="space-y-3 mb-6 text-sm text-text-secondary font-mono">
-                      <div className="flex items-center">
-                        <Calendar className="w-5 h-5 mr-4 text-text-primary" />
-                        {event.date}
-                      </div>
-                      {event.time && (
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 mr-4 text-text-primary" />
-                          {event.time}
-                        </div>
-                      )}
-                      {event.location && (
-                        <div className="flex items-center">
-                          <MapPin className="w-5 h-5 mr-4 text-text-primary" />
-                          {event.location}
-                        </div>
-                      )}
+                    <div className="space-y-2 mb-4 font-mono text-xs text-text-secondary">
+                      <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-arcade-purple" /> {event.date}</div>
+                      {event.location && <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-arcade-purple" /> {event.location}</div>}
                     </div>
 
-                    <p className="text-text-secondary mb-6 leading-relaxed">{event.desc}</p>
-                    {event.highlights && (
-                      <ul className="list-disc list-inside text-sm text-text-secondary space-y-2 mb-8">
-                        {event.highlights.map((highlight, i) => (
-                          <li key={i}>{highlight}</li>
-                        ))}
-                      </ul>
-                    )}
+                    <p className="text-text-secondary text-sm mb-4 leading-relaxed line-clamp-2">{event.desc}</p>
                     
-                    <div className="mt-auto pt-6 border-t border-border-color">
-                      <Link to={`/events/${event.id}`} className="text-text-primary font-mono text-sm hover:text-arcade-purple transition-colors flex items-center">
-                        View Details <ArrowRight className="w-4 h-4 ml-2" />
+                    <div className="mt-auto pt-4 border-t border-border-color">
+                      <Link to={`/events/${event.id}`} className="text-aws-orange font-mono text-xs hover:text-white transition-colors flex items-center gap-2">
+                        Read Summary <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
-            </>
+              </div>
+            </div>
           )}
 
-          {/* Gallery Grid */}
-          <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-heading font-bold mb-12 text-center text-text-primary"
-          >
-            Event Gallery
-          </motion.h3>
+          {/* ── GALLERY ── */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+            <div className="section-label">Media</div>
+            <h2 className="text-3xl font-heading font-bold text-white">Event Gallery</h2>
+            <div className="section-line mt-4" />
+          </motion.div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               'https://i.ibb.co/wh3WN4c8/highres-532347430.avif',
@@ -267,49 +196,20 @@ export default function Events() {
               'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif',
               'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
               'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg',
-              'https://i.ibb.co/KHZSQ9Z/IMG-3560.avif',
-              'https://i.ibb.co/GfMTsGNc/IMG-3566.avif',
-              'https://i.ibb.co/Q7SsnmKN/IMG-3573.avif',
-              'https://i.ibb.co/GQMCX4Y8/IMG-3577.avif',
-              'https://i.ibb.co/8g24s41r/IMG-3582.avif',
-              'https://i.ibb.co/nsvy6J3P/IMG-3588.avif',
-              'https://i.ibb.co/6JfvTDhR/IMG-3591.avif',
-              'https://i.ibb.co/hJL2nB8c/IMG-3595.avif',
-              'https://i.ibb.co/XrCjs6mm/IMG-3597.avif',
-              'https://i.ibb.co/TqdQgQDH/IMG-3605.avif',
-              'https://i.ibb.co/DPrqTnwK/IMG-3607.avif',
-              'https://i.ibb.co/Df6psvJm/IMG-3617.avif',
-              'https://i.ibb.co/7NKjzpZ3/IMG-3623.avif',
-              'https://i.ibb.co/ychWDDDw/IMG-6142.jpg',
-              'https://i.ibb.co/gFthphzH/IMG-6143.jpg',
-              'https://i.ibb.co/PstLNJfN/IMG-6147.jpg',
-              'https://i.ibb.co/RkqbzjNQ/IMG-6148.jpg',
-              'https://i.ibb.co/5Dhq34X/IMG-6151.jpg',
-              'https://i.ibb.co/2Y6sB4JQ/IMG-6186.jpg',
-              'https://i.ibb.co/8nwg0b4s/IMG-6196.jpg',
-              'https://i.ibb.co/wFzvP2Pb/IMG-6230.jpg',
-              'https://i.ibb.co/5Xg5BBnK/IMG-6235.jpg',
-              'https://i.ibb.co/1fg7kwRM/IMG-20260327-163918544-AE.jpg',
-              'https://i.ibb.co/ymZcLDrC/IMG-E6166.jpg',
-              'https://i.ibb.co/6JvqycnS/WhatsApp-Image-2026-03-29-at-1-56-00-AM.jpg',
             ].map((src, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="aspect-square glass-panel rounded-3xl overflow-hidden pixel-border hover:pixel-border-hover group relative transition-all duration-500"
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
+                className="aspect-square dev-card overflow-hidden group relative"
               >
-                <img 
-                  src={src} 
-                  alt="Event photo" 
+                <img
+                  src={src}
+                  alt="Event photo"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                  referrerPolicy="no-referrer"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <span className="font-mono text-xs text-arcade-purple font-bold tracking-widest uppercase">AWS Community</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="terminal-tag border-aws-orange text-aws-orange">AWS Community</span>
                 </div>
               </motion.div>
             ))}

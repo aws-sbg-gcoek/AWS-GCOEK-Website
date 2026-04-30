@@ -5,154 +5,89 @@ import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { departments } from '../data/team';
 
+const colorMap: Record<string, string> = {
+  'text-arcade-purple': '#A855F7',
+  'text-cloud-blue': '#38BDF8',
+  'text-aws-orange': '#FF9900',
+  'text-green-500': '#22C55E',
+  'text-pink-500': '#EC4899',
+  'text-yellow-500': '#EAB308',
+  'text-red-500': '#EF4444',
+  'text-indigo-500': '#6366F1'
+};
+
 export default function Team() {
   const [showContact, setShowContact] = useState(false);
   return (
     <PageTransition className="w-full">
-      {/* Header */}
-      <section className="pt-24 pb-16 bg-grid-pattern">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gradient-orange">Our Team</h1>
-            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto font-mono">
+      {/* ── HEADER ── */}
+      <section className="pt-32 pb-20 bg-grid-animated" style={{ background: '#0B1220' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
+            <div className="section-label">Leadership</div>
+            <h1 className="text-5xl md:text-7xl font-heading font-black text-white mb-4 leading-tight">
+              Our<br /><span style={{ color: '#FF9900' }}>Team</span>
+            </h1>
+            <div className="section-line" />
+            <p className="text-text-secondary max-w-xl mt-6 leading-relaxed">
               Meet the dedicated students leading the AWS Student Builder Group at GCOEK.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Departments */}
-      <section className="py-16 bg-cloud-secondary/20 border-y border-border-color">
+      {/* ── DEPARTMENTS ── */}
+      <section className="py-20" style={{ background: '#111827', borderTop: '1px solid #1E2A3A' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {departments.map((dept, deptIdx) => (
-            <div key={deptIdx} className="mb-20 last:mb-0">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center mb-4">
-                  <dept.icon className={`w-8 h-8 ${dept.color} mr-3`} />
-                  <h2 className="text-3xl font-heading font-bold text-text-primary">{dept.title}</h2>
+          {departments.map((dept, deptIdx) => {
+            const hexColor = colorMap[dept.color] || '#FF9900';
+            
+            return (
+              <div key={deptIdx} className="mb-24 last:mb-0">
+                <div className="mb-10">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="icon-box" style={{ borderColor: hexColor + '44' }}>
+                      <dept.icon className="w-5 h-5" style={{ color: hexColor }} />
+                    </div>
+                    <h2 className="text-3xl font-heading font-bold text-white">{dept.title}</h2>
+                  </div>
+                  <div className="h-1 w-16" style={{ background: hexColor }} />
                 </div>
-                <div className={`w-16 h-1 ${dept.bgColor} mx-auto rounded-full`}></div>
-              </div>
 
-              {dept.title === "Leadership Dept" ? (
-                <div className="flex flex-col gap-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
-                    {dept.members.slice(0, 2).map((member, idx) => (
-                      <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: idx * 0.1 }}
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
-                      >
-                        <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
-                          <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
-                            <img 
-                              src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
-                              alt={member.name}
-                             className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                              loading="lazy"
-                            />
-                          </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
-                          <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
-                        </Link>
-                        <div className="flex space-x-3 mt-auto pb-6 px-6">
-                          {member.linkedin && (
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
-                              <Linkedin className="w-4 h-4" />
-                            </a>
-                          )}
-                          {member.email && (
-                            <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
-                              <Mail className="w-4 h-4" />
-                            </a>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
-                    {dept.members.slice(2).map((member, idx) => (
-                      <motion.div 
-                        key={idx + 2}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: (idx + 2) * 0.1 }}
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
-                      >
-                        <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
-                          <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
-                            <img 
-                              src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
-                              alt={member.name}
-                              className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                              loading="lazy"
-                            />
-                          </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
-                          <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
-                        </Link>
-                        <div className="flex space-x-3 mt-auto pb-6 px-6">
-                          {member.linkedin && (
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
-                              <Linkedin className="w-4 h-4" />
-                            </a>
-                          )}
-                          {member.email && (
-                            <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
-                              <Mail className="w-4 h-4" />
-                            </a>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {dept.members.map((member, idx) => (
-                    <motion.div 
+                    <motion.div
                       key={idx}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.1 }}
-                      whileHover={{ y: -5, scale: 1.02 }}
-                      className="glass-panel flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(255,153,0,0.15)]"
+                      initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
+                      whileHover={{ y: -4 }}
+                      className="dev-card group overflow-hidden flex flex-col"
+                      style={{ borderTopColor: hexColor, borderTopWidth: 2 }}
                     >
-                      <Link to={`/team/${member.id}`} className="w-full p-6 flex flex-col items-center flex-grow">
-                        <div className={`w-28 h-28 rounded-full bg-cloud-secondary border-2 border-border-color mb-4 overflow-hidden flex items-center justify-center ${dept.hoverBorderColor} transition-colors`}>
-                          <img 
-                            src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`} 
+                      <Link to={`/team/${member.id}`} className="flex flex-col flex-grow">
+                        {/* Square photo */}
+                        <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
+                          <img
+                            src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
                             alt={member.name}
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 filter grayscale group-hover:grayscale-0"
                             loading="lazy"
                           />
                         </div>
-                        <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
-                        <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
+                        <div className="p-4 flex-grow flex flex-col">
+                          <h3 className="text-sm font-heading font-bold text-white leading-tight mb-1 group-hover:text-aws-orange transition-colors duration-200">{member.name}</h3>
+                          <p className="font-mono text-[10px] uppercase tracking-wider mt-auto" style={{ color: hexColor }}>{member.role}</p>
+                        </div>
                       </Link>
-                      <div className="flex space-x-3 mt-auto pb-6 px-6">
+                      
+                      {/* Socials */}
+                      <div className="px-4 pb-4 pt-2 flex gap-2 border-t border-border-color bg-[#080E1A]">
                         {member.linkedin && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-cloud-blue transition-colors hover:scale-110 transform z-10">
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cloud-blue transition-colors text-text-secondary">
                             <Linkedin className="w-4 h-4" />
                           </a>
                         )}
                         {member.email && (
-                          <a href={member.email} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform z-10">
+                          <a href={member.email} className="hover:text-aws-orange transition-colors text-text-secondary">
                             <Mail className="w-4 h-4" />
                           </a>
                         )}
@@ -160,119 +95,53 @@ export default function Team() {
                     </motion.div>
                   ))}
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Join the Team CTA */}
-      <section className="py-16 bg-cloud-secondary/30 border-t border-border-color text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <Users className="w-16 h-16 text-arcade-purple mx-auto mb-6 opacity-80" />
-          <h2 className="text-3xl font-heading font-bold mb-4 text-text-primary">Want to join the core team?</h2>
-          <p className="text-lg text-text-secondary mb-8 font-mono">
-            We are always looking for passionate students to help lead the club and organize events.
-          </p>
-          <button onClick={() => setShowContact(true)} className="pixel-button-secondary px-8 py-3 inline-block">Apply for Leadership</button>
+      {/* ── CTA ── */}
+      <section className="py-24 bg-grid-dense" style={{ background: '#0B1220', borderTop: '1px solid #1E2A3A' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto px-4 text-center">
+          <div className="dev-card p-12 border-animate">
+            <Users className="w-12 h-12 text-border-color mx-auto mb-6" />
+            <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
+            <p className="text-text-secondary mb-8 font-mono text-sm">We are always looking for passionate students to help lead the club and organize events.</p>
+            <button onClick={() => setShowContact(true)} className="pixel-button px-8 py-3.5">Apply for Leadership</button>
+          </div>
         </motion.div>
       </section>
 
-      {/* Contact Modal */}
+      {/* ── MODAL ── */}
       <AnimatePresence>
         {showContact && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowContact(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowContact(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1220]/80 backdrop-blur-sm px-4"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative glass-panel pixel-border w-full max-w-md p-8 rounded-2xl"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()} className="dev-card w-full max-w-md p-8 relative" style={{ background: '#0D1826' }}
             >
-              <button
-                onClick={() => setShowContact(false)}
-                className="absolute top-4 right-4 p-2 rounded-full text-text-secondary hover:text-text-primary hover:bg-cloud-secondary transition-all"
-              >
-                <X className="w-4 h-4" />
+              <button onClick={() => setShowContact(false)} className="absolute top-4 right-4 p-2 text-text-secondary hover:text-white transition-colors">
+                <X className="w-5 h-5" />
               </button>
-
-              <div className="mb-8 text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
-                  <Users className="w-6 h-6 text-arcade-purple" />
-                </div>
-                <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Apply for Leadership</h3>
-                <p className="text-sm text-text-secondary font-mono">
-                  Reach out to us or fill the form to join the core team.
-                </p>
+              <div className="mb-8">
+                <h3 className="text-2xl font-heading font-bold text-white mb-2">Apply for Leadership</h3>
+                <div className="section-line mb-4" />
+                <p className="text-sm text-text-secondary font-mono">Reach out to us or fill the form to join the core team.</p>
               </div>
-
               <div className="space-y-3">
-                {/* Google Form */}
-                <a
-                  href="https://forms.gle/zF7ETWoREn9nkP6dA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-arcade-purple/50 hover:bg-arcade-purple/10 transition-all duration-300 group"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-arcade-purple/10 border border-arcade-purple/20 group-hover:bg-arcade-purple/20 transition-colors shrink-0">
-                    <Users className="w-5 h-5 text-arcade-purple" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-sm font-semibold text-text-primary">Application Form</p>
-                    <p className="text-xs text-text-secondary font-mono">Fill out the official form</p>
-                  </div>
-                  <span className="ml-auto text-xs font-mono text-arcade-purple opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <a href="https://forms.gle/zF7ETWoREn9nkP6dA" target="_blank" rel="noopener noreferrer" className="dev-card card-shine flex items-center gap-4 p-4 group hover:border-arcade-purple">
+                  <Users className="w-5 h-5 text-arcade-purple shrink-0" />
+                  <div><p className="text-sm font-bold text-white">Application Form</p><p className="text-xs text-text-secondary font-mono">Fill out the official form</p></div>
                 </a>
-
-                {/* WhatsApp */}
-                <a
-                  href={`https://wa.me/918446712322?text=${encodeURIComponent("Hi! I'm interested in applying for a leadership role in the AWS Student Builder Group. Could you guide me through the process?")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors shrink-0">
-                    <MessageCircle className="w-5 h-5 text-[#25D366]" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-sm font-semibold text-text-primary">WhatsApp</p>
-                    <p className="text-xs text-text-secondary font-mono">Send us a message directly</p>
-                  </div>
-                  <span className="ml-auto text-xs font-mono text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
-
-                {/* Email */}
-                <a
-                  href={`mailto:awssbggcoek@gmail.com?subject=${encodeURIComponent("Leadership Application – AWS Student Builder Group")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in applying for a leadership role in the club.\n\nName: \nYear/Branch: \nRole Interested In: \nWhy I want to join: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
-                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">
-                    <Mail className="w-5 h-5 text-cloud-blue" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-sm font-semibold text-text-primary">Email</p>
-                    <p className="text-xs text-text-secondary font-mono">awssbggcoek@gmail.com</p>
-                  </div>
-                  <span className="ml-auto text-xs font-mono text-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <a href={`https://wa.me/918446712322`} target="_blank" rel="noopener noreferrer" className="dev-card card-shine flex items-center gap-4 p-4 group hover:border-[#22C55E]">
+                  <MessageCircle className="w-5 h-5 text-[#22C55E] shrink-0" />
+                  <div><p className="text-sm font-bold text-white">WhatsApp</p><p className="text-xs text-text-secondary font-mono">Send us a message</p></div>
                 </a>
               </div>
-
-              <p className="text-center text-xs text-text-secondary font-mono mt-6">
-                We typically respond within 24–48 hours.
-              </p>
             </motion.div>
           </motion.div>
         )}
