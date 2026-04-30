@@ -15,9 +15,7 @@ export function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -35,59 +33,61 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300 ease-in-out',
-        scrolled ? 'bg-cloud-navy/80 backdrop-blur-lg border-b border-white/5 py-3' : 'bg-transparent py-5'
+        'fixed top-0 w-full z-50 transition-all duration-300',
+        scrolled ? 'navbar-scrolled py-3' : 'navbar-top py-4'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-              <img 
-                src="https://i.ibb.co/mCTP8GRn/AWS-Student-Builder-Group-RGB-Program-Icon-Purple.png" 
-                alt="AWS Student Builder Group GCOEK Logo" 
-                className="h-12 sm:h-14 object-contain" 
-                referrerPolicy="no-referrer" 
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
+              <img
+                src="https://i.ibb.co/mCTP8GRn/AWS-Student-Builder-Group-RGB-Program-Icon-Purple.png"
+                alt="AWS Student Builder Group GCOEK Logo"
+                className="h-10 sm:h-12 object-contain"
+                referrerPolicy="no-referrer"
               />
             </motion.div>
-            <span className="font-heading font-bold text-lg tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
-              AWS Student Builder Group <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-heading font-bold text-sm leading-tight tracking-tight text-white group-hover:text-aws-orange transition-colors duration-200">
+                AWS Student Builder Group
+              </span>
+              <span className="font-mono text-xs text-aws-orange tracking-widest uppercase">– GCOEK</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="flex space-x-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={cn(
-                    'px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg',
-                    location.pathname === link.path
-                      ? 'text-aws-orange bg-aws-orange/10'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
-                  )}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={cn(
+                  'px-3 py-2 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200',
+                  location.pathname === link.path
+                    ? 'text-aws-orange border-b-2 border-aws-orange'
+                    : 'text-text-secondary hover:text-white'
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
             <Link
               to="/join"
-              className="pixel-button px-5 py-2 text-sm"
+              className="pixel-button px-5 py-2 text-xs ml-4"
             >
-              Join
+              Join Now
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-text-secondary hover:text-aws-orange focus:outline-none transition-transform duration-300 hover:scale-110"
+              className="text-text-secondary hover:text-aws-orange focus:outline-none transition-colors duration-200"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -96,49 +96,45 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden glass-panel border-t border-border-color absolute w-full overflow-hidden"
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="md:hidden absolute w-full overflow-hidden"
+            style={{ background: '#0B1220', borderBottom: '1px solid #1E2A3A' }}
           >
-            <div className="px-4 pt-4 pb-6 space-y-2 sm:px-6">
+            <div className="px-4 pt-3 pb-5 space-y-1">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  transition={{ delay: idx * 0.04 }}
                 >
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200',
+                      'block px-3 py-2.5 text-xs font-mono font-medium tracking-wider uppercase transition-all duration-200 border-l-2',
                       location.pathname === link.path
-                        ? 'text-aws-orange bg-cloud-secondary/50 shadow-sm'
-                        : 'text-text-secondary hover:text-aws-orange hover:bg-cloud-secondary/30 hover:translate-x-1'
+                        ? 'text-aws-orange border-aws-orange bg-aws-orange/5'
+                        : 'text-text-secondary border-transparent hover:text-white hover:border-white/20'
                     )}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="pt-4"
-              >
+              <div className="pt-3">
                 <Link
                   to="/join"
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-center pixel-button w-full"
+                  className="block pixel-button w-full text-center py-3 text-xs"
                 >
-                  Join the Club
+                  Join Now
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
