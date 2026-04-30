@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-3 group mb-6">
               <img 
-                src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+                src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png" 
                 alt="AWS Student Builder Group GCOEK Logo" 
                 className="h-16 sm:h-20 object-contain" 
                 referrerPolicy="no-referrer" 

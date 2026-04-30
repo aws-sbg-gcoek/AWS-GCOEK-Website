@@ -44,7 +44,7 @@ export function Navbar() {
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
               <img 
-                src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
+                src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png" 
                 alt="AWS Student Builder Group GCOEK Logo" 
                 className="h-12 sm:h-14 object-contain" 
                 referrerPolicy="no-referrer" 
