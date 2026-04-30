@@ -106,7 +106,7 @@ export default function Home() {
               <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-heading font-black mb-4 leading-[1.05] tracking-tight">
                 <span className="text-white">AWS Student</span><br />
                 <span className="text-white">Builder Group</span><br />
-                <span style={{ color: '#FF9900' }} className="glow-pulse-orange inline-block">GCOE Kolhapur</span>
+                <span style={{ color: '#FF9900' }}>GCOE Kolhapur</span>
               </motion.h1>
 
               {/* Accent line */}
