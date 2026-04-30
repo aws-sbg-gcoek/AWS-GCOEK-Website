@@ -45,7 +45,7 @@ export function Navbar() {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png"
+              src="https://i.ibb.co/mCTP8GRn/AWS-Student-Builder-Group-RGB-Program-Icon-Purple.png"
               alt="AWS Student Builder Group GCOEK Logo"
               className="h-9 object-contain"
               referrerPolicy="no-referrer"

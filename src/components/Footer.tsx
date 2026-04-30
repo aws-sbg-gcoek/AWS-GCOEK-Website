@@ -22,7 +22,7 @@ export function Footer() {
           <div className="md:col-span-5">
             <Link to="/" className="flex items-center gap-3 mb-5 group w-fit">
               <img
-                src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png"
+                src="https://i.ibb.co/mCTP8GRn/AWS-Student-Builder-Group-RGB-Program-Icon-Purple.png"
                 alt="AWS Student Builder Group GCOEK"
                 className="h-9 object-contain"
                 referrerPolicy="no-referrer"
