@@ -62,28 +62,23 @@ export default function Home() {
 
         {/* Static geometric blocks — right side, AWS BC style */}
         <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:block pointer-events-none z-0">
-          {/* Large purple block — top right */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
-            className="bc-block w-32 h-32 bg-brand/80 top-[8%] right-[8%]" style={{ background: '#7c3aed', opacity: 0.85 }} />
-          {/* Medium violet — mid right */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
-            className="bc-block w-20 h-20 top-[30%] right-[22%]" style={{ background: '#a78bfa', opacity: 0.7 }} />
-          {/* Small cyan — accent */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.7 }}
-            className="bc-block w-12 h-12 top-[48%] right-[10%]" style={{ background: '#67e8f9', opacity: 0.6 }} />
-          {/* Medium purple — lower */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.6 }}
-            className="bc-block w-24 h-24 bottom-[18%] right-[16%]" style={{ background: '#7c3aed', opacity: 0.65 }} />
-          {/* Small green — bottom accent */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.9 }}
-            className="bc-block w-14 h-14 bottom-[30%] right-[32%]" style={{ background: '#4ade80', opacity: 0.55 }} />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.3 }}
+            className="bc-block w-32 h-32 top-[8%] right-[8%]" style={{ background: '#7c3aed' }} />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.45 }}
+            className="bc-block w-20 h-20 top-[30%] right-[22%]" style={{ background: '#a78bfa' }} />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.6 }}
+            className="bc-block w-12 h-12 top-[48%] right-[10%]" style={{ background: '#67e8f9' }} />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.55 }}
+            className="bc-block w-24 h-24 bottom-[18%] right-[16%]" style={{ background: '#7c3aed', opacity: 0.7 }} />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.75 }}
+            className="bc-block w-14 h-14 bottom-[32%] right-[34%]" style={{ background: '#4ade80', opacity: 0.65 }} />
         </div>
 
-        {/* Very subtle left ambient glow */}
+        {/* Subtle ambient glow */}
         <div className="absolute left-[-200px] top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none z-0"
-          style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)' }} />
 
-        {/* Content — left aligned like AWS BC */}
+        {/* Content — left aligned */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
 
@@ -93,32 +88,35 @@ export default function Home() {
               AWS Student Builder Group · GCOEK
             </motion.div>
 
-            {/* Headline */}
+            {/* Original headline */}
             <motion.h1 variants={itemVariants}
-              className="font-heading font-black tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.05 }}>
-              <span className="text-white">Sign up.</span>
+              className="font-heading font-black tracking-tight text-white mb-6"
+              style={{ fontSize: 'clamp(2.6rem, 6vw, 4.5rem)', lineHeight: 1.08 }}>
+              AWS Student<br />Builder Group
               <br />
-              <span className="text-white">Level up.</span>
+              <span style={{ background: 'linear-gradient(90deg,#8b5cf6,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                GCOE Kolhapur
+              </span>
             </motion.h1>
 
-            {/* Sub-headline */}
-            <motion.p variants={itemVariants}
-              className="text-lg text-text-secondary mb-10 leading-relaxed max-w-lg"
-              style={{ fontWeight: 400 }}>
-              Join AWS Student Builder Group to learn something new, connect with curious minds,
-              and expand your network in the cloud community.
+            {/* Original subtitle */}
+            <motion.p variants={itemVariants} className="text-lg text-text-secondary mb-10 leading-relaxed max-w-lg">
+              Empowering students to{' '}
+              <span className="text-builder-cyan font-semibold">learn</span>,{' '}
+              <span className="text-arcade-purple font-semibold">build</span>, and{' '}
+              <span className="text-builder-green font-semibold">launch</span>{' '}
+              their cloud careers.
             </motion.p>
 
-            {/* CTA row */}
+            {/* Original CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
               <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/"
                 target="_blank" rel="noopener noreferrer"
-                className="pixel-button px-7 py-3">
-                Sign up with Builder ID
+                className="pixel-button px-8 py-3">
+                Join the Club
               </a>
               <button onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
-                className="pixel-button-secondary px-7 py-3">
+                className="pixel-button-secondary px-8 py-3">
                 Explore Events
               </button>
             </motion.div>
