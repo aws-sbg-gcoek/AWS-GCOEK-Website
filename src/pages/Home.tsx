@@ -57,62 +57,68 @@ export default function Home() {
 
   return (
     <PageTransition className="w-full">
-      {/* ── HERO ── */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-grid-pattern">
+      {/* ── HERO — AWS Builder Center Style ── */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-grid-pattern">
 
-        {/* Ambient glow orbs */}
-        <div className="glow-orb glow-orb-purple w-[600px] h-[600px] top-[-150px] left-[-150px] opacity-40" />
-        <div className="glow-orb glow-orb-pink   w-[400px] h-[400px] bottom-[-100px] right-[-80px]  opacity-30" />
-        <div className="glow-orb glow-orb-cyan   w-[300px] h-[300px] top-1/2 right-[10%] opacity-20" />
+        {/* Static geometric blocks — right side, AWS BC style */}
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:block pointer-events-none z-0">
+          {/* Large purple block — top right */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
+            className="bc-block w-32 h-32 bg-brand/80 top-[8%] right-[8%]" style={{ background: '#7c3aed', opacity: 0.85 }} />
+          {/* Medium violet — mid right */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
+            className="bc-block w-20 h-20 top-[30%] right-[22%]" style={{ background: '#a78bfa', opacity: 0.7 }} />
+          {/* Small cyan — accent */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.7 }}
+            className="bc-block w-12 h-12 top-[48%] right-[10%]" style={{ background: '#67e8f9', opacity: 0.6 }} />
+          {/* Medium purple — lower */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.6 }}
+            className="bc-block w-24 h-24 bottom-[18%] right-[16%]" style={{ background: '#7c3aed', opacity: 0.65 }} />
+          {/* Small green — bottom accent */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.9 }}
+            className="bc-block w-14 h-14 bottom-[30%] right-[32%]" style={{ background: '#4ade80', opacity: 0.55 }} />
+        </div>
 
-        {/* PPT-inspired floating pixel blocks */}
-        <motion.div animate={{ y: [0,-14,0], rotate:[0,4,0] }} transition={{ duration:7, repeat:Infinity, ease:'easeInOut' }}
-          className="pixel-block-deco w-12 h-12 bg-arcade-purple/70 top-[12%] right-[8%]" style={{animationDelay:'0s'}} />
-        <motion.div animate={{ y: [0,10,0],  rotate:[0,-3,0] }} transition={{ duration:9, repeat:Infinity, ease:'easeInOut' }}
-          className="pixel-block-deco w-8 h-8  bg-builder-pink/60  top-[20%] right-[14%]" style={{animationDelay:'1s'}} />
-        <motion.div animate={{ y: [0,-8,0],  rotate:[0,2,0] }} transition={{ duration:11, repeat:Infinity, ease:'easeInOut' }}
-          className="pixel-block-deco w-6 h-6  bg-builder-cyan/50  top-[35%] right-[6%]" style={{animationDelay:'2s'}} />
-        <motion.div animate={{ y: [0,12,0],  rotate:[0,-2,0] }} transition={{ duration:8, repeat:Infinity, ease:'easeInOut' }}
-          className="pixel-block-deco w-10 h-10 bg-builder-green/50 bottom-[20%] right-[10%]" style={{animationDelay:'0.5s'}} />
-        <motion.div animate={{ y: [0,-10,0], rotate:[0,3,0] }} transition={{ duration:10, repeat:Infinity, ease:'easeInOut' }}
-          className="pixel-block-deco w-7 h-7  bg-arcade-purple/40 top-[15%] left-[6%]" style={{animationDelay:'1.5s'}} />
+        {/* Very subtle left ambient glow */}
+        <div className="absolute left-[-200px] top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none z-0"
+          style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)' }} />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div variants={containerVariants} initial="hidden" animate="visible">
+        {/* Content — left aligned like AWS BC */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
 
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 badge-purple mb-10">
-              <span className="pulse-dot"></span>
-              Now accepting new members
+            {/* Eyebrow */}
+            <motion.div variants={itemVariants} className="eyebrow mb-8">
+              <span className="eyebrow-dot" />
+              AWS Student Builder Group · GCOEK
             </motion.div>
 
-            {/* Heading */}
-            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl font-heading font-black mb-6 tracking-tighter leading-none">
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-400">AWS Student</span>
+            {/* Headline */}
+            <motion.h1 variants={itemVariants}
+              className="font-heading font-black tracking-tight mb-6"
+              style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.05 }}>
+              <span className="text-white">Sign up.</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-400">Builder Group</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcade-purple via-builder-pink to-builder-cyan">GCOE Kolhapur</span>
+              <span className="text-white">Level up.</span>
             </motion.h1>
 
-            {/* Gradient rule */}
-            <motion.div variants={itemVariants} className="gradient-divider max-w-xs mx-auto mb-8" />
-
-            <motion.p variants={itemVariants} className="text-lg md:text-xl text-text-secondary mb-12 max-w-xl mx-auto leading-relaxed">
-              Empowering students to{' '}
-              <span className="text-builder-cyan font-semibold">learn</span>,{' '}
-              <span className="text-arcade-purple font-semibold">build</span>, and{' '}
-              <span className="text-builder-green font-semibold">launch</span>{' '}
-              their cloud careers.
+            {/* Sub-headline */}
+            <motion.p variants={itemVariants}
+              className="text-lg text-text-secondary mb-10 leading-relaxed max-w-lg"
+              style={{ fontWeight: 400 }}>
+              Join AWS Student Builder Group to learn something new, connect with curious minds,
+              and expand your network in the cloud community.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/" target="_blank" rel="noopener noreferrer"
-                className="pixel-button px-10 py-4 text-sm w-full sm:w-auto">
-                Join the Group
+            {/* CTA row */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
+              <a href="https://www.meetup.com/aws-cloud-club-at-gcoe-kolhapur/"
+                target="_blank" rel="noopener noreferrer"
+                className="pixel-button px-7 py-3">
+                Sign up with Builder ID
               </a>
               <button onClick={() => document.getElementById('upcoming-events')?.scrollIntoView({ behavior: 'smooth' })}
-                className="pixel-button-secondary px-10 py-4 text-sm w-full sm:w-auto">
+                className="pixel-button-secondary px-7 py-3">
                 Explore Events
               </button>
             </motion.div>

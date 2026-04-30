@@ -1,41 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 /* ============================================================
    DESIGN TOKENS — AWS Student Builder Group GCOEK
+   Inspired by: AWS Builder Center (dark, grid, geometric, minimal)
    ============================================================ */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
   --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
 
-  /* Brand primaries */
-  --color-aws-orange:       #a855f7;   /* purple = new primary */
-  --color-arcade-purple:    #a855f7;
-  --color-builder-pink:     #ec4899;
-  --color-builder-cyan:     #38bdf8;
-  --color-builder-green:    #22c55e;
-  --color-builder-orange:   #f97316;
+  /* Brand */
+  --color-brand:          #7c3aed;   /* refined deep purple */
+  --color-brand-light:    #8b5cf6;
+  --color-brand-muted:    rgba(124, 58, 237, 0.15);
 
-  /* Background layers */
-  --color-cloud-navy:       #080812;
-  --color-cloud-secondary:  #0f0f1e;
-  --color-cloud-surface:    #151528;
-  --color-cloud-elevated:   #1c1c36;
-  --color-cloud-blue:       #38bdf8;
+  /* Kept as aws-orange alias so existing Tailwind classes still work */
+  --color-aws-orange:     #8b5cf6;
+  --color-arcade-purple:  #8b5cf6;
+  --color-builder-pink:   #a78bfa;
+  --color-builder-cyan:   #67e8f9;
+  --color-builder-green:  #4ade80;
+  --color-cloud-blue:     #67e8f9;
+
+  /* Surfaces — AWS BC dark palette */
+  --color-cloud-navy:     #13131f;
+  --color-cloud-secondary:#1a1a2e;
+  --color-cloud-elevated: #20203a;
 
   /* Text */
-  --color-text-primary:     #f1f5f9;
-  --color-text-secondary:   #94a3b8;
-  --color-text-muted:       #475569;
+  --color-text-primary:   #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted:     #52525b;
 
-  /* Borders */
-  --color-border-color:     rgba(168,85,247,0.18);
-  --color-border-subtle:    rgba(255,255,255,0.06);
+  /* Borders — extremely subtle */
+  --color-border-color:   rgba(255, 255, 255, 0.08);
+  --color-border-brand:   rgba(139, 92, 246, 0.3);
 }
 
 /* ============================================================
-   BASE
+   BASE RESET
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -51,286 +55,233 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  /* Subtle noise texture overlay */
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 body::-webkit-scrollbar { display: none; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 
 /* ============================================================
-   GRID BACKGROUND (PPT-inspired, purple-tinted)
+   AWS BUILDER CENTER GRID — the signature look
    ============================================================ */
 .bg-grid-pattern {
   background-image:
-    linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 /* ============================================================
-   AMBIENT GLOW ORBS (place absolutely in sections)
+   GEOMETRIC BLOCK ACCENT — static, professional (AWS BC style)
    ============================================================ */
-.glow-orb {
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
+.bc-block {
   position: absolute;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 0;
 }
-.glow-orb-purple { background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%); }
-.glow-orb-pink   { background: radial-gradient(circle, rgba(236,72,153,0.25) 0%, transparent 70%); }
-.glow-orb-cyan   { background: radial-gradient(circle, rgba(56,189,248,0.2)  0%, transparent 70%); }
 
 /* ============================================================
-   GLASS PANEL — premium frosted glass with purple tint
+   SURFACE / CARD
    ============================================================ */
 .glass-panel {
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  background: linear-gradient(
-    135deg,
-    rgba(168, 85, 247, 0.06) 0%,
-    rgba(15, 15, 30, 0.75) 100%
-  );
-  border: 1px solid rgba(168, 85, 247, 0.15);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 8px 32px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(168,85,247,0.05);
+  background: rgba(26, 26, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* ============================================================
-   PIXEL BORDER CARDS
-   ============================================================ */
 .pixel-border {
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 1rem;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(
-    145deg,
-    rgba(168, 85, 247, 0.07) 0%,
-    rgba(12, 12, 24, 0.92) 100%
-  );
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(26, 26, 46, 0.5);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .pixel-border-hover:hover {
-  border-color: rgba(168, 85, 247, 0.5);
-  transform: translateY(-6px);
-  box-shadow:
-    0 0 0 1px rgba(168, 85, 247, 0.25),
-    0 20px 40px -12px rgba(168, 85, 247, 0.35),
-    0 8px 16px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(168,85,247,0.1);
-  background: linear-gradient(
-    145deg,
-    rgba(168, 85, 247, 0.12) 0%,
-    rgba(12, 12, 24, 0.95) 100%
-  );
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.12), 0 16px 40px -12px rgba(0,0,0,0.6);
+  transform: translateY(-4px);
 }
 
 /* ============================================================
-   GRADIENT TEXT
+   TYPOGRAPHY
    ============================================================ */
 .text-gradient-purple {
-  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  background: linear-gradient(90deg, #c4b5fd 0%, #8b5cf6 50%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-orange {
-  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-blue {
-  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+  background: linear-gradient(90deg, #c4b5fd 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ============================================================
-   BUTTONS — Premium with shimmer & depth
+   LABEL / EYEBROW TEXT
    ============================================================ */
-.pixel-button {
+.eyebrow {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-  color: #fff;
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: 0.6rem;
-  padding: 0.8rem 1.8rem;
-  font-weight: 700;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  box-shadow:
-    0 0 0 1px rgba(168,85,247,0.2),
-    0 4px 16px rgba(168, 85, 247, 0.35),
-    inset 0 1px 0 rgba(255,255,255,0.15);
+  color: var(--color-text-muted);
+  padding: 6px 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.03);
 }
 
-/* Shimmer sweep */
-.pixel-button::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
-  transition: left 0.55s ease;
-}
-.pixel-button:hover::before { left: 100%; }
-
-.pixel-button:hover {
-  background: linear-gradient(135deg, #b46ff9 0%, #8b5cf6 100%);
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 0 1px rgba(168,85,247,0.4),
-    0 8px 24px rgba(168, 85, 247, 0.5),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-}
-.pixel-button:active { transform: translateY(0); }
-
-/* Outline / secondary */
-.pixel-button-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #a855f7;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  background: rgba(168, 85, 247, 0.06);
-  border-radius: 0.6rem;
-  padding: 0.8rem 1.8rem;
-  font-weight: 700;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow:
-    inset 0 1px 0 rgba(168,85,247,0.08),
-    0 2px 8px rgba(0,0,0,0.3);
-}
-.pixel-button-secondary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(168,85,247,0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.pixel-button-secondary:hover::before { opacity: 1; }
-.pixel-button-secondary:hover {
-  border-color: rgba(168, 85, 247, 0.7);
-  color: #c084fc;
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 16px rgba(168,85,247,0.2),
-    inset 0 1px 0 rgba(168,85,247,0.15),
-    0 4px 12px rgba(0,0,0,0.3);
-}
-.pixel-button-secondary:active { transform: translateY(0); }
-
-/* ============================================================
-   GLOW CARD
-   ============================================================ */
-.glow-card {
-  position: relative;
-  transition: box-shadow 0.35s ease;
-}
-.glow-card:hover {
-  box-shadow:
-    0 0 0 1px rgba(168,85,247,0.3),
-    0 24px 48px -12px rgba(168,85,247,0.3),
-    0 8px 16px rgba(0,0,0,0.5);
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brand-light);
+  flex-shrink: 0;
 }
 
 /* ============================================================
-   SECTION DIVIDER — gradient line
+   SECTION LABEL (like AWS BC "Get started")
+   ============================================================ */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   DIVIDER
    ============================================================ */
 .gradient-divider {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(168,85,247,0.5) 30%,
-    rgba(236,72,153,0.5) 70%,
+    rgba(139, 92, 246, 0.4) 40%,
+    rgba(167, 139, 250, 0.4) 60%,
     transparent 100%
   );
   border: none;
+  margin: 0;
 }
 
 /* ============================================================
-   BADGE / PILL
+   BUTTONS — clean, AWS-inspired
    ============================================================ */
-.badge-purple {
+
+/* Primary — filled purple */
+.pixel-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  border-radius: 9999px;
-  padding: 0.35rem 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: #c084fc;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* ============================================================
-   ANIMATED GRADIENT BORDER (for featured cards)
-   ============================================================ */
-@keyframes borderRotate {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-.animated-border {
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-brand);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
   position: relative;
-  border-radius: 1.1rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.animated-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(270deg, #a855f7, #ec4899, #38bdf8, #a855f7);
-  background-size: 300% 300%;
-  animation: borderRotate 4s linear infinite;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+.pixel-button:hover {
+  background: var(--color-brand-light);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
 }
-.animated-border:hover::before { opacity: 1; }
+.pixel-button:active { transform: translateY(0); }
+
+/* Secondary — ghost */
+.pixel-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.pixel-button-secondary:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(139, 92, 246, 0.06);
+  transform: translateY(-1px);
+}
+.pixel-button-secondary:active { transform: translateY(0); }
 
 /* ============================================================
-   STAT COUNTER NUMBER — glow text
+   CARDS
+   ============================================================ */
+.card {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   ICON CONTAINER
+   ============================================================ */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.icon-box:hover, .group:hover .icon-box {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* ============================================================
+   STAT NUMBER — clean, not glitzy
    ============================================================ */
 .stat-number {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-weight: 800;
-  background: linear-gradient(135deg, #a855f7, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(168,85,247,0.5));
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
 /* ============================================================
@@ -339,74 +290,50 @@ h1, h2, h3, h4, h5, h6 {
 .tech-tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.65rem;
-  background: rgba(168, 85, 247, 0.1);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: 0.35rem;
+  padding: 3px 10px;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: #c084fc;
-  letter-spacing: 0.04em;
-  transition: all 0.2s ease;
-}
-.tech-tag:hover {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: rgba(168, 85, 247, 0.5);
+  font-size: 0.68rem;
+  color: #a78bfa;
+  letter-spacing: 0.03em;
 }
 
 /* ============================================================
-   ICON BOX
+   GLOW CARD (very subtle — not neon)
    ============================================================ */
-.icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 0.875rem;
-  background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.05));
-  border: 1px solid rgba(168,85,247,0.25);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 8px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-.icon-box:hover {
-  background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(168,85,247,0.1));
-  border-color: rgba(168,85,247,0.5);
-  box-shadow: 0 0 16px rgba(168,85,247,0.25);
+.glow-card { position: relative; }
+.glow-card:hover {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.08), 0 16px 48px rgba(0,0,0,0.4);
 }
 
 /* ============================================================
-   HERO PIXEL BLOCKS (PPT-inspired floating decoration)
+   ANIMATED GRADIENT BORDER (for featured card only)
    ============================================================ */
-@keyframes floatBlock {
-  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-  50%       { transform: translateY(-12px) rotate(3deg); opacity: 0.9; }
+@keyframes rotateGrad {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
 }
-.pixel-block-deco {
-  border-radius: 6px;
-  animation: floatBlock 6s ease-in-out infinite;
-  position: absolute;
-  pointer-events: none;
+.animated-border { position: relative; border-radius: 13px; }
+.animated-border::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(270deg, #7c3aed, #a78bfa, #7c3aed);
+  background-size: 300% 300%;
+  animation: rotateGrad 5s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
+.animated-border:hover::before { opacity: 1; }
 
 /* ============================================================
-   PULSE DOT
+   HORIZONTAL RULE  (AWS BC footer style)
    ============================================================ */
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(168,85,247,0.6); }
-  50%       { box-shadow: 0 0 0 6px rgba(168,85,247,0); }
+hr.bc-rule {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin: 0;
 }
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #a855f7;
-  animation: pulseDot 1.8s ease-in-out infinite;
-}
-
-/* ============================================================
-   SCROLLBAR (styled, hidden by default but visible in modals)
-   ============================================================ */
-.styled-scroll::-webkit-scrollbar { width: 4px; }
-.styled-scroll::-webkit-scrollbar-track { background: transparent; }
-.styled-scroll::-webkit-scrollbar-thumb { background: rgba(168,85,247,0.4); border-radius: 9999px; }

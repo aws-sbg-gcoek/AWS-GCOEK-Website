@@ -35,48 +35,44 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300 ease-in-out',
-        scrolled ? 'bg-cloud-navy/80 backdrop-blur-lg border-b border-white/5 py-3' : 'bg-transparent py-5'
+        'fixed top-0 w-full z-50 transition-all duration-300',
+        scrolled
+          ? 'bg-[#13131f]/90 backdrop-blur-xl border-b border-white/[0.06] py-3'
+          : 'bg-transparent py-4'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-              <img 
-                src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png" 
-                alt="AWS Student Builder Group GCOEK Logo" 
-                className="h-12 sm:h-14 object-contain" 
-                referrerPolicy="no-referrer" 
-              />
-            </motion.div>
-            <span className="font-heading font-bold text-lg tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
-              AWS Student Builder Group <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src="https://i.ibb.co/WWfdyDW1/Untitled-design-17-removebg-preview.png"
+              alt="AWS Student Builder Group GCOEK Logo"
+              className="h-9 object-contain"
+              referrerPolicy="no-referrer"
+            />
+            <span className="font-heading font-bold text-base text-white tracking-tight hidden sm:block">
+              AWS Student Builder Group
+              <span className="text-[#8b5cf6] ml-1">GCOEK</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="flex space-x-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={cn(
-                    'px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg',
-                    location.pathname === link.path
-                      ? 'text-aws-orange bg-aws-orange/10'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
-                  )}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-            <Link
-              to="/join"
-              className="pixel-button px-5 py-2 text-sm"
-            >
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={cn(
+                  'px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md',
+                  location.pathname === link.path
+                    ? 'text-white bg-white/[0.08]'
+                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.05]'
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link to="/join" className="pixel-button px-5 py-2 text-sm ml-4">
               Join
             </Link>
           </div>
@@ -85,9 +81,9 @@ export function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-text-secondary hover:text-aws-orange focus:outline-none transition-transform duration-300 hover:scale-110"
+              className="text-zinc-400 hover:text-white focus:outline-none transition-colors"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
