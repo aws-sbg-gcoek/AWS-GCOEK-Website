@@ -68,7 +68,7 @@ export default function Projects() {
               Student Projects
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
-              Explore the real-world cloud solutions built by members of the AWS Cloud Club.
+              Explore the real-world cloud solutions built by members of the AWS Student Builder Group.
             </p>
           </motion.div>
         </div>
@@ -208,7 +208,7 @@ export default function Projects() {
               <div className="space-y-3">
                 {/* WhatsApp */}
                 <a
-                  href={`https://wa.me/918421807460?text=${encodeURIComponent("Hi! I'm interested in showcasing my project on the AWS Cloud Club website. I'd love to have it featured in the Student Projects section. Could you guide me on the submission process?")}`}
+                  href={`https://wa.me/918421807460?text=${encodeURIComponent("Hi! I'm interested in showcasing my project on the AWS Student Builder Group website. I'd love to have it featured in the Student Projects section. Could you guide me on the submission process?")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
@@ -225,7 +225,7 @@ export default function Projects() {
 
                 {/* Email */}
                 <a
-                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Project Submission – AWS Cloud Club Website")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in submitting my project to be displayed on your website.\n\nProject Name: \nProject Description: \nTech Stack: \nGitHub Link: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Project Submission – AWS Student Builder Group Website")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in submitting my project to be displayed on your website.\n\nProject Name: \nProject Description: \nTech Stack: \nGitHub Link: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">

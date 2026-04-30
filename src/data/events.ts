@@ -108,7 +108,7 @@ export const eventsData: AppEvent[] = [
   },
   {
     id: 'intro-meetup',
-    title: 'AWS Cloud Club GCOEK: Intro Meetup',
+    title: 'AWS Student Builder Group GCOEK: Intro Meetup',
     date: '19 Jan 2026',
     time: '3:00 PM',
     location: 'Seminar Hall (Old Building)',

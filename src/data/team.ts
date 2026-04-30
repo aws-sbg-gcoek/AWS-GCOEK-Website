@@ -8,12 +8,12 @@ export const departments = [
     bgColor: "bg-aws-orange",
     hoverBorderColor: "group-hover:border-aws-orange",
     members: [
-      { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', bio: 'Guiding the AWS Cloud Club and supporting student initiatives at GCOEK.', skills: ['Mentorship', 'Leadership', 'Cloud Computing'], image: 'https://i.ibb.co/xqY0bSS3/Varsha-maam.jpg' },
+      { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', bio: 'Guiding the AWS Student Builder Group and supporting student initiatives at GCOEK.', skills: ['Mentorship', 'Leadership', 'Cloud Computing'], image: 'https://i.ibb.co/xqY0bSS3/Varsha-maam.jpg' },
       { 
         id: 'shardul-kolekar', 
         name: 'Shardul Kolekar', 
         role: 'Captain (President)', 
-        bio: 'Leading the AWS Cloud Club with a vision to build a strong cloud computing community at GCOEK. Passionate about serverless architectures and cloud-native development.', 
+        bio: 'Leading the AWS Student Builder Group with a vision to build a strong cloud computing community at GCOEK. Passionate about serverless architectures and cloud-native development.', 
         skills: ['AWS', 'Leadership', 'Cloud Architecture', 'Serverless', 'React', 'Node.js'], 
         email: 'mailto:kolekarshardul23@gmail.com', 
         linkedin: 'https://www.linkedin.com/in/shardulkolekar', 
@@ -27,7 +27,7 @@ export const departments = [
         projects: [
           {
             name: 'Cloud Club Portal',
-            desc: 'Developed the official website and member portal for the AWS Cloud Club using React, Tailwind CSS, and AWS Amplify.',
+            desc: 'Developed the official website and member portal for the AWS Student Builder Group using React, Tailwind CSS, and AWS Amplify.',
             tags: ['React', 'AWS Amplify', 'Tailwind CSS'],
             link: '#'
           },

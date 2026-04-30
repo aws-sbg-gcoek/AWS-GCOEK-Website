@@ -21,7 +21,7 @@ export default function About() {
               About the Club
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
-              AWS Cloud Club at Government College of Engineering Kolhapur is a student-led community focused on exploring cloud technologies and helping students build real-world technical skills.
+              AWS Student Builder Group at Government College of Engineering Kolhapur is a student-led community focused on exploring cloud technologies and helping students build real-world technical skills.
             </p>
           </motion.div>
         </div>

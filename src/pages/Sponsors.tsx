@@ -357,7 +357,7 @@ export default function Sponsors() {
               <div className="space-y-3">
                 {/* WhatsApp */}
                 <a
-                  href={`https://wa.me/918797275757?text=${encodeURIComponent("Hi! I'm interested in sponsoring the AWS Cloud Club at GCOE Kolhapur. Could you share more details about the sponsorship tiers and benefits?")}`}
+                  href={`https://wa.me/918797275757?text=${encodeURIComponent("Hi! I'm interested in sponsoring the AWS Student Builder Group at GCOE Kolhapur. Could you share more details about the sponsorship tiers and benefits?")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
@@ -374,7 +374,7 @@ export default function Sponsors() {
 
                 {/* Email */}
                 <a
-                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Sponsorship Inquiry – AWS Cloud Club GCOE")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in sponsoring your club and would like to learn more about the available sponsorship tiers and benefits.\n\nOrganization Name: \nContact Person: \nDesignation: \nSponsorship Tier Interested In: \n\nLooking forward to connecting!\n\nBest regards,\n[Your Name]")}`}
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Sponsorship Inquiry – AWS Student Builder Group GCOE")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in sponsoring your club and would like to learn more about the available sponsorship tiers and benefits.\n\nOrganization Name: \nContact Person: \nDesignation: \nSponsorship Tier Interested In: \n\nLooking forward to connecting!\n\nBest regards,\n[Your Name]")}`}
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">

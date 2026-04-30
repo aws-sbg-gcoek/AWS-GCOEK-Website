@@ -20,7 +20,7 @@ export default function Team() {
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gradient-orange">Our Team</h1>
             <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto font-mono">
-              Meet the dedicated students leading the AWS Cloud Club at GCOEK.
+              Meet the dedicated students leading the AWS Student Builder Group at GCOEK.
             </p>
           </motion.div>
         </div>
@@ -239,7 +239,7 @@ export default function Team() {
 
                 {/* WhatsApp */}
                 <a
-                  href={`https://wa.me/918446712322?text=${encodeURIComponent("Hi! I'm interested in applying for a leadership role in the AWS Cloud Club. Could you guide me through the process?")}`}
+                  href={`https://wa.me/918446712322?text=${encodeURIComponent("Hi! I'm interested in applying for a leadership role in the AWS Student Builder Group. Could you guide me through the process?")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 group"
@@ -256,7 +256,7 @@ export default function Team() {
 
                 {/* Email */}
                 <a
-                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Leadership Application – AWS Cloud Club")}&body=${encodeURIComponent("Hi AWS Cloud Club Team,\n\nI'm interested in applying for a leadership role in the club.\n\nName: \nYear/Branch: \nRole Interested In: \nWhy I want to join: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
+                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Leadership Application – AWS Student Builder Group")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in applying for a leadership role in the club.\n\nName: \nYear/Branch: \nRole Interested In: \nWhy I want to join: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">

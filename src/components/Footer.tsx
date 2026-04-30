@@ -11,13 +11,13 @@ export function Footer() {
             <Link to="/" className="flex items-center space-x-3 group mb-6">
               <img 
                 src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
-                alt="AWS Cloud Club GCOEK Logo" 
+                alt="AWS Student Builder Group GCOEK Logo" 
                 className="h-16 sm:h-20 object-contain" 
                 referrerPolicy="no-referrer" 
                 loading="lazy"
               />
               <span className="font-heading font-bold text-2xl tracking-tight text-text-primary">
-                AWS Cloud Club <span className="text-aws-orange">– GCOEK</span>
+                AWS Student Builder Group <span className="text-aws-orange">– GCOEK</span>
               </span>
             </Link>
             <p className="text-text-secondary max-w-md mb-8 leading-relaxed">
@@ -73,7 +73,7 @@ export function Footer() {
         
         <div className="border-t border-border-color mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-text-secondary">
           <p>
-            &copy; {new Date().getFullYear()} AWS Cloud Club GCOEK. All rights reserved.
+            &copy; {new Date().getFullYear()} AWS Student Builder Group GCOEK. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex items-center space-x-2">
             <span>Built with</span>

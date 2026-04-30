@@ -45,13 +45,13 @@ export function Navbar() {
             <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
               <img 
                 src="https://i.ibb.co/2TxQZYx/Whats-App-Image-2026-03-15-at-3-44-11-PM-Copy-2-removebg-preview.png" 
-                alt="AWS Cloud Club GCOEK Logo" 
+                alt="AWS Student Builder Group GCOEK Logo" 
                 className="h-12 sm:h-14 object-contain" 
                 referrerPolicy="no-referrer" 
               />
             </motion.div>
             <span className="font-heading font-bold text-lg tracking-tight transition-colors duration-300 group-hover:text-aws-orange">
-              AWS Cloud Club <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
+              AWS Student Builder Group <span className="text-aws-orange hidden sm:inline group-hover:text-text-primary transition-colors duration-300">– GCOEK</span>
             </span>
           </Link>
 

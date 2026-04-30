@@ -89,7 +89,7 @@ export default function Home() {
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-heading font-bold mb-8 tracking-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Cloud Club</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">AWS Student Builder Group</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-aws-orange to-yellow-400">GCOE Kolhapur</span>
             </motion.h1>
@@ -483,7 +483,7 @@ export default function Home() {
         >
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Start Your Cloud Journey Today</h2>
           <p className="text-xl text-text-secondary mb-10">
-            Join the AWS Cloud Club and learn cloud computing through workshops, projects, and community learning.
+            Join the AWS Student Builder Group and learn cloud computing through workshops, projects, and community learning.
           </p>
           <Link to="/join" onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)} className="pixel-button px-10 py-5 text-lg inline-block">
             Join the Club
