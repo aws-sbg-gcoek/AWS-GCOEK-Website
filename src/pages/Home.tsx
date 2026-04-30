@@ -402,7 +402,7 @@ export default function Home() {
                         <a href={member.name === 'Shardul Kolekar' ? "https://www.linkedin.com/in/shardulkolekar" : "#"} className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
                           <Linkedin className="w-5 h-5" />
                         </a>
-                        <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awscc.gcoe@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
+                        <a href={member.name === 'Shardul Kolekar' ? "mailto:kolekarshardul23@gmail.com" : "mailto:awssbggcoek@gmail.com"} className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                           <Mail className="w-5 h-5" />
                         </a>
                       </>
@@ -453,7 +453,7 @@ export default function Home() {
                       member.id === 'vidula' ? "mailto:powarvidula11@gmail.com" :
                         member.id === 'gopal' ? "mailto:gopallakwal526@gmail.com" :
                           member.id === 'shubham' ? "mailto:sonwaneshubham38@gmail.com" :
-                            "mailto:awscc.gcoe@gmail.com"
+                            "mailto:awssbggcoek@gmail.com"
                     } className="text-text-secondary hover:text-text-primary transition-colors hover:scale-110 transform">
                       <Mail className="w-5 h-5" />
                     </a>

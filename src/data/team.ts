@@ -142,7 +142,7 @@ export const departments = [
     hoverBorderColor: "group-hover:border-yellow-400",
     members: [
       { id: 'atharva', name: 'Atharva Shriwas', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:atharvashriwas8811@gmail.com', linkedin: 'https://www.linkedin.com/in/atharva-shriwas-11b167357', image: 'https://i.ibb.co/4ZvK9Bpt/Atharva-Shriwas.png' },
-      { id: 'tushant', name: 'Tushant Tagade', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/zWbTwkBX/tushant-Tagade.jpg' },
+      { id: 'tushant', name: 'Tushant Tagade', role: 'Marketing Lead', bio: 'Leading marketing campaigns to promote club activities.', skills: ['Marketing', 'Strategy', 'Analytics'], email: 'mailto:awssbggcoek@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/zWbTwkBX/tushant-Tagade.jpg' },
             
       {
         id:"Ankita",
@@ -157,7 +157,7 @@ export const departments = [
         },
 
       { id: 'apeksha', name: 'Apeksha Khodave', role: 'Treasurer', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:apekshakhodave1106@gmail.com', linkedin: 'https://www.linkedin.com/in/apeksha-khodave-9644b32b9?utm_source=share_via&utm_content=profile&utm_medium=member_android', image: 'https://i.ibb.co/tw7N7xCJ/Apeksha-Khodave.jpg' },
-      { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awscc.gcoe@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/JRBSNVZL/Whats-App-Image-2026-04-12-at-11-02-42-PM.jpg' }
+      { id: 'vaishnavi', name: 'Vaishnavi', role: 'Treasurer Associate', bio: 'Managing club finances and budgeting for events.', skills: ['Finance', 'Budgeting', 'Accounting'], email: 'mailto:awssbggcoek@gmail.com', linkedin: 'https://linkedin.com', image: 'https://i.ibb.co/JRBSNVZL/Whats-App-Image-2026-04-12-at-11-02-42-PM.jpg' }
     ]
   }
 ];

@@ -36,7 +36,7 @@ export function Footer() {
               <motion.a whileHover={{ scale: 1.1, y: -2 }} href="https://www.instagram.com/awscc.gcoe.kolhapur?igsh=MWJ2dHNpeGxsZGw4Yg==" target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-[#E1306C] transition-all duration-300">
                 <Instagram className="h-6 w-6" />
               </motion.a>
-              <motion.a whileHover={{ scale: 1.1, y: -2 }} href="mailto:awscc.gcoe@gmail.com" className="text-text-secondary hover:text-text-primary transition-all duration-300">
+              <motion.a whileHover={{ scale: 1.1, y: -2 }} href="mailto:awssbggcoek@gmail.com" className="text-text-secondary hover:text-text-primary transition-all duration-300">
                 <Mail className="h-6 w-6" />
               </motion.a>
             </div>
@@ -63,8 +63,8 @@ export function Footer() {
             <ul className="space-y-4 text-text-secondary">
               <li className="leading-relaxed">Government College of Engineering,<br/>Vidyanagar, Kolhapur<br/>Maharashtra 416004</li>
               <li className="pt-2">
-                <a href="mailto:awscc.gcoe@gmail.com" className="hover:text-aws-orange transition-colors">
-                  awscc.gcoe@gmail.com
+                <a href="mailto:awssbggcoek@gmail.com" className="hover:text-aws-orange transition-colors">
+                  awssbggcoek@gmail.com
                 </a>
               </li>
             </ul>

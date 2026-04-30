@@ -225,7 +225,7 @@ export default function Projects() {
 
                 {/* Email */}
                 <a
-                  href={`mailto:awscc.gcoe@gmail.com?subject=${encodeURIComponent("Project Submission – AWS Student Builder Group Website")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in submitting my project to be displayed on your website.\n\nProject Name: \nProject Description: \nTech Stack: \nGitHub Link: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
+                  href={`mailto:awssbggcoek@gmail.com?subject=${encodeURIComponent("Project Submission – AWS Student Builder Group Website")}&body=${encodeURIComponent("Hi AWS Student Builder Group Team,\n\nI'm interested in submitting my project to be displayed on your website.\n\nProject Name: \nProject Description: \nTech Stack: \nGitHub Link: \n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")}`}
                   className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-cloud-blue/50 hover:bg-cloud-blue/10 transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cloud-blue/10 border border-cloud-blue/20 group-hover:bg-cloud-blue/20 transition-colors shrink-0">
@@ -233,7 +233,7 @@ export default function Projects() {
                   </div>
                   <div className="text-left">
                     <p className="text-sm font-semibold text-text-primary">Email</p>
-                    <p className="text-xs text-text-secondary font-mono">awscc.gcoe@gmail.com</p>
+                    <p className="text-xs text-text-secondary font-mono">awssbggcoek@gmail.com</p>
                   </div>
                   <span className="ml-auto text-xs font-mono text-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
