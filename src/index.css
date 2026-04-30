@@ -1,339 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-/* ============================================================
-   DESIGN TOKENS — AWS Student Builder Group GCOEK
-   Inspired by: AWS Builder Center (dark, grid, geometric, minimal)
-   ============================================================ */
 @theme {
-  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
-
-  /* Brand */
-  --color-brand:          #7c3aed;   /* refined deep purple */
-  --color-brand-light:    #8b5cf6;
-  --color-brand-muted:    rgba(124, 58, 237, 0.15);
-
-  /* Kept as aws-orange alias so existing Tailwind classes still work */
-  --color-aws-orange:     #8b5cf6;
-  --color-arcade-purple:  #8b5cf6;
-  --color-builder-pink:   #a78bfa;
-  --color-builder-cyan:   #67e8f9;
-  --color-builder-green:  #4ade80;
-  --color-cloud-blue:     #67e8f9;
-
-  /* Surfaces — AWS BC dark palette */
-  --color-cloud-navy:     #13131f;
-  --color-cloud-secondary:#1a1a2e;
-  --color-cloud-elevated: #20203a;
-
-  /* Text */
-  --color-text-primary:   #f4f4f5;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted:     #52525b;
-
-  /* Borders — extremely subtle */
-  --color-border-color:   rgba(255, 255, 255, 0.08);
-  --color-border-brand:   rgba(139, 92, 246, 0.3);
+  
+  --color-aws-orange: #f90;
+  --color-cloud-navy: #0B0F19;
+  --color-cloud-secondary: #161c2e;
+  --color-cloud-blue: #38bdf8;
+  --color-arcade-purple: #a855f7;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-border-color: #2d3748;
 }
-
-/* ============================================================
-   BASE RESET
-   ============================================================ */
-*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-html::-webkit-scrollbar { display: none; }
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
 
 body {
   background-color: var(--color-cloud-navy);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-body::-webkit-scrollbar { display: none; }
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Tech Grid Background */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Text Gradients */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #f90 0%, #ffaa00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-}
-
-/* ============================================================
-   AWS BUILDER CENTER GRID — the signature look
-   ============================================================ */
-.bg-grid-pattern {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* ============================================================
-   GEOMETRIC BLOCK ACCENT — static, professional (AWS BC style)
-   ============================================================ */
-.bc-block {
-  position: absolute;
-  border-radius: 4px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ============================================================
-   SURFACE / CARD
-   ============================================================ */
-.glass-panel {
-  background: rgba(26, 26, 46, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .pixel-border {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  background: rgba(26, 26, 46, 0.5);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  border: 1px solid var(--color-border-color);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(145deg, rgba(22, 28, 46, 0.8), rgba(11, 15, 25, 0.9));
 }
 
 .pixel-border-hover:hover {
-  border-color: rgba(139, 92, 246, 0.35);
-  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.12), 0 16px 40px -12px rgba(0,0,0,0.6);
+  border-color: rgba(255, 153, 0, 0.3);
   transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(255, 153, 0, 0.15), 0 0 0 1px rgba(255, 153, 0, 0.1);
 }
 
-/* ============================================================
-   TYPOGRAPHY
-   ============================================================ */
-.text-gradient-purple {
-  background: linear-gradient(90deg, #c4b5fd 0%, #8b5cf6 50%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-orange {
-  background: linear-gradient(90deg, #c4b5fd 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ============================================================
-   LABEL / EYEBROW TEXT
-   ============================================================ */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  padding: 6px 14px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 4px;
-  background: rgba(255,255,255,0.03);
-}
-
-.eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-brand-light);
-  flex-shrink: 0;
-}
-
-/* ============================================================
-   SECTION LABEL (like AWS BC "Get started")
-   ============================================================ */
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-}
-
-/* ============================================================
-   DIVIDER
-   ============================================================ */
-.gradient-divider {
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(139, 92, 246, 0.4) 40%,
-    rgba(167, 139, 250, 0.4) 60%,
-    transparent 100%
-  );
-  border: none;
-  margin: 0;
-}
-
-/* ============================================================
-   BUTTONS — clean, AWS-inspired
-   ============================================================ */
-
-/* Primary — filled purple */
 .pixel-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--color-brand);
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  border-radius: 6px;
-  padding: 0.7rem 1.6rem;
-  border: 1px solid rgba(139, 92, 246, 0.5);
-  cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  background: linear-gradient(135deg, var(--color-aws-orange) 0%, #ffaa00 100%);
+  color: var(--color-cloud-navy);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px -2px rgba(255, 153, 0, 0.3);
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
-}
-.pixel-button:hover {
-  background: var(--color-brand-light);
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
-  transform: translateY(-1px);
-}
-.pixel-button:active { transform: translateY(0); }
-
-/* Secondary — ghost */
-.pixel-button-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--color-text-primary);
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  border-radius: 6px;
-  padding: 0.7rem 1.6rem;
-  border: 1px solid rgba(255,255,255,0.15);
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
-  white-space: nowrap;
-}
-.pixel-button-secondary:hover {
-  border-color: rgba(139, 92, 246, 0.5);
-  background: rgba(139, 92, 246, 0.06);
-  transform: translateY(-1px);
-}
-.pixel-button-secondary:active { transform: translateY(0); }
-
-/* ============================================================
-   CARDS
-   ============================================================ */
-.card {
-  background: rgba(26, 26, 46, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
-/* ============================================================
-   ICON CONTAINER
-   ============================================================ */
-.icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  flex-shrink: 0;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-.icon-box:hover, .group:hover .icon-box {
-  background: rgba(139, 92, 246, 0.2);
-  border-color: rgba(139, 92, 246, 0.4);
-}
-
-/* ============================================================
-   STAT NUMBER — clean, not glitzy
-   ============================================================ */
-.stat-number {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 2.5rem;
-  color: var(--color-text-primary);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-/* ============================================================
-   TECH TAG
-   ============================================================ */
-.tech-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  background: rgba(139, 92, 246, 0.08);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: #a78bfa;
-  letter-spacing: 0.03em;
-}
-
-/* ============================================================
-   GLOW CARD (very subtle — not neon)
-   ============================================================ */
-.glow-card { position: relative; }
-.glow-card:hover {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.08), 0 16px 48px rgba(0,0,0,0.4);
-}
-
-/* ============================================================
-   ANIMATED GRADIENT BORDER (for featured card only)
-   ============================================================ */
-@keyframes rotateGrad {
-  from { background-position: 0% 50%; }
-  to   { background-position: 200% 50%; }
-}
-.animated-border { position: relative; border-radius: 13px; }
-.animated-border::before {
+.pixel-button::before {
   content: '';
-  position: absolute; inset: -1px;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: all 0.5s ease;
+}
+
+.pixel-button:hover::before {
+  left: 100%;
+}
+
+.pixel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(255, 153, 0, 0.4);
+}
+
+.pixel-button-secondary {
+  color: var(--color-aws-orange);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 153, 0, 0.5);
+  background: rgba(255, 153, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.pixel-button-secondary:hover {
+  background: rgba(255, 153, 0, 0.15);
+  border-color: var(--color-aws-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(255, 153, 0, 0.2);
+}
+
+.glass-panel {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  background: rgba(22, 28, 46, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle glow for cards */
+.glow-card {
+  position: relative;
+}
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(270deg, #7c3aed, #a78bfa, #7c3aed);
-  background-size: 300% 300%;
-  animation: rotateGrad 5s linear infinite;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
-.animated-border:hover::before { opacity: 1; }
+.glow-card:hover::after {
+  opacity: 1;
+}
 
-/* ============================================================
-   HORIZONTAL RULE  (AWS BC footer style)
-   ============================================================ */
-hr.bc-rule {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  margin: 0;
-}

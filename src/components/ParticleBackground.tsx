@@ -44,10 +44,10 @@ export default function ParticleBackground() {
         },
         particles: {
           color: {
-            value: ["#38bdf8", "#a855f7", "#ec4899", "#22c55e"], // cyan, purple, pink, green
+            value: ["#38bdf8", "#a855f7", "#f90"], // cloud-blue, arcade-purple, aws-orange
           },
           links: {
-            color: "#2d2d4a", // border-color
+            color: "#334155", // border-color
             distance: 150,
             enable: true,
             opacity: 0.3,

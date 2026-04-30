@@ -1,111 +1,109 @@
 import { motion } from 'motion/react';
-import { Target, Eye, Zap, Shield, Globe } from 'lucide-react';
+import { Target, Eye, Cloud, Zap, Shield, Globe } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
-
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] },
-});
 
 export default function About() {
   return (
     <PageTransition className="w-full">
-
-      {/* ── PAGE HEADER ── */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-grid-pattern">
-        {/* Subtle accent block */}
-        <div className="absolute top-10 right-10 w-20 h-20 rounded-lg pointer-events-none"
-          style={{ background: '#7c3aed', opacity: 0.6 }} />
-        <div className="absolute top-28 right-28 w-10 h-10 rounded-lg pointer-events-none"
-          style={{ background: '#67e8f9', opacity: 0.4 }} />
-
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          <motion.div {...fade()}>
-            <p className="section-label">Who we are</p>
-            <h1 className="font-heading font-black text-white mb-6"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 4rem)', letterSpacing: '-0.03em', lineHeight: 1.08 }}>
-              About the Group
+      {/* Header */}
+      <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">
+              About the Club
             </h1>
-            <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
-              AWS Student Builder Group at Government College of Engineering Kolhapur is a
-              student-led community focused on exploring cloud technologies and helping
-              students build real-world technical skills.
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-mono">
+              AWS Student Builder Group at Government College of Engineering Kolhapur is a student-led community focused on exploring cloud technologies and helping students build real-world technical skills.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── MISSION & VISION ── */}
-      <section className="py-20" style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Mission & Vision */}
+      <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="glass-panel p-10 pixel-border hover:pixel-border-hover transition-all duration-500 group"
+            >
+              <div className="w-14 h-14 icon-box flex items-center justify-center mb-8 border border-border-color group-hover:border-arcade-purple/50 transition-colors">
+                <Target className="w-7 h-7 text-arcade-purple" />
+              </div>
+              <h2 className="text-3xl font-heading font-bold mb-6 text-text-primary group-hover:text-arcade-purple transition-colors">Our Mission</h2>
+              <p className="text-text-secondary leading-relaxed text-lg">
+                Empower students with practical cloud computing knowledge through hands-on workshops, real-world projects, and peer-to-peer learning. We aim to bridge the gap between academic curriculum and industry requirements in cloud technologies.
+              </p>
+            </motion.div>
 
-            {[
-              {
-                icon: Target,
-                color: '#8b5cf6',
-                label: 'Mission',
-                title: 'Our Mission',
-                body: 'Empower students with practical cloud computing knowledge through hands-on workshops, real-world projects, and peer-to-peer learning. We bridge the gap between academic curriculum and industry requirements in cloud technologies.',
-              },
-              {
-                icon: Eye,
-                color: '#67e8f9',
-                label: 'Vision',
-                title: 'Our Vision',
-                body: 'Build a strong, self-sustaining cloud developer community where students collaborate, innovate, and launch successful careers as cloud engineers, architects, and developers.',
-              },
-            ].map((item, idx) => (
-              <motion.div key={idx} {...fade(idx * 0.15)}
-                className="pixel-border hover:pixel-border-hover p-10 group">
-                <div className="icon-box mb-6">
-                  <item.icon className="w-5 h-5" style={{ color: item.color }} />
-                </div>
-                <p className="section-label mb-2">{item.label}</p>
-                <h2 className="text-2xl font-heading font-bold text-white mb-4 group-hover:text-arcade-purple transition-colors duration-200">
-                  {item.title}
-                </h2>
-                <p className="text-zinc-400 leading-relaxed">{item.body}</p>
-              </motion.div>
-            ))}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="glass-panel p-10 pixel-border hover:pixel-border-hover transition-all duration-500 group"
+            >
+              <div className="w-14 h-14 icon-box flex items-center justify-center mb-8 border border-border-color group-hover:border-cloud-blue/50 transition-colors">
+                <Eye className="w-7 h-7 text-cloud-blue" />
+              </div>
+              <h2 className="text-3xl font-heading font-bold mb-6 text-text-primary group-hover:text-cloud-blue transition-colors">Our Vision</h2>
+              <p className="text-text-secondary leading-relaxed text-lg">
+                Build a strong, self-sustaining cloud developer community in the college where students can collaborate, innovate, and launch successful careers as cloud engineers, architects, and developers.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── WHY CLOUD MATTERS ── */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <motion.div {...fade()} className="mb-14">
-            <p className="section-label">The bigger picture</p>
-            <h2 className="font-heading font-black text-white"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', letterSpacing: '-0.025em' }}>
-              Why Cloud Computing Matters
-            </h2>
+      {/* Why Cloud Computing Matters */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">Why Cloud Computing Matters</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-arcade-purple to-cloud-blue mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Zap,    color: '#a78bfa', title: 'Scalability & Speed',    body: 'Cloud allows businesses to scale resources instantly and deploy applications globally in minutes.' },
-              { icon: Shield, color: '#67e8f9', title: 'Security & Reliability', body: 'Enterprise-grade security, automated backups, and high availability across multiple regions.' },
-              { icon: Globe,  color: '#4ade80', title: 'Industry Demand',        body: 'Cloud computing is the backbone of modern tech, making cloud skills highly sought after by employers.' },
+              { icon: Zap, title: 'Scalability & Speed', desc: 'Cloud allows businesses to scale resources instantly and deploy applications globally in minutes.' },
+              { icon: Shield, title: 'Security & Reliability', desc: 'Enterprise-grade security, automated backups, and high availability across multiple regions.' },
+              { icon: Globe, title: 'Industry Demand', desc: 'Cloud computing is the backbone of modern tech, making cloud skills highly sought after by employers.' }
             ].map((item, idx) => (
-              <motion.div key={idx} {...fade(idx * 0.12)}
-                className="pixel-border hover:pixel-border-hover p-8 group text-center">
-                <div className="icon-box mx-auto mb-5">
-                  <item.icon className="w-5 h-5" style={{ color: item.color }} />
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300 flex flex-col items-center text-center group"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-cloud-secondary flex items-center justify-center mb-6 border border-border-color group-hover:border-arcade-purple/50 transition-colors">
+                  <item.icon className="w-8 h-8 text-arcade-purple" />
                 </div>
-                <h3 className="font-heading font-bold text-white text-lg mb-3 group-hover:text-arcade-purple transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{item.body}</p>
+                <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-arcade-purple transition-colors">{item.title}</h3>
+                <p className="text-text-secondary leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
     </PageTransition>
   );
 }
