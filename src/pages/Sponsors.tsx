@@ -15,7 +15,7 @@ const benefits = [
   {
     title: "Brand Visibility",
     description: "Reach hundreds of passionate students, developers, and future cloud professionals through our events and platforms.",
-    icon: <Megaphone className="w-8 h-8 text-aws-orange" />
+    icon: <Megaphone className="w-8 h-8 text-arcade-purple" />
   },
   {
     title: "Tech Talent Pipeline",
@@ -39,9 +39,9 @@ const testimonials: { quote: string; author: string; position: string; company: 
 const SponsorCard = ({ sponsor, idx }: { sponsor: Sponsor; idx: number; key?: string }) => {
   const tierStyles = {
     Platinum: {
-      card: "bg-gradient-to-br from-[#1a1f2e] to-[#0B0F19] border-aws-orange/40 shadow-[0_0_30px_rgba(255,153,0,0.1)]",
-      badge: "bg-aws-orange/20 text-aws-orange border-aws-orange/30",
-      icon: <Award className="w-5 h-5 text-aws-orange" />,
+      card: "bg-gradient-to-br from-[#1a1f2e] to-[#0B0F19] border-arcade-purple/40 shadow-[0_0_30px_rgba(255,153,0,0.1)]",
+      badge: "bg-arcade-purple/20 text-arcade-purple border-arcade-purple/30",
+      icon: <Award className="w-5 h-5 text-arcade-purple" />,
       grid: "col-span-1 lg:col-span-2 max-w-4xl mx-auto w-full"
     },
     Gold: {
@@ -86,7 +86,7 @@ const SponsorCard = ({ sponsor, idx }: { sponsor: Sponsor; idx: number; key?: st
           </div>
         </div>
         
-        <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 text-white group-hover:text-aws-orange transition-colors">
+        <h3 className="text-2xl md:text-3xl font-heading font-bold mb-3 text-white group-hover:text-arcade-purple transition-colors">
           {sponsor.name}
         </h3>
         
@@ -98,7 +98,7 @@ const SponsorCard = ({ sponsor, idx }: { sponsor: Sponsor; idx: number; key?: st
           href={sponsor.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto inline-flex items-center gap-2 text-aws-orange hover:text-white transition-colors text-sm font-bold group/link"
+          className="mt-auto inline-flex items-center gap-2 text-arcade-purple hover:text-white transition-colors text-sm font-bold group/link"
         >
           Visit Website
           <ExternalLink className="w-4 h-4 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
@@ -121,7 +121,7 @@ export default function Sponsors() {
       {/* Header */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-aws-orange/10 rounded-full blur-[120px]" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -130,7 +130,7 @@ export default function Sponsors() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-aws-orange font-mono text-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-arcade-purple font-mono text-sm mb-8">
               <Star className="w-4 h-4" />
               <span>Support Our Mission</span>
             </div>
@@ -149,7 +149,7 @@ export default function Sponsors() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Why Sponsor Us?</h2>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -182,11 +182,11 @@ export default function Sponsors() {
             {platinumSponsors.length > 0 && (
               <div className="mb-24">
                 <div className="flex items-center gap-4 mb-12">
-                  <div className="h-px flex-grow bg-gradient-to-r from-transparent to-aws-orange/30"></div>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-aws-orange flex items-center gap-3">
+                  <div className="h-px flex-grow bg-gradient-to-r from-transparent to-arcade-purple/30"></div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-arcade-purple flex items-center gap-3">
                     <Award className="w-8 h-8" /> Platinum Tier
                   </h2>
-                  <div className="h-px flex-grow bg-gradient-to-l from-transparent to-aws-orange/30"></div>
+                  <div className="h-px flex-grow bg-gradient-to-l from-transparent to-arcade-purple/30"></div>
                 </div>
                 <div className="grid grid-cols-1 gap-8">
                   {platinumSponsors.map((sponsor, idx) => (
@@ -240,7 +240,7 @@ export default function Sponsors() {
             className="max-w-2xl mx-auto px-4 text-center"
           >
             <div className="glass-panel pixel-border p-16 rounded-3xl">
-              <Award className="w-16 h-16 text-aws-orange/30 mx-auto mb-6" />
+              <Award className="w-16 h-16 text-arcade-purple/30 mx-auto mb-6" />
               <h3 className="text-2xl font-heading font-bold text-text-primary mb-3">No sponsors yet</h3>
               <p className="text-text-secondary font-mono text-sm">
                 Be the first to partner with us and support the next generation of cloud engineers.
@@ -256,7 +256,7 @@ export default function Sponsors() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Partner Testimonials</h2>
-              <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
+              <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {testimonials.map((t, idx) => (
@@ -268,12 +268,12 @@ export default function Sponsors() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="glass-panel p-8 rounded-3xl border border-white/5 relative"
                 >
-                  <Quote className="absolute top-6 right-8 w-12 h-12 text-aws-orange/10" />
+                  <Quote className="absolute top-6 right-8 w-12 h-12 text-arcade-purple/10" />
                   <p className="text-lg md:text-xl text-text-primary italic mb-8 relative z-10 leading-relaxed">
                     "{t.quote}"
                   </p>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-aws-orange/20 flex items-center justify-center text-aws-orange font-bold">
+                    <div className="w-12 h-12 rounded-full bg-arcade-purple/20 flex items-center justify-center text-arcade-purple font-bold">
                       {t.author[0]}
                     </div>
                     <div>
@@ -298,7 +298,7 @@ export default function Sponsors() {
             transition={{ duration: 0.6 }}
             className="text-center bg-gradient-to-br from-[#1a1f2e] to-[#0B0F19] p-12 md:p-20 rounded-[3rem] border border-white/10 relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-aws-orange/5 rounded-full blur-[100px] -mr-32 -mt-32 transition-all duration-700 group-hover:bg-aws-orange/10" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-arcade-purple/5 rounded-full blur-[100px] -mr-32 -mt-32 transition-all duration-700 group-hover:bg-arcade-purple/10" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-cloud-blue/5 rounded-full blur-[100px] -ml-32 -mb-32 transition-all duration-700 group-hover:bg-cloud-blue/10" />
             
             <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-white relative z-10">
@@ -346,7 +346,7 @@ export default function Sponsors() {
 
               <div className="mb-8 text-center">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
-                  <Star className="w-6 h-6 text-aws-orange" />
+                  <Star className="w-6 h-6 text-arcade-purple" />
                 </div>
                 <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Become a Sponsor</h3>
                 <p className="text-sm text-text-secondary font-mono">

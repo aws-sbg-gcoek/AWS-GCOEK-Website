@@ -56,7 +56,7 @@ export default function Projects() {
       <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aws-orange/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -100,8 +100,8 @@ export default function Projects() {
                 className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-500 group flex flex-col h-full"
               >
                 <div className="flex justify-between items-start mb-8">
-                  <div className="p-4 bg-cloud-secondary rounded-2xl border border-border-color group-hover:border-aws-orange/50 transition-colors">
-                    <project.icon className="w-8 h-8 text-text-primary group-hover:text-aws-orange transition-colors" />
+                  <div className="p-4 bg-cloud-secondary rounded-2xl border border-border-color group-hover:border-arcade-purple/50 transition-colors">
+                    <project.icon className="w-8 h-8 text-text-primary group-hover:text-arcade-purple transition-colors" />
                   </div>
                   <a 
                     href={project.github} 
@@ -140,7 +140,7 @@ export default function Projects() {
       {/* CTA */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-aws-orange/5 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-arcade-purple/5 rounded-full blur-[120px]" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
         >
-          <span className="inline-block font-mono text-xs text-aws-orange uppercase tracking-widest mb-4 px-3 py-1 border border-aws-orange/30 rounded-full bg-aws-orange/5">
+          <span className="inline-block font-mono text-xs text-arcade-purple uppercase tracking-widest mb-4 px-3 py-1 border border-arcade-purple/30 rounded-full bg-arcade-purple/5">
             Submit Your Work
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">
@@ -196,7 +196,7 @@ export default function Projects() {
               {/* Header */}
               <div className="mb-8 text-center">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
-                  <Mail className="w-6 h-6 text-aws-orange" />
+                  <Mail className="w-6 h-6 text-arcade-purple" />
                 </div>
                 <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Get in Touch</h3>
                 <p className="text-sm text-text-secondary font-mono">

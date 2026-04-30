@@ -30,7 +30,7 @@ export default function Events() {
       <section className="pt-32 pb-24 relative overflow-hidden bg-grid-pattern">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-cloud-blue/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-aws-orange/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-arcade-purple/10 rounded-full blur-[120px]" />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -64,7 +64,7 @@ export default function Events() {
                 placeholder="Search events..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-cloud-secondary/50 border border-border-color rounded-full py-3 pl-12 pr-4 text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-aws-orange transition-all duration-300"
+                className="w-full bg-cloud-secondary/50 border border-border-color rounded-full py-3 pl-12 pr-4 text-text-primary placeholder:text-text-secondary focus:outline-none focus:border-arcade-purple transition-all duration-300"
               />
             </div>
             
@@ -74,7 +74,7 @@ export default function Events() {
                 <select 
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-aws-orange transition-all duration-300"
+                  className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-arcade-purple transition-all duration-300"
                 >
                   <option value="all">All Status</option>
                   <option value="upcoming">Upcoming</option>
@@ -85,7 +85,7 @@ export default function Events() {
               <select 
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-aws-orange transition-all duration-300"
+                className="bg-cloud-secondary/50 border border-border-color rounded-full py-3 px-6 text-sm text-text-primary focus:outline-none focus:border-arcade-purple transition-all duration-300"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>
@@ -103,7 +103,7 @@ export default function Events() {
         <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-heading font-bold mb-16 flex items-center text-text-primary">
-              <span className="w-4 h-4 rounded-full bg-aws-orange animate-pulse mr-4"></span>
+              <span className="w-4 h-4 rounded-full bg-arcade-purple animate-pulse mr-4"></span>
               Upcoming Events
             </h2>
 
@@ -134,7 +134,7 @@ export default function Events() {
                       {event.type}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6 text-text-primary group-hover:text-aws-orange transition-colors">{event.title}</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-6 text-text-primary group-hover:text-arcade-purple transition-colors">{event.title}</h3>
                   
                   <div className="space-y-4 mb-8 text-sm text-text-secondary font-mono">
                     <div className="flex items-center">
@@ -176,7 +176,7 @@ export default function Events() {
                 className="text-center mb-20"
               >
                 <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-text-primary">Past Events</h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-aws-orange to-cloud-blue mx-auto rounded-full"></div>
+                <div className="w-24 h-1 bg-gradient-to-r from-arcade-purple to-cloud-blue mx-auto rounded-full"></div>
               </motion.div>
 
               <motion.div 
@@ -206,7 +206,7 @@ export default function Events() {
                         {event.type}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-aws-orange transition-colors">{event.title}</h3>
+                    <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-arcade-purple transition-colors">{event.title}</h3>
                     
                     <div className="space-y-3 mb-6 text-sm text-text-secondary font-mono">
                       <div className="flex items-center">
@@ -237,7 +237,7 @@ export default function Events() {
                     )}
                     
                     <div className="mt-auto pt-6 border-t border-border-color">
-                      <Link to={`/events/${event.id}`} className="text-text-primary font-mono text-sm hover:text-aws-orange transition-colors flex items-center">
+                      <Link to={`/events/${event.id}`} className="text-text-primary font-mono text-sm hover:text-arcade-purple transition-colors flex items-center">
                         View Details <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </div>
@@ -309,7 +309,7 @@ export default function Events() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <span className="font-mono text-xs text-aws-orange font-bold tracking-widest uppercase">AWS Community</span>
+                  <span className="font-mono text-xs text-arcade-purple font-bold tracking-widest uppercase">AWS Community</span>
                 </div>
               </motion.div>
             ))}

@@ -4,9 +4,9 @@ export const departments = [
   {
     title: "Leadership Dept",
     icon: Star,
-    color: "text-aws-orange",
-    bgColor: "bg-aws-orange",
-    hoverBorderColor: "group-hover:border-aws-orange",
+    color: "text-arcade-purple",
+    bgColor: "bg-arcade-purple",
+    hoverBorderColor: "group-hover:border-arcade-purple",
     members: [
       { id: 'varsha-gaikwad', name: 'Dr. Varsha Gaikwad', role: 'Faculty Coordinator', bio: 'Guiding the AWS Student Builder Group and supporting student initiatives at GCOEK.', skills: ['Mentorship', 'Leadership', 'Cloud Computing'], image: 'https://i.ibb.co/xqY0bSS3/Varsha-maam.jpg' },
       { 

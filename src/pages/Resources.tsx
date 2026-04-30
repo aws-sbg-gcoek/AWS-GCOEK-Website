@@ -29,7 +29,7 @@ export default function Resources() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">Learning Resources</h1>
-            <div className="w-24 h-1.5 bg-aws-orange mx-auto rounded-full mb-10"></div>
+            <div className="w-24 h-1.5 bg-arcade-purple mx-auto rounded-full mb-10"></div>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-mono">
               Curated materials, roadmaps, and guides to help you master AWS and cloud computing.
             </p>
@@ -41,7 +41,7 @@ export default function Resources() {
       <section className="py-24 bg-cloud-secondary/20 border-y border-border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-16">
-            <Map className="w-10 h-10 text-aws-orange mr-6" />
+            <Map className="w-10 h-10 text-arcade-purple mr-6" />
             <h2 className="text-4xl font-heading font-bold text-text-primary">Cloud Beginner Roadmap</h2>
           </div>
 
@@ -67,9 +67,9 @@ export default function Resources() {
                 }}
                 className="mb-12 ml-10 relative group"
               >
-                <div className="absolute -left-[45px] top-1 w-5 h-5 rounded-full bg-aws-orange shadow-[0_0_15px_rgba(255,153,0,0.5)]"></div>
+                <div className="absolute -left-[45px] top-1 w-5 h-5 rounded-full bg-arcade-purple shadow-[0_0_15px_rgba(255,153,0,0.5)]"></div>
                 <div className="glass-panel p-8 pixel-border hover:pixel-border-hover transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]">
-                  <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-aws-orange transition-colors">Step {idx + 1}: {step.title}</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-4 text-text-primary group-hover:text-arcade-purple transition-colors">Step {idx + 1}: {step.title}</h3>
                   <p className="text-text-secondary text-lg leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
@@ -117,13 +117,13 @@ export default function Resources() {
                     className="glass-panel p-6 pixel-border hover:pixel-border-hover flex items-center justify-between group transition-all duration-300 cursor-pointer"
                   >
                     <div className="flex items-center">
-                      <tut.icon className="w-7 h-7 text-text-primary mr-6 group-hover:text-aws-orange transition-colors" />
+                      <tut.icon className="w-7 h-7 text-text-primary mr-6 group-hover:text-arcade-purple transition-colors" />
                       <div>
-                        <h4 className="font-heading font-semibold text-text-primary text-lg group-hover:text-aws-orange transition-colors">{tut.title}</h4>
+                        <h4 className="font-heading font-semibold text-text-primary text-lg group-hover:text-arcade-purple transition-colors">{tut.title}</h4>
                         <span className="text-sm font-mono text-text-secondary">{tut.type}</span>
                       </div>
                     </div>
-                    <ExternalLink className="w-5 h-5 text-text-secondary group-hover:text-aws-orange transition-colors" />
+                    <ExternalLink className="w-5 h-5 text-text-secondary group-hover:text-arcade-purple transition-colors" />
                   </motion.div>
                 ))}
               </motion.div>
@@ -168,7 +168,7 @@ export default function Resources() {
                   <p className="text-text-secondary text-lg mb-8 leading-relaxed">
                     Access our open-source repositories containing lab instructions, sample code, and project templates.
                   </p>
-                  <a href="#" className="flex items-center text-text-primary hover:text-aws-orange transition-colors font-mono text-lg">
+                  <a href="#" className="flex items-center text-text-primary hover:text-arcade-purple transition-colors font-mono text-lg">
                     <Github className="w-6 h-6 mr-3" />
                     github.com/awscloudclub-gcoek
                   </a>

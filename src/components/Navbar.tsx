@@ -113,8 +113,8 @@ export function Navbar() {
                     className={cn(
                       'block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200',
                       location.pathname === link.path
-                        ? 'text-aws-orange bg-cloud-secondary/50 shadow-sm'
-                        : 'text-text-secondary hover:text-aws-orange hover:bg-cloud-secondary/30 hover:translate-x-1'
+                        ? 'text-arcade-purple bg-cloud-secondary/50 shadow-sm'
+                        : 'text-text-secondary hover:text-arcade-purple hover:bg-cloud-secondary/30 hover:translate-x-1'
                     )}
                   >
                     {link.name}

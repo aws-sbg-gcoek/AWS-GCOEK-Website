@@ -24,7 +24,7 @@ export default function EventDetails() {
       exit={{ opacity: 0, y: -20 }}
       className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
     >
-      <Link to="/events" className="inline-flex items-center text-text-primary hover:text-aws-orange transition-colors mb-12 font-mono text-sm uppercase tracking-widest">
+      <Link to="/events" className="inline-flex items-center text-text-primary hover:text-arcade-purple transition-colors mb-12 font-mono text-sm uppercase tracking-widest">
         <ArrowLeft className="w-4 h-4 mr-3" /> Back to Events
       </Link>
 
@@ -40,7 +40,7 @@ export default function EventDetails() {
           <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-cloud-navy/60 to-transparent"></div>
           
           <div className="absolute bottom-10 left-10 right-10 z-10">
-            <span className="px-4 py-1.5 bg-aws-orange text-cloud-navy text-xs font-bold rounded-full uppercase tracking-widest mb-6 inline-block">
+            <span className="px-4 py-1.5 bg-arcade-purple text-cloud-navy text-xs font-bold rounded-full uppercase tracking-widest mb-6 inline-block">
               {event.type}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-text-primary leading-tight">
@@ -53,15 +53,15 @@ export default function EventDetails() {
           {/* Quick Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
             <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
-              <Calendar className="w-7 h-7 mb-4 text-aws-orange" />
+              <Calendar className="w-7 h-7 mb-4 text-arcade-purple" />
               <span className="text-sm font-bold text-text-primary">{event.date}</span>
             </div>
             <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
-              <Clock className="w-7 h-7 mb-4 text-aws-orange" />
+              <Clock className="w-7 h-7 mb-4 text-arcade-purple" />
               <span className="text-sm font-bold text-text-primary">{event.time}</span>
             </div>
             <div className="flex flex-col p-6 bg-cloud-secondary/50 rounded-2xl border border-border-color">
-              <MapPin className="w-7 h-7 mb-4 text-aws-orange" />
+              <MapPin className="w-7 h-7 mb-4 text-arcade-purple" />
               <span className="text-sm font-bold text-text-primary">{event.location}</span>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function EventDetails() {
                   <ul className="space-y-4">
                     {event.highlights.map((highlight, idx) => (
                       <li key={idx} className="flex items-start text-text-secondary text-lg">
-                        <CheckCircle2 className="w-6 h-6 mr-4 text-aws-orange shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-6 h-6 mr-4 text-arcade-purple shrink-0 mt-0.5" />
                         <span>{highlight}</span>
                       </li>
                     ))}
@@ -160,7 +160,7 @@ export default function EventDetails() {
               {event.schedule && event.schedule.length > 0 && (
                 <section>
                   <h2 className="text-3xl font-heading font-bold text-text-primary mb-10 flex items-center">
-                    <Terminal className="w-7 h-7 mr-4 text-aws-orange" />
+                    <Terminal className="w-7 h-7 mr-4 text-arcade-purple" />
                     Event Schedule
                   </h2>
                   
@@ -174,10 +174,10 @@ export default function EventDetails() {
                         key={i} 
                         className="relative pl-10"
                       >
-                        <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-aws-orange shadow-[0_0_10px_rgba(255,153,0,0.5)]"></span>
+                        <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-arcade-purple shadow-[0_0_10px_rgba(255,153,0,0.5)]"></span>
                         
                         <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
-                          <span className="text-aws-orange font-mono font-bold text-sm bg-aws-orange/10 px-4 py-1.5 rounded-full w-fit border border-aws-orange/20">
+                          <span className="text-arcade-purple font-mono font-bold text-sm bg-arcade-purple/10 px-4 py-1.5 rounded-full w-fit border border-arcade-purple/20">
                             {item.time}
                           </span>
                           <h3 className="text-text-primary font-bold text-xl">{item.title}</h3>

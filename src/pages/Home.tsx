@@ -27,11 +27,11 @@ const StatCounter = ({ end, label }: { end: number; label: string }) => {
   }, [end]);
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 glass-panel pixel-border hover:pixel-border-hover animated-border transition-all duration-300 group">
-      <span className="stat-number text-4xl md:text-5xl mb-2">
+    <div className="flex flex-col items-center justify-center p-8 bg-[#0f0f1e] group" style={{ background: 'rgba(15,15,30,0.8)' }}>
+      <span className="font-heading font-black text-white mb-1" style={{ fontSize: '2.5rem', letterSpacing: '-0.04em' }}>
         {count}+
       </span>
-      <span className="text-xs md:text-sm font-mono font-medium text-text-secondary uppercase tracking-widest">
+      <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
         {label}
       </span>
     </div>
@@ -126,9 +126,9 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-cloud-secondary/30 border-y border-border-color">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      <section className="py-16" style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: 'rgba(255,255,255,0.05)' }}>
             <StatCounter end={700} label="Members Joined" />
             <StatCounter end={3} label="Events Conducted" />
             <StatCounter end={3} label="Projects Built" />
@@ -158,7 +158,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-cloud-navy via-transparent to-transparent opacity-80"></div>
                 <div className="absolute bottom-6 left-6 z-20">
-                  <span className="bg-aws-orange/90 text-cloud-navy px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider">
+                  <span className="bg-arcade-purple/90 text-cloud-navy px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider">
                     FEATURED {featuredEvent.type.toUpperCase()}
                   </span>
                 </div>
@@ -190,7 +190,7 @@ export default function Home() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center space-x-3 text-text-primary/80 font-mono text-sm">
                     <div className="p-2 bg-cloud-secondary rounded-lg border border-border-color">
-                      <item.icon className="w-5 h-5 text-aws-orange" />
+                      <item.icon className="w-5 h-5 text-arcade-purple" />
                     </div>
                     <span>{item.text}</span>
                   </div>
@@ -267,7 +267,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Upcoming Events</h2>
               <div className="w-24 h-1 bg-cloud-blue mx-auto md:mx-0 rounded-full"></div>
             </div>
-            <Link to="/events" className="hidden md:flex items-center text-cloud-blue hover:text-aws-orange transition-colors font-mono text-sm">
+            <Link to="/events" className="hidden md:flex items-center text-cloud-blue hover:text-arcade-purple transition-colors font-mono text-sm">
               View All Events <ChevronRight className="w-4 h-4 ml-1" />
             </Link>
           </motion.div>
@@ -284,7 +284,7 @@ export default function Home() {
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="glass-panel p-6 pixel-border hover:pixel-border-hover flex flex-col h-full"
                 >
-                  <div className="flex items-center text-aws-orange mb-4 font-mono text-sm">
+                  <div className="flex items-center text-arcade-purple mb-4 font-mono text-sm">
                     <Calendar className="w-4 h-4 mr-2" />
                     {event.date}
                   </div>
@@ -375,7 +375,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Meet The Team</h2>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full"></div>
           </motion.div>
 
           <div className="flex flex-col gap-8">
@@ -394,7 +394,7 @@ export default function Home() {
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-arcade-purple transition-colors">
                       <img
                         src={member.image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
                         alt={member.name}
@@ -404,7 +404,7 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                    <p className="text-aws-orange font-mono text-xs mt-1 mb-4">{member.role}</p>
+                    <p className="text-arcade-purple font-mono text-xs mt-1 mb-4">{member.role}</p>
                   </Link>
                   <div className="flex space-x-3">
                     {member.name !== 'Dr. Varsha Gaikwad' && (
@@ -438,7 +438,7 @@ export default function Home() {
                   className="glass-panel p-6 flex flex-col items-center text-center pixel-border hover:pixel-border-hover transition-all duration-300 group"
                 >
                   <Link to={`/team/${member.id}`} className="w-full flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-aws-orange transition-colors">
+                    <div className="w-24 h-24 rounded-full bg-cloud-secondary border border-border-color mb-4 overflow-hidden flex items-center justify-center group-hover:border-arcade-purple transition-colors">
                       <img
                         src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
                         alt={member.name}
@@ -448,7 +448,7 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-lg font-heading font-bold">{member.name}</h3>
-                    <p className="text-aws-orange font-mono text-xs mt-1 mb-4">{member.role}</p>
+                    <p className="text-arcade-purple font-mono text-xs mt-1 mb-4">{member.role}</p>
                   </Link>
                   <div className="flex space-x-3">
                     <a href={
@@ -456,7 +456,7 @@ export default function Home() {
                         member.id === 'gopal' ? "https://www.linkedin.com/in/gopal-lakwal-461467383" :
                           member.id === 'shubham' ? "https://www.linkedin.com/in/shubham-sonwane-b9b056312" :
                             "#"
-                    } className="text-text-secondary hover:text-aws-orange transition-colors hover:scale-110 transform">
+                    } className="text-text-secondary hover:text-arcade-purple transition-colors hover:scale-110 transform">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href={

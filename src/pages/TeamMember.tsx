@@ -27,7 +27,7 @@ export default function TeamMember() {
     <PageTransition className="w-full">
       <section className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/team" className="inline-flex items-center text-text-secondary hover:text-aws-orange transition-colors mb-8 group">
+          <Link to="/team" className="inline-flex items-center text-text-secondary hover:text-arcade-purple transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Team
           </Link>

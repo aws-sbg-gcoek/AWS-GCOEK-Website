@@ -15,7 +15,7 @@ export default function Join() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-8 text-gradient-orange">Join The Club</h1>
-            <div className="w-24 h-1.5 bg-aws-orange mx-auto rounded-full mb-10"></div>
+            <div className="w-24 h-1.5 bg-arcade-purple mx-auto rounded-full mb-10"></div>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-mono">
               Become a part of GCOEK's fastest-growing tech community. Learn, build, and grow with us.
             </p>
@@ -37,7 +37,7 @@ export default function Join() {
               className="glass-panel pixel-border relative overflow-hidden flex flex-col"
             >
               <div className="p-8 border-b border-border-color flex items-center gap-4">
-                <Send className="w-7 h-7 text-aws-orange" />
+                <Send className="w-7 h-7 text-arcade-purple" />
                 <h2 className="text-2xl font-heading font-bold text-text-primary">Membership Application</h2>
               </div>
               <div className="w-full overflow-hidden" style={{ height: '800px' }}>

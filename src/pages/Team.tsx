@@ -18,7 +18,7 @@ export default function Team() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-gradient-orange">Our Team</h1>
-            <div className="w-24 h-1 bg-aws-orange mx-auto rounded-full mb-8"></div>
+            <div className="w-24 h-1 bg-arcade-purple mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto font-mono">
               Meet the dedicated students leading the AWS Student Builder Group at GCOEK.
             </p>
@@ -62,7 +62,7 @@ export default function Team() {
                               loading="lazy"
                             />
                           </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
                           <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                         </Link>
                         <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -101,7 +101,7 @@ export default function Team() {
                               loading="lazy"
                             />
                           </div>
-                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                          <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
                           <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                         </Link>
                         <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -142,7 +142,7 @@ export default function Team() {
                             loading="lazy"
                           />
                         </div>
-                        <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-aws-orange transition-colors">{member.name}</h3>
+                        <h3 className="text-lg font-heading font-bold mb-1 text-text-primary group-hover:text-arcade-purple transition-colors">{member.name}</h3>
                         <p className={`${dept.color} font-mono text-xs mb-4 min-h-[32px] flex items-center justify-center`}>{member.role}</p>
                       </Link>
                       <div className="flex space-x-3 mt-auto pb-6 px-6">
@@ -175,7 +175,7 @@ export default function Team() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <Users className="w-16 h-16 text-aws-orange mx-auto mb-6 opacity-80" />
+          <Users className="w-16 h-16 text-arcade-purple mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl font-heading font-bold mb-4 text-text-primary">Want to join the core team?</h2>
           <p className="text-lg text-text-secondary mb-8 font-mono">
             We are always looking for passionate students to help lead the club and organize events.
@@ -211,7 +211,7 @@ export default function Team() {
 
               <div className="mb-8 text-center">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-cloud-secondary border border-border-color mb-4">
-                  <Users className="w-6 h-6 text-aws-orange" />
+                  <Users className="w-6 h-6 text-arcade-purple" />
                 </div>
                 <h3 className="text-2xl font-heading font-bold text-text-primary mb-2">Apply for Leadership</h3>
                 <p className="text-sm text-text-secondary font-mono">
@@ -225,16 +225,16 @@ export default function Team() {
                   href="https://forms.gle/zF7ETWoREn9nkP6dA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-aws-orange/50 hover:bg-aws-orange/10 transition-all duration-300 group"
+                  className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-border-color bg-cloud-secondary hover:border-arcade-purple/50 hover:bg-arcade-purple/10 transition-all duration-300 group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-aws-orange/10 border border-aws-orange/20 group-hover:bg-aws-orange/20 transition-colors shrink-0">
-                    <Users className="w-5 h-5 text-aws-orange" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-arcade-purple/10 border border-arcade-purple/20 group-hover:bg-arcade-purple/20 transition-colors shrink-0">
+                    <Users className="w-5 h-5 text-arcade-purple" />
                   </div>
                   <div className="text-left">
                     <p className="text-sm font-semibold text-text-primary">Application Form</p>
                     <p className="text-xs text-text-secondary font-mono">Fill out the official form</p>
                   </div>
-                  <span className="ml-auto text-xs font-mono text-aws-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                  <span className="ml-auto text-xs font-mono text-arcade-purple opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </a>
 
                 {/* WhatsApp */}
