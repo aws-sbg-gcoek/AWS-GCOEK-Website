@@ -60,7 +60,7 @@ export default function TeamMember() {
                   <img 
                     src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/400/400`} 
                     alt={member.name}
-                    className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="w-full h-full object-cover transition-all duration-300"
                     loading="lazy"
                   />
                 </div>

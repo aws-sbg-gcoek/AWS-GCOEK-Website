@@ -26,7 +26,7 @@ export const eventsData: AppEvent[] = [
   {
     id: 'portfolio-website-workshop',
     title: 'AI-Powered Portfolio Website Development Workshop',
-    date: '02 May 2026',
+    date: '09 May 2026',
     time: '10:00 AM – 2:00 PM',
     location: 'E Computer Lab (GCOEK New Campus)',
     desc: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using core web development skills — HTML, CSS, and JavaScript — while also leveraging AI tools to speed up development. By the end of the session, you\'ll have your own live portfolio website ready to share.',
