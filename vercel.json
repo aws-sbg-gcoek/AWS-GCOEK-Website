@@ -1,3 +1,10 @@
 {
+  "redirects": [
+    {
+      "source": "/events/portfol",
+      "destination": "https://aws-student-builder-group.vercel.app/events/portfolio-website-workshop",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
