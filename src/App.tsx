@@ -17,6 +17,7 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Team from './pages/Team';
 import TeamMember from './pages/TeamMember';
+import Leadership from './pages/Leadership';
 import Resources from './pages/Resources';
 import Join from './pages/Join';
 import Sponsors from './pages/Sponsors';
@@ -46,6 +47,7 @@ function AnimatedRoutes() {
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/team" element={<Team />} />
           <Route path="/team/:id" element={<TeamMember />} />
+          <Route path="/team/apply" element={<Leadership />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/join" element={<Join />} />

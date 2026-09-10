@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Linkedin, Mail, Users, X, MessageCircle } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Linkedin, Mail, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { departments } from '../data/team';
@@ -17,7 +16,6 @@ const colorMap: Record<string, string> = {
 };
 
 export default function Team() {
-  const [showContact, setShowContact] = useState(false);
   return (
     <PageTransition className="w-full">
       {/* ── HEADER ── */}
@@ -108,44 +106,11 @@ export default function Team() {
             <Users className="w-12 h-12 text-border-color mx-auto mb-6" />
             <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
             <p className="text-text-secondary mb-8 font-mono text-sm">We are always looking for passionate students to help lead the club and organize events.</p>
-            <button onClick={() => setShowContact(true)} className="pixel-button px-8 py-3.5">Apply for Leadership</button>
+            <Link to="/team/apply" className="pixel-button px-8 py-3.5 inline-block">Apply for Leadership</Link>
           </div>
         </motion.div>
       </section>
 
-      {/* ── MODAL ── */}
-      <AnimatePresence>
-        {showContact && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowContact(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1220]/80 backdrop-blur-sm px-4"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              onClick={(e) => e.stopPropagation()} className="dev-card w-full max-w-md p-8 relative" style={{ background: '#0D1826' }}
-            >
-              <button onClick={() => setShowContact(false)} className="absolute top-4 right-4 p-2 text-text-secondary hover:text-white transition-colors">
-                <X className="w-5 h-5" />
-              </button>
-              <div className="mb-8">
-                <h3 className="text-2xl font-heading font-bold text-white mb-2">Apply for Leadership</h3>
-                <div className="section-line mb-4" />
-                <p className="text-sm text-text-secondary font-mono">Reach out to us or fill the form to join the core team.</p>
-              </div>
-              <div className="space-y-3">
-                <a href="https://forms.gle/zF7ETWoREn9nkP6dA" target="_blank" rel="noopener noreferrer" className="dev-card card-shine flex items-center gap-4 p-4 group hover:border-arcade-purple">
-                  <Users className="w-5 h-5 text-arcade-purple shrink-0" />
-                  <div><p className="text-sm font-bold text-white">Application Form</p><p className="text-xs text-text-secondary font-mono">Fill out the official form</p></div>
-                </a>
-                <a href={`https://wa.me/918446712322`} target="_blank" rel="noopener noreferrer" className="dev-card card-shine flex items-center gap-4 p-4 group hover:border-[#22C55E]">
-                  <MessageCircle className="w-5 h-5 text-[#22C55E] shrink-0" />
-                  <div><p className="text-sm font-bold text-white">WhatsApp</p><p className="text-xs text-text-secondary font-mono">Send us a message</p></div>
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </PageTransition>
   );
 }
