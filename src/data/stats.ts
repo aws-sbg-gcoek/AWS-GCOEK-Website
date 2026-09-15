@@ -4,4 +4,4 @@
  */
 
 /** Total members in the AWS GCOEK Meetup.com group */
-export const MEETUP_MEMBERS = 960;
+export const MEETUP_MEMBERS = 940;

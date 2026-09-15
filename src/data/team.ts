@@ -53,6 +53,9 @@ export const departments = [
     hoverBorderColor: "group-hover:border-cloud-blue",
     members: [
       { id: 'atharv-patil', name: 'Atharv Patil', role: 'Technical Lead', bio: 'Assisting in the strategic direction and operations of the club.', skills: ['Cloud Computing', 'Management', 'AWS'], email: 'mailto:atharvpatil1808@gmail.com', linkedin: 'https://www.linkedin.com/in/atharvpatilw', image: 'https://i.ibb.co/wZYNhv1R/Whats-App-Image-2026-04-18-at-1-54-07-PM.jpg' },
+      { id: 'anas', name: 'Anas Pathan', role: 'Project Lead', bio: 'Leading project development, coordinating the team, and building scalable applications with modern cloud technologies.', skills: ['AWS', 'Project Leadership', 'Cloud Development', 'Node.js', 'Docker'], email: 'mailto:pathananas2007@gmail.com', linkedin: 'https://www.linkedin.com/in/anas-pathan-91a6b3368', image: 'https://i.ibb.co/YBDxDXfV/Chat-GPT-Image-Sep-4-2026-12-44-21-AM.png' },
+
+
       {
         id: 'Yash',
         name: 'Yash Nawal',
@@ -68,9 +71,6 @@ export const departments = [
       { id: 'diksha', name: 'Diksha Remulkar', role: 'Technical Associate', bio: 'Passionate about cloud technologies and helping others learn.', skills: ['AWS', 'Python', 'Cloud Native'], email: 'mailto:diksharemulkar@gmail.com', linkedin: 'https://www.linkedin.com/in/diksha-remulkar-4b76a8338', image: 'https://i.ibb.co/DfZngMw0/1773671193720-Diksha-Remulkar.png' },
       { id: 'srushti', name: 'Srushti Shinde', role: 'Technical Associate', bio: 'Exploring the depths of AWS services and building robust solutions.', skills: ['AWS', 'JavaScript', 'Serverless'], email: 'mailto:srushti4326@gmail.com', linkedin: 'https://www.linkedin.com/in/srushti-shinde-692326338', image: 'https://i.ibb.co/whnVPdBh/IMG-20260316-142303-Srushti-Shinde.png' },
       { id: 'aditi', name: 'Aditi', role: 'Project Associate', bio: 'Leading technical projects and guiding members in hands-on learning.', skills: ['Project Management', 'AWS', 'React'], email: 'mailto:jadhavaditi8176@gmail.com', linkedin: 'https://www.linkedin.com/in/aditi-jadhav-622843388', image: 'https://i.ibb.co/DBRgNyb/aditi.jpg' },
-      { id: 'anas', name: 'Anas Pathan', role: 'Project Lead', bio: 'Leading project development, coordinating the team, and building scalable applications with modern cloud technologies.', skills: ['AWS', 'Project Leadership', 'Cloud Development', 'Node.js', 'Docker'], email: 'mailto:pathananas2007@gmail.com', linkedin: 'https://www.linkedin.com/in/anas-pathan-91a6b3368', image: 'https://i.ibb.co/YBDxDXfV/Chat-GPT-Image-Sep-4-2026-12-44-21-AM.png' },
-
-
     ]
 
   },
@@ -83,9 +83,10 @@ export const departments = [
     members: [
       { id: 'punam', name: 'Punam Age', role: 'Event Coordinator', bio: 'Organizing engaging and educational events for the community.', skills: ['Event Planning', 'Public Speaking', 'Coordination'], email: 'mailto:punamage123@gmail.com', linkedin: 'https://www.linkedin.com/in/punam-age-5219a52b6', image: 'https://i.ibb.co/spsQqkZ3/Professional-passport-style-headshot-with-smile-1-Punam-age.png' },
       { id: 'chaitanya', name: 'Chaitanya', role: 'Logistics Lead', bio: 'Ensuring all events run smoothly with proper logistical support.', skills: ['Logistics', 'Management', 'Problem Solving'], email: 'mailto:chhaitanyaaz@gmail.com', linkedin: 'https://www.linkedin.com/in/chhaitanyaa-zanjurne-84976a24', image: 'https://i.ibb.co/KjLPBGnt/chaitanya.png' },
+      { id: 'suhani', name: 'Suhani Varma', role: 'Event Coordination ', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:suhanivarma33@gmail.com', linkedin: 'https://www.linkedin.com/in/suhani-varma-09810a214', image: 'https://i.ibb.co/7t7JXFhg/IMG-20260316-WA0011-Suhani-Varma.jpg' },
       { id: 'arya', name: 'Arya Patil', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:aryap010406@gmail.com', linkedin: 'https://www.linkedin.com/in/arya-patil-4b85b73a5', image: 'https://i.ibb.co/vCRQfL3T/IMG-20260316-WA0026-Arya-Patil-1.jpg' },
-      { id: 'palak', name: 'Kaya Vedi', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:kayavedi7@gmail.com', linkedin: 'https://www.linkedin.com/in/palak-vedi-284821388', image: 'https://i.ibb.co/DPczYCS5/Professional-headshot-with-warm-smile-Kaya-Vedi.png' }, ,
-      { id: 'suhani', name: 'Suhani Varma', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:suhanivarma33@gmail.com', linkedin: 'https://www.linkedin.com/in/suhani-varma-09810a214', image: 'https://i.ibb.co/7t7JXFhg/IMG-20260316-WA0011-Suhani-Varma.jpg' }
+      { id: 'palak', name: 'Kaya Vedi', role: 'Event Coordination Associate', bio: 'Helping to plan and execute club events.', skills: ['Coordination', 'Teamwork'], email: 'mailto:kayavedi7@gmail.com', linkedin: 'https://www.linkedin.com/in/palak-vedi-284821388', image: 'https://i.ibb.co/DPczYCS5/Professional-headshot-with-warm-smile-Kaya-Vedi.png' }, 
+      
     ]
   },
   {

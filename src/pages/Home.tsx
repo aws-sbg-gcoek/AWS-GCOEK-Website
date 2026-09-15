@@ -223,7 +223,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-3">
                   {featuredEvent.link && (
                     <a href={featuredEvent.link} target="_blank" rel="noopener noreferrer" className="pixel-button px-7 py-3 text-sm">
-                      Register Now
+                      Join Now
                     </a>
                   )}
                   <Link to={`/events/${featuredEvent.id}`} className="pixel-button-secondary px-7 py-3 text-sm">

@@ -125,7 +125,7 @@ export default function EventDetails() {
           <div className="lg:col-span-1">
             <div className="sticky top-24 dev-card p-6 bg-[#080E1A]">
               <div className="section-label">Action</div>
-              <h3 className="text-xl font-heading font-bold text-white mb-6">Registration</h3>
+              <h3 className="text-xl font-heading font-bold text-white mb-6">Join Now</h3>
               
               {event.status === 'upcoming' ? (
                 <>
@@ -135,12 +135,12 @@ export default function EventDetails() {
                   
                   {event.link ? (
                     <a href={event.link} target="_blank" rel="noopener noreferrer" className="pixel-button w-full flex items-center justify-center py-3.5 mb-4">
-                      Register Now <ChevronRight className="w-4 h-4 ml-2" />
+                      Join Now <ChevronRight className="w-4 h-4 ml-2" />
                     </a>
                   ) : (
-                    <button disabled className="w-full py-3.5 bg-[#111827] text-text-secondary font-mono text-xs uppercase border border-border-color mb-4 cursor-not-allowed">
-                      Opening Soon
-                    </button>
+                    <Link to="/join" className="pixel-button w-full flex items-center justify-center py-3.5 mb-4">
+                      Join Now <ChevronRight className="w-4 h-4 ml-2" />
+                    </Link>
                   )}
                   
                   {event.meetLink && (

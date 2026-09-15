@@ -24,15 +24,36 @@ export interface AppEvent {
 
 export const eventsData: AppEvent[] = [
   {
+    id: 'welcome-new-college-students',
+    title: 'AWS Student Builder Group Welcomes All New College Students',
+    date: '16 Sep 2026',
+    time: 'TBD',
+    location: 'TBD',
+    desc: 'AWS Student Builder Group welcomes all new college students to the GCOEK community. Join us for an introduction to the AWS Student Builder Group, followed by an engaging quiz, and discover cloud computing, AWS, DevOps, AI, hands-on technology, exciting events, and opportunities to learn, build, and grow together.',
+    type: 'Welcome Meetup',
+    status: 'upcoming',
+    isFeatured: true,
+    highlights: [
+      'Welcome and introduction to AWS Student Builder Group GCOEK',
+      'Interactive introduction to the club and its activities',
+      'Interactive quiz for new college students',
+      'Explore AWS Cloud, DevOps, AI, and emerging technologies',
+      'Meet fellow students and the AWS SBG community',
+      'Discover upcoming workshops, seminars, and hands-on activities',
+      'Opportunities to learn, build, lead, and grow',
+      'Open to all new college students'
+    ]
+  },
+  {
     id: 'portfolio-website-workshop',
     title: 'AI-Powered Portfolio Website Development Workshop',
-    date: '09 May 2026',
+    date: '09 Apr 2026',
     time: '10:00 AM – 2:00 PM',
     location: 'E Computer Lab (GCOEK New Campus)',
     desc: 'A hands-on workshop designed to help you build a professional personal portfolio from scratch using core web development skills — HTML, CSS, and JavaScript — while also leveraging AI tools to speed up development. By the end of the session, you\'ll have your own live portfolio website ready to share.',
     type: 'Workshop',
-    status: 'upcoming',
-    isFeatured: true,
+    status: 'past',
+    isFeatured: false,
     link: 'https://forms.gle/VNaYij16gsK8fbjy7',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop',
     highlights: [

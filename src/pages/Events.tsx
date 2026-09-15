@@ -196,6 +196,10 @@ export default function Events() {
               'https://i.ibb.co/Mx9LRq1m/highres-532347400.avif',
               'https://i.ibb.co/7JqJhG3N/highres-532347399.avif',
               'https://i.ibb.co/r2PWsbBj/IMG-20260313-133159131-HDR-AE-2-jpg.jpg',
+              'https://i.ibb.co/ZztxTXTj/Whats-App-Image-2026-09-04-at-7-49-19-PM.jpg',
+              'https://i.ibb.co/1Gt9j8Nd/Whats-App-Image-2026-09-04-at-7-49-40-PM-1.jpg',
+              'https://i.ibb.co/NdxvXsC8/Whats-App-Image-2026-09-04-at-7-49-40-PM.jpg',
+              'https://i.ibb.co/84t7RpCz/Whats-App-Image-2026-09-04-at-7-49-41-PM.jpg',
             ].map((src, idx) => (
               <motion.div
                 key={idx}
