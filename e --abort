@@ -1,0 +1,151 @@
+[1mdiff --cc src/App.tsx[m
+[1mindex a6d8830,a78ee0b..0000000[m
+[1m--- a/src/App.tsx[m
+[1m+++ b/src/App.tsx[m
+[36m@@@ -1,70 -1,72 +1,146 @@@[m
+[32m++<<<<<<< ours[m
+[32m +/**[m
+[32m + * @license[m
+[32m + * SPDX-License-Identifier: Apache-2.0[m
+[32m + */[m
+[32m +[m
+[32m +import { useEffect } from 'react';[m
+[32m +import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';[m
+[32m +import { AnimatePresence, motion } from 'motion/react';[m
+[32m +import { Navbar } from './components/Navbar';[m
+[32m +import { Footer } from './components/Footer';[m
+[32m +import ParticleBackground from './components/ParticleBackground';[m
+[32m +import Home from './pages/Home';[m
+[32m +import About from './pages/About';[m
+[32m +import Events from './pages/Events';[m
+[32m +import EventDetails from './pages/EventDetails';[m
+[32m +import Projects from './pages/Projects';[m
+[32m +import Team from './pages/Team';[m
+[32m +import TeamMember from './pages/TeamMember';[m
+[32m +import Resources from './pages/Resources';[m
+[32m +import Join from './pages/Join';[m
+[32m +import Sponsors from './pages/Sponsors';[m
+[32m +[m
+[32m +function AnimatedRoutes() {[m
+[32m +  const location = useLocation();[m
+[32m +  [m
+[32m +  useEffect(() => {[m
+[32m +    window.scrollTo(0, 0);[m
+[32m +  }, [location.pathname]);[m
+[32m +  [m
+[32m +  return ([m
+[32m +    <AnimatePresence mode="wait">[m
+[32m +      <motion.div [m
+[32m +        key={location.pathname}[m
+[32m +        initial={{ opacity: 0, y: 20 }}[m
+[32m +        animate={{ opacity: 1, y: 0 }}[m
+[32m +        exit={{ opacity: 0, y: -20 }}[m
+[32m +        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}[m
+[32m +      >[m
+[32m +        <Routes location={location}>[m
+[32m +          <Route path="/" element={<Home />} />[m
+[32m +          <Route path="/about" element={<About />} />[m
+[32m +          <Route path="/events" element={<Events />} />[m
+[32m +          <Route path="/events/:id" element={<EventDetails />} />[m
+[32m +          <Route path="/projects" element={<Projects />} />[m
+[32m +          <Route path="/team" element={<Team />} />[m
+[32m +          <Route path="/team/:id" element={<TeamMember />} />[m
+[32m +          <Route path="/resources" element={<Resources />} />[m
+[32m +          <Route path="/sponsors" element={<Sponsors />} />[m
+[32m +          <Route path="/join" element={<Join />} />[m
+[32m +        </Routes>[m
+[32m +      </motion.div>[m
+[32m +    </AnimatePresence>[m
+[32m +  );[m
+[32m +}[m
+[32m +[m
+[32m +export default function App() {[m
+[32m +  return ([m
+[32m +    <Router>[m
+[32m +      <div className="min-h-screen flex flex-col bg-bg text-text-primary font-sans relative">[m
+[32m +        <ParticleBackground />[m
+[32m +        <Navbar />[m
+[32m +        <main className="flex-grow pt-24">[m
+[32m +          <AnimatedRoutes />[m
+[32m +        </main>[m
+[32m +        <Footer />[m
+[32m +      </div>[m
+[32m +    </Router>[m
+[32m +  );[m
+[32m +}[m
+[32m +[m
+[32m++||||||| base[m
+[32m++=======[m
+[32m+ /**[m
+[32m+  * @license[m
+[32m+  * SPDX-License-Identifier: Apache-2.0[m
+[32m+  */[m
+[32m+ [m
+[32m+ import { useEffect } from 'react';[m
+[32m+ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';[m
+[32m+ import { AnimatePresence, motion } from 'motion/react';[m
+[32m+ import { Navbar } from './components/Navbar';[m
+[32m+ import { Footer } from './components/Footer';[m
+[32m+ import ParticleBackground from './components/ParticleBackground';[m
+[32m+ import Home from './pages/Home';[m
+[32m+ import About from './pages/About';[m
+[32m+ import Events from './pages/Events';[m
+[32m+ import EventDetails from './pages/EventDetails';[m
+[32m+ import Projects from './pages/Projects';[m
+[32m+ import ProjectDetail from './pages/ProjectDetail';[m
+[32m+ import Team from './pages/Team';[m
+[32m+ import TeamMember from './pages/TeamMember';[m
+[32m+ import Resources from './pages/Resources';[m
+[32m+ import Join from './pages/Join';[m
+[32m+ import Sponsors from './pages/Sponsors';[m
+[32m+ [m
+[32m+ function AnimatedRoutes() {[m
+[32m+   const location = useLocation();[m
+[32m+   [m
+[32m+   useEffect(() => {[m
+[32m+     window.scrollTo(0, 0);[m
+[32m+   }, [location.pathname]);[m
+[32m+   [m
+[32m+   return ([m
+[32m+     <AnimatePresence mode="wait">[m
+[32m+       <motion.div [m
+[32m+         key={location.pathname}[m
+[32m+         initial={{ opacity: 0, y: 20 }}[m
+[32m+         animate={{ opacity: 1, y: 0 }}[m
+[32m+         exit={{ opacity: 0, y: -20 }}[m
+[32m+         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}[m
+[32m+       >[m
+[32m+         <Routes location={location}>[m
+[32m+           <Route path="/" element={<Home />} />[m
+[32m+           <Route path="/about" element={<About />} />[m
+[32m+           <Route path="/events" element={<Events />} />[m
+[32m+           <Route path="/events/:id" element={<EventDetails />} />[m
+[32m+           <Route path="/projects" element={<Projects />} />[m
+[32m+           <Route path="/projects/:id" element={<ProjectDetail />} />[m
+[32m+           <Route path="/team" element={<Team />} />[m
+[32m+           <Route path="/team/:id" element={<TeamMember />} />[m
+[32m+           <Route path="/resources" element={<Resources />} />[m
+[32m+           <Route path="/sponsors" element={<Sponsors />} />[m
+[32m+           <Route path="/join" element={<Join />} />[m
+[32m+         </Routes>[m
+[32m+       </motion.div>[m
+[32m+     </AnimatePresence>[m
+[32m+   );[m
+[32m+ }[m
+[32m+ [m
+[32m+ export default function App() {[m
+[32m+   return ([m
+[32m+     <Router>[m
+[32m+       <div className="min-h-screen flex flex-col bg-bg text-text-primary font-sans relative">[m
+[32m+         <ParticleBackground />[m
+[32m+         <Navbar />[m
+[32m+         <main className="flex-grow pt-24">[m
+[32m+           <AnimatedRoutes />[m
+[32m+         </main>[m
+[32m+         <Footer />[m
+[32m+       </div>[m
+[32m+     </Router>[m
+[32m+   );[m
+[32m+ }[m
+[32m+ [m
+[32m++>>>>>>> theirs[m
