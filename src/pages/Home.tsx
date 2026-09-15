@@ -1,11 +1,12 @@
 import { motion } from 'motion/react';
+import Tilt from 'react-parallax-tilt';
 import { Link } from 'react-router-dom';
 import { Cloud, Server, Code, Users, Terminal, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
 import { useLiveStats } from '../hooks/useLiveStats';
-import { HeroTerminal } from '../components/HeroTerminal';
+import { Hero3DObject } from '../components/Hero3DObject';
 import { TechTicker } from '../components/TechTicker';
 
 /* ─── Pixel block cluster decoration ─── */
@@ -151,13 +152,10 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* ── Right: Terminal window ── */}
-            <div className="flex-shrink-0 hidden lg:flex flex-col items-end gap-6">
-              <HeroTerminal />
-              {/* Mini block cluster decoration under terminal */}
-              <div className="self-end opacity-50 float-medium">
-                <BlockCluster opacity={1} size={9} gap={4} />
-              </div>
+            {/* ── Right: 3D Object ── */}
+            <div className="flex-shrink-0 hidden lg:flex flex-col items-center justify-center relative w-full max-w-md">
+              <div className="absolute inset-0 bg-aws-orange opacity-20 blur-[100px] rounded-full pointer-events-none"></div>
+              <Hero3DObject />
             </div>
           </div>
         </div>
@@ -443,23 +441,23 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {upcomingEvents.map((event, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  whileHover={{ y: -4 }}
-                  className="dev-card card-shine bl-blue p-6 flex flex-col h-full"
-                >
-                  <div className="flex items-center gap-2 mb-4">
-                    <Calendar className="w-3.5 h-3.5 text-cloud-blue" />
-                    <span className="font-mono text-xs text-cloud-blue tracking-wider">{event.date}</span>
-                  </div>
-                  <h3 className="text-base font-heading font-bold text-white mb-3">{event.title}</h3>
-                  <p className="text-text-secondary text-sm mb-6 flex-grow line-clamp-3">{event.desc}</p>
-                  <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2 w-full text-xs text-center">
-                    View Details
-                  </Link>
-                </motion.div>
+                <Tilt key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
+                    className="dev-card card-shine bl-blue p-6 flex flex-col h-full w-full"
+                  >
+                    <div className="flex items-center gap-2 mb-4">
+                      <Calendar className="w-3.5 h-3.5 text-cloud-blue" />
+                      <span className="font-mono text-xs text-cloud-blue tracking-wider">{event.date}</span>
+                    </div>
+                    <h3 className="text-base font-heading font-bold text-white mb-3">{event.title}</h3>
+                    <p className="text-text-secondary text-sm mb-6 flex-grow line-clamp-3">{event.desc}</p>
+                    <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2 w-full text-xs text-center">
+                      View Details
+                    </Link>
+                  </motion.div>
+                </Tilt>
               ))}
             </div>
 
@@ -489,32 +487,32 @@ export default function Home() {
               { title: 'IoT Health Dashboard', desc: 'Real-time health monitoring using AWS IoT Core and React.', tech: ['IoT Core', 'Amplify', 'React'], accent: '#38BDF8' },
               { title: 'Cloud File Storage', desc: 'Secure file sharing platform built on S3 and Cognito.', tech: ['S3', 'Cognito', 'API Gateway'], accent: '#A855F7' },
             ].map((project, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
-                whileHover={{ y: -4 }}
-                className="dev-card card-shine p-6 group"
-                style={{ borderLeftColor: project.accent, borderLeftWidth: 3 }}
-              >
-                <div className="flex justify-between items-start mb-5">
-                  <div className="icon-box" style={{ borderColor: project.accent + '44' }}>
-                    <Database className="w-4 h-4" style={{ color: project.accent }} />
+              <Tilt key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}
+                  className="dev-card card-shine p-6 group h-full w-full"
+                  style={{ borderLeftColor: project.accent, borderLeftWidth: 3 }}
+                >
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="icon-box" style={{ borderColor: project.accent + '44' }}>
+                      <Database className="w-4 h-4" style={{ color: project.accent }} />
+                    </div>
+                    <a href="#" className="text-text-secondary hover:text-white transition-colors duration-200">
+                      <Github className="w-4 h-4" />
+                    </a>
                   </div>
-                  <a href="#" className="text-text-secondary hover:text-white transition-colors duration-200">
-                    <Github className="w-4 h-4" />
-                  </a>
-                </div>
-                <h3 className="text-base font-heading font-bold text-white mb-2 group-hover:text-aws-orange transition-colors duration-200">{project.title}</h3>
-                <p className="text-text-secondary text-sm mb-5 leading-relaxed">{project.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map(t => (
-                    <span key={t} className="font-mono text-xs px-2 py-0.5" style={{ background: '#111827', border: '1px solid #1E2A3A', color: '#9CA3AF', borderRadius: 2 }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+                  <h3 className="text-base font-heading font-bold text-white mb-2 group-hover:text-aws-orange transition-colors duration-200">{project.title}</h3>
+                  <p className="text-text-secondary text-sm mb-5 leading-relaxed">{project.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map(t => (
+                      <span key={t} className="font-mono text-xs px-2 py-0.5" style={{ background: '#111827', border: '1px solid #1E2A3A', color: '#9CA3AF', borderRadius: 2 }}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </Tilt>
             ))}
           </div>
 
@@ -546,44 +544,44 @@ export default function Home() {
               { id: 'gopal', name: 'Gopal Lakwal', role: 'Joint Secretary', image: 'https://i.ibb.co/4wBwTHtx/file-000000002ef871fab1e8c53a2708be68-Gopal-lakwal.png', linkedin: 'https://www.linkedin.com/in/gopal-lakwal-461467383', email: 'mailto:gopallakwal526@gmail.com' },
               { id: 'shubham', name: 'Shubham Sonwane', role: 'Joint Secretary', image: 'https://i.ibb.co/LDDfM6hn/Gemini-Generated-Image-nbpxu8nbpxu8nbpx-Shubham-Sonwane.png', linkedin: 'https://www.linkedin.com/in/shubham-sonwane-b9b056312', email: 'mailto:sonwaneshubham38@gmail.com' },
             ].map((member, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.07 }}
-                whileHover={{ y: -4 }}
-                className="dev-card group overflow-hidden"
-              >
-                <Link to={`/team/${member.id}`}>
-                  {/* Square photo */}
-                  <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                    />
+              <Tilt key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.07 }}
+                  className="dev-card group overflow-hidden h-full w-full"
+                >
+                  <Link to={`/team/${member.id}`}>
+                    {/* Square photo */}
+                    <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-sm font-heading font-bold text-white leading-tight mb-1">{member.name}</h3>
+                      <p className="font-mono text-xs text-aws-orange">{member.role}</p>
+                    </div>
+                  </Link>
+                  <div className="px-4 pb-4 flex gap-2">
+                    {(member as any).linkedin && (
+                      <a href={(member as any).linkedin} target="_blank" rel="noopener noreferrer"
+                        className="icon-box w-7 h-7 hover:border-cloud-blue transition-colors duration-200">
+                        <Linkedin className="w-3 h-3 text-text-secondary" />
+                      </a>
+                    )}
+                    {(member as any).email && (
+                      <a href={(member as any).email}
+                        className="icon-box w-7 h-7 hover:border-aws-orange transition-colors duration-200">
+                        <Mail className="w-3 h-3 text-text-secondary" />
+                      </a>
+                    )}
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-sm font-heading font-bold text-white leading-tight mb-1">{member.name}</h3>
-                    <p className="font-mono text-xs text-aws-orange">{member.role}</p>
-                  </div>
-                </Link>
-                <div className="px-4 pb-4 flex gap-2">
-                  {(member as any).linkedin && (
-                    <a href={(member as any).linkedin} target="_blank" rel="noopener noreferrer"
-                      className="icon-box w-7 h-7 hover:border-cloud-blue transition-colors duration-200">
-                      <Linkedin className="w-3 h-3 text-text-secondary" />
-                    </a>
-                  )}
-                  {(member as any).email && (
-                    <a href={(member as any).email}
-                      className="icon-box w-7 h-7 hover:border-aws-orange transition-colors duration-200">
-                      <Mail className="w-3 h-3 text-text-secondary" />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
+                </motion.div>
+              </Tilt>
             ))}
           </div>
 
@@ -599,49 +597,53 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             {/* General Member CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.4 }}
-              className="dev-card p-10 lg:p-12 border-animate relative overflow-hidden flex flex-col justify-center"
-            >
-              <div className="absolute right-0 top-0 bottom-0 w-48 overflow-hidden opacity-10 pointer-events-none hidden sm:block">
-                <div className="float-slow mt-4 -ml-4"><BlockCluster opacity={1} size={12} gap={6} /></div>
-              </div>
-              <div className="relative z-10">
-                <div className="section-label">Get Started</div>
-                <h2 className="text-3xl md:text-4xl font-heading font-black text-white mb-4 leading-tight">
-                  Start Your Cloud<br />Journey Today
-                </h2>
-                <div className="section-line mb-6" />
-                <p className="text-text-secondary mb-8 leading-relaxed max-w-sm">
-                  Join the AWS Student Builder Group and learn cloud computing through workshops, projects, and community learning.
-                </p>
-                <Link
-                  to="/join"
-                  onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)}
-                  className="pixel-button px-8 py-3.5 text-sm inline-block"
-                >
-                  Join the Group
-                </Link>
-              </div>
-            </motion.div>
+            <Tilt tiltMaxAngleX={3} tiltMaxAngleY={3} glareEnable glareMaxOpacity={0.1} scale={1.01} className="h-full flex flex-col">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.4 }}
+                className="dev-card p-10 lg:p-12 border-animate relative overflow-hidden flex flex-col justify-center h-full w-full"
+              >
+                <div className="absolute right-0 top-0 bottom-0 w-48 overflow-hidden opacity-10 pointer-events-none hidden sm:block">
+                  <div className="float-slow mt-4 -ml-4"><BlockCluster opacity={1} size={12} gap={6} /></div>
+                </div>
+                <div className="relative z-10">
+                  <div className="section-label">Get Started</div>
+                  <h2 className="text-3xl md:text-4xl font-heading font-black text-white mb-4 leading-tight">
+                    Start Your Cloud<br />Journey Today
+                  </h2>
+                  <div className="section-line mb-6" />
+                  <p className="text-text-secondary mb-8 leading-relaxed max-w-sm">
+                    Join the AWS Student Builder Group and learn cloud computing through workshops, projects, and community learning.
+                  </p>
+                  <Link
+                    to="/join"
+                    onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)}
+                    className="pixel-button px-8 py-3.5 text-sm inline-block"
+                  >
+                    Join the Group
+                  </Link>
+                </div>
+              </motion.div>
+            </Tilt>
 
             {/* Core Team CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}
-              className="dev-card p-10 lg:p-12 flex flex-col justify-center items-center text-center"
-              style={{ background: '#0B1220' }}
-            >
-              <Users className="w-12 h-12 text-border-color mb-6" />
-              <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
-              <p className="text-text-secondary mb-8 font-mono text-sm max-w-sm">
-                We are always looking for passionate students to help lead the club and organize events.
-              </p>
-              <Link to="/team/apply" className="pixel-button-secondary px-8 py-3.5 text-sm inline-block">
-                Apply for Leadership
-              </Link>
-            </motion.div>
+            <Tilt tiltMaxAngleX={3} tiltMaxAngleY={3} glareEnable glareMaxOpacity={0.1} scale={1.01} className="h-full flex flex-col">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}
+                className="dev-card p-10 lg:p-12 flex flex-col justify-center items-center text-center h-full w-full"
+                style={{ background: '#0B1220' }}
+              >
+                <Users className="w-12 h-12 text-border-color mb-6" />
+                <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
+                <p className="text-text-secondary mb-8 font-mono text-sm max-w-sm">
+                  We are always looking for passionate students to help lead the club and organize events.
+                </p>
+                <Link to="/team/apply" className="pixel-button-secondary px-8 py-3.5 text-sm inline-block">
+                  Apply for Leadership
+                </Link>
+              </motion.div>
+            </Tilt>
 
           </div>
         </div>

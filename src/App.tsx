@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import ParticleBackground from './components/ParticleBackground';
+import Scene3D from './components/Scene3D';
 import Home from './pages/Home';
 import About from './pages/About';
 import Events from './pages/Events';
@@ -61,7 +61,7 @@ export default function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-bg text-text-primary font-sans relative">
-        <ParticleBackground />
+        <Scene3D />
         <Navbar />
         <main className="flex-grow pt-24">
           <AnimatedRoutes />

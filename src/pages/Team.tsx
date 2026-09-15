@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import Tilt from 'react-parallax-tilt';
 import { Linkedin, Mail, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
@@ -54,43 +55,43 @@ export default function Team() {
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {dept.members.map((member, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      whileHover={{ y: -4 }}
-                      className="dev-card group overflow-hidden flex flex-col"
-                      style={{ borderTopColor: hexColor, borderTopWidth: 2 }}
-                    >
-                      <Link to={`/team/${member.id}`} className="flex flex-col flex-grow">
-                        {/* Square photo */}
-                        <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
-                          <img
-                            src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
-                            alt={member.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
+                    <Tilt key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
+                        className="dev-card group overflow-hidden flex flex-col h-full w-full"
+                        style={{ borderTopColor: hexColor, borderTopWidth: 2 }}
+                      >
+                        <Link to={`/team/${member.id}`} className="flex flex-col flex-grow">
+                          {/* Square photo */}
+                          <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
+                            <img
+                              src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
+                              alt={member.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="p-4 flex-grow flex flex-col">
+                            <h3 className="text-sm font-heading font-bold text-white leading-tight mb-1 group-hover:text-aws-orange transition-colors duration-200">{member.name}</h3>
+                            <p className="font-mono text-[10px] uppercase tracking-wider mt-auto" style={{ color: hexColor }}>{member.role}</p>
+                          </div>
+                        </Link>
+                        
+                        {/* Socials */}
+                        <div className="px-4 pb-4 pt-2 flex gap-2 border-t border-border-color bg-[#080E1A]">
+                          {member.linkedin && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cloud-blue transition-colors text-text-secondary">
+                              <Linkedin className="w-4 h-4" />
+                            </a>
+                          )}
+                          {member.email && (
+                            <a href={member.email} className="hover:text-aws-orange transition-colors text-text-secondary">
+                              <Mail className="w-4 h-4" />
+                            </a>
+                          )}
                         </div>
-                        <div className="p-4 flex-grow flex flex-col">
-                          <h3 className="text-sm font-heading font-bold text-white leading-tight mb-1 group-hover:text-aws-orange transition-colors duration-200">{member.name}</h3>
-                          <p className="font-mono text-[10px] uppercase tracking-wider mt-auto" style={{ color: hexColor }}>{member.role}</p>
-                        </div>
-                      </Link>
-                      
-                      {/* Socials */}
-                      <div className="px-4 pb-4 pt-2 flex gap-2 border-t border-border-color bg-[#080E1A]">
-                        {member.linkedin && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-cloud-blue transition-colors text-text-secondary">
-                            <Linkedin className="w-4 h-4" />
-                          </a>
-                        )}
-                        {member.email && (
-                          <a href={member.email} className="hover:text-aws-orange transition-colors text-text-secondary">
-                            <Mail className="w-4 h-4" />
-                          </a>
-                        )}
-                      </div>
-                    </motion.div>
+                      </motion.div>
+                    </Tilt>
                   ))}
                 </div>
               </div>
@@ -102,12 +103,14 @@ export default function Team() {
       {/* ── CTA ── */}
       <section className="py-24 bg-grid-dense" style={{ background: '#0B1220', borderTop: '1px solid #1E2A3A' }}>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto px-4 text-center">
-          <div className="dev-card p-12 border-animate">
-            <Users className="w-12 h-12 text-border-color mx-auto mb-6" />
-            <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
-            <p className="text-text-secondary mb-8 font-mono text-sm">We are always looking for passionate students to help lead the club and organize events.</p>
-            <Link to="/team/apply" className="pixel-button px-8 py-3.5 inline-block">Apply for Leadership</Link>
-          </div>
+          <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2} glareEnable glareMaxOpacity={0.1} scale={1.01}>
+            <div className="dev-card p-12 border-animate w-full h-full">
+              <Users className="w-12 h-12 text-border-color mx-auto mb-6" />
+              <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
+              <p className="text-text-secondary mb-8 font-mono text-sm">We are always looking for passionate students to help lead the club and organize events.</p>
+              <Link to="/team/apply" className="pixel-button px-8 py-3.5 inline-block">Apply for Leadership</Link>
+            </div>
+          </Tilt>
         </motion.div>
       </section>
 

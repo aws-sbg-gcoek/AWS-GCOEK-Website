@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import Tilt from 'react-parallax-tilt';
 import { Calendar, MapPin, Clock, ArrowRight, Search, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
@@ -107,29 +108,29 @@ export default function Events() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {upcomingEvents.map((event, idx) => (
-                <motion.div
-                  key={event.id}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="dev-card card-shine bl-blue p-6 flex flex-col h-full group"
-                >
-                  <div className="mb-4">
-                    <span className="tech-tag border-cloud-blue text-cloud-blue">{event.type}</span>
-                  </div>
-                  <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
-                  
-                  <div className="space-y-3 mb-6 font-mono text-xs text-text-secondary">
-                    <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-cloud-blue" /> {event.date}</div>
-                    <div className="flex items-center gap-3"><Clock className="w-4 h-4 text-cloud-blue" /> {event.time}</div>
-                    <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-cloud-blue" /> {event.location}</div>
-                  </div>
-                  
-                  <p className="text-text-secondary text-sm mb-6 flex-grow leading-relaxed line-clamp-3">{event.desc}</p>
-                  
-                  <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2.5 w-full text-center text-xs flex items-center justify-center gap-2">
-                    View Details <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </motion.div>
+                <Tilt key={event.id} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                    className="dev-card card-shine bl-blue p-6 flex flex-col h-full w-full group"
+                  >
+                    <div className="mb-4">
+                      <span className="tech-tag border-cloud-blue text-cloud-blue">{event.type}</span>
+                    </div>
+                    <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
+                    
+                    <div className="space-y-3 mb-6 font-mono text-xs text-text-secondary">
+                      <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-cloud-blue" /> {event.date}</div>
+                      <div className="flex items-center gap-3"><Clock className="w-4 h-4 text-cloud-blue" /> {event.time}</div>
+                      <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-cloud-blue" /> {event.location}</div>
+                    </div>
+                    
+                    <p className="text-text-secondary text-sm mb-6 flex-grow leading-relaxed line-clamp-3">{event.desc}</p>
+                    
+                    <Link to={`/events/${event.id}`} className="pixel-button-secondary py-2.5 w-full text-center text-xs flex items-center justify-center gap-2">
+                      View Details <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </motion.div>
+                </Tilt>
               ))}
             </div>
           </div>
@@ -149,31 +150,31 @@ export default function Events() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {pastEvents.map((event, idx) => (
-                  <motion.div
-                    key={event.id}
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                    whileHover={{ x: 4 }}
-                    className="dev-card card-shine p-6 flex flex-col group"
-                    style={{ borderLeftColor: '#A855F7', borderLeftWidth: 3 }}
-                  >
-                    <div className="mb-4">
-                      <span className="tech-tag border-arcade-purple text-arcade-purple">{event.type}</span>
-                    </div>
-                    <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
-                    
-                    <div className="space-y-2 mb-4 font-mono text-xs text-text-secondary">
-                      <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-arcade-purple" /> {event.date}</div>
-                      {event.location && <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-arcade-purple" /> {event.location}</div>}
-                    </div>
+                  <Tilt key={event.id} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                      className="dev-card card-shine p-6 flex flex-col group h-full w-full"
+                      style={{ borderLeftColor: '#A855F7', borderLeftWidth: 3 }}
+                    >
+                      <div className="mb-4">
+                        <span className="tech-tag border-arcade-purple text-arcade-purple">{event.type}</span>
+                      </div>
+                      <h3 className="text-xl font-heading font-bold text-white mb-4 group-hover:text-aws-orange transition-colors duration-200">{event.title}</h3>
+                      
+                      <div className="space-y-2 mb-4 font-mono text-xs text-text-secondary">
+                        <div className="flex items-center gap-3"><Calendar className="w-4 h-4 text-arcade-purple" /> {event.date}</div>
+                        {event.location && <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-arcade-purple" /> {event.location}</div>}
+                      </div>
 
-                    <p className="text-text-secondary text-sm mb-4 leading-relaxed line-clamp-2">{event.desc}</p>
-                    
-                    <div className="mt-auto pt-4 border-t border-border-color">
-                      <Link to={`/events/${event.id}`} className="text-aws-orange font-mono text-xs hover:text-white transition-colors flex items-center gap-2">
-                        Read Summary <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </motion.div>
+                      <p className="text-text-secondary text-sm mb-4 leading-relaxed line-clamp-2">{event.desc}</p>
+                      
+                      <div className="mt-auto pt-4 border-t border-border-color">
+                        <Link to={`/events/${event.id}`} className="text-aws-orange font-mono text-xs hover:text-white transition-colors flex items-center gap-2">
+                          Read Summary <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </motion.div>
+                  </Tilt>
                 ))}
               </div>
             </div>

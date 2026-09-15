@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from 'motion/react';
+import Tilt from 'react-parallax-tilt';
 import { Link } from 'react-router-dom';
 import { Github, Database, Server, Code, Zap, Globe, X, MessageCircle, Mail, ExternalLink } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
@@ -86,85 +87,85 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((project, idx) => (
-              <motion.div
-                key={idx}
-                custom={idx} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="dev-card card-shine p-6 flex flex-col h-full group"
-                style={{ borderLeftColor: project.color, borderLeftWidth: 3 }}
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="icon-box" style={{ borderColor: project.color + '44' }}>
-                    <project.icon className="w-5 h-5" style={{ color: project.color }} />
+              <Tilt key={idx} tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.1} scale={1.02} className="h-full flex flex-col">
+                <motion.div
+                  custom={idx} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                  className="dev-card card-shine p-6 flex flex-col h-full w-full group"
+                  style={{ borderLeftColor: project.color, borderLeftWidth: 3 }}
+                >
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="icon-box" style={{ borderColor: project.color + '44' }}>
+                      <project.icon className="w-5 h-5" style={{ color: project.color }} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {(project as any).liveUrl && (
+                        <a
+                          href={(project as any).liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="icon-box w-9 h-9 hover:border-white transition-colors"
+                          title="Live Demo"
+                        >
+                          <Globe className="w-4 h-4" style={{ color: project.color }} />
+                        </a>
+                      )}
+                      {project.github !== '#' && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="icon-box w-9 h-9 hover:border-white transition-colors"
+                          title="GitHub"
+                        >
+                          <Github className="w-4 h-4 text-text-secondary" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {(project as any).liveUrl && (
-                      <a
-                        href={(project as any).liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="icon-box w-9 h-9 hover:border-white transition-colors"
-                        title="Live Demo"
-                      >
-                        <Globe className="w-4 h-4" style={{ color: project.color }} />
-                      </a>
-                    )}
-                    {project.github !== '#' && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="icon-box w-9 h-9 hover:border-white transition-colors"
-                        title="GitHub"
-                      >
-                        <Github className="w-4 h-4 text-text-secondary" />
-                      </a>
-                    )}
-                  </div>
-                </div>
 
-                <h3 className="text-xl font-heading font-bold text-white mb-3 group-hover:text-aws-orange transition-colors duration-200">
-                  {project.title}
-                </h3>
+                  <h3 className="text-xl font-heading font-bold text-white mb-3 group-hover:text-aws-orange transition-colors duration-200">
+                    {project.title}
+                  </h3>
 
-                <p className="text-text-secondary text-sm mb-6 flex-grow leading-relaxed">
-                  {project.desc}
-                </p>
+                  <p className="text-text-secondary text-sm mb-6 flex-grow leading-relaxed">
+                    {project.desc}
+                  </p>
 
-                <div className="mt-auto">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map(t => (
-                      <span key={t} className="tech-tag" style={{ color: '#9CA3AF' }}>
-                        {t}
-                      </span>
-                    ))}
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map(t => (
+                        <span key={t} className="tech-tag" style={{ color: '#9CA3AF' }}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {(project as any).detailUrl && (
+                        <Link
+                          to={(project as any).detailUrl}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
+                          style={{ background: project.color, color: '#0B1220' }}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View
+                        </Link>
+                      )}
+                      {(project as any).liveUrl && !(project as any).detailUrl && (
+                        <a
+                          href={(project as any).liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
+                          style={{ background: project.color, color: '#0B1220' }}
+                        >
+                          <Globe className="w-4 h-4" />
+                          View Project
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {(project as any).detailUrl && (
-                      <Link
-                        to={(project as any).detailUrl}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
-                        style={{ background: project.color, color: '#0B1220' }}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        View
-                      </Link>
-                    )}
-                    {(project as any).liveUrl && !(project as any).detailUrl && (
-                      <a
-                        href={(project as any).liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
-                        style={{ background: project.color, color: '#0B1220' }}
-                      >
-                        <Globe className="w-4 h-4" />
-                        View Project
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Tilt>
             ))}
           </div>
         </div>
@@ -173,24 +174,26 @@ export default function Projects() {
       {/* ── CTA ── */}
       <section className="py-24 bg-grid-dense" style={{ background: '#0B1220' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="dev-card p-12 lg:p-16 text-center max-w-4xl mx-auto border-animate"
-          >
-            <div className="section-label mb-6 justify-center">Submit Your Work</div>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-              Have a project to showcase?
-            </h2>
-            <p className="text-text-secondary mb-10 max-w-2xl mx-auto leading-relaxed">
-              Built something cool on the cloud? Reach out and we'll feature your project on this page for the whole community to see.
-            </p>
-            <button
-              onClick={() => setShowContact(true)}
-              className="pixel-button px-10 py-4"
+          <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2} glareEnable glareMaxOpacity={0.1} scale={1.01} className="w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="dev-card p-12 lg:p-16 text-center max-w-4xl mx-auto border-animate"
             >
-              Contact Us
-            </button>
-          </motion.div>
+              <div className="section-label mb-6 justify-center">Submit Your Work</div>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
+                Have a project to share?
+              </h2>
+              <p className="text-text-secondary mb-10 max-w-2xl mx-auto font-mono text-sm leading-relaxed">
+                If you've built something cool using AWS services, we'd love to feature it! Submit your project and get recognized by the community.
+              </p>
+              <a
+                href="#"
+                className="pixel-button px-10 py-4 text-sm inline-flex items-center gap-2 mx-auto"
+              >
+                Submit Project <ExternalLink className="w-4 h-4" />
+              </a>
+            </motion.div>
+          </Tilt>
         </div>
       </section>
 
