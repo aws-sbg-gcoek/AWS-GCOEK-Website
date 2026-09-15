@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Cloud, Server, Code, Users, Terminal, Database, ChevronRight, Github, Linkedin, Calendar, MapPin, Mail, Clock } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { eventsData } from '../data/events';
-import { MEETUP_MEMBERS } from '../data/stats';
+import { useLiveStats } from '../hooks/useLiveStats';
 import { HeroTerminal } from '../components/HeroTerminal';
 import { TechTicker } from '../components/TechTicker';
 
@@ -35,7 +35,9 @@ function BlockCluster({ opacity = 0.7, size = 10, gap = 5 }: { opacity?: number;
 }
 
 /* ─── Animated stat counter ─── */
-const StatCounter = ({ end, label, accent = '#FF9900' }: { end: number; label: string; accent?: string }) => {
+const StatCounter = ({
+  end, label, accent = '#FF9900', isLive = false,
+}: { end: number; label: string; accent?: string; isLive?: boolean }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
     let start = 0;
@@ -51,9 +53,20 @@ const StatCounter = ({ end, label, accent = '#FF9900' }: { end: number; label: s
 
   return (
     <div className="stat-block" style={{ borderLeftColor: accent }}>
-      <span className="block text-3xl md:text-4xl font-mono font-bold mb-1" style={{ color: accent }}>
-        {count}+
-      </span>
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-3xl md:text-4xl font-mono font-bold" style={{ color: accent }}>
+          {count}+
+        </span>
+        {isLive && (
+          <span
+            title="Live data from Meetup.com"
+            className="font-mono text-[10px] uppercase tracking-widest animate-pulse"
+            style={{ color: '#22C55E' }}
+          >
+            ● live
+          </span>
+        )}
+      </div>
       <span className="text-xs font-mono text-text-secondary uppercase tracking-widest">{label}</span>
     </div>
   );
@@ -63,14 +76,11 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, tra
 const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.15 } } };
 
 export default function Home() {
+  // ── Live stats: member count fetched from Netlify function, rest derived from events.ts ──
+  const { members, totalEvents, totalProjects, totalWorkshops, isLive } = useLiveStats();
+
   const featuredEvent = eventsData.find(e => e.isFeatured) || eventsData[0];
   const upcomingEvents = eventsData.filter(e => e.status === 'upcoming').slice(0, 3);
-
-  // ── Live stats derived from data files — update automatically when data changes ──
-  const totalMembers = MEETUP_MEMBERS; // Meetup.com group members — update in src/data/stats.ts
-  const totalEvents = eventsData.length;
-  const totalWorkshops = eventsData.filter(e => e.type === 'Workshop' || e.type === 'Seminar').length;
-  const totalProjects = eventsData.filter(e => e.status === 'past').length;
 
   const FEATURES = [
     { icon: Cloud, title: 'Cloud Workshops', desc: 'Hands-on AWS learning sessions and deep dives into cloud services.', accent: '#FF9900', border: 'bl-orange' },
@@ -160,13 +170,155 @@ export default function Home() {
       <section className="py-14" style={{ background: '#080E1A', borderBottom: '1px solid #1E2A3A' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCounter end={totalMembers} label="Members Joined" accent="#FF9900" />
+            <StatCounter end={members} label="Members Joined" accent="#FF9900" isLive={isLive} />
             <StatCounter end={totalEvents} label="Events Conducted" accent="#38BDF8" />
             <StatCounter end={totalProjects} label="Projects Built" accent="#A855F7" />
             <StatCounter end={totalWorkshops} label="Workshops Hosted" accent="#22C55E" />
           </div>
         </div>
       </section>
+
+      {/* ═══ FRESHERS WELCOME BANNER (shown when no featured event) ════════ */}
+      {!featuredEvent?.isFeatured && (
+        <section className="py-20 bg-grid-dense" style={{ background: '#0B1220' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+
+              {/* ── Left: Welcome content ── */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.5 }}
+                className="lg:w-1/2 w-full"
+              >
+                {/* Badge */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span
+                    className="terminal-tag"
+                    style={{ color: '#22C55E', borderColor: '#22C55E55', background: '#22C55E0D' }}
+                  >
+                    🎉 FRESHERS WELCOME — CLASS OF 2029
+                  </span>
+                </div>
+
+                {/* Headline */}
+                <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-2 leading-tight">
+                  Hey Freshers,<br />
+                  <span style={{ color: '#FF9900' }}>You Belong Here.</span>
+                </h2>
+                <div className="section-line mb-6" />
+
+                {/* Description */}
+                <p className="text-text-secondary leading-relaxed mb-8">
+                  Welcome to college — and welcome to the{' '}
+                  <span className="text-white font-semibold">AWS Student Builder Group GCOEK</span>.
+                  We're a student-run tech community where you'll learn cloud computing, ship real projects,
+                  and grow alongside{' '}
+                  <span style={{ color: '#FF9900' }} className="font-semibold">960+ members</span> from
+                  all branches.{' '}
+                  <span className="text-white font-semibold">No prior experience needed</span> — just
+                  curiosity and the drive to build.
+                </p>
+
+                {/* Perks */}
+                <div className="space-y-4 mb-10">
+                  {([
+                    { icon: Cloud,    label: 'Learn AWS Cloud',   desc: 'Hands-on workshops designed from the ground up for absolute beginners.',       accent: '#FF9900' },
+                    { icon: Code,     label: 'Build Real Projects', desc: 'Ship cloud-powered projects you can show off on your résumé from Day 1.',    accent: '#38BDF8' },
+                    { icon: Users,    label: 'Find Your People',   desc: 'Connect with peers, seniors, and industry mentors who\'ve been where you are.', accent: '#A855F7' },
+                    { icon: Terminal, label: 'Get AWS Certified',  desc: 'Structured peer mentorship and resources to crack AWS certs while in college.', accent: '#22C55E' },
+                  ] as { icon: React.ElementType; label: string; desc: string; accent: string }[]).map(({ icon: Icon, label, desc, accent }) => (
+                    <div key={label} className="flex items-start gap-4">
+                      <div
+                        className="flex-shrink-0 w-9 h-9 flex items-center justify-center"
+                        style={{ background: accent + '18', border: `1px solid ${accent}33`, borderRadius: 2 }}
+                      >
+                        <Icon size={16} style={{ color: accent }} />
+                      </div>
+                      <div>
+                        <div className="font-mono text-sm font-semibold text-white">{label}</div>
+                        <div className="text-xs text-text-secondary mt-0.5 leading-relaxed">{desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.meetup.com/aws-sbg-at-government-college-of-engineering-kolhapur/"
+                    target="_blank" rel="noopener noreferrer"
+                    className="pixel-button px-8 py-3.5 text-sm"
+                  >
+                    Join Our Group
+                  </a>
+                  <Link to="/events" className="pixel-button-secondary px-8 py-3.5 text-sm">
+                    Explore Events
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* ── Right: Visual ── */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
+                className="lg:w-1/2 w-full"
+              >
+                {/* Main image */}
+                <div className="relative overflow-hidden" style={{ border: '1px solid #1E2A3A', borderRadius: 3 }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                    alt="Students collaborating on tech projects"
+                    className="w-full aspect-[4/3] object-cover"
+                    loading="lazy"
+                  />
+                  {/* Dark overlay */}
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(135deg, #0B1220CC 0%, transparent 55%)' }}
+                  />
+                  {/* Top badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="terminal-tag" style={{ color: '#22C55E', borderColor: '#22C55E' }}>
+                      ★ Open to All Branches
+                    </span>
+                  </div>
+                  {/* Bottom text overlay */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 p-6"
+                    style={{ background: 'linear-gradient(to top, #080E1A 50%, transparent)' }}
+                  >
+                    <div className="font-mono text-[10px] text-text-secondary uppercase tracking-widest mb-1">
+                      No experience required
+                    </div>
+                    <div className="text-white font-heading font-bold text-lg leading-snug">
+                      Start your cloud journey from Day 1.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mini stats row */}
+                <div className="grid grid-cols-3 gap-3 mt-4">
+                  {([
+                    { value: '960+', label: 'Members',   accent: '#FF9900' },
+                    { value: 'Free', label: 'To Join',   accent: '#22C55E' },
+                    { value: 'All',  label: 'Branches',  accent: '#38BDF8' },
+                  ]).map(({ value, label, accent }) => (
+                    <div
+                      key={label}
+                      className="text-center py-3 px-2"
+                      style={{ background: '#0F1929', border: '1px solid #1E2A3A', borderRadius: 2 }}
+                    >
+                      <div className="font-mono font-bold text-lg" style={{ color: accent }}>{value}</div>
+                      <div className="font-mono text-[10px] text-text-secondary uppercase tracking-widest">{label}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══ FEATURED EVENT ══════════════════════════════════════════════ */}
       {featuredEvent?.isFeatured && (
@@ -271,26 +423,26 @@ export default function Home() {
       </section>
 
       {/* ═══ UPCOMING EVENTS ═════════════════════════════════════════════ */}
-      <section id="upcoming-events" className="py-20 bg-grid-pattern" style={{ background: '#0B1220' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.4 }}
-            className="flex justify-between items-end mb-12"
-          >
-            <div>
-              <div className="section-label">Events</div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">Upcoming Events</h2>
-              <div className="section-line section-line-blue mt-4" />
-            </div>
-            <Link to="/events" className="hidden md:flex items-center gap-1 font-mono text-xs text-cloud-blue hover:text-aws-orange transition-colors duration-200 uppercase tracking-widest">
-              View All <ChevronRight className="w-3 h-3" />
-            </Link>
-          </motion.div>
+      {upcomingEvents.length > 0 && (
+        <section id="upcoming-events" className="py-20 bg-grid-pattern" style={{ background: '#0B1220' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.4 }}
+              className="flex justify-between items-end mb-12"
+            >
+              <div>
+                <div className="section-label">Events</div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">Upcoming Events</h2>
+                <div className="section-line section-line-blue mt-4" />
+              </div>
+              <Link to="/events" className="hidden md:flex items-center gap-1 font-mono text-xs text-cloud-blue hover:text-aws-orange transition-colors duration-200 uppercase tracking-widest">
+                View All <ChevronRight className="w-3 h-3" />
+              </Link>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {upcomingEvents.length > 0 ? (
-              upcomingEvents.map((event, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {upcomingEvents.map((event, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -308,19 +460,15 @@ export default function Home() {
                     View Details
                   </Link>
                 </motion.div>
-              ))
-            ) : (
-              <div className="col-span-3 text-center py-12 dev-card">
-                <p className="text-text-secondary text-sm">No upcoming events. Check back soon!</p>
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
 
-          <div className="mt-6 text-center md:hidden">
-            <Link to="/events" className="font-mono text-xs text-cloud-blue tracking-widest uppercase">View All Events →</Link>
+            <div className="mt-6 text-center md:hidden">
+              <Link to="/events" className="font-mono text-xs text-cloud-blue tracking-widest uppercase">View All Events →</Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ═══ FEATURED PROJECTS ══════════════════════════════════════════ */}
       <section className="py-20" style={{ background: '#111827' }}>
