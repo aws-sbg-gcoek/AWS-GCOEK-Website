@@ -213,7 +213,7 @@ export default function Home() {
                   <span className="text-white font-semibold">AWS Student Builder Group GCOEK</span>.
                   We're a student-run tech community where you'll learn cloud computing, ship real projects,
                   and grow alongside{' '}
-                  <span style={{ color: '#FF9900' }} className="font-semibold">960+ members</span> from
+                  <span style={{ color: '#FF9900' }} className="font-semibold">940+ members</span> from
                   all branches.{' '}
                   <span className="text-white font-semibold">No prior experience needed</span> — just
                   curiosity and the drive to build.
@@ -299,7 +299,7 @@ export default function Home() {
                 {/* Mini stats row */}
                 <div className="grid grid-cols-3 gap-3 mt-4">
                   {([
-                    { value: '960+', label: 'Members',   accent: '#FF9900' },
+                    { value: '940+', label: 'Members',   accent: '#FF9900' },
                     { value: 'Free', label: 'To Join',   accent: '#22C55E' },
                     { value: 'All',  label: 'Branches',  accent: '#38BDF8' },
                   ]).map(({ value, label, accent }) => (
