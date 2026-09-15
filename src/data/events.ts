@@ -24,27 +24,6 @@ export interface AppEvent {
 
 export const eventsData: AppEvent[] = [
   {
-    id: 'welcome-new-college-students',
-    title: 'AWS Student Builder Group Welcomes All New College Students',
-    date: '16 Sep 2026',
-    time: 'TBD',
-    location: 'TBD',
-    desc: 'AWS Student Builder Group welcomes all new college students to the GCOEK community. Join us for an introduction to the AWS Student Builder Group, followed by an engaging quiz, and discover cloud computing, AWS, DevOps, AI, hands-on technology, exciting events, and opportunities to learn, build, and grow together.',
-    type: 'Welcome Meetup',
-    status: 'upcoming',
-    isFeatured: true,
-    highlights: [
-      'Welcome and introduction to AWS Student Builder Group GCOEK',
-      'Interactive introduction to the club and its activities',
-      'Interactive quiz for new college students',
-      'Explore AWS Cloud, DevOps, AI, and emerging technologies',
-      'Meet fellow students and the AWS SBG community',
-      'Discover upcoming workshops, seminars, and hands-on activities',
-      'Opportunities to learn, build, lead, and grow',
-      'Open to all new college students'
-    ]
-  },
-  {
     id: 'portfolio-website-workshop',
     title: 'AI-Powered Portfolio Website Development Workshop',
     date: '09 Apr 2026',
