@@ -593,35 +593,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ CTA ════════════════════════════════════════════════════════ */}
+      {/* ═══ CTA SECTION ══════════════════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden" style={{ background: '#111827', borderTop: '1px solid #1E2A3A' }}>
-        {/* Decorative blocks */}
-        <div className="absolute right-0 top-0 bottom-0 w-64 overflow-hidden opacity-20 pointer-events-none hidden lg:block">
-          <div className="float-slow mt-8 ml-8"><BlockCluster opacity={1} size={14} gap={7} /></div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.4 }}
-            className="max-w-2xl"
-          >
-            <div className="section-label">Get Started</div>
-            <h2 className="text-4xl md:text-5xl font-heading font-black text-white mb-4 leading-tight">
-              Start Your Cloud<br />Journey Today
-            </h2>
-            <div className="section-line mb-6" />
-            <p className="text-text-secondary mb-8 leading-relaxed">
-              Join the AWS Student Builder Group and learn cloud computing through workshops, projects, and community learning.
-            </p>
-            <Link
-              to="/join"
-              onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)}
-              className="pixel-button px-10 py-4 text-sm"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            {/* General Member CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.4 }}
+              className="dev-card p-10 lg:p-12 border-animate relative overflow-hidden flex flex-col justify-center"
             >
-              Join the Group
-            </Link>
-          </motion.div>
+              <div className="absolute right-0 top-0 bottom-0 w-48 overflow-hidden opacity-10 pointer-events-none hidden sm:block">
+                <div className="float-slow mt-4 -ml-4"><BlockCluster opacity={1} size={12} gap={6} /></div>
+              </div>
+              <div className="relative z-10">
+                <div className="section-label">Get Started</div>
+                <h2 className="text-3xl md:text-4xl font-heading font-black text-white mb-4 leading-tight">
+                  Start Your Cloud<br />Journey Today
+                </h2>
+                <div className="section-line mb-6" />
+                <p className="text-text-secondary mb-8 leading-relaxed max-w-sm">
+                  Join the AWS Student Builder Group and learn cloud computing through workshops, projects, and community learning.
+                </p>
+                <Link
+                  to="/join"
+                  onClick={() => setTimeout(() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' }), 300)}
+                  className="pixel-button px-8 py-3.5 text-sm inline-block"
+                >
+                  Join the Group
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Core Team CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}
+              className="dev-card p-10 lg:p-12 flex flex-col justify-center items-center text-center"
+              style={{ background: '#0B1220' }}
+            >
+              <Users className="w-12 h-12 text-border-color mb-6" />
+              <h2 className="text-3xl font-heading font-bold text-white mb-4">Want to join the core team?</h2>
+              <p className="text-text-secondary mb-8 font-mono text-sm max-w-sm">
+                We are always looking for passionate students to help lead the club and organize events.
+              </p>
+              <Link to="/team/apply" className="pixel-button-secondary px-8 py-3.5 text-sm inline-block">
+                Apply for Leadership
+              </Link>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 

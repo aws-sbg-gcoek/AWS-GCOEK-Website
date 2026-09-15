@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowLeft, Users, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Users, MessageCircle, Gift, Network, Briefcase, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 
@@ -75,6 +75,50 @@ export default function Leadership() {
                     cloud computing community at GCOEK.
                   </p>
                 </motion.div>
+
+                {/* What's in it for you? */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }}
+                  className="dev-card p-8"
+                >
+                  <div className="section-label">Benefits</div>
+                  <h2 className="text-2xl font-heading font-bold text-white mb-6 flex items-center gap-3">
+                    <Gift className="w-5 h-5" style={{ color: '#FF9900' }} /> What's in it for you?
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    {[
+                      { icon: Gift, title: 'Exclusive AWS Swag', desc: 'Get official AWS t-shirts, stickers, bottles, and exclusive community gear.', color: '#FF9900' },
+                      { icon: Network, title: 'Elite Networking', desc: 'Direct connections with AWS employees, industry leaders, and speakers.', color: '#38BDF8' },
+                      { icon: Briefcase, title: 'Real Experience', desc: 'Build leadership skills and organize large-scale tech events.', color: '#A855F7' },
+                      { icon: Award, title: 'Certifications', desc: 'Priority access to AWS training and certification vouchers.', color: '#22C55E' },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-4 p-4 rounded-sm" style={{ background: '#080E1A', border: '1px solid #1E2A3A' }}>
+                        <div className="p-2 rounded-sm shrink-0" style={{ background: `${item.color}15`, border: `1px solid ${item.color}30` }}>
+                          <item.icon className="w-5 h-5" style={{ color: item.color }} />
+                        </div>
+                        <div>
+                          <h4 className="text-white font-bold font-heading text-sm mb-1">{item.title}</h4>
+                          <p className="text-text-secondary text-xs leading-relaxed">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Swag photo */}
+                  <div className="relative overflow-hidden rounded-sm" style={{ border: '1px solid #1E2A3A' }}>
+                    <img 
+                      src="/images/aws_swags.jpg" 
+                      alt="Official AWS community swags" 
+                      className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    />
+                    <div className="absolute bottom-4 left-4">
+                      <span className="terminal-tag" style={{ color: '#FF9900', borderColor: '#FF9900' }}>
+                        ★ REAL SWAG AWAITS
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
 
               {/* Sidebar */}
@@ -101,7 +145,7 @@ export default function Leadership() {
                     </a>
 
                     <a
-                      href="https://wa.me/918446712322"
+                      href="https://wa.me/918446712322?text=Hi!%20I'm%20interested%20in%20joining%20the%20AWS%20SBG%20Core%20Team.%20Can%20you%20share%20more%20details%20about%20the%20application%20process%3F"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="dev-card card-shine flex items-center gap-4 p-4 group hover:border-[#22C55E]"
