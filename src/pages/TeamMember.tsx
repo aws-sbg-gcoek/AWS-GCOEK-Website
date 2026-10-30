@@ -58,7 +58,12 @@ export default function TeamMember() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 flex-shrink-0">
                 <div className="w-32 h-32 md:w-48 md:h-48 rounded-sm bg-[#080E1A] border-4 border-[#080E1A] overflow-hidden" style={{ borderBottomColor: hexColor }}>
                   <img 
-                    src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/400/400`} 
+                    src={(member as any).image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0D1826&color=38BDF8&bold=true`} 
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0D1826&color=FF9900&bold=true`;
+                    }}
                     alt={member.name}
                     className="w-full h-full object-cover transition-all duration-300"
                     loading="lazy"

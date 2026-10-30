@@ -65,7 +65,12 @@ export default function Team() {
                         {/* Square photo */}
                         <div className="aspect-square overflow-hidden" style={{ borderBottom: '1px solid #1E2A3A' }}>
                           <img
-                            src={(member as any).image || `https://picsum.photos/seed/${member.name.replace(/ /g, '')}/150/150`}
+                            src={(member as any).image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0D1826&color=38BDF8&bold=true`}
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.onerror = null;
+                              target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0D1826&color=FF9900&bold=true`;
+                            }}
                             alt={member.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             loading="lazy"

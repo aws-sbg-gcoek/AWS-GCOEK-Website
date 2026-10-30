@@ -562,6 +562,11 @@ export default function Home() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       referrerPolicy="no-referrer"
                       loading="lazy"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0D1826&color=FF9900&bold=true`;
+                      }}
                     />
                   </div>
                   <div className="p-4">

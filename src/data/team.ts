@@ -52,7 +52,7 @@ export const departments = [
     bgColor: "bg-cloud-blue",
     hoverBorderColor: "group-hover:border-cloud-blue",
     members: [
-      { id: 'anas', name: 'Anas Pathan', role: 'Technical Lead', bio: 'Leading project development, coordinating the team, and building scalable applications with modern cloud technologies.', skills: ['AWS', 'Project Leadership', 'Cloud Development', 'Node.js', 'Docker'], email: 'mailto:pathananas2007@gmail.com', linkedin: 'https://www.linkedin.com/in/anas-pathan-91a6b3368', image: 'https://i.ibb.co/YBDxDXfV/Chat-GPT-Image-Sep-4-2026-12-44-21-AM.png' },
+      { id: 'anas', name: 'Anas Pathan', role: 'Technical Lead', bio: 'Leading project development, coordinating the team, and building scalable applications with modern cloud technologies.', skills: ['AWS', 'Project Leadership', 'Cloud Development', 'Node.js', 'Docker'], email: 'mailto:pathananas2007@gmail.com', linkedin: 'https://www.linkedin.com/in/anas-pathan-91a6b3368', image: '/images/anas.png' },
 
       { id: 'atharv-patil', name: 'Atharv Patil', role: 'Project Lead', bio: 'Assisting in the strategic direction and operations of the club.', skills: ['Cloud Computing', 'Management', 'AWS'], email: 'mailto:atharvpatil1808@gmail.com', linkedin: 'https://www.linkedin.com/in/atharvpatilw', image: 'https://i.ibb.co/wZYNhv1R/Whats-App-Image-2026-04-18-at-1-54-07-PM.jpg' },
       
